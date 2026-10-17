@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Keep dealership marketing sections in the existing index route and use imported image assets with semantic overlay tokens; this preserves navigation while supporting a cohesive photographic identity.
