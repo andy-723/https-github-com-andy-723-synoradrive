@@ -43,9 +43,9 @@
 
 :root {
   --radius: 0.75rem;
-  --background: oklch(0.13 0.012 285);
+  --background: oklch(0.12 0.004 285);
   --foreground: oklch(0.97 0.005 285);
-  --card: oklch(0.17 0.014 285);
+  --card: oklch(0.17 0.006 285);
   --card-foreground: oklch(0.97 0.005 285);
   --popover: oklch(0.17 0.014 285);
   --popover-foreground: oklch(0.97 0.005 285);
@@ -55,7 +55,7 @@
   --secondary: oklch(0.21 0.016 285);
   --secondary-foreground: oklch(0.95 0.005 285);
   --muted: oklch(0.21 0.016 285);
-  --muted-foreground: oklch(0.7 0.02 285);
+  --muted-foreground: oklch(0.77 0.008 285);
   --accent: oklch(0.24 0.04 288);
   --accent-foreground: oklch(0.9 0.06 288);
   --success: oklch(0.76 0.16 160);
@@ -86,7 +86,7 @@
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
   }
-  h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.02em; }
+  h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: 0; }
 }
 
 @utility text-gradient {
@@ -109,4 +109,26 @@
 @utility glass {
   background: oklch(0.17 0.014 285 / 70%);
   backdrop-filter: blur(14px);
+}
+
+:root {
+  --hero-overlay: linear-gradient(90deg, oklch(0.1 0.004 285 / 96%) 0%, oklch(0.1 0.004 285 / 85%) 30%, oklch(0.1 0.004 285 / 30%) 70%, oklch(0.1 0.004 285 / 15%) 100%);
+  --showroom-overlay: linear-gradient(90deg, oklch(0.1 0.004 285 / 92%), oklch(0.1 0.004 285 / 58%) 48%, oklch(0.1 0.004 285 / 8%));
+}
+.hero-shade { background: var(--hero-overlay); }
+.hero-vehicle { object-position: 65% center; opacity: 0.85; }
+.showroom-shade { background: var(--showroom-overlay); }
+.showroom-band { min-height: 430px; }
+.hero-copy { animation: arrive 800ms ease-out both; }
+@keyframes arrive { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 640px) {
+  .automotive-hero > div:nth-of-type(2) { min-height: 650px; }
+  .hero-vehicle { object-position: 58% center; opacity: 0.6; }
+  .hero-shade { background: linear-gradient(90deg, var(--background), color-mix(in oklch, var(--background) 65%, transparent)); }
+  .showroom-band { min-height: 400px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .hero-copy { animation: none; }
+  .animate-pulse { animation: none; }
 }

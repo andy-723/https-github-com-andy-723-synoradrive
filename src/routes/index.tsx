@@ -1,5 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import vehicleAsset from "@/assets/synoradrive-vehicle.jpeg.asset.json";
+import showroomImage from "@/assets/dealership-showroom.jpg";
 import {
   ArrowRight, ShieldCheck, FileText, ScanLine, Wallet, BadgeCheck, Lock, Mail,
   Workflow, Gauge, Building2, CheckCircle2, Server, KeyRound, Database, Cloud, Sparkles, Upload,
@@ -70,34 +73,30 @@ function Header() {
 
 function Hero() {
   return (
-    <section className="relative pt-20 pb-10">
-      <div className="bg-glow pointer-events-none absolute inset-0" />
-      <div className="grid-lines pointer-events-none absolute inset-0" />
-      <div className="relative mx-auto max-w-7xl px-6 text-center">
-        <div className="mx-auto inline-flex items-center gap-2 rounded-full border bg-card/60 px-3 py-1 text-xs text-muted-foreground">
-          <span className="size-1.5 animate-pulse rounded-full bg-success" />
-          In production with Australian dealer groups · Hosted in Azure Australia East
-        </div>
-        <h1 className="mx-auto mt-7 max-w-4xl text-4xl font-semibold leading-[1.08] sm:text-6xl lg:text-7xl">
-          Every deal, <span className="text-gradient">compliant</span> from contract to handover.
-        </h1>
-        <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-          SynoraDrive reads your Contract of Sale, runs the compliance checks and builds every deal pack in seconds — so your front-line staff spend their time with customers, not paperwork.
-        </p>
-        <div className="mt-9 flex flex-wrap justify-center gap-3">
-          <a href="#demo" className="inline-flex items-center gap-2 rounded-lg bg-brand px-6 py-3 text-sm font-semibold text-primary-foreground shadow-glow transition hover:opacity-90">
-            Book a rooftop demo <ArrowRight className="size-4" />
-          </a>
-          <a href="#product" className="rounded-lg border bg-card/60 px-6 py-3 text-sm font-semibold transition hover:bg-secondary">See the DealBoard</a>
-        </div>
-        <div className="mx-auto mt-10 flex max-w-3xl flex-wrap justify-center gap-x-8 gap-y-2 text-xs text-muted-foreground">
-          {["Pentana / EraPower ingest", "ASIC & VIC RWC checks", "$0 balance settlement gate", "DocuSign ready"].map((t) => (
-            <span key={t} className="inline-flex items-center gap-1.5"><CheckCircle2 className="size-3.5 text-success" />{t}</span>
-          ))}
+    <section className="automotive-hero relative isolate overflow-hidden">
+      <img src={vehicleAsset.url} alt="A vehicle outside a modern dealership at dusk" className="hero-vehicle absolute inset-0 -z-20 h-full w-full object-cover" fetchPriority="high" width={1356} height={768} />
+      <div className="hero-shade absolute inset-0 -z-10" />
+      <div className="mx-auto flex min-h-[680px] max-w-7xl flex-col justify-center px-6 py-20 lg:px-8">
+        <div className="hero-copy max-w-2xl">
+          <div className="mb-7 flex items-center gap-3 font-mono text-xs text-primary-glow"><span className="h-px w-8 bg-primary-glow" /> THE NEXT SHIFT IN AUTOMOTIVE</div>
+          <h1 className="text-5xl font-semibold leading-[1.08] sm:text-6xl lg:text-7xl">SynoraDrive<span className="mt-3 block text-3xl font-normal leading-tight sm:text-4xl lg:text-5xl">Intelligence behind<br />every handover.</span></h1>
+          <p className="mt-6 max-w-lg text-base leading-relaxed text-muted-foreground sm:text-lg">AI-powered paperwork. Connected compliance. A dealership that moves as fast as you do.</p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Button asChild size="lg" className="h-12 bg-brand"><a href="#demo">Book a rooftop demo <ArrowRight /></a></Button>
+            <Button asChild variant="outline" size="lg" className="h-12 border-foreground/25 bg-background/30"><a href="#product">Explore the platform <ArrowRight /></a></Button>
+          </div>
+          <div className="mt-10 flex flex-wrap gap-x-6 gap-y-3 text-xs text-muted-foreground">
+            <span className="flex items-center gap-2"><ShieldCheck className="size-4 text-primary-glow" /> Australian data residency</span>
+            <span className="flex items-center gap-2"><Cloud className="size-4 text-primary-glow" /> Microsoft Azure</span>
+          </div>
         </div>
       </div>
-      <div className="relative mx-auto mt-16 max-w-6xl px-6" id="product">
-        <BoardReplica />
+      <div className="border-t border-foreground/15 bg-background/60">
+        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-6 py-5 font-mono text-[10px] text-muted-foreground sm:text-xs lg:px-8">
+          <span className="flex items-center gap-2"><span className="size-1.5 rounded-full bg-success" /> BUILT FOR THE DEALERSHIP FLOOR</span>
+          <span>CONTRACT → COMPLIANCE → DELIVERY</span>
+          <a href="#product" className="flex items-center gap-2 text-foreground">MEET YOUR NEXT WORKFLOW <ArrowRight className="size-4" /></a>
+        </div>
       </div>
     </section>
   );
@@ -115,7 +114,8 @@ const columns = [
 
 function BoardReplica() {
   const [open, setOpen] = useState(0);
-  const d = deals[open] ?? deals[0]!;
+  const d = deals[open];
+  if (!d) return null;
   return (
     <div className="rounded-2xl border bg-card p-2 shadow-elegant">
       <div className="flex items-center gap-1.5 px-3 py-2">
@@ -136,12 +136,12 @@ function BoardReplica() {
               <div key={c} className={`min-h-64 rounded-lg border border-surface-border bg-surface-muted p-2.5 ${i > 1 ? "hidden md:block" : ""}`}>
                 <div className="mb-3 flex items-center gap-1.5 text-[11px] font-semibold"><span className={`size-1.5 rounded-full ${dot}`} />{c}</div>
                 {i === 0 && deals.map((x, k) => (
-                  <button key={x.id} onClick={() => setOpen(k)} className={`mb-2 w-full rounded-md border-2 bg-surface p-2.5 text-left transition ${x.tone} ${open === k ? "ring-2 ring-primary/40" : ""}`}>
+                  <Button variant="ghost" key={x.id} onClick={() => setOpen(k)} className={`mb-2 block h-auto w-full whitespace-normal rounded-md border-2 bg-surface p-2.5 text-left transition ${x.tone} ${open === k ? "ring-2 ring-primary/40" : ""}`}>
                     <div className="flex items-center gap-1 font-mono text-[10px] text-primary">{x.id}<span className="opacity-40">·</span>{x.stock}</div>
                     <div className="mt-1 truncate text-[11px] font-medium">{x.name}</div>
                     <div className="mt-1.5 flex justify-between text-[10px] opacity-60"><span>{x.date}</span><span>{x.value}</span></div>
                     {x.tag && <span className="mt-1.5 inline-block rounded-full bg-success/15 px-1.5 text-[9px] font-semibold text-success">{x.tag}</span>}
-                  </button>
+                  </Button>
                 ))}
               </div>
             ))}
@@ -194,7 +194,17 @@ function SectionHead({ eyebrow, title, body }: { eyebrow: string; title: string;
   );
 }
 
-function Product() { return null; }
+function Product() {
+  return (
+    <section id="product" className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+      <div className="mb-10 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+        <div><div className="font-mono text-xs text-primary-glow">01 / CONNECTED OPERATIONS</div><h2 className="mt-4 max-w-xl text-3xl font-semibold sm:text-4xl">Less chasing.<br />More moving forward.</h2></div>
+        <p className="max-w-sm text-sm leading-relaxed text-muted-foreground">Every deal, document and decision. Connected in one live workspace, from the first contract to the final set of keys.</p>
+      </div>
+      <BoardReplica />
+    </section>
+  );
+}
 
 function WorkflowSection() {
   const steps = [
@@ -206,10 +216,10 @@ function WorkflowSection() {
   ] as const;
   return (
     <section id="workflow" className="mx-auto max-w-7xl px-6 py-28">
-      <SectionHead eyebrow="Contract to handover" title="One flow. No re-keying." body="Five stages your team already knows — now automated end to end." />
+      <SectionHead eyebrow="Contract to handover" title="Your team sells. SynoraDrive connects the dots." body="Five stages your team already knows — now automated end to end." />
       <div className="mt-16 grid gap-4 md:grid-cols-5">
         {steps.map(([Icon, t, b], i) => (
-          <div key={t} className="relative rounded-xl border bg-card p-6">
+          <div key={t} className="relative border-t border-primary/40 py-6 pr-6">
             <div className="font-mono text-xs text-muted-foreground">0{i + 1}</div>
             <Icon className="mt-4 size-6 text-primary" />
             <h3 className="mt-4 text-lg font-semibold">{t}</h3>
@@ -232,11 +242,20 @@ function Modules() {
   ] as const;
   return (
     <section className="border-t bg-card/30">
-      <div className="mx-auto max-w-7xl px-6 py-28">
-        <SectionHead eyebrow="Platform" title="Built for the whole dealership floor." />
-        <div className="mt-16 grid gap-px overflow-hidden rounded-2xl border bg-border md:grid-cols-3">
+      <div className="showroom-band relative isolate overflow-hidden">
+        <img src={showroomImage} alt="A modern dealership showroom with a vehicle and customer cafe lounge" loading="lazy" width={1536} height={1024} className="absolute inset-0 -z-20 h-full w-full object-cover" />
+        <div className="showroom-shade absolute inset-0 -z-10" />
+        <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
+          <div className="font-mono text-xs text-primary-glow">MADE FOR YOUR WORLD</div>
+          <h2 className="mt-5 max-w-lg text-4xl font-semibold leading-tight sm:text-5xl">The floor is human.<br />The flow is intelligent.</h2>
+          <p className="mt-5 max-w-sm leading-relaxed text-muted-foreground">From the showroom to the workshop, give your people more time for the moments that matter.</p>
+        </div>
+      </div>
+      <div className="mx-auto max-w-7xl px-6 py-20">
+        <SectionHead eyebrow="Platform" title="One platform. Every part of the deal." />
+        <div className="mt-12 grid gap-x-10 gap-y-8 md:grid-cols-3">
           {items.map(([Icon, t, b]) => (
-            <div key={t} className="bg-background p-8 transition hover:bg-card">
+            <div key={t} className="border-t py-8">
               <div className="grid size-10 place-items-center rounded-lg bg-accent"><Icon className="size-5 text-accent-foreground" /></div>
               <h3 className="mt-5 text-lg font-semibold">{t}</h3>
               <p className="mt-2 text-sm text-muted-foreground">{b}</p>
@@ -313,8 +332,7 @@ function Pricing() {
 function Cta() {
   return (
     <section id="demo" className="mx-auto max-w-7xl px-6 py-28">
-      <div className="relative overflow-hidden rounded-3xl border bg-card px-8 py-20 text-center shadow-elegant">
-        <div className="bg-glow pointer-events-none absolute inset-0" />
+      <div className="relative border-y px-2 py-16 text-center">
         <h2 className="relative mx-auto max-w-2xl text-3xl font-semibold sm:text-5xl">See your next delivery go out with zero paperwork chase.</h2>
         <p className="relative mx-auto mt-5 max-w-xl text-muted-foreground">A 30-minute walkthrough using your own Contract of Sale.</p>
         <a href="mailto:hello@synoradrive.com.au" className="relative mt-9 inline-flex items-center gap-2 rounded-lg bg-brand px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-glow">
