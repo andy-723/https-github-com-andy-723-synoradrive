@@ -115,7 +115,7 @@ const columns = [
 
 function BoardReplica() {
   const [open, setOpen] = useState(0);
-  const d = deals[open];
+  const d = deals[open] ?? deals[0]!;
   return (
     <div className="rounded-2xl border bg-card p-2 shadow-elegant">
       <div className="flex items-center gap-1.5 px-3 py-2">
