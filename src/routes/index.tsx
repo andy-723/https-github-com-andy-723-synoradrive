@@ -5,16 +5,16 @@ import vehicleAsset from "@/assets/synoradrive-vehicle.jpeg.asset.json";
 import showroomImage from "@/assets/dealership-showroom.jpg";
 import {
   ArrowRight, ShieldCheck, FileText, ScanLine, Wallet, BadgeCheck, Lock, Mail,
-  Workflow, Gauge, Building2, CheckCircle2, Server, KeyRound, Database, Cloud, Sparkles, Upload,
+  Workflow, Gauge, Building2, CheckCircle2, Server, KeyRound, Database, Cloud, Sparkles, Upload, FileSpreadsheet, Users,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "SynoraDrive — Dealership paperwork, compliance & delivery automation" },
-      { name: "description", content: "From Contract of Sale ingest to handover: SynoraDrive automates deal packs, ASIC & RWC compliance and settlement checks for Australian dealerships." },
+      { name: "description", content: "SynoraDrive gives dealer principals and sales managers total visibility of every vehicle from sold to delivered — with a named owner on every task. Contract ingest, ASIC & RWC compliance and deal packs for Australian dealerships." },
       { property: "og:title", content: "SynoraDrive — Automate dealership paperwork" },
-      { property: "og:description", content: "Contract ingest, compliance checks and deal packs in seconds. Built in Melbourne on Microsoft Azure." },
+      { property: "og:description", content: "The first live view of every vehicle from sold to delivered — every task owned, every check visible. Built in Melbourne on Microsoft Azure." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -80,7 +80,7 @@ function Hero() {
         <div className="hero-copy max-w-2xl">
           <div className="mb-7 flex items-center gap-3 font-mono text-xs text-primary-glow"><span className="h-px w-8 bg-primary-glow" /> THE NEXT SHIFT IN AUTOMOTIVE</div>
           <h1 className="text-5xl font-semibold leading-[1.08] sm:text-6xl lg:text-7xl">SynoraDrive<span className="mt-3 block text-3xl font-normal leading-tight sm:text-4xl lg:text-5xl">Intelligence behind<br />every handover.</span></h1>
-          <p className="mt-6 max-w-lg text-base leading-relaxed text-muted-foreground sm:text-lg">AI-powered paperwork. Connected compliance. A dealership that moves as fast as you do.</p>
+          <p className="mt-6 max-w-lg text-base leading-relaxed text-muted-foreground sm:text-lg">The first live view of every vehicle from sold to delivered — every task owned, every check visible. No more chasing.</p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Button asChild size="lg" className="h-12 bg-brand"><a href="#demo">Book a rooftop demo <ArrowRight /></a></Button>
             <Button asChild variant="outline" size="lg" className="h-12 border-foreground/25 bg-background/30"><a href="#product">Explore the platform <ArrowRight /></a></Button>
@@ -108,8 +108,8 @@ const deals = [
 ];
 
 const columns = [
-  ["In-Queue", "bg-primary-glow"], ["Document Prep", "bg-primary"], ["Finance & Approvals", "bg-warning"],
-  ["Workshop & PDI", "bg-destructive"], ["Ready for Delivery", "bg-success"],
+  ["In-Queue", "bg-primary-glow", "Sales"], ["Document Prep", "bg-primary", "Admin"], ["Finance & Approvals", "bg-warning", "F&I"],
+  ["Workshop & PDI", "bg-destructive", "Workshop"], ["Ready for Delivery", "bg-success", "Delivery"],
 ] as const;
 
 function BoardReplica() {
@@ -126,15 +126,15 @@ function BoardReplica() {
         <div className="flex items-center justify-between border-b border-surface-border px-5 py-3">
           <div>
             <div className="font-display text-sm font-semibold">Dealership Board <span className="ml-2 rounded bg-surface-muted px-1.5 py-0.5 text-[10px] font-normal">October · Week 3</span></div>
-            <div className="text-[11px] opacity-60">2 active deals · $71k pipeline · sample data</div>
+            <div className="text-[11px] opacity-60">2 active deals · every task owned · sample data</div>
           </div>
           <span className="hidden items-center gap-1.5 rounded-md border border-surface-border px-2.5 py-1.5 text-[11px] sm:inline-flex"><Upload className="size-3" />Upload Contract of Sale</span>
         </div>
         <div className="grid gap-0 lg:grid-cols-[1fr_300px]">
           <div className="grid grid-cols-2 gap-3 overflow-x-auto p-4 md:grid-cols-5">
-            {columns.map(([c, dot], i) => (
+            {columns.map(([c, dot, owner], i) => (
               <div key={c} className={`min-h-64 rounded-lg border border-surface-border bg-surface-muted p-2.5 ${i > 1 ? "hidden md:block" : ""}`}>
-                <div className="mb-3 flex items-center gap-1.5 text-[11px] font-semibold"><span className={`size-1.5 rounded-full ${dot}`} />{c}</div>
+                <div className="mb-3 flex items-center gap-1.5 text-[11px] font-semibold"><span className={`size-1.5 rounded-full ${dot}`} />{c}<span className="ml-auto font-mono text-[9px] font-normal opacity-50">{owner}</span></div>
                 {i === 0 && deals.map((x, k) => (
                   <Button variant="ghost" key={x.id} onClick={() => setOpen(k)} className={`mb-2 block h-auto w-full whitespace-normal rounded-md border-2 bg-surface p-2.5 text-left transition ${x.tone} ${open === k ? "ring-2 ring-primary/40" : ""}`}>
                     <div className="flex items-center gap-1 font-mono text-[10px] text-primary">{x.id}<span className="opacity-40">·</span>{x.stock}</div>
@@ -169,7 +169,7 @@ function BoardReplica() {
 }
 
 function TrustStrip() {
-  const stats = [["725", "automated checks every release"], ["5", "deal stages, one board"], ["<10s", "contract to deal pack"], ["100%", "Australian data residency"]];
+  const stats = [["725", "automated checks every release"], ["1", "live board from sold to delivered"], ["100%", "of tasks with a named owner"], ["100%", "Australian data residency"]];
   return (
     <section className="light-section mist-section border-y bg-background text-foreground">
       <div className="mx-auto grid max-w-7xl grid-cols-2 gap-8 px-6 py-12 md:grid-cols-4">
@@ -199,10 +199,22 @@ function Product() {
     <section id="product" className="light-section bg-background text-foreground">
       <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
       <div className="mb-10 flex flex-col justify-between gap-6 md:flex-row md:items-end">
-        <div><div className="font-mono text-xs text-primary-glow">01 / CONNECTED OPERATIONS</div><h2 className="mt-4 max-w-xl text-3xl font-semibold sm:text-4xl">Less chasing.<br />More moving forward.</h2></div>
-        <p className="max-w-sm text-sm leading-relaxed text-muted-foreground">Every deal, document and decision. Connected in one live workspace, from the first contract to the final set of keys.</p>
+        <div><div className="font-mono text-xs text-primary-glow">01 / TOTAL DELIVERY VISIBILITY</div><h2 className="mt-4 max-w-xl text-3xl font-semibold sm:text-4xl">Less chasing.<br />More moving forward.</h2></div>
+        <p className="max-w-sm text-sm leading-relaxed text-muted-foreground">For the first time, dealer principals and sales managers see every vehicle from sold to delivered — and exactly who owns each step. No email chains, no stale sales-log spreadsheets.</p>
       </div>
       <BoardReplica />
+      <div className="mt-8 grid gap-4 sm:grid-cols-3">
+        {([
+          [Mail, "Retires the email chain", "Status lives on the board, not buried in inboxes."],
+          [FileSpreadsheet, "Retires the shared sales log", "No more stale spreadsheets or version confusion."],
+          [Users, "One owner per task", "Everyone knows who holds the next move."],
+        ] as const).map(([Icon, t, b]) => (
+          <div key={t} className="flex gap-4 rounded-xl border bg-card p-5">
+            <Icon className="mt-0.5 size-5 shrink-0 text-primary-glow" />
+            <div><div className="text-sm font-semibold">{t}</div><div className="mt-1 text-sm text-muted-foreground">{b}</div></div>
+          </div>
+        ))}
+      </div>
       </div>
     </section>
   );
@@ -210,20 +222,20 @@ function Product() {
 
 function WorkflowSection() {
   const steps = [
-    [Mail, "Ingest", "Drop a Contract of Sale PDF or let SynoraDrive watch your sales mailbox."],
-    [ScanLine, "Extract", "OCR and form reading pull customer, vehicle and finance fields instantly."],
-    [ShieldCheck, "Verify", "ASIC company search, licence match and state roadworthy rules run automatically."],
-    [FileText, "Generate", "Showroom, pre-delivery and e-signature packs are built and flattened."],
-    [Wallet, "Hand over", "Delivery unlocks only when the balance is $0 and every check is green."],
+    [Mail, "Ingest", "Drop a Contract of Sale PDF or let SynoraDrive watch your sales mailbox.", "Sales admin"],
+    [ScanLine, "Extract", "OCR and form reading pull customer, vehicle and finance fields instantly.", "System"],
+    [ShieldCheck, "Verify", "ASIC company search, licence match and state roadworthy rules run automatically.", "Compliance"],
+    [FileText, "Generate", "Showroom, pre-delivery and e-signature packs are built and flattened.", "Document prep"],
+    [Wallet, "Hand over", "Delivery unlocks only when the balance is $0 and every check is green.", "Delivery team"],
   ] as const;
   return (
     <section id="workflow" className="light-section mist-section bg-background text-foreground">
       <div className="mx-auto max-w-7xl px-6 py-24">
       <SectionHead eyebrow="Contract to handover" title="Your team sells. SynoraDrive connects the dots." body="Five stages your team already knows — now automated end to end." />
       <div className="mt-16 grid gap-4 md:grid-cols-5">
-        {steps.map(([Icon, t, b], i) => (
+        {steps.map(([Icon, t, b, owner], i) => (
           <div key={t} className="relative border-t border-primary/40 py-6 pr-6">
-            <div className="font-mono text-xs text-muted-foreground">0{i + 1}</div>
+            <div className="font-mono text-xs text-muted-foreground">0{i + 1} · <span className="text-primary">{owner}</span></div>
             <Icon className="mt-4 size-6 text-primary" />
             <h3 className="mt-4 text-lg font-semibold">{t}</h3>
             <p className="mt-2 text-sm text-muted-foreground">{b}</p>
@@ -237,10 +249,10 @@ function WorkflowSection() {
 
 function Modules() {
   const items = [
-    [Workflow, "Dealership Board", "A live five-stage board for every rooftop, with flags for anything at risk."],
+    [Workflow, "Dealership Board", "A live five-stage board for every rooftop, with a named owner on every task and flags for anything at risk."],
     [BadgeCheck, "Compliance engine", "ASIC extracts, 28-day RWC windows and state rules — checked, logged, provable."],
     [FileText, "Deal packs", "Consistent, pre-filled packs for sales, F&I, aftermarket and workshop."],
-    [Gauge, "Command Center", "Group-wide view of pipeline, delays and delivery calendar for managers."],
+    [Gauge, "Command Center", "The first true end-to-end view of every vehicle, every owner and every delay — group-wide."],
     [Sparkles, "AI exception copilot", "Surfaces missing documents and F&I issues before they hold up a delivery."],
     [Building2, "Multi-rooftop", "Roles, permissions and reporting built for dealer groups from day one."],
   ] as const;
@@ -339,7 +351,7 @@ function Cta() {
   return (
     <section id="demo" className="mx-auto max-w-7xl px-6 py-28">
       <div className="relative border-y px-2 py-16 text-center">
-        <h2 className="relative mx-auto max-w-2xl text-3xl font-semibold sm:text-5xl">See your next delivery go out with zero paperwork chase.</h2>
+        <h2 className="relative mx-auto max-w-2xl text-3xl font-semibold sm:text-5xl">Stop chasing vehicles.<br />Start seeing every delivery.</h2>
         <p className="relative mx-auto mt-5 max-w-xl text-muted-foreground">A 30-minute walkthrough using your own Contract of Sale.</p>
         <a href="mailto:hello@synoradrive.com.au" className="relative mt-9 inline-flex items-center gap-2 rounded-lg bg-brand px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-glow">
           Book a rooftop demo <ArrowRight className="size-4" />
