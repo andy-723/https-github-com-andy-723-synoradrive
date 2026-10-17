@@ -206,7 +206,7 @@ function Product() {
       <div className="mt-8 grid gap-4 sm:grid-cols-3">
         {([
           [Mail, "Retires the email chain", "Status lives on the board, not buried in inboxes."],
-          [FileSpreadsheet, "Retires the pretty spreadsheet", "Looks tidy. Still can't tell you who owns the next move."],
+          [FileSpreadsheet, "Retires the pretty spreadsheet", "Looks tidy. Still can't tell you where the vehicle actually is."],
           [Users, "One owner per task", "Everyone knows who holds the next move."],
         ] as const).map(([Icon, t, b]) => (
           <div key={t} className="flex gap-4 rounded-xl border bg-card p-5">
