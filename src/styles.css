@@ -113,8 +113,29 @@
 
 :root {
   --hero-overlay: linear-gradient(90deg, oklch(0.1 0.004 285 / 96%) 0%, oklch(0.1 0.004 285 / 85%) 30%, oklch(0.1 0.004 285 / 30%) 70%, oklch(0.1 0.004 285 / 15%) 100%);
-  --showroom-overlay: linear-gradient(90deg, oklch(0.1 0.004 285 / 92%), oklch(0.1 0.004 285 / 58%) 48%, oklch(0.1 0.004 285 / 8%));
+  --showroom-overlay: linear-gradient(90deg, oklch(0.1 0.004 285 / 86%), oklch(0.1 0.004 285 / 45%) 42%, oklch(0.1 0.004 285 / 0%) 72%);
 }
+.light-section {
+  --background: oklch(0.995 0.001 260);
+  --foreground: oklch(0.22 0.008 260);
+  --card: oklch(1 0 0);
+  --card-foreground: var(--foreground);
+  --muted: oklch(0.92 0.005 260);
+  --muted-foreground: oklch(0.47 0.012 260);
+  --secondary: oklch(0.94 0.005 260);
+  --secondary-foreground: var(--foreground);
+  --accent: oklch(0.94 0.025 288);
+  --accent-foreground: oklch(0.48 0.18 288);
+  --primary: oklch(0.52 0.21 288);
+  --primary-glow: oklch(0.48 0.11 230);
+  --border: oklch(0.87 0.006 260);
+  --input: var(--border);
+  --success: oklch(0.49 0.12 160);
+  --shadow-elegant: 0 20px 55px -20px oklch(0.22 0.008 260 / 18%);
+}
+.mist-section { --background: oklch(0.965 0.004 260); }
+.light-section *, .light-section { border-color: var(--border); }
+.light-section .text-gradient { background: none; color: var(--primary); }
 .hero-shade { background: var(--hero-overlay); }
 .hero-vehicle { object-position: 65% center; opacity: 0.85; }
 .showroom-shade { background: var(--showroom-overlay); }
