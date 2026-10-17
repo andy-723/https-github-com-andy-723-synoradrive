@@ -171,7 +171,7 @@ function BoardReplica() {
 function TrustStrip() {
   const stats = [["725", "automated checks every release"], ["5", "deal stages, one board"], ["<10s", "contract to deal pack"], ["100%", "Australian data residency"]];
   return (
-    <section className="border-y bg-card/40">
+    <section className="light-section mist-section border-y bg-background text-foreground">
       <div className="mx-auto grid max-w-7xl grid-cols-2 gap-8 px-6 py-12 md:grid-cols-4">
         {stats.map(([n, l]) => (
           <div key={l}>
@@ -196,12 +196,14 @@ function SectionHead({ eyebrow, title, body }: { eyebrow: string; title: string;
 
 function Product() {
   return (
-    <section id="product" className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+    <section id="product" className="light-section bg-background text-foreground">
+      <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
       <div className="mb-10 flex flex-col justify-between gap-6 md:flex-row md:items-end">
         <div><div className="font-mono text-xs text-primary-glow">01 / CONNECTED OPERATIONS</div><h2 className="mt-4 max-w-xl text-3xl font-semibold sm:text-4xl">Less chasing.<br />More moving forward.</h2></div>
         <p className="max-w-sm text-sm leading-relaxed text-muted-foreground">Every deal, document and decision. Connected in one live workspace, from the first contract to the final set of keys.</p>
       </div>
       <BoardReplica />
+      </div>
     </section>
   );
 }
@@ -215,7 +217,8 @@ function WorkflowSection() {
     [Wallet, "Hand over", "Delivery unlocks only when the balance is $0 and every check is green."],
   ] as const;
   return (
-    <section id="workflow" className="mx-auto max-w-7xl px-6 py-28">
+    <section id="workflow" className="light-section mist-section bg-background text-foreground">
+      <div className="mx-auto max-w-7xl px-6 py-24">
       <SectionHead eyebrow="Contract to handover" title="Your team sells. SynoraDrive connects the dots." body="Five stages your team already knows — now automated end to end." />
       <div className="mt-16 grid gap-4 md:grid-cols-5">
         {steps.map(([Icon, t, b], i) => (
@@ -226,6 +229,7 @@ function WorkflowSection() {
             <p className="mt-2 text-sm text-muted-foreground">{b}</p>
           </div>
         ))}
+      </div>
       </div>
     </section>
   );
@@ -241,7 +245,7 @@ function Modules() {
     [Building2, "Multi-rooftop", "Roles, permissions and reporting built for dealer groups from day one."],
   ] as const;
   return (
-    <section className="border-t bg-card/30">
+    <section className="border-t bg-background">
       <div className="showroom-band relative isolate overflow-hidden">
         <img src={showroomImage} alt="A modern dealership showroom with a vehicle and customer cafe lounge" loading="lazy" width={1536} height={1024} className="absolute inset-0 -z-20 h-full w-full object-cover" />
         <div className="showroom-shade absolute inset-0 -z-10" />
@@ -251,6 +255,7 @@ function Modules() {
           <p className="mt-5 max-w-sm leading-relaxed text-muted-foreground">From the showroom to the workshop, give your people more time for the moments that matter.</p>
         </div>
       </div>
+      <div className="light-section bg-background text-foreground">
       <div className="mx-auto max-w-7xl px-6 py-20">
         <SectionHead eyebrow="Platform" title="One platform. Every part of the deal." />
         <div className="mt-12 grid gap-x-10 gap-y-8 md:grid-cols-3">
@@ -262,6 +267,7 @@ function Modules() {
             </div>
           ))}
         </div>
+      </div>
       </div>
     </section>
   );
@@ -304,7 +310,7 @@ function Pricing() {
     { n: "Enterprise", s: "10+ rooftops / OEM", p: "Custom", u: "Tailored agreement", f: ["Dedicated Azure environment", "Entra ID enterprise SSO", "Custom DMS connectors", "Available via Microsoft Marketplace"], hi: false },
   ];
   return (
-    <section id="pricing" className="border-t bg-card/30">
+    <section id="pricing" className="light-section mist-section border-t bg-background text-foreground">
       <div className="mx-auto max-w-7xl px-6 py-28">
         <SectionHead eyebrow="Pricing" title="Simple per-rooftop licensing." body="No setup surprises. Onboarding and training included." />
         <div className="mt-16 grid gap-6 md:grid-cols-3">
