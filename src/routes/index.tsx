@@ -200,13 +200,13 @@ function Product() {
       <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
       <div className="mb-10 flex flex-col justify-between gap-6 md:flex-row md:items-end">
         <div><div className="font-mono text-xs text-primary-glow">01 / TOTAL DELIVERY VISIBILITY</div><h2 className="mt-4 max-w-xl text-3xl font-semibold sm:text-4xl">Less chasing.<br />More moving forward.</h2></div>
-        <p className="max-w-sm text-sm leading-relaxed text-muted-foreground">For the first time, dealer principals and sales managers see every vehicle from sold to delivered — and exactly who owns each step. No email chains, no stale sales-log spreadsheets.</p>
+        <p className="max-w-sm text-sm leading-relaxed text-muted-foreground">For the first time, dealer principals and sales managers see every vehicle from sold to delivered — and exactly who owns each step. No email chains, no pretty spreadsheets.</p>
       </div>
       <BoardReplica />
       <div className="mt-8 grid gap-4 sm:grid-cols-3">
         {([
           [Mail, "Retires the email chain", "Status lives on the board, not buried in inboxes."],
-          [FileSpreadsheet, "Retires the shared sales log", "No more stale spreadsheets or version confusion."],
+          [FileSpreadsheet, "Retires the pretty spreadsheet", "Looks tidy. Still can't tell you where the vehicle actually is."],
           [Users, "One owner per task", "Everyone knows who holds the next move."],
         ] as const).map(([Icon, t, b]) => (
           <div key={t} className="flex gap-4 rounded-xl border bg-card p-5">
