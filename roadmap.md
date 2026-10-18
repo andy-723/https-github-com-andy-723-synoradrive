@@ -2,3 +2,5 @@
 - [x] Build populated board and executive sales-log tabs with sample deal inspection and call-in action.
 - [x] Correct per-rooftop pricing and test tier boundaries.
 - [x] Verify both previews and mobile layout.
+- [ ] Replace navbar/footer logos with the official inline SVG and unify page accents.
+- [ ] Verify logo rendering, preview tabs and branded progress colors.
