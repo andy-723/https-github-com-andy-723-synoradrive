@@ -4,4 +4,4 @@
 - [x] Verify both previews and mobile layout.
 - [x] Replace navbar/footer logos with the official inline SVG and unify page accents.
 - [x] Verify logo rendering, preview tabs and branded progress colors.
-- [ ] Replace all preview customer records and dealership identities with fictional demo data and verify both tabs.
+- [x] Replace all preview customer records and dealership identities with fictional demo data and verify both tabs.
