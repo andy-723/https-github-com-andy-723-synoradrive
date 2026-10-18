@@ -134,7 +134,7 @@ function BoardReplica() {
           <div className="grid grid-cols-2 gap-3 overflow-x-auto p-4 md:grid-cols-5">
             {columns.map(([c, dot, owner], i) => (
               <div key={c} className={`min-h-64 rounded-lg border border-surface-border bg-surface-muted p-2.5 ${i > 1 ? "hidden md:block" : ""}`}>
-                <div className="mb-3 flex items-center gap-1.5 text-[11px] font-semibold"><span className={`size-1.5 rounded-full ${dot}`} />{c}<span className="ml-auto font-mono text-[9px] font-normal opacity-50">{owner}</span></div>
+                <div className="mb-3 flex items-center gap-1.5 text-[11px] font-semibold"><span className={`indicator-light size-1.5 rounded-full ${dot}`} style={{ animationDelay: `${i * 0.5}s` }} />{c}<span className="ml-auto font-mono text-[9px] font-normal opacity-50">{owner}</span></div>
                 {i === 0 && deals.map((x, k) => (
                   <Button variant="ghost" key={x.id} onClick={() => setOpen(k)} className={`mb-2 block h-auto w-full whitespace-normal rounded-md border-2 bg-surface p-2.5 text-left transition ${x.tone} ${open === k ? "ring-2 ring-primary/40" : ""}`}>
                     <div className="flex items-center gap-1 font-mono text-[10px] text-primary">{x.id}<span className="opacity-40">·</span>{x.stock}</div>
