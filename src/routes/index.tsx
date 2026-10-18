@@ -93,7 +93,7 @@ function Hero() {
       </div>
       <div className="border-t border-foreground/15 bg-background/60">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-6 py-5 font-mono text-[10px] text-muted-foreground sm:text-xs lg:px-8">
-          <span className="flex items-center gap-2"><span className="size-1.5 rounded-full bg-success" /> BUILT FOR THE DEALERSHIP FLOOR</span>
+          <span className="flex items-center gap-2"><span className="indicator-light size-1.5 rounded-full bg-success" /> BUILT FOR THE DEALERSHIP FLOOR</span>
           <span>CONTRACT → COMPLIANCE → DELIVERY</span>
           <a href="#product" className="flex items-center gap-2 text-foreground">MEET YOUR NEXT WORKFLOW <ArrowRight className="size-4" /></a>
         </div>
