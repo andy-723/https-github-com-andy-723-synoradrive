@@ -142,6 +142,11 @@
 .showroom-band { min-height: 430px; }
 .hero-copy { animation: arrive 800ms ease-out both; }
 @keyframes arrive { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+.indicator-light { animation: light-blink 2.6s ease-in-out infinite; }
+@keyframes light-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.15; }
+}
 @media (max-width: 640px) {
   .automotive-hero > div:nth-of-type(2) { min-height: 650px; }
   .hero-vehicle { object-position: 58% center; opacity: 0.6; }
@@ -152,4 +157,5 @@
   html { scroll-behavior: auto; }
   .hero-copy { animation: none; }
   .animate-pulse { animation: none; }
+  .indicator-light { animation: none; }
 }
