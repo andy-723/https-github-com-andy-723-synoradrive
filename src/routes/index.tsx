@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ProductPreview } from "@/components/product-preview";
 import { pricingTiers } from "@/lib/dealership-pricing";
-import logoAsset from "@/assets/synoradrive-logo.png.asset.json";
+import { SynoraDriveLogo } from "@/components/synoradrive-logo";
 import { Button } from "@/components/ui/button";
 import vehicleAsset from "@/assets/synoradrive-vehicle.jpeg.asset.json";
 import showroomImage from "@/assets/dealership-showroom.jpg";
@@ -28,15 +28,6 @@ const nav = [
   ["Product", "#product"], ["Workflow", "#workflow"], ["Security", "#security"], ["Pricing", "#pricing"],
 ] as const;
 
-function Logo() {
-  return (
-    <div className="flex items-center gap-2.5">
-      <img src={logoAsset.url} alt="" width={36} height={36} className="size-9 rounded-xl" />
-      <span className="font-display text-lg"><span className="font-bold text-foreground">Synora</span><span className="font-medium text-logo-accent">Drive</span></span>
-    </div>
-  );
-}
-
 function Index() {
   return (
     <div className="min-h-screen overflow-x-hidden">
@@ -58,7 +49,7 @@ function Header() {
   return (
     <header className="glass sticky top-0 z-50 border-b">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
-        <Logo />
+        <SynoraDriveLogo />
         <nav className="hidden items-center gap-8 text-sm text-muted-foreground md:flex">
           {nav.map(([l, h]) => <a key={h} href={h} className="transition-colors hover:text-foreground">{l}</a>)}
         </nav>
@@ -302,7 +293,7 @@ function Footer() {
   return (
     <footer className="border-t">
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 py-10 text-sm text-muted-foreground md:flex-row">
-        <Logo />
+        <SynoraDriveLogo />
         <div>© 2026 SynoraTech Pty Ltd · Melbourne, Australia</div>
         <div className="flex gap-6"><a href="#" className="hover:text-foreground">Privacy</a><a href="#" className="hover:text-foreground">Security</a><a href="#" className="hover:text-foreground">Terms</a></div>
       </div>

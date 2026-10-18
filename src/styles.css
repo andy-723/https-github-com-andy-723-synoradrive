@@ -40,10 +40,24 @@
   --color-surface-muted: var(--surface-muted);
   --color-surface-border: var(--surface-border);
   --color-logo-accent: var(--logo-accent);
+  --color-logo-wordmark: var(--logo-wordmark);
+  --color-brand-mint: var(--brand-mint);
+  --color-brand-sky: var(--brand-sky);
+  --color-brand-indigo: var(--brand-indigo);
+  --color-brand-violet: var(--brand-violet);
+  --color-brand-foreground: var(--brand-ink);
 }
 
 :root {
-  --logo-accent: #00f5d4;
+  --brand-ink: #05050a;
+  --brand-white: #ffffff;
+  --brand-mint: #00f5d4;
+  --brand-sky: #38bdf8;
+  --brand-indigo: #6366f1;
+  --brand-violet: #c084fc;
+  --brand-star-purple: #7c3aed;
+  --logo-wordmark: var(--brand-white);
+  --logo-accent: var(--brand-mint);
   --radius: 0.75rem;
   --background: oklch(0.12 0.004 285);
   --foreground: oklch(0.97 0.005 285);
@@ -51,32 +65,32 @@
   --card-foreground: oklch(0.97 0.005 285);
   --popover: oklch(0.17 0.014 285);
   --popover-foreground: oklch(0.97 0.005 285);
-  --primary: oklch(0.64 0.2 288);
-  --primary-glow: oklch(0.78 0.13 230);
+  --primary: var(--brand-indigo);
+  --primary-glow: var(--brand-sky);
   --primary-foreground: oklch(0.99 0 0);
   --secondary: oklch(0.21 0.016 285);
   --secondary-foreground: oklch(0.95 0.005 285);
   --muted: oklch(0.21 0.016 285);
   --muted-foreground: oklch(0.77 0.008 285);
-  --accent: oklch(0.24 0.04 288);
-  --accent-foreground: oklch(0.9 0.06 288);
-  --success: oklch(0.76 0.16 160);
+  --accent: color-mix(in srgb, var(--brand-indigo) 18%, var(--background));
+  --accent-foreground: var(--brand-violet);
+  --success: var(--brand-mint);
   --warning: oklch(0.82 0.15 80);
   --destructive: oklch(0.6 0.22 22);
   --destructive-foreground: oklch(0.99 0 0);
   --border: oklch(1 0 0 / 9%);
   --input: oklch(1 0 0 / 12%);
-  --ring: oklch(0.64 0.2 288);
+  --ring: var(--brand-indigo);
   /* light product surface (app replica) */
   --surface: oklch(0.99 0.002 285);
   --surface-foreground: oklch(0.22 0.02 285);
   --surface-muted: oklch(0.96 0.005 285);
   --surface-border: oklch(0.91 0.008 285);
 
-  --gradient-brand: linear-gradient(120deg, var(--primary), var(--primary-glow));
-  --gradient-glow: radial-gradient(60% 50% at 50% 0%, oklch(0.64 0.2 288 / 28%), transparent 70%);
-  --shadow-elegant: 0 30px 80px -20px oklch(0.64 0.2 288 / 35%), 0 0 0 1px oklch(1 0 0 / 8%);
-  --shadow-glow: 0 10px 30px -10px oklch(0.64 0.2 288 / 60%);
+  --gradient-brand: linear-gradient(120deg, var(--brand-indigo), var(--brand-violet));
+  --gradient-glow: radial-gradient(60% 50% at 50% 0%, color-mix(in srgb, var(--brand-indigo) 28%, transparent), transparent 70%);
+  --shadow-elegant: 0 30px 80px -20px color-mix(in srgb, var(--brand-indigo) 35%, transparent), 0 0 0 1px oklch(1 0 0 / 8%);
+  --shadow-glow: 0 10px 30px -10px color-mix(in srgb, var(--brand-indigo) 60%, transparent);
 }
 
 @layer base {
@@ -97,7 +111,7 @@
   background-clip: text;
   color: transparent;
 }
-@utility bg-brand { background: var(--gradient-brand); }
+@utility bg-brand { background: var(--gradient-brand); color: var(--brand-ink); }
 @utility bg-glow { background: var(--gradient-glow); }
 @utility shadow-elegant { box-shadow: var(--shadow-elegant); }
 @utility shadow-glow { box-shadow: var(--shadow-glow); }
@@ -118,7 +132,8 @@
   --showroom-overlay: linear-gradient(90deg, oklch(0.1 0.004 285 / 86%), oklch(0.1 0.004 285 / 45%) 42%, oklch(0.1 0.004 285 / 0%) 72%);
 }
 .light-section {
-  --logo-accent: var(--primary);
+  --logo-accent: var(--brand-indigo);
+  --logo-wordmark: var(--brand-ink);
   --background: oklch(0.995 0.001 260);
   --foreground: oklch(0.22 0.008 260);
   --card: oklch(1 0 0);
@@ -127,18 +142,23 @@
   --muted-foreground: oklch(0.47 0.012 260);
   --secondary: oklch(0.94 0.005 260);
   --secondary-foreground: var(--foreground);
-  --accent: oklch(0.94 0.025 288);
-  --accent-foreground: oklch(0.48 0.18 288);
-  --primary: oklch(0.52 0.21 288);
-  --primary-glow: oklch(0.48 0.11 230);
+  --accent: color-mix(in srgb, var(--brand-indigo) 10%, var(--background));
+  --accent-foreground: color-mix(in srgb, var(--brand-indigo) 78%, var(--brand-ink));
+  --primary: var(--brand-indigo);
+  --primary-glow: color-mix(in srgb, var(--brand-sky) 55%, var(--brand-ink));
   --border: oklch(0.87 0.006 260);
   --input: var(--border);
-  --success: oklch(0.49 0.12 160);
+  --success: color-mix(in srgb, var(--brand-mint) 45%, var(--brand-ink));
   --shadow-elegant: 0 20px 55px -20px oklch(0.22 0.008 260 / 18%);
 }
 .mist-section { --background: oklch(0.965 0.004 260); }
 .light-section *, .light-section { border-color: var(--border); }
 .light-section .text-gradient { background: none; color: var(--primary); }
+.brand-preview-tab[data-state="active"] {
+  background: var(--gradient-brand);
+  color: var(--brand-ink);
+  border-color: var(--brand-indigo);
+}
 .hero-shade { background: var(--hero-overlay); }
 .hero-vehicle { object-position: 65% center; opacity: 0.85; }
 .showroom-shade { background: var(--showroom-overlay); }
