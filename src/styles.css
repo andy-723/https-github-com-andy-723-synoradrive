@@ -39,9 +39,11 @@
   --color-surface-foreground: var(--surface-foreground);
   --color-surface-muted: var(--surface-muted);
   --color-surface-border: var(--surface-border);
+  --color-logo-accent: var(--logo-accent);
 }
 
 :root {
+  --logo-accent: #00f5d4;
   --radius: 0.75rem;
   --background: oklch(0.12 0.004 285);
   --foreground: oklch(0.97 0.005 285);
@@ -116,6 +118,7 @@
   --showroom-overlay: linear-gradient(90deg, oklch(0.1 0.004 285 / 86%), oklch(0.1 0.004 285 / 45%) 42%, oklch(0.1 0.004 285 / 0%) 72%);
 }
 .light-section {
+  --logo-accent: var(--primary);
   --background: oklch(0.995 0.001 260);
   --foreground: oklch(0.22 0.008 260);
   --card: oklch(1 0 0);
@@ -143,6 +146,11 @@
 .hero-copy { animation: arrive 800ms ease-out both; }
 @keyframes arrive { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
 .indicator-light { animation: light-blink 2.6s ease-in-out infinite; }
+.stage-light-0 { animation-delay: 0s; }
+.stage-light-1 { animation-delay: 0.5s; }
+.stage-light-2 { animation-delay: 1s; }
+.stage-light-3 { animation-delay: 1.5s; }
+.stage-light-4 { animation-delay: 2s; }
 @keyframes light-blink {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.15; }

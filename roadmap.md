@@ -1,0 +1,4 @@
+- [x] Apply supplied logo and dealership proof points, ecosystem strip and updated platform/security copy.
+- [x] Build populated board and executive sales-log tabs with sample deal inspection and call-in action.
+- [x] Correct per-rooftop pricing and test tier boundaries.
+- [x] Verify both previews and mobile layout.

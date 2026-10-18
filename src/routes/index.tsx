@@ -1,5 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { ProductPreview } from "@/components/product-preview";
+import { pricingTiers } from "@/lib/dealership-pricing";
+import logoAsset from "@/assets/synoradrive-logo.png.asset.json";
 import { Button } from "@/components/ui/button";
 import vehicleAsset from "@/assets/synoradrive-vehicle.jpeg.asset.json";
 import showroomImage from "@/assets/dealership-showroom.jpg";
@@ -29,10 +31,8 @@ const nav = [
 function Logo() {
   return (
     <div className="flex items-center gap-2.5">
-      <div className="grid size-8 place-items-center rounded-lg bg-brand shadow-glow">
-        <svg viewBox="0 0 24 24" className="size-4 text-primary-foreground" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M17 6.5C15.5 5 13.8 4.5 12 4.5 9 4.5 7 6 7 8.2c0 4.8 10 2.8 10 7.6 0 2.2-2.2 3.7-5 3.7-2 0-3.8-.6-5.2-2" /></svg>
-      </div>
-      <span className="font-display text-lg font-semibold tracking-tight">SynoraDrive</span>
+      <img src={logoAsset.url} alt="" width={36} height={36} className="size-9 rounded-xl" />
+      <span className="font-display text-lg"><span className="font-bold text-foreground">Synora</span><span className="font-medium text-logo-accent">Drive</span></span>
     </div>
   );
 }
@@ -97,79 +97,19 @@ function Hero() {
           <span>CONTRACT → COMPLIANCE → DELIVERY</span>
           <a href="#product" className="flex items-center gap-2 text-foreground">MEET YOUR NEXT WORKFLOW <ArrowRight className="size-4" /></a>
         </div>
+        <div className="mx-auto max-w-7xl border-t border-foreground/10 px-6 py-4 lg:px-8">
+          <div className="text-[9px] font-semibold text-logo-accent">BUILT FOR AUSTRALIAN FRANCHISE DEALERSHIPS</div>
+          <div className="mt-3 flex flex-wrap gap-x-2 gap-y-2 text-[10px] text-muted-foreground">
+            {["Pentana eraPower PDFs", "VicRoads / State Rego", "PPSR", "RedBook VIN Lookup", "DocuSign", "MotorOne", "Microsoft 365"].map(name => <span key={name} className="rounded-full border border-foreground/10 bg-background/30 px-3 py-1.5">{name}</span>)}
+          </div>
+        </div>
       </div>
     </section>
   );
 }
 
-const deals = [
-  { id: "D900002", stock: "U900002", name: "Sample Holdings Pty Ltd", value: "$25,000", date: "15/09/2026", tone: "border-success/60", tag: null, checks: ["ASIC extract verified", "Finance approval pending", "Showroom pack generated"] },
-  { id: "D900001", stock: "N900001", name: "Alex Sample", value: "$46,000", date: "15/09/2026", tone: "border-warning/70", tag: "T-242", checks: ["Licence OCR matched", "RWC within 28 days", "Balance due: $1,240"] },
-];
-
-const columns = [
-  ["In-Queue", "bg-primary-glow", "Sales"], ["Document Prep", "bg-primary", "Admin"], ["Finance & Approvals", "bg-warning", "F&I"],
-  ["Workshop & PDI", "bg-destructive", "Workshop"], ["Ready for Delivery", "bg-success", "Delivery"],
-] as const;
-
-function BoardReplica() {
-  const [open, setOpen] = useState(0);
-  const d = deals[open];
-  if (!d) return null;
-  return (
-    <div className="rounded-2xl border bg-card p-2 shadow-elegant">
-      <div className="flex items-center gap-1.5 px-3 py-2">
-        <span className="size-2.5 rounded-full bg-muted" /><span className="size-2.5 rounded-full bg-muted" /><span className="size-2.5 rounded-full bg-muted" />
-        <span className="ml-3 font-mono text-[11px] text-muted-foreground">app.synoradrive.com.au/board</span>
-      </div>
-      <div className="overflow-hidden rounded-xl bg-surface text-left text-surface-foreground">
-        <div className="flex items-center justify-between border-b border-surface-border px-5 py-3">
-          <div>
-            <div className="font-display text-sm font-semibold">Dealership Board <span className="ml-2 rounded bg-surface-muted px-1.5 py-0.5 text-[10px] font-normal">October · Week 3</span></div>
-            <div className="text-[11px] opacity-60">2 active deals · every task owned · sample data</div>
-          </div>
-          <span className="hidden items-center gap-1.5 rounded-md border border-surface-border px-2.5 py-1.5 text-[11px] sm:inline-flex"><Upload className="size-3" />Upload Contract of Sale</span>
-        </div>
-        <div className="grid gap-0 lg:grid-cols-[1fr_300px]">
-          <div className="grid grid-cols-2 gap-3 overflow-x-auto p-4 md:grid-cols-5">
-            {columns.map(([c, dot, owner], i) => (
-              <div key={c} className={`min-h-64 rounded-lg border border-surface-border bg-surface-muted p-2.5 ${i > 1 ? "hidden md:block" : ""}`}>
-                <div className="mb-3 flex items-center gap-1.5 text-[11px] font-semibold"><span className={`indicator-light size-1.5 rounded-full ${dot}`} style={{ animationDelay: `${i * 0.5}s` }} />{c}<span className="ml-auto font-mono text-[9px] font-normal opacity-50">{owner}</span></div>
-                {i === 0 && deals.map((x, k) => (
-                  <Button variant="ghost" key={x.id} onClick={() => setOpen(k)} className={`mb-2 block h-auto w-full whitespace-normal rounded-md border-2 bg-surface p-2.5 text-left transition ${x.tone} ${open === k ? "ring-2 ring-primary/40" : ""}`}>
-                    <div className="flex items-center gap-1 font-mono text-[10px] text-primary">{x.id}<span className="opacity-40">·</span>{x.stock}</div>
-                    <div className="mt-1 truncate text-[11px] font-medium">{x.name}</div>
-                    <div className="mt-1.5 flex justify-between text-[10px] opacity-60"><span>{x.date}</span><span>{x.value}</span></div>
-                    {x.tag && <span className="mt-1.5 inline-block rounded-full bg-success/15 px-1.5 text-[9px] font-semibold text-success">{x.tag}</span>}
-                  </Button>
-                ))}
-              </div>
-            ))}
-          </div>
-          <aside className="border-t border-surface-border p-5 lg:border-t-0 lg:border-l">
-            <div className="text-[10px] font-semibold uppercase tracking-wider opacity-50">Deal card</div>
-            <div className="mt-1 font-display text-base font-semibold">{d.name}</div>
-            <div className="font-mono text-[11px] text-primary">{d.id} · {d.stock}</div>
-            <div className="mt-4 space-y-2">
-              {d.checks.map((c, i) => (
-                <div key={c} className="flex items-center gap-2 rounded-md border border-surface-border px-2.5 py-2 text-[11px]">
-                  <CheckCircle2 className={`size-3.5 ${i === 1 && open === 0 ? "text-warning" : c.startsWith("Balance") ? "text-destructive" : "text-success"}`} />{c}
-                </div>
-              ))}
-            </div>
-            <div className="mt-4 rounded-md bg-surface-muted p-3 text-[11px]">
-              <div className="opacity-60">Handover gate</div>
-              <div className="mt-0.5 font-semibold">{open === 1 ? "Blocked until $0 balance" : "Awaiting finance approval"}</div>
-            </div>
-          </aside>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 function TrustStrip() {
-  const stats = [["725", "automated checks every release"], ["1", "live board from sold to delivered"], ["100%", "of tasks with a named owner"], ["100%", "Australian data residency"]];
+  const stats = [["14+", "statutory & deal pack PDFs auto-built per car"], ["9", "departments synced from Sales to Rego, F&I & Workshop"], ["< 60s", "from Pentana Contract PDF to gated Deal Card"], ["100%", "Australian data residency (Azure Sydney/Melbourne)"]];
   return (
     <section className="light-section mist-section border-y bg-background text-foreground">
       <div className="mx-auto grid max-w-7xl grid-cols-2 gap-8 px-6 py-12 md:grid-cols-4">
@@ -202,7 +142,7 @@ function Product() {
         <div><div className="font-mono text-xs text-primary-glow">01 / TOTAL DELIVERY VISIBILITY</div><h2 className="mt-4 max-w-xl text-3xl font-semibold sm:text-4xl">Less chasing.<br />More moving forward.</h2></div>
         <p className="max-w-sm text-sm leading-relaxed text-muted-foreground">For the first time, dealer principals and sales managers see every vehicle from sold to delivered — and exactly who owns each step. No email chains, no pretty spreadsheets.</p>
       </div>
-      <BoardReplica />
+      <ProductPreview />
       <div className="mt-8 grid gap-4 sm:grid-cols-3">
         {([
           [Mail, "Retires the email chain", "Status lives on the board, not buried in inboxes."],
@@ -250,11 +190,11 @@ function WorkflowSection() {
 function Modules() {
   const items = [
     [Workflow, "Dealership Board", "A live five-stage board for every rooftop, with a named owner on every task and flags for anything at risk."],
-    [BadgeCheck, "Compliance engine", "ASIC extracts, 28-day RWC windows and state rules — checked, logged, provable."],
-    [FileText, "Deal packs", "Consistent, pre-filled packs for sales, F&I, aftermarket and workshop."],
-    [Gauge, "Command Center", "The first true end-to-end view of every vehicle, every owner and every delay — group-wide."],
+    [BadgeCheck, "Compliance engine", "Automated VIC L-Forms, Cooling-Off Waivers, ACCC New Car notices, Button Battery declarations, PPSR, VicRoads plate box manifests, and 28-day eRWC clocks."],
+    [FileText, "Deal packs", "Instant Showroom Packs, Trade-In Packs, NCCP Finance checklists, and Aftermarket V2 contract gates across all 9 dealership roles."],
+    [Gauge, "Command Center & Sales Log", "Replaces the pretty spreadsheet. Live month-end quota pacing, split front/back-end PVR gross, and OEM rebate cliff tracking for DPs and GSMs."],
     [Sparkles, "AI exception copilot", "Surfaces missing documents and F&I issues before they hold up a delivery."],
-    [Building2, "Multi-rooftop", "Roles, permissions and reporting built for dealer groups from day one."],
+    [Building2, "Multi-rooftop", "Group-wide registration queues, cross-site stock visibility, and 1-click EOM Realistic call-ins built for multi-franchise dealer groups."],
   ] as const;
   return (
     <section className="border-t bg-background">
@@ -300,7 +240,7 @@ function Security() {
         <div>
           <div className="font-mono text-xs uppercase tracking-[0.2em] text-primary">Trust & security</div>
           <h2 className="mt-3 text-3xl font-semibold sm:text-5xl">Enterprise-grade from the first deal.</h2>
-          <p className="mt-5 text-muted-foreground">Customer identity, finance and licence data deserve better than shared drives and email attachments. SynoraDrive is engineered in Melbourne on Microsoft's cloud, with every release passing 725 automated checks.</p>
+          <p className="mt-5 text-muted-foreground">Customer identity, finance and licence data deserve better than shared drives and email attachments. SynoraDrive is engineered in Melbourne on Microsoft Azure Australia East, with strict role-based financial masking so workshop and detail teams never see customer deal prices or gross margins.</p>
         </div>
         <div className="grid gap-4 sm:grid-cols-2">
           {items.map(([Icon, t, b]) => (
@@ -316,23 +256,20 @@ function Security() {
 }
 
 function Pricing() {
-  const tiers = [
-    { n: "Core", s: "Single rooftop", p: "$1,490", u: "AUD / rooftop / mo", f: ["Contract of Sale PDF ingest", "Dealership Board & Deal Card", "Showroom & pre-delivery packs", "$0 balance settlement gate"], hi: false },
-    { n: "Dealer Group", s: "3–10 rooftops", p: "$3,850", u: "AUD / group / mo", f: ["Automatic mailbox ingest", "AI OCR & licence parsing", "Automated ASIC verification", "DocuSign & Command Center"], hi: true },
-    { n: "Enterprise", s: "10+ rooftops / OEM", p: "Custom", u: "Tailored agreement", f: ["Dedicated Azure environment", "Entra ID enterprise SSO", "Custom DMS connectors", "Available via Microsoft Marketplace"], hi: false },
-  ];
+  const tiers = pricingTiers;
   return (
     <section id="pricing" className="light-section mist-section border-t bg-background text-foreground">
       <div className="mx-auto max-w-7xl px-6 py-28">
         <SectionHead eyebrow="Pricing" title="Simple per-rooftop licensing." body="No setup surprises. Onboarding and training included." />
         <div className="mt-16 grid gap-6 md:grid-cols-3">
           {tiers.map((t) => (
-            <div key={t.n} className={`relative rounded-2xl border p-8 ${t.hi ? "border-primary/60 bg-card shadow-elegant" : "bg-background"}`}>
+            <div key={t.n} className={`relative rounded-lg border p-8 ${t.hi ? "border-primary/60 bg-card shadow-elegant" : "bg-background"}`}>
               {t.hi && <span className="absolute -top-3 left-8 rounded-full bg-brand px-3 py-0.5 text-xs font-semibold text-primary-foreground">Most popular</span>}
               <div className="text-sm text-muted-foreground">{t.s}</div>
               <h3 className="mt-1 text-xl font-semibold">{t.n}</h3>
               <div className="mt-6 font-display text-4xl font-semibold">{t.p}</div>
               <div className="text-xs text-muted-foreground">{t.u}</div>
+               {t.note && <p className="mt-2 text-xs text-muted-foreground">{t.note}</p>}
               <ul className="mt-8 space-y-3 text-sm">
                 {t.f.map((f) => <li key={f} className="flex gap-2"><CheckCircle2 className="mt-0.5 size-4 shrink-0 text-success" />{f}</li>)}
               </ul>
