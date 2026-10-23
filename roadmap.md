@@ -1,5 +1,8 @@
 # Roadmap
 
+## Navigation and boxed-section effects
+- [ ] Animate navigation and links, highlight framed sections across pages, and verify hover/navigation behavior.
+
 ## Website Copy v4 build (16 pages)
 - [x] Global header with Platform/Company dropdowns, mobile menu, Book a demo
 - [x] Global footer (Platform / Company / Trust / Get started) + closing CTA band
