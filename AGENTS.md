@@ -16,3 +16,4 @@
 - Render navbar and footer branding through a shared inline-SVG logo with unique gradient IDs and global semantic palette tokens; this keeps duplicate emblems and light/dark wordmarks consistent.
 - Keep site-wide framed-section highlights in shared CSS with a delegated mouse-only listener gated by fine-pointer and reduced-motion preferences; use focus-visible for keyboard highlights and transient active feedback for touch to avoid sticky hover effects.
 - Keep navigation as labelled link disclosures with pointer-aware opening, outside dismissal, Escape focus return, and scrollable touch menus; this preserves normal Tab navigation without imposing menu-widget keyboard rules.
+- Keep orchestration and delivery-visibility storytelling in a browser-safe presentation component with semantic SVG/CSS signals and explicit comparison controls; these explain ownership without implying live integrations or unverified outcomes.
