@@ -48,7 +48,9 @@ export function DemoReel() {
     const video = videoRef.current;
     if (!video || typeof IntersectionObserver === "undefined") return;
     const io = new IntersectionObserver(
-      ([entry]) => {
+      (entries) => {
+        const entry = entries[0];
+        if (!entry) return;
         if (entry.isIntersecting) {
           video.play().catch(() => {});
         } else {
