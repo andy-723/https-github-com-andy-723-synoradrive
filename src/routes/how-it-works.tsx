@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ClosingCta } from "@/components/closing-cta";
-import { PageHero } from "@/components/marketing";
+import { StageQuest, CountUp } from "@/components/gamified";
+import bayImage from "@/assets/delivery-bay-night.jpg";
 
 export const Route = createFileRoute("/how-it-works")({
   head: () => ({
@@ -59,38 +60,25 @@ const stages = [
 function HowItWorksPage() {
   return (
     <>
-      <section className="light-section bg-background text-foreground">
-        <PageHero
-          eyebrow="How it works"
-          title="From signed contract to keys, in five gated stages."
-          intro="Each department sees what it owns, works in parallel, and moves the deal on only when its gate is met."
-        />
-        <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
-          <div className="space-y-6">
-            {stages.map((s) => (
-              <div key={s.n} className="grid gap-6 rounded-xl border bg-card p-7 md:grid-cols-[auto_1fr_1fr_1fr] md:gap-10">
-                <div className="flex items-start gap-3">
-                  <span className={`indicator-light stage-light-${s.n - 1} mt-1.5 size-2 rounded-full bg-success`} />
-                  <div>
-                    <div className="font-mono text-xs text-muted-foreground">STAGE 0{s.n}</div>
-                    <h2 className="mt-1 text-lg font-semibold">{s.name}</h2>
-                  </div>
-                </div>
-                <div>
-                  <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Who works it</div>
-                  <p className="mt-1.5 text-sm">{s.who}</p>
-                </div>
-                <div>
-                  <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">What happens</div>
-                  <p className="mt-1.5 text-sm text-muted-foreground">{s.what}</p>
-                </div>
-                <div>
-                  <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Gate to move on</div>
-                  <p className="mt-1.5 text-sm font-medium text-primary">{s.gate}</p>
-                </div>
-              </div>
-            ))}
+      <div className="relative isolate overflow-hidden">
+        <img src={bayImage} alt="A dealership vehicle delivery bay at night lit in indigo and mint" width={1920} height={1088} className="band-img absolute inset-0 -z-20 h-full w-full object-cover" />
+        <div className="bay-shade absolute inset-0 -z-10" />
+        <div className="scan-sweep mx-auto max-w-7xl px-6 py-28 lg:px-8">
+          <div className="hero-copy max-w-2xl">
+            <div className="font-mono text-xs uppercase tracking-[0.2em] text-brand-mint">How it works</div>
+            <h1 className="mt-4 text-4xl font-semibold leading-tight sm:text-6xl">From signed contract to keys, in five gated stages.</h1>
+            <p className="mt-5 leading-relaxed text-muted-foreground">Each department sees what it owns, works in parallel, and moves the deal on only when its gate is met. Scroll to drive a deal through.</p>
+            <div className="mt-8 flex gap-8 font-mono">
+              <div><div className="text-3xl font-semibold text-brand-mint"><CountUp to={5} /></div><div className="text-xs uppercase text-muted-foreground">Stages</div></div>
+              <div><div className="text-3xl font-semibold text-brand-sky"><CountUp to={5} /></div><div className="text-xs uppercase text-muted-foreground">Gates</div></div>
+              <div><div className="text-3xl font-semibold text-brand-violet"><CountUp to={1} /></div><div className="text-xs uppercase text-muted-foreground">Deal record</div></div>
+            </div>
           </div>
+        </div>
+      </div>
+      <section className="light-section bg-background text-foreground">
+        <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
+          <StageQuest stages={stages} />
           <div className="mt-16 rounded-xl border bg-accent/40 p-8">
             <h2 className="text-xl font-semibold">What runs in parallel</h2>
             <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground">
