@@ -11,10 +11,14 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as DemoRouteImport } from './routes/demo'
 import { Route as HowItWorksRouteImport } from './routes/how-it-works'
 import { Route as PartnersRouteImport } from './routes/partners'
 import { Route as PricingRouteImport } from './routes/pricing'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as SecurityRouteImport } from './routes/security'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as PlatformIndexRouteImport } from './routes/platform.index'
 import { Route as PlatformComplianceRouteImport } from './routes/platform.compliance'
 import { Route as PlatformCustomerExperienceRouteImport } from './routes/platform.customer-experience'
@@ -29,6 +33,16 @@ const IndexRoute = IndexRouteImport.update({
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DemoRoute = DemoRouteImport.update({
+  id: '/demo',
+  path: '/demo',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HowItWorksRoute = HowItWorksRouteImport.update({
@@ -46,9 +60,19 @@ const PricingRoute = PricingRouteImport.update({
   path: '/pricing',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SecurityRoute = SecurityRouteImport.update({
   id: '/security',
   path: '/security',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PlatformIndexRoute = PlatformIndexRouteImport.update({
@@ -81,10 +105,14 @@ const PlatformReportingRoute = PlatformReportingRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/demo': typeof DemoRoute
   '/how-it-works': typeof HowItWorksRoute
   '/partners': typeof PartnersRoute
   '/pricing': typeof PricingRoute
+  '/privacy': typeof PrivacyRoute
   '/security': typeof SecurityRoute
+  '/terms': typeof TermsRoute
   '/platform/compliance': typeof PlatformComplianceRoute
   '/platform/customer-experience': typeof PlatformCustomerExperienceRoute
   '/platform/operations': typeof PlatformOperationsRoute
@@ -94,10 +122,14 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/demo': typeof DemoRoute
   '/how-it-works': typeof HowItWorksRoute
   '/partners': typeof PartnersRoute
   '/pricing': typeof PricingRoute
+  '/privacy': typeof PrivacyRoute
   '/security': typeof SecurityRoute
+  '/terms': typeof TermsRoute
   '/platform/compliance': typeof PlatformComplianceRoute
   '/platform/customer-experience': typeof PlatformCustomerExperienceRoute
   '/platform/operations': typeof PlatformOperationsRoute
@@ -108,10 +140,14 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/demo': typeof DemoRoute
   '/how-it-works': typeof HowItWorksRoute
   '/partners': typeof PartnersRoute
   '/pricing': typeof PricingRoute
+  '/privacy': typeof PrivacyRoute
   '/security': typeof SecurityRoute
+  '/terms': typeof TermsRoute
   '/platform/compliance': typeof PlatformComplianceRoute
   '/platform/customer-experience': typeof PlatformCustomerExperienceRoute
   '/platform/operations': typeof PlatformOperationsRoute
@@ -123,10 +159,14 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/contact'
+    | '/demo'
     | '/how-it-works'
     | '/partners'
     | '/pricing'
+    | '/privacy'
     | '/security'
+    | '/terms'
     | '/platform/compliance'
     | '/platform/customer-experience'
     | '/platform/operations'
@@ -136,10 +176,14 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/contact'
+    | '/demo'
     | '/how-it-works'
     | '/partners'
     | '/pricing'
+    | '/privacy'
     | '/security'
+    | '/terms'
     | '/platform/compliance'
     | '/platform/customer-experience'
     | '/platform/operations'
@@ -149,10 +193,14 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/contact'
+    | '/demo'
     | '/how-it-works'
     | '/partners'
     | '/pricing'
+    | '/privacy'
     | '/security'
+    | '/terms'
     | '/platform/compliance'
     | '/platform/customer-experience'
     | '/platform/operations'
@@ -163,10 +211,14 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  ContactRoute: typeof ContactRoute
+  DemoRoute: typeof DemoRoute
   HowItWorksRoute: typeof HowItWorksRoute
   PartnersRoute: typeof PartnersRoute
   PricingRoute: typeof PricingRoute
+  PrivacyRoute: typeof PrivacyRoute
   SecurityRoute: typeof SecurityRoute
+  TermsRoute: typeof TermsRoute
   PlatformComplianceRoute: typeof PlatformComplianceRoute
   PlatformCustomerExperienceRoute: typeof PlatformCustomerExperienceRoute
   PlatformOperationsRoute: typeof PlatformOperationsRoute
@@ -190,6 +242,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/demo': {
+      id: '/demo'
+      path: '/demo'
+      fullPath: '/demo'
+      preLoaderRoute: typeof DemoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/how-it-works': {
       id: '/how-it-works'
       path: '/how-it-works'
@@ -211,11 +277,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PricingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/security': {
       id: '/security'
       path: '/security'
       fullPath: '/security'
       preLoaderRoute: typeof SecurityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/platform/': {
@@ -259,10 +339,14 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  ContactRoute: ContactRoute,
+  DemoRoute: DemoRoute,
   HowItWorksRoute: HowItWorksRoute,
   PartnersRoute: PartnersRoute,
   PricingRoute: PricingRoute,
+  PrivacyRoute: PrivacyRoute,
   SecurityRoute: SecurityRoute,
+  TermsRoute: TermsRoute,
   PlatformComplianceRoute: PlatformComplianceRoute,
   PlatformCustomerExperienceRoute: PlatformCustomerExperienceRoute,
   PlatformOperationsRoute: PlatformOperationsRoute,
