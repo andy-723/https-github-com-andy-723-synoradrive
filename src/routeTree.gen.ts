@@ -10,13 +10,27 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as HowItWorksRouteImport } from './routes/how-it-works'
+import { Route as SecurityRouteImport } from './routes/security'
 import { Route as PlatformIndexRouteImport } from './routes/platform.index'
 import { Route as PlatformComplianceRouteImport } from './routes/platform.compliance'
+import { Route as PlatformCustomerExperienceRouteImport } from './routes/platform.customer-experience'
 import { Route as PlatformOperationsRouteImport } from './routes/platform.operations'
+import { Route as PlatformReportingRouteImport } from './routes/platform.reporting'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HowItWorksRoute = HowItWorksRouteImport.update({
+  id: '/how-it-works',
+  path: '/how-it-works',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SecurityRoute = SecurityRouteImport.update({
+  id: '/security',
+  path: '/security',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PlatformIndexRoute = PlatformIndexRouteImport.update({
@@ -29,49 +43,95 @@ const PlatformComplianceRoute = PlatformComplianceRouteImport.update({
   path: '/platform/compliance',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PlatformCustomerExperienceRoute =
+  PlatformCustomerExperienceRouteImport.update({
+    id: '/platform/customer-experience',
+    path: '/platform/customer-experience',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const PlatformOperationsRoute = PlatformOperationsRouteImport.update({
   id: '/platform/operations',
   path: '/platform/operations',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PlatformReportingRoute = PlatformReportingRouteImport.update({
+  id: '/platform/reporting',
+  path: '/platform/reporting',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/how-it-works': typeof HowItWorksRoute
+  '/security': typeof SecurityRoute
   '/platform/compliance': typeof PlatformComplianceRoute
+  '/platform/customer-experience': typeof PlatformCustomerExperienceRoute
   '/platform/operations': typeof PlatformOperationsRoute
+  '/platform/reporting': typeof PlatformReportingRoute
   '/platform/': typeof PlatformIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/how-it-works': typeof HowItWorksRoute
+  '/security': typeof SecurityRoute
   '/platform/compliance': typeof PlatformComplianceRoute
+  '/platform/customer-experience': typeof PlatformCustomerExperienceRoute
   '/platform/operations': typeof PlatformOperationsRoute
+  '/platform/reporting': typeof PlatformReportingRoute
   '/platform': typeof PlatformIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/how-it-works': typeof HowItWorksRoute
+  '/security': typeof SecurityRoute
   '/platform/compliance': typeof PlatformComplianceRoute
+  '/platform/customer-experience': typeof PlatformCustomerExperienceRoute
   '/platform/operations': typeof PlatformOperationsRoute
+  '/platform/reporting': typeof PlatformReportingRoute
   '/platform/': typeof PlatformIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/platform/compliance' | '/platform/operations' | '/platform/'
+    | '/'
+    | '/how-it-works'
+    | '/security'
+    | '/platform/compliance'
+    | '/platform/customer-experience'
+    | '/platform/operations'
+    | '/platform/reporting'
+    | '/platform/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/platform/compliance' | '/platform/operations' | '/platform'
+  to:
+    | '/'
+    | '/how-it-works'
+    | '/security'
+    | '/platform/compliance'
+    | '/platform/customer-experience'
+    | '/platform/operations'
+    | '/platform/reporting'
+    | '/platform'
   id:
     | '__root__'
     | '/'
+    | '/how-it-works'
+    | '/security'
     | '/platform/compliance'
+    | '/platform/customer-experience'
     | '/platform/operations'
+    | '/platform/reporting'
     | '/platform/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  HowItWorksRoute: typeof HowItWorksRoute
+  SecurityRoute: typeof SecurityRoute
   PlatformComplianceRoute: typeof PlatformComplianceRoute
+  PlatformCustomerExperienceRoute: typeof PlatformCustomerExperienceRoute
   PlatformOperationsRoute: typeof PlatformOperationsRoute
+  PlatformReportingRoute: typeof PlatformReportingRoute
   PlatformIndexRoute: typeof PlatformIndexRoute
 }
 
@@ -82,6 +142,20 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/how-it-works': {
+      id: '/how-it-works'
+      path: '/how-it-works'
+      fullPath: '/how-it-works'
+      preLoaderRoute: typeof HowItWorksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/security': {
+      id: '/security'
+      path: '/security'
+      fullPath: '/security'
+      preLoaderRoute: typeof SecurityRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/platform/': {
@@ -98,6 +172,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PlatformComplianceRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/platform/customer-experience': {
+      id: '/platform/customer-experience'
+      path: '/platform/customer-experience'
+      fullPath: '/platform/customer-experience'
+      preLoaderRoute: typeof PlatformCustomerExperienceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/platform/operations': {
       id: '/platform/operations'
       path: '/platform/operations'
@@ -105,13 +186,24 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PlatformOperationsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/platform/reporting': {
+      id: '/platform/reporting'
+      path: '/platform/reporting'
+      fullPath: '/platform/reporting'
+      preLoaderRoute: typeof PlatformReportingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  HowItWorksRoute: HowItWorksRoute,
+  SecurityRoute: SecurityRoute,
   PlatformComplianceRoute: PlatformComplianceRoute,
+  PlatformCustomerExperienceRoute: PlatformCustomerExperienceRoute,
   PlatformOperationsRoute: PlatformOperationsRoute,
+  PlatformReportingRoute: PlatformReportingRoute,
   PlatformIndexRoute: PlatformIndexRoute,
 }
 export const routeTree = rootRouteImport
