@@ -1,14 +1,15 @@
 import { Link } from "@tanstack/react-router";
 import { ChevronRight } from "lucide-react";
 import type { ReactNode } from "react";
+import { Reveal } from "@/components/reveal";
 
 export function SectionHead({ eyebrow, title, body }: { eyebrow: string; title: string; body?: string }) {
   return (
-    <div className="mx-auto max-w-2xl text-center">
+    <Reveal className="mx-auto max-w-2xl text-center">
       <div className="font-mono text-xs uppercase tracking-[0.2em] text-primary">{eyebrow}</div>
       <h2 className="mt-3 text-3xl font-semibold sm:text-5xl">{title}</h2>
       {body && <p className="mt-4 text-muted-foreground">{body}</p>}
-    </div>
+    </Reveal>
   );
 }
 
@@ -43,11 +44,11 @@ export function PageHero({
   children?: ReactNode;
 }) {
   return (
-    <div className="mx-auto max-w-7xl px-6 pt-20 lg:px-8">
+    <Reveal className="mx-auto max-w-7xl px-6 pt-20 lg:px-8">
       {eyebrow && <div className="font-mono text-xs uppercase tracking-[0.2em] text-primary">{eyebrow}</div>}
       <h1 className="mt-4 max-w-3xl text-4xl font-semibold leading-tight sm:text-5xl">{title}</h1>
       {intro && <p className="mt-5 max-w-2xl leading-relaxed text-muted-foreground">{intro}</p>}
       {children}
-    </div>
+    </Reveal>
   );
 }
