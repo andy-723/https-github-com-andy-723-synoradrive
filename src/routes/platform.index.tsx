@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ClosingCta } from "@/components/closing-cta";
 import { PageHero } from "@/components/marketing";
+import { Reveal } from "@/components/reveal";
 import showroomImage from "@/assets/dealership-showroom.jpg";
 import { ArrowRight, FileText, Workflow, Gauge, Users, Building2, Sparkles } from "lucide-react";
 
@@ -79,15 +80,15 @@ function PlatformPage() {
       <section className="light-section bg-background text-foreground">
         <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
           <div className="grid gap-x-10 gap-y-10 md:grid-cols-2 lg:grid-cols-3">
-            {modules.map(({ Icon, t, b, to, toLabel }) => (
-              <div key={t} className="flex flex-col border-t py-8">
+            {modules.map(({ Icon, t, b, to, toLabel }, i) => (
+              <Reveal key={t} delay={(i % 3) * 120} className="flex flex-col border-t py-8">
                 <div className="grid size-10 place-items-center rounded-lg bg-accent"><Icon className="size-5 text-accent-foreground" /></div>
                 <h2 className="mt-5 text-lg font-semibold">{t}</h2>
                 <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">{b}</p>
                 <Link to={to} className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
                   {toLabel} <ArrowRight className="size-4" />
                 </Link>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
