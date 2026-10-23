@@ -170,11 +170,13 @@ function ProductView() {
   return (
     <section className="light-section border-t bg-background text-foreground">
       <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
-        <div className="mb-10 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+        <Reveal className="mb-10 flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <div><div className="font-mono text-xs text-primary-glow">PRODUCT VIEW</div><h2 className="mt-4 max-w-xl text-3xl font-semibold sm:text-4xl">Every car, every stage, every owner, on one board.</h2></div>
           <p className="max-w-sm text-sm leading-relaxed text-muted-foreground">A live look at the delivery board and executive sales log, running on fictional demo data.</p>
-        </div>
-        <ProductPreview />
+        </Reveal>
+        <Reveal delay={150}>
+          <ProductPreview />
+        </Reveal>
       </div>
     </section>
   );
@@ -182,11 +184,15 @@ function ProductView() {
 
 function ProofBand() {
   return (
-    <section className="border-t">
-      <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
-        <div className="font-mono text-xs uppercase tracking-[0.2em] text-primary">Proof</div>
-        <h2 className="mt-4 max-w-2xl text-3xl font-semibold sm:text-4xl">Built on the dealership floor, not in a boardroom.</h2>
-        <p className="mt-5 max-w-2xl leading-relaxed text-muted-foreground">SynoraDrive was built inside a working Melbourne prestige dealer group and has run in daily production since September 2026 across three rooftops. Every gate, escalation timer and document rule exists because a real deal went wrong without it.</p>
+    <section className="band relative isolate overflow-hidden border-t">
+      <img src={yardImage} alt="A dealership car yard at dusk, rows of vehicles under string lights" loading="lazy" width={1536} height={1024} className="band-img absolute inset-0 -z-20 h-full w-full object-cover" />
+      <div className="yard-shade absolute inset-0 -z-10" />
+      <div className="mx-auto max-w-7xl px-6 py-32 lg:px-8">
+        <Reveal>
+          <div className="font-mono text-xs uppercase tracking-[0.2em] text-primary-glow">Proof</div>
+          <h2 className="mt-4 max-w-2xl text-3xl font-semibold sm:text-4xl">Built on the dealership floor, not in a boardroom.</h2>
+          <p className="mt-5 max-w-2xl leading-relaxed text-muted-foreground">SynoraDrive was built inside a working Melbourne prestige dealer group and has run in daily production since September 2026 across three rooftops. Every gate, escalation timer and document rule exists because a real deal went wrong without it.</p>
+        </Reveal>
       </div>
     </section>
   );
@@ -196,7 +202,7 @@ function RoiTeaser() {
   return (
     <section className="light-section mist-section border-t bg-background text-foreground">
       <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
-        <div className="flex flex-col justify-between gap-8 md:flex-row md:items-center">
+        <Reveal className="flex flex-col justify-between gap-8 md:flex-row md:items-center">
           <div className="max-w-xl">
             <h2 className="text-3xl font-semibold sm:text-4xl">What does a manual deal folder cost your rooftop?</h2>
             <p className="mt-4 text-muted-foreground">At 60 deals a month, saving 45 minutes a deal returns 45 staff hours a month to the floor.</p>
@@ -205,7 +211,7 @@ function RoiTeaser() {
           <Link to="/pricing" className="inline-flex shrink-0 items-center gap-2 rounded-lg bg-brand px-6 py-3 text-sm font-semibold text-primary-foreground shadow-glow">
             Estimate your rooftop <ArrowRight className="size-4" />
           </Link>
-        </div>
+        </Reveal>
       </div>
     </section>
   );
