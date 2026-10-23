@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, Play } from "lucide-react";
 import demoReel from "@/assets/demo-reel.mp4.asset.json";
+import demoPoster from "@/assets/demo-reel-poster.jpg";
 
 /**
  * Cinematic demo reel with a scroll-driven opening transition: the video
@@ -98,11 +99,12 @@ export function DemoReel() {
             <video
               ref={videoRef}
               src={demoReel.url}
+              poster={demoPoster}
               className="aspect-video w-full object-cover"
               muted
               loop
               playsInline
-              preload="metadata"
+              preload="auto"
               aria-label="Cinematic film of a dealership floor and the SynoraDrive delivery board"
             />
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent" />
