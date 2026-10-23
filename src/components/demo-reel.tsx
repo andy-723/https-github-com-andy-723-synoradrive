@@ -76,7 +76,7 @@ export function DemoReel() {
         <div className="glow-orb glow-orb-indigo left-[12%] top-[16%] size-72 opacity-70" />
         <div className="glow-orb glow-orb-mint bottom-[14%] right-[10%] size-64 opacity-70" />
 
-        <div className="pointer-events-none absolute inset-x-0 top-0 z-10 mx-auto max-w-7xl px-6 pt-14 lg:px-8">
+        <div className="pointer-events-none absolute inset-x-0 top-0 z-10 mx-auto max-w-7xl px-6 pt-24 lg:px-8 lg:pt-28">
           <div className="flex items-center gap-3 font-mono text-xs text-primary-glow">
             <span className="h-px w-8 bg-primary-glow" /> SEE IT RUN
           </div>
