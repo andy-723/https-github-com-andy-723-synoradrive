@@ -22,3 +22,5 @@
 - [ ] [CONFIRM] legal entity name + ABN for footer/Privacy/Terms; staff sign-in URL; public contact email
 - [ ] Lawyer review of Privacy Policy and Terms
 - [ ] Product screenshots with dummy data for Home and pillar pages (visual gaps in v4)
+
+- [x] Visual refresh: scroll-reveal animations, marquee ticker, glow orbs, dealership yard/workshop/handover image bands
