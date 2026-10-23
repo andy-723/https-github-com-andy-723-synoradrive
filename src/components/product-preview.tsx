@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { DemoDealDialog } from "@/components/demo-deal-dialog";
+import type { DemoDeal } from "@/lib/demo-deal";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { CheckCircle2, Clock3, Lock, FileText, LayoutDashboard, BarChart3, Megaphone, AlertTriangle, Upload } from "lucide-react";
@@ -25,6 +27,7 @@ const stages = [
 
 function Board() {
   const [selectedId, setSelectedId] = useState("DEMO-006");
+  const [openDeal, setOpenDeal] = useState<DemoDeal | null>(null);
   const selected = stages.flatMap(stage => stage.deals).find(deal => deal.id === selectedId);
   if (!selected) return null;
   const ready = selected.id === "DEMO-007";
@@ -39,7 +42,7 @@ function Board() {
           {stages.map((stage, index) => <div key={stage.name} className="min-h-[330px] border-t-2 border-surface-border bg-surface-muted p-2.5">
             <div className="flex items-center gap-1.5 text-[10px] font-semibold"><span className={`indicator-light size-1.5 shrink-0 rounded-full ${stage.dot} stage-light-${index}`} />{stage.name}</div>
             <div className="mt-1 mb-3 flex justify-between text-[10px] text-muted-foreground"><span>{stage.owner}</span><span>{stage.count}</span></div>
-            {stage.deals.map(deal => <Button key={deal.id} variant="ghost" aria-pressed={selectedId === deal.id} onClick={() => setSelectedId(deal.id)} className={`mb-2 block h-auto w-full whitespace-normal rounded-md border bg-surface p-2.5 text-left hover:bg-accent ${selectedId === deal.id ? "border-primary ring-1 ring-primary/30" : "border-surface-border"}`}>
+            {stage.deals.map(deal => <Button key={deal.id} variant="ghost" aria-haspopup="dialog" aria-pressed={selectedId === deal.id} onClick={() => { setSelectedId(deal.id); setOpenDeal(deal); }} className={`mb-2 block h-auto w-full whitespace-normal rounded-md border bg-surface p-2.5 text-left hover:bg-accent ${selectedId === deal.id ? "border-primary ring-1 ring-primary/30" : "border-surface-border"}`}>
               <div className="font-mono text-[10px] text-primary">{deal.id}</div>
               <div className="mt-1 text-[11px] font-semibold">{deal.name}</div>
               <div className="mt-1 text-[10px] text-muted-foreground">{deal.car}</div>
@@ -54,13 +57,14 @@ function Board() {
         <div className="flex items-center gap-2 text-[10px] font-semibold uppercase text-muted-foreground"><FileText className="size-3.5" /> Deal Card</div>
         <h3 className="mt-3 text-sm font-semibold">{selected.name}</h3><p className="mt-1 font-mono text-[10px] text-primary">{selected.id}</p><p className="mt-1 text-xs text-muted-foreground">{selected.car}</p>
         <div className="mt-5 space-y-4 text-[11px] leading-relaxed">
-          <div className="flex gap-2"><CheckCircle2 className="mt-0.5 size-4 shrink-0 text-success" />Pentana COS & RedBook VIN parsed</div>
+          <div className="flex gap-2"><CheckCircle2 className="mt-0.5 size-4 shrink-0 text-success" />Pentana Contract of Sale parsed</div>
           <div className="flex gap-2"><CheckCircle2 className="mt-0.5 size-4 shrink-0 text-success" />14 Statutory & Showroom PDFs generated</div>
           <div className="flex gap-2">{ready ? <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-success" /> : <Clock3 className="mt-0.5 size-4 shrink-0 text-warning" />}Finance settlement ($0 Rec Check)</div>
         </div>
         <div className="mt-5 border-t border-surface-border pt-4"><div className="flex items-center gap-2 text-[11px] text-muted-foreground"><Lock className="size-3.5" />Handover Gate</div><p className="mt-2 text-xs font-semibold">{ready ? "Cleared · Bay 2 @ 2:00 PM" : selected.id === "DEMO-006" ? "Awaiting Plate Allocation" : "Awaiting Finance Settlement"}</p></div>
       </aside>
     </div>
+    <DemoDealDialog deal={openDeal} onClose={() => setOpenDeal(null)} />
   </>;
 }
 
