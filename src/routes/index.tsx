@@ -1,8 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ProductPreview } from "@/components/product-preview";
 import { ClosingCta } from "@/components/closing-cta";
+import { Reveal } from "@/components/reveal";
 import { Button } from "@/components/ui/button";
 import vehicleAsset from "@/assets/synoradrive-vehicle.jpeg.asset.json";
+import yardImage from "@/assets/dealership-yard.jpg";
 import {
   ArrowRight, ShieldCheck, Cloud, BadgeCheck, Workflow, Gauge, Users, KeyRound, Building2,
 } from "lucide-react";
@@ -44,6 +46,8 @@ function Hero() {
     <section className="automotive-hero relative isolate overflow-hidden">
       <img src={vehicleAsset.url} alt="A vehicle outside a modern dealership at dusk" className="hero-vehicle absolute inset-0 -z-20 h-full w-full object-cover" fetchPriority="high" width={1356} height={768} />
       <div className="hero-shade absolute inset-0 -z-10" />
+      <div className="glow-orb glow-orb-indigo -z-10 left-[8%] top-[12%] size-72" />
+      <div className="glow-orb glow-orb-mint -z-10 bottom-[18%] right-[6%] size-56" />
       <div className="mx-auto flex min-h-[680px] max-w-7xl flex-col justify-center px-6 py-20 lg:px-8">
         <div className="hero-copy max-w-2xl">
           <div className="mb-7 flex items-center gap-3 font-mono text-xs text-primary-glow"><span className="h-px w-8 bg-primary-glow" /> THE NEXT SHIFT IN AUTOMOTIVE OPERATIONS</div>
@@ -75,10 +79,14 @@ function WorksWith() {
   const tools = ["Pentana eraPower Contracts of Sale", "VicRoads registration and transfer forms", "PPSR certificates", "ASIC company extracts", "ACCC new-car rights notices", "DocuSign", "Microsoft 365"];
   return (
     <section className="light-section border-y bg-background text-foreground">
-      <div className="mx-auto max-w-7xl px-6 py-12 lg:px-8">
+      <div className="mx-auto max-w-7xl px-6 pt-10 lg:px-8">
         <div className="text-[10px] font-semibold uppercase tracking-wider text-logo-accent">Works with the tools and documents your dealership already uses</div>
-        <div className="mt-4 flex flex-wrap gap-x-2 gap-y-2 text-[11px] text-muted-foreground">
-          {tools.map((name) => <span key={name} className="rounded-full border border-foreground/10 bg-background px-3 py-1.5">{name}</span>)}
+      </div>
+      <div className="marquee mt-4 pb-10 text-[11px] text-muted-foreground" aria-label="Compatible tools and documents">
+        <div className="marquee-track px-3">
+          {[...tools, ...tools].map((name, i) => (
+            <span key={`${name}-${i}`} aria-hidden={i >= tools.length} className="shrink-0 rounded-full border border-foreground/10 bg-background px-3 py-1.5">{name}</span>
+          ))}
         </div>
       </div>
     </section>
