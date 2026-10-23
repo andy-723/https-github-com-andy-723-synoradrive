@@ -16,6 +16,7 @@ export function SynoraCnsSection() {
   const [selected, setSelected] = useState(0);
   const gradientId = useId().replace(/:/g, "");
   const active = departments[selected] ?? departments[0];
+  if (!active) return null;
   return (
     <section className="cns-section overflow-hidden border-y bg-background text-foreground" aria-labelledby="cns-heading">
       <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
