@@ -97,17 +97,17 @@ function Positioning() {
   return (
     <section className="light-section mist-section bg-background text-foreground">
       <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
-        <div className="max-w-3xl">
+        <Reveal className="max-w-3xl">
           <h2 className="text-3xl font-semibold leading-tight sm:text-5xl">Your DMS runs the books.<br />SynoraDrive runs the deal.</h2>
           <p className="mt-6 leading-relaxed text-muted-foreground">The most expensive, error-prone part of a car sale is the two to six weeks after the buyer signs. Sales, stock control, the Business Manager, aftermarket, the workshop and the rego desk pass one car between them using folders, whiteboards and spreadsheets.</p>
           <p className="mt-4 leading-relaxed text-muted-foreground">SynoraDrive is the post-contract operating layer for franchised dealerships. Drop in a signed Contract of Sale from your DMS, and SynoraDrive builds the deal pack, enforces your compliance and finance gates, and runs every department in parallel until the keys are in the customer's hand.</p>
-        </div>
+        </Reveal>
         <div className="mt-10 flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-xs text-muted-foreground">
           {["Signed contract", "Deal pack built", "Five gated stages", "On-time delivery and a live month book"].map((step, i) => (
-            <span key={step} className="flex items-center gap-3">
+            <Reveal key={step} as="span" delay={i * 120} className="flex items-center gap-3">
               {i > 0 && <ArrowRight className="size-3.5 text-primary" />}
               <span className="rounded-full border bg-card px-3 py-1.5">{step}</span>
-            </span>
+            </Reveal>
           ))}
         </div>
       </div>
@@ -126,13 +126,15 @@ function Pillars() {
     <section className="light-section border-t bg-background text-foreground">
       <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
         <div className="grid gap-6 md:grid-cols-2">
-          {pillars.map(({ Icon, t, b, to }) => (
-            <Link key={t} to={to} className="group flex flex-col rounded-xl border bg-card p-7 transition-shadow hover:shadow-elegant">
-              <div className="grid size-10 place-items-center rounded-lg bg-accent"><Icon className="size-5 text-accent-foreground" /></div>
-              <h3 className="mt-5 text-xl font-semibold">{t}</h3>
-              <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">{b}</p>
-              <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-primary">Learn more <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" /></span>
-            </Link>
+          {pillars.map(({ Icon, t, b, to }, i) => (
+            <Reveal key={t} delay={i * 110}>
+              <Link to={to} className="lift group flex h-full flex-col rounded-xl border bg-card p-7 hover:border-primary/40 hover:shadow-elegant">
+                <div className="grid size-10 place-items-center rounded-lg bg-accent"><Icon className="size-5 text-accent-foreground" /></div>
+                <h3 className="mt-5 text-xl font-semibold">{t}</h3>
+                <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">{b}</p>
+                <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-primary">Learn more <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" /></span>
+              </Link>
+            </Reveal>
           ))}
         </div>
       </div>
@@ -145,18 +147,18 @@ function WorkflowTeaser() {
   return (
     <section className="light-section mist-section border-t bg-background text-foreground">
       <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
-        <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+        <Reveal className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <h2 className="max-w-xl text-3xl font-semibold sm:text-4xl">Five stages. Every gate checked.</h2>
           <Link to="/how-it-works" className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary">See how a deal moves <ArrowRight className="size-4" /></Link>
-        </div>
+        </Reveal>
         <div className="mt-12 grid gap-4 md:grid-cols-5">
           {stages.map((s, i) => (
-            <div key={s} className="relative border-t border-primary/40 py-6 pr-4">
+            <Reveal key={s} delay={i * 130} className="relative border-t border-primary/40 py-6 pr-4">
               <div className="flex items-center gap-2 font-mono text-xs text-muted-foreground">
                 <span className={`indicator-light stage-light-${i} size-1.5 rounded-full bg-success`} /> 0{i + 1}
               </div>
               <h3 className="mt-3 text-base font-semibold">{s}</h3>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>
