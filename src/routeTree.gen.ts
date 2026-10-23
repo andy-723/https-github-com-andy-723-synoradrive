@@ -10,33 +10,69 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as PlatformIndexRouteImport } from './routes/platform.index'
+import { Route as PlatformComplianceRouteImport } from './routes/platform.compliance'
+import { Route as PlatformOperationsRouteImport } from './routes/platform.operations'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PlatformIndexRoute = PlatformIndexRouteImport.update({
+  id: '/platform/',
+  path: '/platform/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlatformComplianceRoute = PlatformComplianceRouteImport.update({
+  id: '/platform/compliance',
+  path: '/platform/compliance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlatformOperationsRoute = PlatformOperationsRouteImport.update({
+  id: '/platform/operations',
+  path: '/platform/operations',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/platform/compliance': typeof PlatformComplianceRoute
+  '/platform/operations': typeof PlatformOperationsRoute
+  '/platform/': typeof PlatformIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/platform/compliance': typeof PlatformComplianceRoute
+  '/platform/operations': typeof PlatformOperationsRoute
+  '/platform': typeof PlatformIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/platform/compliance': typeof PlatformComplianceRoute
+  '/platform/operations': typeof PlatformOperationsRoute
+  '/platform/': typeof PlatformIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    '/' | '/platform/compliance' | '/platform/operations' | '/platform/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/platform/compliance' | '/platform/operations' | '/platform'
+  id:
+    | '__root__'
+    | '/'
+    | '/platform/compliance'
+    | '/platform/operations'
+    | '/platform/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  PlatformComplianceRoute: typeof PlatformComplianceRoute
+  PlatformOperationsRoute: typeof PlatformOperationsRoute
+  PlatformIndexRoute: typeof PlatformIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +84,35 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/platform/': {
+      id: '/platform/'
+      path: '/platform'
+      fullPath: '/platform/'
+      preLoaderRoute: typeof PlatformIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/platform/compliance': {
+      id: '/platform/compliance'
+      path: '/platform/compliance'
+      fullPath: '/platform/compliance'
+      preLoaderRoute: typeof PlatformComplianceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/platform/operations': {
+      id: '/platform/operations'
+      path: '/platform/operations'
+      fullPath: '/platform/operations'
+      preLoaderRoute: typeof PlatformOperationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  PlatformComplianceRoute: PlatformComplianceRoute,
+  PlatformOperationsRoute: PlatformOperationsRoute,
+  PlatformIndexRoute: PlatformIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
