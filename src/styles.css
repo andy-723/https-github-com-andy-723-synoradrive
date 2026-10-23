@@ -268,39 +268,58 @@
   --nav-hover-shadow: 0 8px 24px -12px color-mix(in oklab, var(--brand-mint) 50%, transparent);
 }
 .site-nav { transition: border-color 300ms, box-shadow 300ms; }
-.site-nav:hover, .site-nav:focus-within { border-color: var(--card-hover-border); box-shadow: var(--nav-hover-shadow); }
+.site-nav:has(:focus-visible) { border-color: var(--card-hover-border); box-shadow: var(--nav-hover-shadow); }
 .nav-brand { transition: filter 300ms; }
-.nav-brand:hover { filter: drop-shadow(0 0 8px color-mix(in oklab, var(--brand-mint) 25%, transparent)); }
 .nav-link { position: relative; transition: color 220ms; }
 .nav-link::after {
   content: ""; position: absolute; left: 0; right: 0; bottom: -8px; height: 2px;
   border-radius: 2px; background: var(--nav-line); transform: scaleX(0); transform-origin: left;
   transition: transform 280ms cubic-bezier(0.22, 1, 0.36, 1);
 }
-.nav-link:hover, .nav-link:focus-visible, .nav-link[data-active="true"] { color: var(--foreground); }
-.nav-link:hover::after, .nav-link:focus-visible::after, .nav-link[data-active="true"]::after { transform: scaleX(1); }
+.nav-link:focus-visible, .nav-link[data-active="true"], .nav-dropdown[data-expanded="true"] > .nav-link { color: var(--foreground); }
+.nav-link:focus-visible::after, .nav-link[data-active="true"]::after, .nav-dropdown[data-expanded="true"] > .nav-link::after { transform: scaleX(1); }
 .nav-chevron { transition: transform 250ms; }
 .nav-dropdown[data-expanded="true"] .nav-chevron { transform: rotate(180deg); }
-.nav-dropdown-panel { visibility: hidden; opacity: 0; transform: translateY(8px); transition: opacity 220ms, transform 220ms, visibility 220ms; }
+.nav-dropdown-panel { visibility: hidden; opacity: 0; transform: translateY(8px); transition: opacity 220ms, transform 220ms; }
 .nav-dropdown[data-expanded="true"] .nav-dropdown-panel { visibility: visible; opacity: 1; transform: translateY(0); }
 .nav-menu-link { transition: color 220ms, background-color 220ms, transform 220ms; }
-.nav-menu-link:hover, .nav-menu-link:focus-visible { transform: translateX(3px); color: var(--logo-accent); }
+.nav-menu-link:focus-visible { color: var(--logo-accent); background-color: var(--accent); }
 .nav-cta { transition: transform 220ms, box-shadow 220ms, background-color 220ms; }
-.nav-cta:hover { transform: translateY(-2px); box-shadow: var(--nav-hover-shadow); }
-.nav-mobile { animation: arrive 240ms ease-out both; }
+.nav-mobile { animation: arrive 240ms ease-out both; max-height: calc(100dvh - 65px); overflow-y: auto; overscroll-behavior: contain; }
+.site-nav :is(a, button) { touch-action: manipulation; }
+.site-nav .nav-link { min-height: 44px; }
+.site-nav nav .nav-link, .site-nav .nav-menu-link { min-height: 44px; display: flex; align-items: center; }
+.site-nav .nav-link::after { bottom: 2px; }
+.nav-brand { min-height: 44px; display: inline-flex; align-items: center; }
+.site-hover-effects :is(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--logo-accent);
+  outline-offset: 4px;
+}
+.nav-mobile .nav-menu-link { border-radius: var(--radius-sm); }
 .site-hover-effects :is(div, article, details, form)[class*="rounded"][class~="border"] {
   transition: border-color 250ms, box-shadow 250ms, background-color 250ms;
 }
-.site-hover-effects :is(div, article, details, form)[class*="rounded"][class~="border"]:focus-within {
+.site-hover-effects :is(div, article, details, form)[class*="rounded"][class~="border"]:has(:focus-visible) {
   border-color: var(--card-hover-border);
   box-shadow: 0 0 0 1px var(--card-hover-border), var(--card-hover-shadow);
 }
 @media (hover: hover) and (pointer: fine) {
-  .site-hover-effects :is(div, article, details, form)[class*="rounded"][class~="border"]:hover {
+  .site-nav:hover { border-color: var(--card-hover-border); box-shadow: var(--nav-hover-shadow); }
+  .nav-brand:hover { filter: drop-shadow(0 0 8px color-mix(in oklab, var(--brand-mint) 25%, transparent)); }
+  .nav-link:hover { color: var(--foreground); }
+  .nav-link:hover::after { transform: scaleX(1); }
+  .nav-menu-link:hover { transform: translateX(3px); color: var(--logo-accent); }
+  .nav-cta:hover { transform: translateY(-2px); box-shadow: var(--nav-hover-shadow); }
+  .site-hover-effects :is(div, article, details, form)[class*="rounded"][class~="border"][data-pointer-highlight="true"] {
     border-color: var(--card-hover-border);
     box-shadow: 0 0 0 1px var(--card-hover-border), var(--card-hover-shadow);
     background-image: radial-gradient(420px circle at var(--pointer-x, 50%) var(--pointer-y, 50%), var(--card-hover-wash), transparent 75%);
   }
+}
+@media (hover: none), (pointer: coarse) {
+  .site-nav .nav-menu-link:active, .site-nav .nav-link:active { background-color: var(--accent); color: var(--foreground); }
+  .site-hover-effects :is(div, article, details, form)[class*="rounded"][class~="border"]:active { border-color: var(--card-hover-border); }
+  .nav-dropdown-panel { transform: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   .site-nav, .nav-brand, .nav-link, .nav-link::after, .nav-chevron, .nav-dropdown-panel, .nav-menu-link, .nav-cta,

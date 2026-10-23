@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "@tanstack/react-router";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { SynoraDriveLogo } from "@/components/synoradrive-logo";
@@ -27,11 +27,22 @@ const plainLinks = [
 
 function Dropdown({ label, links }: { label: string; links: readonly { to: string; label: string }[] }) {
   const [expanded, setExpanded] = useState(false);
+  const container = useRef<HTMLDivElement>(null);
+  const trigger = useRef<HTMLButtonElement>(null);
   const pathname = useLocation({ select: (location) => location.pathname });
+  useEffect(() => { setExpanded(false); }, [pathname]);
+  useEffect(() => {
+    if (!expanded) return;
+    const dismiss = (event: PointerEvent) => {
+      if (event.target instanceof Node && !container.current?.contains(event.target)) setExpanded(false);
+    };
+    document.addEventListener("pointerdown", dismiss);
+    return () => document.removeEventListener("pointerdown", dismiss);
+  }, [expanded]);
   const active = links.some((link) => pathname === link.to || (link.to === "/platform" && pathname.startsWith("/platform/")));
   return (
-    <div className="nav-dropdown relative" data-expanded={expanded} onMouseEnter={() => setExpanded(true)} onMouseLeave={() => setExpanded(false)} onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setExpanded(false); }} onKeyDown={(event) => { if (event.key === "Escape") setExpanded(false); }}>
-      <Button variant="ghost" className="nav-link h-auto gap-1 rounded-none p-0 font-normal text-muted-foreground hover:bg-transparent" data-active={active} aria-expanded={expanded} aria-controls={`nav-${label.toLowerCase()}`} onClick={() => setExpanded((value) => !value)}>
+    <div ref={container} className="nav-dropdown relative" data-expanded={expanded} onPointerEnter={(event) => { if (event.pointerType === "mouse" && window.matchMedia("(hover: hover) and (pointer: fine)").matches) setExpanded(true); }} onPointerLeave={(event) => { if (event.pointerType === "mouse" && !event.currentTarget.contains(document.activeElement)) setExpanded(false); }} onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setExpanded(false); }} onKeyDown={(event) => { if (event.key === "Escape") { event.stopPropagation(); setExpanded(false); trigger.current?.focus(); } }}>
+      <Button ref={trigger} variant="ghost" className="nav-link h-auto gap-1 rounded-none p-0 font-normal text-muted-foreground hover:bg-transparent" data-active={active} aria-expanded={expanded} aria-controls={`nav-${label.toLowerCase()}`} onClick={(event) => { if (event.detail > 0 && window.matchMedia("(hover: hover) and (pointer: fine)").matches) setExpanded(true); else setExpanded((value) => !value); }}>
         {label} <ChevronDown className="nav-chevron size-3.5" />
       </Button>
       <div id={`nav-${label.toLowerCase()}`} className="nav-dropdown-panel absolute left-0 top-full z-50 pt-3" inert={!expanded}>
@@ -51,14 +62,32 @@ function Dropdown({ label, links }: { label: string; links: readonly { to: strin
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const header = useRef<HTMLElement>(null);
+  const menuTrigger = useRef<HTMLButtonElement>(null);
+  const pathname = useLocation({ select: (location) => location.pathname });
+  useEffect(() => { setOpen(false); }, [pathname]);
+  useEffect(() => {
+    const desktop = window.matchMedia("(min-width: 1024px)");
+    const resize = () => { if (desktop.matches) setOpen(false); };
+    desktop.addEventListener("change", resize);
+    return () => desktop.removeEventListener("change", resize);
+  }, []);
+  useEffect(() => {
+    if (!open) return;
+    const dismiss = (event: PointerEvent) => {
+      if (event.target instanceof Node && !header.current?.contains(event.target)) setOpen(false);
+    };
+    document.addEventListener("pointerdown", dismiss);
+    return () => document.removeEventListener("pointerdown", dismiss);
+  }, [open]);
   return (
-    <header className="site-nav glass sticky top-0 z-50 border-b">
+    <header ref={header} className="site-nav glass sticky top-0 z-50 border-b" onKeyDown={(event) => { if (event.key === "Escape" && open) { setOpen(false); menuTrigger.current?.focus(); } }}>
       <ScrollProgressBar />
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
         <Link to="/" aria-label="SynoraDrive home" className="nav-brand">
           <SynoraDriveLogo />
         </Link>
-        <nav className="hidden items-center gap-7 text-sm text-muted-foreground lg:flex">
+        <nav aria-label="Main navigation" className="hidden items-center gap-7 text-sm text-muted-foreground lg:flex">
           <Dropdown label="Platform" links={platformLinks} />
           {plainLinks.map((l) => (
             <Button key={l.to} asChild variant="ghost" className="nav-link h-auto rounded-none p-0 font-normal text-muted-foreground hover:bg-transparent">
@@ -79,13 +108,13 @@ export function SiteHeader() {
             Book a demo
           </Link>
           </Button>
-          <Button variant="outline" size="icon" className="lg:hidden" onClick={() => setOpen((v) => !v)} aria-label="Toggle menu" aria-expanded={open}>
+          <Button ref={menuTrigger} variant="outline" size="icon" className="min-h-11 min-w-11 lg:hidden" onClick={() => setOpen((v) => !v)} aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} aria-controls="mobile-navigation">
             {open ? <X className="size-4" /> : <Menu className="size-4" />}
           </Button>
         </div>
       </div>
       {open && (
-        <nav className="nav-mobile border-t px-6 py-4 lg:hidden">
+        <nav id="mobile-navigation" aria-label="Mobile navigation" className="nav-mobile border-t px-6 py-4 lg:hidden">
           <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Platform</div>
           {platformLinks.map((l) => (
             <Link key={l.to} to={l.to} onClick={() => setOpen(false)} className="nav-menu-link block py-2 text-sm text-foreground">
