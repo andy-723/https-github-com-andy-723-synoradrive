@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ProductPreview } from "@/components/product-preview";
+import { DemoReel } from "@/components/demo-reel";
 import { ClosingCta } from "@/components/closing-cta";
 import { Reveal } from "@/components/reveal";
 import { Button } from "@/components/ui/button";
@@ -31,6 +32,7 @@ function Index() {
       <Hero />
       <WorksWith />
       <Positioning />
+      <DemoReel />
       <Pillars />
       <WorkflowTeaser />
       <ProductView />
