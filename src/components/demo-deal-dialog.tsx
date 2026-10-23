@@ -21,9 +21,9 @@ function Checklist({ items }: { items: string[] }) {
   return <ul className="divide-y divide-border">{items.map(item => <li key={item} className="flex items-start gap-3 py-4 text-sm"><CheckCircle2 className="mt-0.5 size-4 shrink-0 text-success" />{item}</li>)}</ul>;
 }
 
-export function DemoDealDialog({ deal, onClose }: { deal: DemoDeal | null; onClose: () => void }) {
+export function DemoDealDialog({ deal, onClose, onReturnFocus }: { deal: DemoDeal | null; onClose: () => void; onReturnFocus: () => void }) {
   return <Dialog open={deal !== null} onOpenChange={open => { if (!open) onClose(); }}>
-    <DialogContent className="light-section flex max-h-[90dvh] w-[calc(100%-1.5rem)] max-w-6xl flex-col gap-0 overflow-hidden rounded-lg bg-background p-0 text-foreground [&>button]:z-10 [&>button]:grid [&>button]:size-9 [&>button]:place-items-center [&>button]:bg-background">
+    <DialogContent onCloseAutoFocus={event => { event.preventDefault(); onReturnFocus(); }} className="light-section flex max-h-[90dvh] w-[calc(100%-1.5rem)] max-w-6xl flex-col gap-0 overflow-hidden rounded-lg bg-background p-0 text-foreground [&>button]:z-10 [&>button]:grid [&>button]:size-9 [&>button]:place-items-center [&>button]:bg-background">
       {deal && <DealRecord key={deal.id} deal={deal} />}
     </DialogContent>
   </Dialog>;
@@ -31,7 +31,7 @@ export function DemoDealDialog({ deal, onClose }: { deal: DemoDeal | null; onClo
 
 function DealRecord({ deal }: { deal: DemoDeal }) {
   const record = demoRecord(deal);
-  const [settled, setSettled] = useState(false);
+  const [settled, setSettled] = useState(deal.id === "DEMO-007");
   const balance = settlementBalance(record.price, record.allowance, record.payout, record.deposit);
   const [tab, setTab] = useState("overview");
   const settlement = <section aria-label="Vehicle settlement" className="border-l-2 border-success bg-success/5 p-4">
