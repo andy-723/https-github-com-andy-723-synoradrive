@@ -56,9 +56,9 @@ const onboarding = [
 ] as const;
 
 function RoiEstimator() {
-  const [deals, setDeals] = useState(roiDefaults.dealsPerMonth);
-  const [minutes, setMinutes] = useState(roiDefaults.minutesPerDeal);
-  const [rate, setRate] = useState(roiDefaults.hourlyCostAud);
+  const [deals, setDeals] = useState<number>(roiDefaults.dealsPerMonth);
+  const [minutes, setMinutes] = useState<number>(roiDefaults.minutesPerDeal);
+  const [rate, setRate] = useState<number>(roiDefaults.hourlyCostAud);
   const [fpDays, setFpDays] = useState("");
   const [fpCost, setFpCost] = useState("");
 
@@ -69,8 +69,7 @@ function RoiEstimator() {
       dealsPerMonth: deals,
       minutesPerDeal: minutes,
       hourlyCostAud: rate,
-      floorplanDaysSaved: days,
-      floorplanCostPerDayAud: cost,
+      ...(days != null && cost != null ? { floorplanDaysSaved: days, floorplanCostPerDayAud: cost } : {}),
     });
   }, [deals, minutes, rate, fpDays, fpCost]);
 

@@ -37,7 +37,7 @@ const label = "mb-1.5 block text-xs font-semibold uppercase tracking-wider text-
 
 function ContactPage() {
   const [form, setForm] = useState<ContactForm>(empty);
-  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [errors, setErrors] = useState<Partial<Record<keyof ContactForm, string>>>({});
   const [submitted, setSubmitted] = useState(false);
 
   const set = (k: keyof ContactForm) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
@@ -47,8 +47,8 @@ function ContactPage() {
     e.preventDefault();
     const parsed = contactSchema.safeParse(form);
     if (!parsed.success) {
-      const errs: Record<string, string> = {};
-      for (const issue of parsed.error.issues) errs[String(issue.path[0])] = issue.message;
+      const errs: Partial<Record<keyof ContactForm, string>> = {};
+      for (const issue of parsed.error.issues) errs[issue.path[0] as keyof ContactForm] = issue.message;
       setErrors(errs);
       return;
     }

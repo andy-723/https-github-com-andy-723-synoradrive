@@ -51,7 +51,7 @@ const label = "mb-1.5 block text-xs font-semibold uppercase tracking-wider text-
 
 function DemoPage() {
   const [form, setForm] = useState<DemoForm>(empty);
-  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [errors, setErrors] = useState<Partial<Record<keyof DemoForm, string>>>({});
   const [submitted, setSubmitted] = useState(false);
 
   const set = (k: keyof DemoForm) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
@@ -61,8 +61,8 @@ function DemoPage() {
     e.preventDefault();
     const parsed = demoSchema.safeParse(form);
     if (!parsed.success) {
-      const errs: Record<string, string> = {};
-      for (const issue of parsed.error.issues) errs[String(issue.path[0])] = issue.message;
+      const errs: Partial<Record<keyof DemoForm, string>> = {};
+      for (const issue of parsed.error.issues) errs[issue.path[0] as keyof DemoForm] = issue.message;
       setErrors(errs);
       return;
     }
