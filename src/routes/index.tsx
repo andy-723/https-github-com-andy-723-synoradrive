@@ -1,64 +1,41 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { ProductPreview } from "@/components/product-preview";
-import { pricingTiers } from "@/lib/dealership-pricing";
-import { SynoraDriveLogo } from "@/components/synoradrive-logo";
+import { ClosingCta } from "@/components/closing-cta";
 import { Button } from "@/components/ui/button";
 import vehicleAsset from "@/assets/synoradrive-vehicle.jpeg.asset.json";
-import showroomImage from "@/assets/dealership-showroom.jpg";
 import {
-  ArrowRight, ShieldCheck, FileText, ScanLine, Wallet, BadgeCheck, Lock, Mail,
-  Workflow, Gauge, Building2, CheckCircle2, Server, KeyRound, Database, Cloud, Sparkles, Upload, FileSpreadsheet, Users,
+  ArrowRight, ShieldCheck, Cloud, BadgeCheck, Workflow, Gauge, Users, KeyRound, Building2,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "SynoraDrive — Dealership paperwork, compliance & delivery automation" },
-      { name: "description", content: "SynoraDrive gives dealer principals and sales managers total visibility of every vehicle from sold to delivered — with a named owner on every task. Contract ingest, ASIC & RWC compliance and deal packs for Australian dealerships." },
-      { property: "og:title", content: "SynoraDrive — Automate dealership paperwork" },
-      { property: "og:description", content: "The first live view of every vehicle from sold to delivered — every task owned, every check visible. Built in Melbourne on Microsoft Azure." },
+      { title: "SynoraDrive: Dealership contract-to-delivery platform" },
+      { name: "description", content: "One live view of every vehicle from signed contract to keys. Compliant deal packs, gated workflow and live month book for Australian dealers." },
+      { property: "og:title", content: "SynoraDrive: Dealership contract-to-delivery platform" },
+      { property: "og:description", content: "One live view of every vehicle from signed contract to keys. Compliant deal packs, gated workflow and live month book for Australian dealers." },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "/" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [{ rel: "canonical", href: "/" }],
   }),
   component: Index,
 });
 
-const nav = [
-  ["Product", "#product"], ["Workflow", "#workflow"], ["Security", "#security"], ["Pricing", "#pricing"],
-] as const;
-
 function Index() {
   return (
-    <div className="min-h-screen overflow-x-hidden">
-      <Header />
+    <>
       <Hero />
-      <TrustStrip />
-      <Product />
-      <WorkflowSection />
-      <Modules />
-      <Security />
-      <Pricing />
-      <Cta />
-      <Footer />
-    </div>
-  );
-}
-
-function Header() {
-  return (
-    <header className="glass sticky top-0 z-50 border-b">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
-        <SynoraDriveLogo />
-        <nav className="hidden items-center gap-8 text-sm text-muted-foreground md:flex">
-          {nav.map(([l, h]) => <a key={h} href={h} className="transition-colors hover:text-foreground">{l}</a>)}
-        </nav>
-        <div className="flex items-center gap-3">
-          <a href="#" className="hidden text-sm text-muted-foreground hover:text-foreground sm:block">Staff sign in</a>
-          <a href="#demo" className="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-glow transition hover:opacity-90">Book a demo</a>
-        </div>
-      </div>
-    </header>
+      <WorksWith />
+      <Positioning />
+      <Pillars />
+      <WorkflowTeaser />
+      <ProductView />
+      <ProofBand />
+      <RoiTeaser />
+      <ClosingCta />
+    </>
   );
 }
 
@@ -69,175 +46,108 @@ function Hero() {
       <div className="hero-shade absolute inset-0 -z-10" />
       <div className="mx-auto flex min-h-[680px] max-w-7xl flex-col justify-center px-6 py-20 lg:px-8">
         <div className="hero-copy max-w-2xl">
-          <div className="mb-7 flex items-center gap-3 font-mono text-xs text-primary-glow"><span className="h-px w-8 bg-primary-glow" /> THE NEXT SHIFT IN AUTOMOTIVE</div>
+          <div className="mb-7 flex items-center gap-3 font-mono text-xs text-primary-glow"><span className="h-px w-8 bg-primary-glow" /> THE NEXT SHIFT IN AUTOMOTIVE OPERATIONS</div>
           <h1 className="text-5xl font-semibold leading-[1.08] sm:text-6xl lg:text-7xl">SynoraDrive<span className="mt-3 block text-3xl font-normal leading-tight sm:text-4xl lg:text-5xl">Intelligence behind<br />every handover.</span></h1>
-          <p className="mt-6 max-w-lg text-base leading-relaxed text-muted-foreground sm:text-lg">The first live view of every vehicle from sold to delivered — every task owned, every check visible. No more chasing.</p>
+          <p className="mt-6 max-w-lg text-base leading-relaxed text-muted-foreground sm:text-lg">One live operating layer for every vehicle, from signed Contract of Sale to customer keys. Every deal pack generated, every compliance gate checked, every department working in parallel. No more chasing manila folders.</p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Button asChild size="lg" className="h-12 bg-brand"><a href="#demo">Book a rooftop demo <ArrowRight /></a></Button>
-            <Button asChild variant="outline" size="lg" className="h-12 border-foreground/25 bg-background/30"><a href="#product">Explore the platform <ArrowRight /></a></Button>
+            <Button asChild size="lg" className="h-12 bg-brand"><Link to="/demo">Book a rooftop demo <ArrowRight /></Link></Button>
+            <Button asChild variant="outline" size="lg" className="h-12 border-foreground/25 bg-background/30"><Link to="/platform">Explore the platform <ArrowRight /></Link></Button>
           </div>
           <div className="mt-10 flex flex-wrap gap-x-6 gap-y-3 text-xs text-muted-foreground">
-            <span className="flex items-center gap-2"><ShieldCheck className="size-4 text-primary-glow" /> Australian data residency</span>
-            <span className="flex items-center gap-2"><Cloud className="size-4 text-primary-glow" /> Microsoft Azure</span>
+            <span className="flex items-center gap-2"><Cloud className="size-4 text-primary-glow" /> Hosted in Australia on Microsoft Azure</span>
+            <span className="flex items-center gap-2"><KeyRound className="size-4 text-primary-glow" /> Staff multi-factor sign-in</span>
+            <span className="flex items-center gap-2"><Building2 className="size-4 text-primary-glow" /> Built and running on a Melbourne prestige dealership floor</span>
           </div>
         </div>
       </div>
       <div className="border-t border-foreground/15 bg-background/60">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-6 py-5 font-mono text-[10px] text-muted-foreground sm:text-xs lg:px-8">
           <span className="flex items-center gap-2"><span className="indicator-light size-1.5 rounded-full bg-success" /> BUILT FOR THE DEALERSHIP FLOOR</span>
-          <span>CONTRACT → COMPLIANCE → DELIVERY</span>
-          <a href="#product" className="flex items-center gap-2 text-foreground">MEET YOUR NEXT WORKFLOW <ArrowRight className="size-4" /></a>
-        </div>
-        <div className="mx-auto max-w-7xl border-t border-foreground/10 px-6 py-4 lg:px-8">
-          <div className="text-[9px] font-semibold text-logo-accent">BUILT FOR AUSTRALIAN FRANCHISE DEALERSHIPS</div>
-          <div className="mt-3 flex flex-wrap gap-x-2 gap-y-2 text-[10px] text-muted-foreground">
-            {["Pentana eraPower PDFs", "VicRoads / State Rego", "PPSR", "RedBook VIN Lookup", "DocuSign", "MotorOne", "Microsoft 365"].map(name => <span key={name} className="rounded-full border border-foreground/10 bg-background/30 px-3 py-1.5">{name}</span>)}
-          </div>
+          <span>SIGNED CONTRACT → DEAL PACK → FIVE GATED STAGES → DELIVERY</span>
+          <Link to="/how-it-works" className="flex items-center gap-2 text-foreground">SEE HOW A DEAL MOVES <ArrowRight className="size-4" /></Link>
         </div>
       </div>
     </section>
   );
 }
 
-function TrustStrip() {
-  const stats = [["14+", "statutory & deal pack PDFs auto-built per car"], ["9", "departments synced from Sales to Rego, F&I & Workshop"], ["< 60s", "from Pentana Contract PDF to gated Deal Card"], ["100%", "Australian data residency (Azure Sydney/Melbourne)"]];
+function WorksWith() {
+  const tools = ["Pentana eraPower Contracts of Sale", "VicRoads registration and transfer forms", "PPSR certificates", "ASIC company extracts", "ACCC new-car rights notices", "DocuSign", "Microsoft 365"];
   return (
-    <section className="light-section mist-section border-y bg-background text-foreground">
-      <div className="mx-auto grid max-w-7xl grid-cols-2 gap-8 px-6 py-12 md:grid-cols-4">
-        {stats.map(([n, l]) => (
-          <div key={l}>
-            <div className="font-display text-3xl font-semibold text-gradient">{n}</div>
-            <div className="mt-1 text-sm text-muted-foreground">{l}</div>
-          </div>
-        ))}
+    <section className="light-section border-y bg-background text-foreground">
+      <div className="mx-auto max-w-7xl px-6 py-12 lg:px-8">
+        <div className="text-[10px] font-semibold uppercase tracking-wider text-logo-accent">Works with the tools and documents your dealership already uses</div>
+        <div className="mt-4 flex flex-wrap gap-x-2 gap-y-2 text-[11px] text-muted-foreground">
+          {tools.map((name) => <span key={name} className="rounded-full border border-foreground/10 bg-background px-3 py-1.5">{name}</span>)}
+        </div>
       </div>
     </section>
   );
 }
 
-function SectionHead({ eyebrow, title, body }: { eyebrow: string; title: string; body?: string }) {
+function Positioning() {
   return (
-    <div className="mx-auto max-w-2xl text-center">
-      <div className="font-mono text-xs uppercase tracking-[0.2em] text-primary">{eyebrow}</div>
-      <h2 className="mt-3 text-3xl font-semibold sm:text-5xl">{title}</h2>
-      {body && <p className="mt-4 text-muted-foreground">{body}</p>}
-    </div>
-  );
-}
-
-function Product() {
-  return (
-    <section id="product" className="light-section bg-background text-foreground">
-      <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
-      <div className="mb-10 flex flex-col justify-between gap-6 md:flex-row md:items-end">
-        <div><div className="font-mono text-xs text-primary-glow">01 / TOTAL DELIVERY VISIBILITY</div><h2 className="mt-4 max-w-xl text-3xl font-semibold sm:text-4xl">Less chasing.<br />More moving forward.</h2></div>
-        <p className="max-w-sm text-sm leading-relaxed text-muted-foreground">For the first time, dealer principals and sales managers see every vehicle from sold to delivered — and exactly who owns each step. No email chains, no pretty spreadsheets.</p>
-      </div>
-      <ProductPreview />
-      <div className="mt-8 grid gap-4 sm:grid-cols-3">
-        {([
-          [Mail, "Retires the email chain", "Status lives on the board, not buried in inboxes."],
-          [FileSpreadsheet, "Retires the pretty spreadsheet", "Looks tidy. Still can't tell you where the vehicle actually is."],
-          [Users, "One owner per task", "Everyone knows who holds the next move."],
-        ] as const).map(([Icon, t, b]) => (
-          <div key={t} className="flex gap-4 rounded-xl border bg-card p-5">
-            <Icon className="mt-0.5 size-5 shrink-0 text-primary-glow" />
-            <div><div className="text-sm font-semibold">{t}</div><div className="mt-1 text-sm text-muted-foreground">{b}</div></div>
-          </div>
-        ))}
-      </div>
+    <section className="light-section mist-section bg-background text-foreground">
+      <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
+        <div className="max-w-3xl">
+          <h2 className="text-3xl font-semibold leading-tight sm:text-5xl">Your DMS runs the books.<br />SynoraDrive runs the deal.</h2>
+          <p className="mt-6 leading-relaxed text-muted-foreground">The most expensive, error-prone part of a car sale is the two to six weeks after the buyer signs. Sales, stock control, the Business Manager, aftermarket, the workshop and the rego desk pass one car between them using folders, whiteboards and spreadsheets.</p>
+          <p className="mt-4 leading-relaxed text-muted-foreground">SynoraDrive is the post-contract operating layer for franchised dealerships. Drop in a signed Contract of Sale from your DMS, and SynoraDrive builds the deal pack, enforces your compliance and finance gates, and runs every department in parallel until the keys are in the customer's hand.</p>
+        </div>
+        <div className="mt-10 flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-xs text-muted-foreground">
+          {["Signed contract", "Deal pack built", "Five gated stages", "On-time delivery and a live month book"].map((step, i) => (
+            <span key={step} className="flex items-center gap-3">
+              {i > 0 && <ArrowRight className="size-3.5 text-primary" />}
+              <span className="rounded-full border bg-card px-3 py-1.5">{step}</span>
+            </span>
+          ))}
+        </div>
       </div>
     </section>
   );
 }
 
-function WorkflowSection() {
-  const steps = [
-    [Mail, "Ingest", "Drop a Contract of Sale PDF or let SynoraDrive watch your sales mailbox.", "Sales admin"],
-    [ScanLine, "Extract", "OCR and form reading pull customer, vehicle and finance fields instantly.", "System"],
-    [ShieldCheck, "Verify", "ASIC company search, licence match and state roadworthy rules run automatically.", "Compliance"],
-    [FileText, "Generate", "Showroom, pre-delivery and e-signature packs are built and flattened.", "Document prep"],
-    [Wallet, "Hand over", "Delivery unlocks only when the balance is $0 and every check is green.", "Delivery team"],
+function Pillars() {
+  const pillars = [
+    { Icon: ShieldCheck, t: "Compliance and OEM rebate protection", b: "Every deal is built inside a digital deal jacket with a checklist for its deal type, ASIC deferred sales tracking and a Pre-Reported (RDA) watchlist. Files are complete before handover, protecting your OEM money and standing up to audit.", to: "/platform/compliance" },
+    { Icon: Workflow, t: "Unified operations", b: "One live deal card across five gated stages, with sales, stock, F&I, aftermarket, workshop, rego and delivery on the same board. Parallel tasks and on-deal @mentions replace status-chasing calls.", to: "/platform/operations" },
+    { Icon: Gauge, t: "Centralised reporting", b: "Retire the spreadsheet tracker. Your live month book shows locked deliveries, scheduled go-outs, the RDA watchlist and a weighted prospect pipeline in one view.", to: "/platform/reporting" },
+    { Icon: Users, t: "A better customer experience", b: "Buyers get a private, dealer-branded link to upload their licence and finance documents from their phone and sign by DocuSign ahead of time. Pickup day is about the car, not the paperwork.", to: "/platform/customer-experience" },
   ] as const;
   return (
-    <section id="workflow" className="light-section mist-section bg-background text-foreground">
-      <div className="mx-auto max-w-7xl px-6 py-24">
-      <SectionHead eyebrow="Contract to handover" title="Your team sells. SynoraDrive connects the dots." body="Five stages your team already knows — now automated end to end." />
-      <div className="mt-16 grid gap-4 md:grid-cols-5">
-        {steps.map(([Icon, t, b, owner], i) => (
-          <div key={t} className="relative border-t border-primary/40 py-6 pr-6">
-            <div className="font-mono text-xs text-muted-foreground">0{i + 1} · <span className="text-primary">{owner}</span></div>
-            <Icon className="mt-4 size-6 text-primary" />
-            <h3 className="mt-4 text-lg font-semibold">{t}</h3>
-            <p className="mt-2 text-sm text-muted-foreground">{b}</p>
-          </div>
-        ))}
-      </div>
-      </div>
-    </section>
-  );
-}
-
-function Modules() {
-  const items = [
-    [Workflow, "Dealership Board", "A live five-stage board for every rooftop, with a named owner on every task and flags for anything at risk."],
-    [BadgeCheck, "Compliance engine", "Automated VIC L-Forms, Cooling-Off Waivers, ACCC New Car notices, Button Battery declarations, PPSR, VicRoads plate box manifests, and 28-day eRWC clocks."],
-    [FileText, "Deal packs", "Instant Showroom Packs, Trade-In Packs, NCCP Finance checklists, and Aftermarket V2 contract gates across all 9 dealership roles."],
-    [Gauge, "Command Center & Sales Log", "Replaces the pretty spreadsheet. Live month-end quota pacing, split front/back-end PVR gross, and OEM rebate cliff tracking for DPs and GSMs."],
-    [Sparkles, "AI exception copilot", "Surfaces missing documents and F&I issues before they hold up a delivery."],
-    [Building2, "Multi-rooftop", "Group-wide registration queues, cross-site stock visibility, and 1-click EOM Realistic call-ins built for multi-franchise dealer groups."],
-  ] as const;
-  return (
-    <section className="border-t bg-background">
-      <div className="showroom-band relative isolate overflow-hidden">
-        <img src={showroomImage} alt="A modern dealership showroom with a vehicle and customer cafe lounge" loading="lazy" width={1536} height={1024} className="absolute inset-0 -z-20 h-full w-full object-cover" />
-        <div className="showroom-shade absolute inset-0 -z-10" />
-        <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
-          <div className="font-mono text-xs text-primary-glow">MADE FOR YOUR WORLD</div>
-          <h2 className="mt-5 max-w-lg text-4xl font-semibold leading-tight sm:text-5xl">The floor is human.<br />The flow is intelligent.</h2>
-          <p className="mt-5 max-w-sm leading-relaxed text-muted-foreground">From the showroom to the workshop, give your people more time for the moments that matter.</p>
-        </div>
-      </div>
-      <div className="light-section bg-background text-foreground">
-      <div className="mx-auto max-w-7xl px-6 py-20">
-        <SectionHead eyebrow="Platform" title="One platform. Every part of the deal." />
-        <div className="mt-12 grid gap-x-10 gap-y-8 md:grid-cols-3">
-          {items.map(([Icon, t, b]) => (
-            <div key={t} className="border-t py-8">
+    <section className="light-section border-t bg-background text-foreground">
+      <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
+        <div className="grid gap-6 md:grid-cols-2">
+          {pillars.map(({ Icon, t, b, to }) => (
+            <Link key={t} to={to} className="group flex flex-col rounded-xl border bg-card p-7 transition-shadow hover:shadow-elegant">
               <div className="grid size-10 place-items-center rounded-lg bg-accent"><Icon className="size-5 text-accent-foreground" /></div>
-              <h3 className="mt-5 text-lg font-semibold">{t}</h3>
-              <p className="mt-2 text-sm text-muted-foreground">{b}</p>
-            </div>
+              <h3 className="mt-5 text-xl font-semibold">{t}</h3>
+              <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">{b}</p>
+              <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-primary">Learn more <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" /></span>
+            </Link>
           ))}
         </div>
-      </div>
       </div>
     </section>
   );
 }
 
-function Security() {
-  const items = [
-    [Cloud, "Microsoft Azure, Australia East", "Your data never leaves Australia."],
-    [KeyRound, "Azure Key Vault", "Hardware-backed secrets for signing and integrations."],
-    [Lock, "Fail-closed access control", "Staff only see what their role allows — by default."],
-    [Database, "Geo-redundant backups", "Managed PostgreSQL with point-in-time recovery."],
-    [Server, "Microsoft Entra ID SSO", "Sign in with your dealer group's existing accounts."],
-    [ShieldCheck, "Full audit trail", "Every check, edit and signature is recorded."],
-  ] as const;
+function WorkflowTeaser() {
+  const stages = ["In Queue", "Document Prep", "Finance & Approvals", "Workshop & PDI", "Ready for Delivery"];
   return (
-    <section id="security" className="mx-auto max-w-7xl px-6 py-28">
-      <div className="grid gap-14 lg:grid-cols-[1fr_1.4fr] lg:items-center">
-        <div>
-          <div className="font-mono text-xs uppercase tracking-[0.2em] text-primary">Trust & security</div>
-          <h2 className="mt-3 text-3xl font-semibold sm:text-5xl">Enterprise-grade from the first deal.</h2>
-          <p className="mt-5 text-muted-foreground">Customer identity, finance and licence data deserve better than shared drives and email attachments. SynoraDrive is engineered in Melbourne on Microsoft Azure Australia East, with strict role-based financial masking so workshop and detail teams never see customer deal prices or gross margins.</p>
+    <section className="light-section mist-section border-t bg-background text-foreground">
+      <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
+        <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+          <h2 className="max-w-xl text-3xl font-semibold sm:text-4xl">Five stages. Every gate checked.</h2>
+          <Link to="/how-it-works" className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary">See how a deal moves <ArrowRight className="size-4" /></Link>
         </div>
-        <div className="grid gap-4 sm:grid-cols-2">
-          {items.map(([Icon, t, b]) => (
-            <div key={t} className="flex gap-4 rounded-xl border bg-card p-5">
-              <Icon className="mt-0.5 size-5 shrink-0 text-primary-glow" />
-              <div><div className="font-semibold">{t}</div><div className="mt-1 text-sm text-muted-foreground">{b}</div></div>
+        <div className="mt-12 grid gap-4 md:grid-cols-5">
+          {stages.map((s, i) => (
+            <div key={s} className="relative border-t border-primary/40 py-6 pr-4">
+              <div className="flex items-center gap-2 font-mono text-xs text-muted-foreground">
+                <span className={`indicator-light stage-light-${i} size-1.5 rounded-full bg-success`} /> 0{i + 1}
+              </div>
+              <h3 className="mt-3 text-base font-semibold">{s}</h3>
             </div>
           ))}
         </div>
@@ -246,57 +156,47 @@ function Security() {
   );
 }
 
-function Pricing() {
-  const tiers = pricingTiers;
+function ProductView() {
   return (
-    <section id="pricing" className="light-section mist-section border-t bg-background text-foreground">
-      <div className="mx-auto max-w-7xl px-6 py-28">
-        <SectionHead eyebrow="Pricing" title="Simple per-rooftop licensing." body="No setup surprises. Onboarding and training included." />
-        <div className="mt-16 grid gap-6 md:grid-cols-3">
-          {tiers.map((t) => (
-            <div key={t.n} className={`relative rounded-lg border p-8 ${t.hi ? "border-primary/60 bg-card shadow-elegant" : "bg-background"}`}>
-              {t.hi && <span className="absolute -top-3 left-8 rounded-full bg-brand px-3 py-0.5 text-xs font-semibold text-primary-foreground">Most popular</span>}
-              <div className="text-sm text-muted-foreground">{t.s}</div>
-              <h3 className="mt-1 text-xl font-semibold">{t.n}</h3>
-              <div className="mt-6 font-display text-4xl font-semibold">{t.p}</div>
-              <div className="text-xs text-muted-foreground">{t.u}</div>
-               {t.note && <p className="mt-2 text-xs text-muted-foreground">{t.note}</p>}
-              <ul className="mt-8 space-y-3 text-sm">
-                {t.f.map((f) => <li key={f} className="flex gap-2"><CheckCircle2 className="mt-0.5 size-4 shrink-0 text-success" />{f}</li>)}
-              </ul>
-              <a href="#demo" className={`mt-8 block rounded-lg py-2.5 text-center text-sm font-semibold transition ${t.hi ? "bg-brand text-primary-foreground" : "border hover:bg-secondary"}`}>
-                {t.p === "Custom" ? "Talk to us" : "Book a demo"}
-              </a>
-            </div>
-          ))}
+    <section className="light-section border-t bg-background text-foreground">
+      <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
+        <div className="mb-10 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+          <div><div className="font-mono text-xs text-primary-glow">PRODUCT VIEW</div><h2 className="mt-4 max-w-xl text-3xl font-semibold sm:text-4xl">Every car, every stage, every owner, on one board.</h2></div>
+          <p className="max-w-sm text-sm leading-relaxed text-muted-foreground">A live look at the delivery board and executive sales log, running on fictional demo data.</p>
+        </div>
+        <ProductPreview />
+      </div>
+    </section>
+  );
+}
+
+function ProofBand() {
+  return (
+    <section className="border-t">
+      <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
+        <div className="font-mono text-xs uppercase tracking-[0.2em] text-primary">Proof</div>
+        <h2 className="mt-4 max-w-2xl text-3xl font-semibold sm:text-4xl">Built on the dealership floor, not in a boardroom.</h2>
+        <p className="mt-5 max-w-2xl leading-relaxed text-muted-foreground">SynoraDrive was built inside a working Melbourne prestige dealer group and has run in daily production since September 2026 across three rooftops. Every gate, escalation timer and document rule exists because a real deal went wrong without it.</p>
+      </div>
+    </section>
+  );
+}
+
+function RoiTeaser() {
+  return (
+    <section className="light-section mist-section border-t bg-background text-foreground">
+      <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
+        <div className="flex flex-col justify-between gap-8 md:flex-row md:items-center">
+          <div className="max-w-xl">
+            <h2 className="text-3xl font-semibold sm:text-4xl">What does a manual deal folder cost your rooftop?</h2>
+            <p className="mt-4 text-muted-foreground">At 60 deals a month, saving 45 minutes a deal returns 45 staff hours a month to the floor.</p>
+            <p className="mt-2 text-xs text-muted-foreground">Estimates from the SynoraDrive business plan, not measured results.</p>
+          </div>
+          <Link to="/pricing" className="inline-flex shrink-0 items-center gap-2 rounded-lg bg-brand px-6 py-3 text-sm font-semibold text-primary-foreground shadow-glow">
+            Estimate your rooftop <ArrowRight className="size-4" />
+          </Link>
         </div>
       </div>
     </section>
-  );
-}
-
-function Cta() {
-  return (
-    <section id="demo" className="mx-auto max-w-7xl px-6 py-28">
-      <div className="relative border-y px-2 py-16 text-center">
-        <h2 className="relative mx-auto max-w-2xl text-3xl font-semibold sm:text-5xl">Stop chasing vehicles.<br />Start seeing every delivery.</h2>
-        <p className="relative mx-auto mt-5 max-w-xl text-muted-foreground">A 30-minute walkthrough using your own Contract of Sale.</p>
-        <a href="mailto:hello@synoradrive.com.au" className="relative mt-9 inline-flex items-center gap-2 rounded-lg bg-brand px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-glow">
-          Book a rooftop demo <ArrowRight className="size-4" />
-        </a>
-      </div>
-    </section>
-  );
-}
-
-function Footer() {
-  return (
-    <footer className="border-t">
-      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 py-10 text-sm text-muted-foreground md:flex-row">
-        <SynoraDriveLogo />
-        <div>© 2026 SynoraTech Pty Ltd · Melbourne, Australia</div>
-        <div className="flex gap-6"><a href="#" className="hover:text-foreground">Privacy</a><a href="#" className="hover:text-foreground">Security</a><a href="#" className="hover:text-foreground">Terms</a></div>
-      </div>
-    </footer>
   );
 }

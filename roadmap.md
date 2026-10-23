@@ -1,7 +1,24 @@
-- [x] Apply supplied logo and dealership proof points, ecosystem strip and updated platform/security copy.
-- [x] Build populated board and executive sales-log tabs with sample deal inspection and call-in action.
-- [x] Correct per-rooftop pricing and test tier boundaries.
-- [x] Verify both previews and mobile layout.
-- [x] Replace navbar/footer logos with the official inline SVG and unify page accents.
-- [x] Verify logo rendering, preview tabs and branded progress colors.
-- [x] Replace all preview customer records and dealership identities with fictional demo data and verify both tabs.
+# Roadmap
+
+## Website Copy v4 build (16 pages)
+- [x] Global header with Platform/Company dropdowns, mobile menu, Book a demo
+- [x] Global footer (Platform / Company / Trust / Get started) + closing CTA band
+- [x] Home `/` rewritten to v4 (hero, works-with, positioning, pillars, workflow teaser, product view, proof band, ROI teaser)
+- [x] Platform overview `/platform` + 4 pillar pages (compliance, operations, reporting, customer-experience)
+- [x] How it works `/how-it-works` (five gated stages from the stage engine)
+- [x] Security `/security` (v4 safe wording: 35-day retention, opt-in MFA, "stored in Australia")
+- [x] Pricing `/pricing` (prices on request, ROI estimator, onboarding, dealer FAQ)
+- [x] About `/about`, Partners `/partners`
+- [x] Demo `/demo` and Contact `/contact` forms with validation + thank-you states
+- [x] Privacy `/privacy` and Terms `/terms` outlines (lawyer review pending)
+- [x] v4 404 page ("This page has driven off the lot.")
+- [x] Per-page search titles/descriptions + canonical links
+- [x] ROI estimator module + boundary tests; pricing module updated to v4 plans
+
+## Open items (blocked on Andrew)
+- [ ] Enable Lovable Cloud so demo/contact enquiries are stored and emailed (forms currently validate and show thank-you only)
+- [ ] [CONFIRM] pricing figures: v4 says "prices on request" — publish dollar amounts only once commercially set
+- [ ] [CONFIRM] retention 35 days (code) vs 30 days (plan); MFA mandatory vs opt-in wording
+- [ ] [CONFIRM] legal entity name + ABN for footer/Privacy/Terms; staff sign-in URL; public contact email
+- [ ] Lawyer review of Privacy Policy and Terms
+- [ ] Product screenshots with dummy data for Home and pillar pages (visual gaps in v4)

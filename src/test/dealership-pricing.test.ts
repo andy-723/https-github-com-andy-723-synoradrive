@@ -1,9 +1,22 @@
 import { describe, expect, it } from "vitest";
-import { monthlyGroupPrice } from "@/lib/dealership-pricing";
+import { pricingPlans } from "@/lib/dealership-pricing";
 
-describe("Per-rooftop monthly pricing", () => {
-  it("charges one Core rooftop $1,490 AUD", () => expect(monthlyGroupPrice(1)).toBe(1490));
-  it("includes two rooftops at $1,190 each", () => expect(monthlyGroupPrice(2)).toBe(2380));
-  it("bills every rooftop through the nine-location group boundary", () => expect(monthlyGroupPrice(9)).toBe(10710));
-  it("requires a custom volume agreement from ten rooftops", () => expect(monthlyGroupPrice(10)).toBeNull());
+describe("Pricing plans (Website Copy v4: prices on request)", () => {
+  it("offers the three v4 plans", () => {
+    expect(pricingPlans.map((p) => p.n)).toEqual(["Document & Compliance", "Pipeline", "Insights & Forecasting"]);
+  });
+
+  it("marks Pipeline as the single most-popular plan", () => {
+    expect(pricingPlans.filter((p) => p.hi).map((p) => p.n)).toEqual(["Pipeline"]);
+  });
+
+  it("publishes no dollar figures until commercially set", () => {
+    for (const plan of pricingPlans) {
+      expect(JSON.stringify(plan)).not.toMatch(/\$\d/);
+    }
+  });
+
+  it("labels Insights & Forecasting as a roadmap add-on, not a shipped plan", () => {
+    expect(pricingPlans.find((p) => p.n === "Insights & Forecasting")?.tag).toBe("Roadmap add-on");
+  });
 });
