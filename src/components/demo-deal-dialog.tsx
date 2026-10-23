@@ -37,7 +37,7 @@ function DealRecord({ deal }: { deal: DemoDeal }) {
   const scrollArea = useRef<HTMLDivElement | null>(null);
   const changeTab = (value: string) => {
     setTab(value);
-    scrollArea.current?.scrollTo({ top: 0, behavior: "instant" });
+    if (scrollArea.current) scrollArea.current.scrollTop = 0;
   };
   const settlement = <section aria-label="Vehicle settlement" className="border-l-2 border-success bg-success/5 p-4">
     <h3 className="flex items-center gap-2 text-xs font-semibold uppercase text-success"><Wallet className="size-4" />Vehicle settlement</h3>
