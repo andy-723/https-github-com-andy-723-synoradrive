@@ -1,6 +1,7 @@
 # Roadmap
 
 ## Navigation and boxed-section effects
+- [ ] Smooth touch navigation, add keyboard focus indicators, and verify dismissal and pointer cleanup.
 - [x] Animate navigation and links, highlight framed sections across pages, and verify hover/navigation behavior.
 
 ## Website Copy v4 build (16 pages)
