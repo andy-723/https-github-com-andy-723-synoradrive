@@ -1,7 +1,7 @@
 # Roadmap
 
 ## Interactive deal-card preview
-- [ ] Open fictional customer records from board cards with working tabs, trade-in details and simulated settlement; verify keyboard and touch layouts.
+- [x] Open fictional customer records from board cards with working tabs, trade-in details and simulated settlement; verify keyboard and touch layouts.
 
 ## Navigation and boxed-section effects
 - [x] Smooth touch navigation, add keyboard focus indicators, and verify dismissal and pointer cleanup.

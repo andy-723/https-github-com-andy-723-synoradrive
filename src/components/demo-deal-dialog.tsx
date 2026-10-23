@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Car, CheckCircle2, Clock3, FileText, ShieldCheck, User, Wallet, Wrench, Activity, ArrowRight, Lock } from "lucide-react";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -34,6 +34,11 @@ function DealRecord({ deal }: { deal: DemoDeal }) {
   const [settled, setSettled] = useState(deal.id === "DEMO-007");
   const balance = settlementBalance(record.price, record.allowance, record.payout, record.deposit);
   const [tab, setTab] = useState("overview");
+  const scrollArea = useRef<HTMLDivElement | null>(null);
+  const changeTab = (value: string) => {
+    setTab(value);
+    scrollArea.current?.scrollTo({ top: 0, behavior: "instant" });
+  };
   const settlement = <section aria-label="Vehicle settlement" className="border-l-2 border-success bg-success/5 p-4">
     <h3 className="flex items-center gap-2 text-xs font-semibold uppercase text-success"><Wallet className="size-4" />Vehicle settlement</h3>
     <p className="mt-2 text-[11px] leading-relaxed text-muted-foreground">Reconciliation check · $0 required before handover</p>
@@ -53,17 +58,17 @@ function DealRecord({ deal }: { deal: DemoDeal }) {
       <DialogTitle className="text-xl leading-snug">{deal.name}</DialogTitle>
       <DialogDescription className="mt-2 text-xs">{deal.car} · {deal.value} · Demo Motors</DialogDescription>
     </div>
-    <Tabs value={tab} onValueChange={setTab} className="flex min-h-0 flex-1 flex-col">
+    <Tabs value={tab} onValueChange={changeTab} className="flex min-h-0 flex-1 flex-col">
       <div className="shrink-0 overflow-x-auto border-b px-3 sm:px-5">
         <TabsList aria-label="Deal record tabs" className="h-auto w-max justify-start gap-1 rounded-none bg-transparent py-2">{tabs.map(([value, label, Icon]) => <TabsTrigger key={value} value={value} className="brand-preview-tab min-h-10 gap-2 text-xs"><Icon className="size-3.5" />{label}</TabsTrigger>)}</TabsList>
       </div>
-      <div className="min-h-0 overflow-y-auto overscroll-contain px-5 py-5 sm:px-7 sm:py-6">
+      <div ref={scrollArea} className="min-h-0 overflow-y-auto overscroll-contain px-5 py-5 sm:px-7 sm:py-6">
         <TabsContent value="overview" className="mt-0">
           <div className="grid gap-7 lg:grid-cols-[minmax(0,1fr)_300px]">
             <div className="space-y-6">
               <section><h3 className="mb-3 flex items-center gap-2 text-xs font-semibold uppercase text-muted-foreground"><User className="size-4" />Customer</h3><dl className="grid gap-3 sm:grid-cols-2"><Field label="Name" value={deal.name} /><Field label="Mobile" value={record.mobile} /><Field label="Email" value={record.email} /><Field label="Address" value={record.address} /></dl></section>
               <section><h3 className="mb-3 flex items-center gap-2 text-xs font-semibold uppercase text-muted-foreground"><Car className="size-4" />Vehicle</h3><dl className="grid gap-3 sm:grid-cols-2"><Field label="Make / model" value={deal.car} /><Field label="Colour" value={record.colour} /><Field label="Stock number" value={record.stockNumber} /><Field label="VIN · sample identifier" value={record.vin} /></dl></section>
-              <section className="border-t pt-5"><div className="flex flex-wrap items-center justify-between gap-3"><div><h3 className="text-sm font-semibold">Trade-in attached</h3><p className="mt-1 text-xs text-muted-foreground">{record.trade.car} · {record.trade.kms}</p></div><Button variant="outline" size="sm" onClick={() => setTab("trade")}>View trade-in <ArrowRight className="size-4" /></Button></div><div className="mt-4 grid grid-cols-2 gap-4 text-xs"><div><p className="text-muted-foreground">Allowance</p><p className="mt-1 font-semibold">{money(record.allowance)}</p></div><div><p className="text-muted-foreground">Payout owing</p><p className="mt-1 font-semibold">{money(record.payout)}</p></div></div></section>
+              <section className="border-t pt-5"><div className="flex flex-wrap items-center justify-between gap-3"><div><h3 className="text-sm font-semibold">Trade-in attached</h3><p className="mt-1 text-xs text-muted-foreground">{record.trade.car} · {record.trade.kms}</p></div><Button variant="outline" size="sm" onClick={() => changeTab("trade")}>View trade-in <ArrowRight className="size-4" /></Button></div><div className="mt-4 grid grid-cols-2 gap-4 text-xs"><div><p className="text-muted-foreground">Allowance</p><p className="mt-1 font-semibold">{money(record.allowance)}</p></div><div><p className="text-muted-foreground">Payout owing</p><p className="mt-1 font-semibold">{money(record.payout)}</p></div></div></section>
             </div>
             <aside className="space-y-5"><div><h3 className="text-xs font-semibold uppercase text-muted-foreground">Work ownership</h3><p className="mt-2 text-sm font-semibold">{record.owner}</p><p className="mt-1 text-xs text-muted-foreground">Sales → Admin → F&I → Workshop → Delivery</p></div>{settlement}</aside>
           </div>
