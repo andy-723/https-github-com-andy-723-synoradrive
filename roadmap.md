@@ -1,7 +1,7 @@
 # Roadmap
 
 ## Orchestration and delivery visibility
-- [ ] Integrate animated SynoraCNS and delivery black-hole sections into Home; verify touch, keyboard and reduced-motion behavior.
+- [x] Integrate animated SynoraCNS and delivery black-hole sections into Home; verify touch, keyboard and reduced-motion behavior.
 
 ## Interactive deal-card preview
 - [x] Open fictional customer records from board cards with working tabs, trade-in details and simulated settlement; verify keyboard and touch layouts.

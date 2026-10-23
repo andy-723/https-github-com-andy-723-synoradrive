@@ -337,7 +337,7 @@
   --cns-node-fill: color-mix(in srgb, var(--brand-sky) 7%, var(--background));
   --cns-node-selected: color-mix(in srgb, var(--brand-mint) 12%, var(--background));
   --visibility-track: linear-gradient(90deg, var(--brand-indigo), var(--brand-sky), var(--brand-mint));
-  --visibility-void-fill: radial-gradient(circle, var(--foreground) 30%, color-mix(in srgb, var(--brand-indigo) 22%, var(--foreground)) 60%, transparent 72%);
+  --visibility-void-fill: radial-gradient(circle, var(--brand-ink) 30%, color-mix(in srgb, var(--brand-indigo) 22%, var(--brand-ink)) 60%, transparent 72%);
 }
 .cns-section { background-image: linear-gradient(var(--cns-grid) 1px, transparent 1px), linear-gradient(90deg, var(--cns-grid) 1px, transparent 1px); background-size: 64px 64px; }
 .cns-network { position: relative; height: 560px; }
