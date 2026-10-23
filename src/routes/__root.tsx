@@ -14,6 +14,7 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { SiteHoverEffects } from "@/components/site-hover-effects";
 
 function NotFoundComponent() {
   return (
@@ -138,7 +139,8 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="min-h-screen overflow-x-clip">
+      <div className="site-hover-effects min-h-screen overflow-x-clip">
+        <SiteHoverEffects />
         <SiteHeader />
         {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
         <Outlet />

@@ -13,3 +13,4 @@
 - Keep the interactive product demonstration in a dedicated browser-safe component with explicitly labelled sample data and simulated actions; marketing previews must not imply real integrations or send requests.
 - Keep pricing tier data and group-total calculation in a shared module with boundary tests; this prevents per-group and per-rooftop pricing from diverging.
 - Render navbar and footer branding through a shared inline-SVG logo with unique gradient IDs and global semantic palette tokens; this keeps duplicate emblems and light/dark wordmarks consistent.
+- Keep site-wide framed-section highlights in shared CSS with a browser-safe delegated pointer listener; this covers current and future route cards without changing their content or interactions.
