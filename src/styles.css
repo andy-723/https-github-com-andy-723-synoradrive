@@ -280,14 +280,15 @@
 .nav-link:focus-visible::after, .nav-link[data-active="true"]::after, .nav-dropdown[data-expanded="true"] > .nav-link::after { transform: scaleX(1); }
 .nav-chevron { transition: transform 250ms; }
 .nav-dropdown[data-expanded="true"] .nav-chevron { transform: rotate(180deg); }
-.nav-dropdown-panel { visibility: hidden; opacity: 0; transform: translateY(8px); transition: opacity 220ms, transform 220ms, visibility 220ms; }
+.nav-dropdown-panel { visibility: hidden; opacity: 0; transform: translateY(8px); transition: opacity 220ms, transform 220ms; }
 .nav-dropdown[data-expanded="true"] .nav-dropdown-panel { visibility: visible; opacity: 1; transform: translateY(0); }
 .nav-menu-link { transition: color 220ms, background-color 220ms, transform 220ms; }
 .nav-menu-link:focus-visible { color: var(--logo-accent); background-color: var(--accent); }
 .nav-cta { transition: transform 220ms, box-shadow 220ms, background-color 220ms; }
 .nav-mobile { animation: arrive 240ms ease-out both; max-height: calc(100dvh - 65px); overflow-y: auto; overscroll-behavior: contain; }
 .site-nav :is(a, button) { touch-action: manipulation; }
-.site-nav .nav-link, .site-nav .nav-menu-link { min-height: 44px; display: flex; align-items: center; }
+.site-nav .nav-link { min-height: 44px; }
+.site-nav nav .nav-link, .site-nav .nav-menu-link { min-height: 44px; display: flex; align-items: center; }
 .site-nav .nav-link::after { bottom: 2px; }
 .nav-brand { min-height: 44px; display: inline-flex; align-items: center; }
 .site-hover-effects :is(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
