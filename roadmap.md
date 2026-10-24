@@ -1,5 +1,8 @@
 # Roadmap
 
+## Terms and Disclaimer update
+- [x] Replace the Terms outline with supplied October 24 draft Terms and Disclaimer, preserve review warnings and unconfirmed clauses, exclude internal lawyer notes, and verify document navigation.
+
 ## Orchestration and delivery visibility
 - [x] Integrate animated SynoraCNS and delivery black-hole sections into Home; verify touch, keyboard and reduced-motion behavior.
 
