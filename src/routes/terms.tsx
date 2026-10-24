@@ -1,13 +1,17 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHero } from "@/components/marketing";
+import { LegalDocument } from "@/components/legal-document";
+import terms from "@/content/subscription-terms.md?raw";
+import disclaimer from "@/content/disclaimer.md?raw";
 
 export const Route = createFileRoute("/terms")({
   head: () => ({
     meta: [
       { title: "Terms and Disclaimer, SynoraDrive" },
-      { name: "description", content: "Website terms of use and disclaimer for SynoraDrive." },
+      { name: "description", content: "Review the draft SynoraDrive Subscription Terms and Conditions and Disclaimer, including customer responsibilities, consumer rights and service limitations." },
       { property: "og:title", content: "Terms and Disclaimer, SynoraDrive" },
-      { property: "og:description", content: "Website terms of use and disclaimer for SynoraDrive." },
+      { property: "og:description", content: "Draft Subscription Terms and Conditions and Disclaimer for SynoraDrive, pending Australian legal review." },
+      { name: "robots", content: "noindex, nofollow" },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/terms" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -17,47 +21,28 @@ export const Route = createFileRoute("/terms")({
   component: TermsPage,
 });
 
-const sections = [
-  {
-    t: "Website terms of use",
-    b: "By using this website you accept these terms. The full terms will be lawyer-reviewed and published before launch.",
-  },
-  {
-    t: "General information only",
-    b: "Content on this website is general information about the SynoraDrive platform and is not advice for your specific circumstances.",
-  },
-  {
-    t: "Estimates are illustrative",
-    b: "ROI figures and time-saving estimates on this website are illustrative, based on stated assumptions. Actual results depend on volume, deal mix and workflow.",
-  },
-  {
-    t: "Intellectual property",
-    b: "SynoraDrive, SyncZero and associated marks are the intellectual property of SynoraTech Pty Ltd. Nothing on this website grants a licence to use them.",
-  },
-  {
-    t: "Liability",
-    b: "To the extent permitted by law, SynoraTech Pty Ltd limits its liability for the use of this website. Platform subscription terms are set out in the customer agreement, not on this page.",
-  },
-] as const;
-
 function TermsPage() {
   return (
     <section className="light-section bg-background text-foreground">
       <PageHero
         eyebrow="Trust"
         title="Terms and Disclaimer"
-        intro="This outline covers what the full terms will address. A lawyer-reviewed version will be published before launch."
+        intro="Draft v0.1 for legal review · 24 October 2026. These documents are not approved for publication or signature."
       />
-      <div className="mx-auto max-w-3xl px-6 py-16 lg:px-8">
-        <div className="space-y-10">
-          {sections.map((s) => (
-            <div key={s.t}>
-              <h2 className="text-xl font-semibold">{s.t}</h2>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{s.b}</p>
-            </div>
-          ))}
-        </div>
-        <p className="mt-14 border-t pt-6 text-xs text-muted-foreground">Last updated: October 2026.</p>
+      <div className="mx-auto max-w-3xl px-6 py-12 lg:px-8">
+        <nav aria-label="Legal documents" className="flex flex-wrap gap-x-8 gap-y-4 border-y py-5 text-sm font-semibold">
+          <a href="#subscription-terms" className="text-primary underline-offset-4 hover:underline">Subscription Terms and Conditions</a>
+          <a href="#disclaimer" className="text-primary underline-offset-4 hover:underline">Disclaimer</a>
+        </nav>
+        <article id="subscription-terms" className="scroll-mt-28 break-words pt-10" aria-labelledby="terms-heading">
+          <h2 id="terms-heading" className="text-2xl font-semibold sm:text-3xl">SynoraDrive Subscription Terms and Conditions</h2>
+          <LegalDocument content={terms} />
+        </article>
+        <article id="disclaimer" className="mt-16 scroll-mt-28 break-words border-t pt-10" aria-labelledby="disclaimer-heading">
+          <h2 id="disclaimer-heading" className="text-2xl font-semibold sm:text-3xl">SynoraDrive Disclaimer</h2>
+          <LegalDocument content={disclaimer} />
+        </article>
+        <p className="mt-14 border-t pt-6 text-xs text-muted-foreground">Draft v0.1 · Last updated: 24 October 2026 · Legal review pending.</p>
       </div>
     </section>
   );
