@@ -14,24 +14,20 @@ export function LaptopShowcase({ children, openDeal, showExecutive, settled, set
   const frame = useRef<HTMLDivElement>(null);
   const device = useRef<HTMLDivElement>(null);
   const [opened, setOpened] = useState(false);
-  const [revealed, setRevealed] = useState(false);
   useEffect(() => {
-    const element = frame.current;
     const laptop = device.current;
-    if (!element || !laptop) return;
+    if (!laptop) return;
     const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
     let observer: IntersectionObserver | undefined;
     const observe = () => {
       observer?.disconnect();
-      if (motion.matches || !window.IntersectionObserver) { setOpened(true); setRevealed(true); return; }
+      if (motion.matches || !window.IntersectionObserver) { setOpened(true); return; }
       observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
           if (entry.target === laptop) setOpened(entry.isIntersecting);
-          if (entry.target === element && entry.isIntersecting) setRevealed(true);
         });
       }, { threshold: 0.12 });
       observer.observe(laptop);
-      observer.observe(element);
     };
     observe();
     motion.addEventListener("change", observe);
