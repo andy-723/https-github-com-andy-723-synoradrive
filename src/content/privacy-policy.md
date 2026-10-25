@@ -28,7 +28,7 @@ The SynoraDrive platform is built to host its primary data in Microsoft Azure, A
 
 ## 7. Cookies and analytics
 
-We use essential cookies to run this website and may use analytics to understand how it is used. Analytics data may include your IP address and device information and may be processed outside Australia. You can manage cookies through your browser settings.
+We use essential cookies to run this website and may use analytics to understand how it is used. Analytics data may include your IP address and device information and may be processed outside Australia. Analytics only run if you choose "Accept all" in our cookie banner. You can also manage cookies through your browser settings.
 
 ## 8. Security and data breaches
 
