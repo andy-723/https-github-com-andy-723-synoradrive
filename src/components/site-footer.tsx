@@ -6,7 +6,7 @@ const columns = [
     title: "Platform",
     links: [
       { to: "/platform", label: "Platform overview" },
-      { to: "/platform/compliance", label: "Compliance and OEM rebates" },
+      { to: "/platform/compliance", label: "Compliance aids" },
       { to: "/platform/operations", label: "Unified operations" },
       { to: "/platform/reporting", label: "Centralised reporting" },
       { to: "/platform/customer-experience", label: "Customer experience" },
