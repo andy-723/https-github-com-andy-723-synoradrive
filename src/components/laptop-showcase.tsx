@@ -12,12 +12,26 @@ export function LaptopShowcase({ children, openDeal, showExecutive, settled, set
   settle: () => void;
 }) {
   const device = useRef<HTMLDivElement>(null);
+  const showcase = useRef<HTMLDivElement>(null);
   const [opened, setOpened] = useState(false);
   useEffect(() => {
     const laptop = device.current;
-    if (!laptop) return;
+    const root = showcase.current;
+    if (!laptop || !root) return;
     const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
     let observer: IntersectionObserver | undefined;
+    let frame = 0;
+    // Banner opacity is driven by scroll progress so the fade is always
+    // visible on screen, not finished before the user scrolls to it.
+    const updateReveal = () => {
+      frame = 0;
+      if (motion.matches) { root.style.setProperty("--reveal", "1"); return; }
+      const rect = laptop.getBoundingClientRect();
+      const vh = window.innerHeight;
+      const progress = Math.min(1, Math.max(0, (vh * 0.92 - rect.top) / (vh * 0.55)));
+      root.style.setProperty("--reveal", progress.toFixed(3));
+    };
+    const requestReveal = () => { if (!frame) frame = requestAnimationFrame(updateReveal); };
     const observe = () => {
       observer?.disconnect();
       if (motion.matches || !window.IntersectionObserver) { setOpened(true); return; }
@@ -29,8 +43,19 @@ export function LaptopShowcase({ children, openDeal, showExecutive, settled, set
       observer.observe(laptop);
     };
     observe();
+    updateReveal();
+    window.addEventListener("scroll", requestReveal, { passive: true });
+    window.addEventListener("resize", requestReveal);
     motion.addEventListener("change", observe);
-    return () => { observer?.disconnect(); motion.removeEventListener("change", observe); };
+    motion.addEventListener("change", requestReveal);
+    return () => {
+      observer?.disconnect();
+      if (frame) cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", requestReveal);
+      window.removeEventListener("resize", requestReveal);
+      motion.removeEventListener("change", observe);
+      motion.removeEventListener("change", requestReveal);
+    };
   }, []);
   const satellites = [
     { icon: Users, label: "Clear ownership", title: "Team Accountability", detail: "Know who owns the next step", tab: "overview" as const, body: <><div className="satellite-pills"><span>Workshop · Responsible</span><span>F&I · Accountable</span></div><p className="satellite-status">One deal. Every team connected.</p></> },
