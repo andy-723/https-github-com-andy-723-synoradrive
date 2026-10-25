@@ -9,8 +9,8 @@ describe("interactive fictional deal cards", () => {
     fireEvent.click(screen.getByRole("button", { name: /DEMO-001 Alex Morgan/ }));
     expect(screen.getByRole("dialog")).toBeInTheDocument();
     fireEvent.click(screen.getByRole("button", { name: "View trade-in" }));
-    expect(screen.getByText("2018 Volkswagen Golf 110TSI")).toBeInTheDocument();
-    expect(screen.getByText("$86,100")).toBeInTheDocument();
+    expect(screen.getByText("2018 Example hatchback")).toBeInTheDocument();
+    expect(screen.getByText("$83,200")).toBeInTheDocument();
     fireEvent.click(screen.getByRole("button", { name: "Simulate final settlement" }));
     expect(screen.getByText("$0", { exact: true })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Sample settlement recorded" })).toBeDisabled();
@@ -27,7 +27,7 @@ describe("interactive fictional deal cards", () => {
     expect(screen.getByRole("tab", { name: "Document Vault" })).toHaveAttribute("data-state", "active");
     expect(screen.getByRole("dialog")).toHaveTextContent("Jordan Riley");
   });
-  it("shares the $86,100 simulated settlement with the modal without clearing other gates", () => {
+  it("shares the $83,200 simulated settlement with the modal without clearing other gates", () => {
     render(<ProductPreview />);
     fireEvent.click(screen.getByRole("button", { name: "Simulate final $0 settlement" }));
     expect(screen.getByText("Settlement cleared · other gates pending")).toBeInTheDocument();

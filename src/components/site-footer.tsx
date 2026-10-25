@@ -6,7 +6,7 @@ const columns = [
     title: "Platform",
     links: [
       { to: "/platform", label: "Platform overview" },
-      { to: "/platform/compliance", label: "Compliance and OEM rebates" },
+      { to: "/platform/compliance", label: "Compliance aids" },
       { to: "/platform/operations", label: "Unified operations" },
       { to: "/platform/reporting", label: "Centralised reporting" },
       { to: "/platform/customer-experience", label: "Customer experience" },
@@ -26,7 +26,7 @@ const columns = [
     links: [
       { to: "/security", label: "Security" },
       { to: "/privacy", label: "Privacy Policy" },
-      { to: "/terms", label: "Terms and Disclaimer" },
+      { to: "/terms", label: "Terms of Use and Disclaimer" },
     ],
   },
   {
@@ -34,7 +34,6 @@ const columns = [
     links: [
       { to: "/demo", label: "Book a demo" },
       { to: "/pricing", label: "Pricing" },
-      { to: "#", label: "Staff sign in" },
     ],
   },
 ] as const;
@@ -47,7 +46,7 @@ export function SiteFooter() {
           <div>
             <SynoraDriveLogo />
             <p className="mt-4 max-w-xs text-sm text-muted-foreground">
-              The post-contract operating layer for Australian franchised dealerships.
+              A post-contract workflow tool in development for Australian franchised dealerships.
             </p>
           </div>
           {columns.map((col) => (
@@ -56,13 +55,9 @@ export function SiteFooter() {
               <ul className="mt-4 space-y-2.5 text-sm">
                 {col.links.map((l) => (
                   <li key={l.label}>
-                    {l.to === "#" ? (
-                      <a href="#" className="text-muted-foreground transition-colors hover:text-foreground">{l.label}</a>
-                    ) : (
-                      <Link to={l.to} className="text-muted-foreground transition-colors hover:text-foreground">
-                        {l.label}
-                      </Link>
-                    )}
+                    <Link to={l.to} className="text-muted-foreground transition-colors hover:text-foreground">
+                      {l.label}
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -71,7 +66,7 @@ export function SiteFooter() {
         </div>
         {/* [CONFIRM] legal entity name and ABN before launch; LinkedIn icon once the company page is live */}
         <div className="mt-12 border-t pt-6 text-sm text-muted-foreground">
-          SynoraDrive is a product of SynoraTech Pty Ltd. Hosted in Australia. © 2026.
+          SynoraDrive is a working product name of Andrew Phan trading as SYNORA TECH. Built to host its primary data in Microsoft Azure, Australia East. © 2026 SYNORA TECH.
         </div>
       </div>
     </footer>

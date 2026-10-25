@@ -13,7 +13,7 @@ const CHIPS = [
   {
     id: "floor",
     label: "From the floor",
-    detail: "Frontline prestige dealership sales, Melbourne",
+    detail: "Australian automotive retail",
     pos: "tl",
   },
   {
@@ -25,7 +25,7 @@ const CHIPS = [
   {
     id: "built",
     label: "Built the fix",
-    detail: "One contract in, every gate enforced",
+    detail: "One contract in, a deal pack ready to check",
     pos: "tr",
   },
   {
@@ -61,7 +61,7 @@ export function FounderShowcase() {
           <div className="founder-portrait">
             <img
               src={founderPortrait}
-              alt="Andrew Phan, founder of SynoraTech, in a dealership showroom"
+              alt="Andrew Phan, founder of SYNORA TECH, in a dealership showroom"
               width={1024}
               height={1280}
               loading="lazy"
@@ -71,7 +71,7 @@ export function FounderShowcase() {
           <div className="founder-nameplate">
             <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-primary">Founder</span>
             <span className="text-lg font-semibold">Andrew Phan</span>
-            <span className="text-xs text-muted-foreground">SynoraTech · Melbourne</span>
+            <span className="text-xs text-muted-foreground">SYNORA TECH</span>
           </div>
         </div>
       </Reveal>

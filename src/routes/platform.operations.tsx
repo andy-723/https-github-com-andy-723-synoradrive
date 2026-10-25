@@ -31,7 +31,7 @@ const features = [
 ] as const;
 
 const related = [
-  { to: "/platform/compliance", label: "Compliance and OEM rebates" },
+  { to: "/platform/compliance", label: "Compliance aids" },
   { to: "/platform/reporting", label: "Centralised reporting" },
   { to: "/platform/customer-experience", label: "Customer experience" },
   { to: "/how-it-works", label: "How a deal moves" },

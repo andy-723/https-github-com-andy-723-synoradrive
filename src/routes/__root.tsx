@@ -98,7 +98,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "SynoraDrive — Dealership contract-to-delivery platform" },
       { name: "description", content: "One live view of every vehicle from signed contract to keys. Compliant deal packs, gated workflow and live month book for Australian dealers." },
-      { name: "author", content: "SynoraTech Pty Ltd" },
+      { name: "author", content: "SYNORA TECH" },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "SynoraDrive" },
       { name: "twitter:card", content: "summary_large_image" },

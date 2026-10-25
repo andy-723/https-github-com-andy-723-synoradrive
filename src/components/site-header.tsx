@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 
 const platformLinks = [
   { to: "/platform", label: "Platform overview" },
-  { to: "/platform/compliance", label: "Compliance and OEM rebates" },
+  { to: "/platform/compliance", label: "Compliance aids" },
   { to: "/platform/operations", label: "Unified operations" },
   { to: "/platform/reporting", label: "Centralised reporting" },
   { to: "/platform/customer-experience", label: "Customer experience" },
@@ -82,6 +82,9 @@ export function SiteHeader() {
   }, [open]);
   return (
     <header ref={header} className="site-nav glass sticky top-0 z-50 border-b" onKeyDown={(event) => { if (event.key === "Escape" && open) { setOpen(false); menuTrigger.current?.focus(); } }}>
+      <div role="note" className="border-b bg-muted px-4 py-1.5 text-center text-[11px] leading-snug text-muted-foreground">
+        SynoraDrive is a working prototype in development. Features marked "Planned" are not available today and may change. Pilots are subject to contract.
+      </div>
       <ScrollProgressBar />
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
         <Link to="/" aria-label="SynoraDrive home" className="nav-brand">
@@ -99,10 +102,6 @@ export function SiteHeader() {
           <Dropdown label="Company" links={companyLinks} />
         </nav>
         <div className="flex items-center gap-3">
-          {/* [CONFIRM] Staff sign in must point to the new app domain, not thedealflow.com.au */}
-          <a href="#" className="nav-link hidden text-sm text-muted-foreground sm:block">
-            Staff sign in
-          </a>
           <Button asChild className="nav-cta rounded-lg px-4 font-semibold shadow-glow">
           <Link to="/demo">
             Book a demo
