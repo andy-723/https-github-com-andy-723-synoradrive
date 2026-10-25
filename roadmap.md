@@ -42,3 +42,6 @@
 - [ ] Product screenshots with dummy data for Home and pillar pages (visual gaps in v4)
 
 - [x] Visual refresh: scroll-reveal animations, marquee ticker, glow orbs, dealership yard/workshop/handover image bands
+
+## About page visual redesign
+- [x] Cinematic founder showcase (floating arch portrait, animated dashed wiring, orbiting fact chips), journey road timeline, dealership photo band, mission/vision cards; verified desktop/mobile layouts, image loading and reduced-motion. Founder photo is a generated placeholder — replace src/assets/founder-portrait.jpg with the real photo.
