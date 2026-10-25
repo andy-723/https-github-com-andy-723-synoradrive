@@ -1,6 +1,20 @@
 import { createServerFn } from "@tanstack/react-start";
 import { contactSchema, demoSchema } from "./enquiry-schemas";
 
+async function notifyOwner(id: string, kind: string, replyTo: string, fields: [string, string | null | undefined][]) {
+  try {
+    const { sendTemplateEmail } = await import("@/lib/email-templates/send-email");
+    await sendTemplateEmail("enquiry-notification", "andrew@synoratech.ai", {
+      templateData: { kind, fields: fields.filter(([, v]) => v).map(([label, value]) => ({ label, value })) },
+      idempotencyKey: `enquiry-notification-${id}`,
+      replyTo,
+    });
+  } catch (err) {
+    // Submission is already stored; don't fail the visitor if email isn't available yet.
+    console.error("Owner notification failed", err);
+  }
+}
+
 // Simple abuse guard: max 3 submissions per email per 10 minutes.
 async function tooMany(table: "demo_requests" | "contact_submissions", email: string) {
   const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
@@ -19,7 +33,7 @@ export const submitDemoRequest = createServerFn({ method: "POST" })
     const email = data.workEmail.toLowerCase();
     if (await tooMany("demo_requests", email)) throw new Error("Too many requests. Please try again shortly.");
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
-    const { error } = await supabaseAdmin.from("demo_requests").insert({
+    const { data: row, error } = await supabaseAdmin.from("demo_requests").insert({
       full_name: data.fullName,
       work_email: email,
       mobile: data.mobile || null,
@@ -29,8 +43,13 @@ export const submitDemoRequest = createServerFn({ method: "POST" })
       dms: data.dms || null,
       interest: data.interest,
       notes: data.notes || null,
-    });
+    }).select("id").single();
     if (error) throw new Error("We couldn't save your request. Please try again.");
+    await notifyOwner(row.id, "Demo request", email, [
+      ["Name", data.fullName], ["Work email", email], ["Mobile", data.mobile], ["Role", data.role],
+      ["Dealership", data.dealership], ["Rooftops", data.rooftops], ["DMS", data.dms],
+      ["Interested in", data.interest], ["Notes", data.notes],
+    ]);
     return { ok: true };
   });
 
@@ -40,13 +59,17 @@ export const submitContact = createServerFn({ method: "POST" })
     const email = data.workEmail.toLowerCase();
     if (await tooMany("contact_submissions", email)) throw new Error("Too many messages. Please try again shortly.");
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
-    const { error } = await supabaseAdmin.from("contact_submissions").insert({
+    const { data: row, error } = await supabaseAdmin.from("contact_submissions").insert({
       name: data.name,
       work_email: email,
       organisation: data.organisation || null,
       enquiry_type: data.enquiryType,
       message: data.message,
-    });
+    }).select("id").single();
     if (error) throw new Error("We couldn't send your message. Please try again.");
+    await notifyOwner(row.id, "Contact enquiry", email, [
+      ["Name", data.name], ["Work email", email], ["Organisation", data.organisation],
+      ["Enquiry type", data.enquiryType], ["Message", data.message],
+    ]);
     return { ok: true };
   });
