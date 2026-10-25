@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { FounderShowcase } from "@/components/about-founder";
 import { ClosingCta } from "@/components/closing-cta";
-import { PageHero, SectionHead } from "@/components/marketing";
+import { SectionHead } from "@/components/marketing";
 import { Reveal } from "@/components/reveal";
 import dealershipYard from "@/assets/dealership-yard.jpg";
 import deliveryHandover from "@/assets/delivery-handover.jpg";
@@ -41,116 +41,119 @@ const JOURNEY = [
   },
 ] as const;
 
+const SHOTS = [
+  { src: dealershipYard, alt: "Dealership yard at dusk with rows of vehicles", caption: "The yard — where stock waits for its paperwork to catch up" },
+  { src: deliveryHandover, alt: "Clean key handover between dealer and customer", caption: "The handover — the moment every gate protects" },
+  { src: deliveryBayNight, alt: "Vehicle in a delivery bay at night under lights", caption: "The delivery bay — where month-end is won or lost" },
+] as const;
+
 function AboutPage() {
   return (
-    <>
-      {/* Hero */}
-      <section className="light-section bg-background text-foreground">
-        <PageHero
-          eyebrow="About"
-          title="Built from the showroom floor up."
-          intro="For decades, the way a dealership runs a car sale after the handshake has barely changed. SynoraDrive is the system we wished existed while we were working the floor."
+    <div className="dark-section bg-[oklch(0.09_0.02_280)] text-[oklch(0.96_0.01_280)]">
+      {/* Hero — yard at dusk behind the copy */}
+      <section className="relative overflow-hidden">
+        <img
+          src={dealershipYard}
+          alt=""
+          aria-hidden="true"
+          className="hero-vehicle absolute inset-0 h-full w-full object-cover"
         />
-      </section>
-      <div className="section-blend section-blend-to-dark" aria-hidden="true" />
-
-      {/* Founder showcase — dark, cinematic */}
-      <section className="dark-section bg-[oklch(0.09_0.02_280)] text-[oklch(0.96_0.01_280)]">
-        <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
-          <SectionHead
-            eyebrow="The founder"
-            title="He didn't study the problem. He sold cars through it."
-            body="Andrew Phan founded SynoraTech after years on the front line of a Melbourne prestige dealer group — re-keying contracts, chasing updates, and watching deliveries slip for want of one shared view."
-          />
-          <FounderShowcase />
+        <div className="hero-shade absolute inset-0" aria-hidden="true" />
+        <div className="relative mx-auto max-w-7xl px-6 pb-28 pt-32 lg:px-8 lg:pb-36 lg:pt-40">
+          <Reveal>
+            <div className="font-mono text-xs uppercase tracking-[0.2em] text-primary">About</div>
+            <h1 className="mt-4 max-w-3xl text-4xl font-semibold leading-tight sm:text-5xl lg:text-6xl">
+              Built from the showroom floor up.
+            </h1>
+            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+              For decades, the way a dealership runs a car sale after the handshake has barely changed.
+              SynoraDrive is the system we wished existed while we were working the floor.
+            </p>
+          </Reveal>
         </div>
       </section>
-      <div className="section-blend section-blend-to-light" aria-hidden="true" />
+
+      {/* Founder showcase */}
+      <section className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
+        <SectionHead
+          eyebrow="The founder"
+          title="He didn't study the problem. He sold cars through it."
+          body="Andrew Phan founded SynoraTech after years on the front line of a Melbourne prestige dealer group — re-keying contracts, chasing updates, and watching deliveries slip for want of one shared view."
+        />
+        <FounderShowcase />
+      </section>
 
       {/* Journey — the road from folders to SynoraDrive */}
-      <section className="light-section bg-background text-foreground">
-        <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
-          <SectionHead
-            eyebrow="The road here"
-            title="From paper folders to one connected drive."
-          />
-          <div className="about-road mt-16">
-            {JOURNEY.map((step, i) => (
-              <Reveal key={step.era} delay={i * 150} className="about-road-stop">
-                <div className="about-road-marker" aria-hidden="true">
-                  <span className="about-road-dot" />
-                </div>
-                <div className="framed-card rounded-xl border bg-card p-6">
-                  <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-primary">{step.era}</span>
-                  <h3 className="mt-2 text-xl font-semibold">{step.title}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{step.body}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
+      <section className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
+        <SectionHead
+          eyebrow="The road here"
+          title="From paper folders to one connected drive."
+        />
+        <div className="about-road mt-16">
+          {JOURNEY.map((step, i) => (
+            <Reveal key={step.era} delay={i * 150} className="about-road-stop">
+              <div className="about-road-marker" aria-hidden="true">
+                <span className="about-road-dot" />
+              </div>
+              <div className="framed-card rounded-xl border bg-card p-6">
+                <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-primary">{step.era}</span>
+                <h3 className="mt-2 text-xl font-semibold">{step.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{step.body}</p>
+              </div>
+            </Reveal>
+          ))}
         </div>
       </section>
-      <div className="section-blend section-blend-to-dark" aria-hidden="true" />
 
       {/* Photo band — the world we come from */}
-      <section className="dark-section bg-[oklch(0.09_0.02_280)] text-[oklch(0.96_0.01_280)]">
-        <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
-          <SectionHead
-            eyebrow="Where we come from"
-            title="The yard, the handover, the delivery bay."
-            body="Every screen in SynoraDrive is shaped by a real moment on a dealership floor."
-          />
-          <div className="mt-14 grid gap-6 md:grid-cols-3">
-            {[
-              { src: dealershipYard, alt: "Dealership yard at dusk with rows of vehicles", caption: "The yard — where stock waits for its paperwork to catch up" },
-              { src: deliveryHandover, alt: "Clean key handover between dealer and customer", caption: "The handover — the moment every gate protects" },
-              { src: deliveryBayNight, alt: "Vehicle in a delivery bay at night under lights", caption: "The delivery bay — where month-end is won or lost" },
-            ].map((shot, i) => (
-              <Reveal key={shot.alt} delay={i * 120}>
-                <figure className="framed-card about-shot group overflow-hidden rounded-xl border">
-                  <img
-                    src={shot.src}
-                    alt={shot.alt}
-                    loading="lazy"
-                    className="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <figcaption className="border-t border-white/10 px-4 py-3 text-xs text-muted-foreground">
-                    {shot.caption}
-                  </figcaption>
-                </figure>
-              </Reveal>
-            ))}
-          </div>
+      <section className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
+        <SectionHead
+          eyebrow="Where we come from"
+          title="The yard, the handover, the delivery bay."
+          body="Every screen in SynoraDrive is shaped by a real moment on a dealership floor."
+        />
+        <div className="mt-14 grid gap-6 md:grid-cols-3">
+          {SHOTS.map((shot, i) => (
+            <Reveal key={shot.alt} delay={i * 120}>
+              <figure className="framed-card about-shot group overflow-hidden rounded-xl border">
+                <img
+                  src={shot.src}
+                  alt={shot.alt}
+                  loading="lazy"
+                  className="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <figcaption className="border-t border-white/10 px-4 py-3 text-xs text-muted-foreground">
+                  {shot.caption}
+                </figcaption>
+              </figure>
+            </Reveal>
+          ))}
         </div>
       </section>
-      <div className="section-blend section-blend-to-light" aria-hidden="true" />
 
       {/* Mission & vision */}
-      <section className="light-section bg-background text-foreground">
-        <div className="mx-auto max-w-5xl px-6 py-24 lg:px-8">
-          <div className="grid gap-6 md:grid-cols-2">
-            <Reveal>
-              <div className="framed-card h-full rounded-xl border bg-card p-8">
-                <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-primary">Our mission</span>
-                <p className="mt-4 text-lg leading-relaxed">
-                  To replace manila folders and disconnected spreadsheets with an intelligent post-DMS operating layer, so dealership teams work faster with fewer errors and every buyer gets a smooth path from signature to keys.
-                </p>
-              </div>
-            </Reveal>
-            <Reveal delay={150}>
-              <div className="framed-card h-full rounded-xl border bg-card p-8">
-                <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-primary">Our vision</span>
-                <p className="mt-4 text-lg leading-relaxed">
-                  The operating layer between the DMS and the delivery bay for every franchised dealership in Australia, and the place where dealer principals run, measure and forecast their whole sales operation.
-                </p>
-              </div>
-            </Reveal>
-          </div>
+      <section className="mx-auto max-w-5xl px-6 py-24 lg:px-8">
+        <div className="grid gap-6 md:grid-cols-2">
+          <Reveal>
+            <div className="framed-card h-full rounded-xl border bg-card p-8">
+              <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-primary">Our mission</span>
+              <p className="mt-4 text-lg leading-relaxed">
+                To replace manila folders and disconnected spreadsheets with an intelligent post-DMS operating layer, so dealership teams work faster with fewer errors and every buyer gets a smooth path from signature to keys.
+              </p>
+            </div>
+          </Reveal>
+          <Reveal delay={150}>
+            <div className="framed-card h-full rounded-xl border bg-card p-8">
+              <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-primary">Our vision</span>
+              <p className="mt-4 text-lg leading-relaxed">
+                The operating layer between the DMS and the delivery bay for every franchised dealership in Australia, and the place where dealer principals run, measure and forecast their whole sales operation.
+              </p>
+            </div>
+          </Reveal>
         </div>
       </section>
-      <div className="section-blend section-blend-to-dark" aria-hidden="true" />
 
       <ClosingCta />
-    </>
+    </div>
   );
 }

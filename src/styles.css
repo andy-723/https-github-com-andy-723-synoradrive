@@ -527,6 +527,3 @@
 
 /* Wire + section-blend refinements */
 .founder-wire, .founder-wire-alt { vector-effect: non-scaling-stroke; }
-.section-blend { height: clamp(110px, 14vw, 200px); pointer-events: none; }
-.section-blend-to-dark { background: linear-gradient(to bottom, oklch(0.995 0.001 260), oklch(0.09 0.02 280)); }
-.section-blend-to-light { background: linear-gradient(to bottom, oklch(0.09 0.02 280), oklch(0.995 0.001 260)); }
