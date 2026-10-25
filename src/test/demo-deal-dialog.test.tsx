@@ -21,4 +21,25 @@ describe("interactive fictional deal cards", () => {
     expect(screen.getByRole("button", { name: "Sample settlement recorded" })).toBeDisabled();
     expect(screen.getByText("$0", { exact: true })).toBeInTheDocument();
   });
+  it("opens document automation directly in the document tab", () => {
+    render(<ProductPreview />);
+    fireEvent.click(screen.getByRole("button", { name: /DMS → Deal pack/ }));
+    expect(screen.getByRole("tab", { name: "Document Vault" })).toHaveAttribute("data-state", "active");
+    expect(screen.getByRole("dialog")).toHaveTextContent("Jordan Riley");
+  });
+  it("shares the $86,100 simulated settlement with the modal without clearing other gates", () => {
+    render(<ProductPreview />);
+    fireEvent.click(screen.getByRole("button", { name: "Simulate final $0 settlement" }));
+    expect(screen.getByText("Settlement cleared · other gates pending")).toBeInTheDocument();
+    fireEvent.click(screen.getByRole("button", { name: /Vehicle settlement.*Alex Morgan/ }));
+    expect(screen.getByRole("tab", { name: "Financials" })).toHaveAttribute("data-state", "active");
+    expect(screen.getByRole("button", { name: "Sample settlement recorded" })).toBeDisabled();
+    expect(screen.getByText("$0", { exact: true })).toBeInTheDocument();
+  });
+  it("reveals RACI gate owners on the five columns", () => {
+    render(<ProductPreview />);
+    fireEvent.click(screen.getByRole("button", { name: "RACI Accountability Matrix Overlay" }));
+    expect(screen.getByLabelText("Finance & Approvals RACI roles")).toHaveTextContent("Business Manager");
+    expect(screen.getByLabelText("Ready for Delivery RACI roles")).toHaveTextContent("Handover Manager");
+  });
 });
