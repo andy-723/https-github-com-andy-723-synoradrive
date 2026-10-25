@@ -20,3 +20,4 @@
 - Keep navigation as labelled link disclosures with pointer-aware opening, outside dismissal, Escape focus return, and scrollable touch menus; this preserves normal Tab navigation without imposing menu-widget keyboard rules.
 - Keep orchestration and delivery-visibility storytelling in a browser-safe presentation component with semantic SVG/CSS signals and explicit comparison controls; these explain ownership without implying live integrations or unverified outcomes.
 - Keep legal pages (Privacy, Website Terms, Disclaimer) as source-controlled Markdown in src/content rendered through the shared legal document component; unpublished drafts (e.g. subscription-terms.md) stay in source but are not imported by any route.
+- Demo and contact enquiries are validated by shared zod schemas and stored via server functions using the admin client into RLS-locked tables (no public policies); this keeps submissions private and lets owner emails be added in the same handler later.
