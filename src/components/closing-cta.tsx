@@ -21,7 +21,7 @@ export function ClosingCta() {
             Sync the floor. Drive the metric.
           </h2>
           <p className="relative mx-auto mt-5 max-w-xl text-muted-foreground">
-            Bring one of your own deal packs to a 30-minute rooftop walkthrough, and watch SynoraDrive run it from contract to keys.
+            Book a 30-minute walkthrough of the SynoraDrive prototype. See how it reads a sample contract of sale and prepares a deal pack for your staff to check. Please bring a sample or de-identified contract, not live customer documents.
           </p>
           <Link
             to="/demo"

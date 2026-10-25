@@ -28,6 +28,6 @@ export function demoRecord(deal: DemoDeal) {
     allowance: 18500,
     payout: 4200,
     deposit: 2500,
-    trade: { car: "2018 Volkswagen Golf 110TSI", colour: "Pure White", kms: "68,400 km", registration: `TRADE${sequence}`, vin: `SAMPLE-TRADE-VIN-${sequence}` },
+    trade: { car: "2018 Example hatchback", colour: "Pure White", kms: "68,400 km", registration: `TRADE${sequence}`, vin: `SAMPLE-TRADE-VIN-${sequence}` },
   };
 }

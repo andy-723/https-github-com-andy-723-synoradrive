@@ -9,7 +9,7 @@ describe("interactive fictional deal cards", () => {
     fireEvent.click(screen.getByRole("button", { name: /DEMO-001 Alex Morgan/ }));
     expect(screen.getByRole("dialog")).toBeInTheDocument();
     fireEvent.click(screen.getByRole("button", { name: "View trade-in" }));
-    expect(screen.getByText("2018 Volkswagen Golf 110TSI")).toBeInTheDocument();
+    expect(screen.getByText("2018 Example hatchback")).toBeInTheDocument();
     expect(screen.getByText("$86,100")).toBeInTheDocument();
     fireEvent.click(screen.getByRole("button", { name: "Simulate final settlement" }));
     expect(screen.getByText("$0", { exact: true })).toBeInTheDocument();

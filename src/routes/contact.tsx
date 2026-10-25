@@ -77,7 +77,7 @@ function ContactPage() {
       <PageHero
         eyebrow="Contact"
         title="Talk to us."
-        intro="Questions about partnerships, security or your account? Send us a note and the right person will reply."
+        intro="Questions about SynoraDrive, pilots, partnerships or security? Send us a note and the right person will reply."
       />
       <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-[1fr_1.4fr]">
@@ -85,13 +85,7 @@ function ContactPage() {
             {/* [CONFIRM] public email address on the final domain before launch */}
             <div>
               <h2 className="text-lg font-semibold">Direct contact</h2>
-              <p className="mt-2 text-sm text-muted-foreground">hello@synoradrive.com.au · Melbourne, Victoria</p>
-            </div>
-            <div>
-              <h2 className="text-lg font-semibold">Existing customers</h2>
-              <p className="mt-2 text-sm text-muted-foreground">
-                Staff can sign in to SynoraDrive <a href="#" className="underline hover:text-foreground">here</a>.
-              </p>
+              <p className="mt-2 text-sm text-muted-foreground">hello@synoradrive.com.au · Victoria, Australia</p>
             </div>
           </div>
           <form onSubmit={onSubmit} noValidate className="rounded-2xl border bg-card p-8">
@@ -114,7 +108,7 @@ function ContactPage() {
                 <label className={label} htmlFor="contact-type">Enquiry type *</label>
                 <select id="contact-type" className={field} value={form.enquiryType} onChange={set("enquiryType")}>
                   <option value="">Select…</option>
-                  {["General", "Partnership", "Security", "Existing customer support"].map((r) => <option key={r}>{r}</option>)}
+                  {["General", "Partnership", "Security", "Pilot enquiry"].map((r) => <option key={r}>{r}</option>)}
                 </select>
                 {errors.enquiryType && <p className="mt-1 text-xs text-destructive">{errors.enquiryType}</p>}
               </div>
@@ -127,6 +121,9 @@ function ContactPage() {
             <button type="submit" className="mt-7 w-full rounded-lg bg-brand py-3 text-sm font-semibold text-primary-foreground shadow-glow transition hover:opacity-90">
               Send message
             </button>
+            <p className="mt-4 text-xs text-muted-foreground">
+              We use the details in this form to respond to your enquiry. If you don't provide the required fields, we may not be able to reply. Your details are handled by Andrew Phan trading as SYNORA TECH and our email provider, which may store data outside Australia. See our <Link to="/privacy" className="underline hover:text-foreground">Privacy Policy</Link> for how to access or correct your information or make a complaint.
+            </p>
           </form>
         </div>
       </div>

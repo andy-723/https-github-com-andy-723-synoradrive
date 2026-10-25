@@ -10,10 +10,10 @@ import deliveryBayNight from "@/assets/delivery-bay-night.jpg";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About SynoraDrive and SynoraTech" },
-      { name: "description", content: "Built on a Melbourne dealership floor to replace manila folders and spreadsheets between contract and delivery." },
-      { property: "og:title", content: "About SynoraDrive and SynoraTech" },
-      { property: "og:description", content: "Built on a Melbourne dealership floor to replace manila folders and spreadsheets between contract and delivery." },
+      { title: "About SynoraDrive and SYNORA TECH" },
+      { name: "description", content: "A working prototype designed to replace manila folders and spreadsheets between contract and delivery." },
+      { property: "og:title", content: "About SynoraDrive and SYNORA TECH" },
+      { property: "og:description", content: "A working prototype designed to replace manila folders and spreadsheets between contract and delivery." },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/about" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -37,13 +37,13 @@ const JOURNEY = [
   {
     era: "The fix",
     title: "SynoraDrive",
-    body: "One contract in, every document generated, every gate enforced, every car visible from signature to keys — with a named owner at every stage.",
+    body: "One contract in, a deal pack prepared for staff to check, with gates and tracking on the roadmap.",
   },
 ] as const;
 
 const SHOTS = [
   { src: dealershipYard, alt: "Dealership yard at dusk with rows of vehicles", caption: "The yard — where stock waits for its paperwork to catch up" },
-  { src: deliveryHandover, alt: "Clean key handover between dealer and customer", caption: "The handover — the moment every gate protects" },
+  { src: deliveryHandover, alt: "Clean key handover between dealer and customer", caption: "The handover — the moment the paperwork leads to" },
   { src: deliveryBayNight, alt: "Vehicle in a delivery bay at night under lights", caption: "The delivery bay — where month-end is won or lost" },
 ] as const;
 
@@ -67,7 +67,7 @@ function AboutPage() {
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
               For decades, the way a dealership runs a car sale after the handshake has barely changed.
-              SynoraDrive is the system we wished existed while we were working the floor.
+              SynoraDrive is the system we wished existed.
             </p>
           </Reveal>
         </div>
@@ -77,8 +77,8 @@ function AboutPage() {
       <section className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
         <SectionHead
           eyebrow="The founder"
-          title="He didn't study the problem. He sold cars through it."
-          body="Andrew Phan founded SynoraTech after years on the front line of a Melbourne prestige dealer group — re-keying contracts, chasing updates, and watching deliveries slip for want of one shared view."
+          title="Built by someone who knows the paperwork."
+          body="Andrew Phan founded SYNORA TECH after seeing first-hand how much time Australian dealership teams spend re-keying contracts, chasing updates and waiting on paperwork."
         />
         <FounderShowcase />
       </section>
@@ -110,7 +110,7 @@ function AboutPage() {
         <SectionHead
           eyebrow="Where we come from"
           title="The yard, the handover, the delivery bay."
-          body="Every screen in SynoraDrive is shaped by a real moment on a dealership floor."
+          body="Every screen in SynoraDrive is designed around everyday dealership paperwork."
         />
         <div className="mt-14 grid gap-6 md:grid-cols-3">
           {SHOTS.map((shot, i) => (
@@ -138,7 +138,7 @@ function AboutPage() {
             <div className="framed-card h-full rounded-xl border bg-card p-8">
               <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-primary">Our mission</span>
               <p className="mt-4 text-lg leading-relaxed">
-                To replace manila folders and disconnected spreadsheets with an intelligent post-DMS operating layer, so dealership teams work faster with fewer errors and every buyer gets a smooth path from signature to keys.
+                To replace manila folders and disconnected spreadsheets with a post-DMS workflow layer designed to help dealership teams work faster and reduce re-keying errors, so every buyer gets a smooth path from signature to keys.
               </p>
             </div>
           </Reveal>

@@ -8,9 +8,9 @@ export const Route = createFileRoute("/demo")({
   head: () => ({
     meta: [
       { title: "Book a rooftop demo, SynoraDrive" },
-      { name: "description", content: "See SynoraDrive run a real deal in 30 minutes." },
+      { name: "description", content: "See the SynoraDrive prototype in 30 minutes." },
       { property: "og:title", content: "Book a rooftop demo, SynoraDrive" },
-      { property: "og:description", content: "See SynoraDrive run a real deal in 30 minutes." },
+      { property: "og:description", content: "See the SynoraDrive prototype in 30 minutes." },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/demo" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -27,7 +27,7 @@ const demoSchema = z.object({
   role: z.string().trim().nonempty("Select your role"),
   dealership: z.string().trim().nonempty("Dealership or group name is required").max(150),
   rooftops: z.string().trim().nonempty("Select the number of rooftops"),
-  dms: z.string().trim().nonempty("Select your main DMS"),
+  dms: z.string().trim().max(100).optional(),
   interest: z.string().trim().nonempty("Select what you're interested in"),
   notes: z.string().trim().max(1000).optional(),
 });
@@ -93,15 +93,15 @@ function DemoPage() {
     <section className="light-section bg-background text-foreground">
       <PageHero
         eyebrow="Book a demo"
-        title="See SynoraDrive run a real deal in 30 minutes."
-        intro="No slide deck. Bring a sample Contract of Sale, or use our demo rooftop, and watch SynoraDrive build the deal pack, check the compliance gates, coordinate PDI and aftermarket, and update the live month book."
+        title="See the SynoraDrive prototype in 30 minutes."
+        intro="Use our fictional demo data, or bring a sample or de-identified contract of sale (please don't bring live customer documents). See SynoraDrive read the contract and prepare the deal pack for staff to check. We'll also walk you through the planned workflow, gates and month book."
       />
       <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-[1fr_1.4fr]">
           <div>
             <h2 className="text-lg font-semibold">In 30 minutes you will see:</h2>
             <ul className="mt-5 space-y-3 text-sm">
-              {["A contract turned into a complete deal pack", "A deal moving through the five gated stages", "Your month book updating live"].map((item) => (
+              {["A contract read and a deal pack prepared for staff to check", "A walkthrough of the planned five-stage workflow", "A preview of planned month-book reporting (illustrative data)"].map((item) => (
                 <li key={item} className="flex gap-2"><CheckCircle2 className="mt-0.5 size-4 shrink-0 text-success" />{item}</li>
               ))}
             </ul>
@@ -144,18 +144,15 @@ function DemoPage() {
                 {errors.rooftops && <p className="mt-1 text-xs text-destructive">{errors.rooftops}</p>}
               </div>
               <div>
-                <label className={label} htmlFor="demo-dms">Main DMS *</label>
-                <select id="demo-dms" className={field} value={form.dms} onChange={set("dms")}>
-                  <option value="">Select…</option>
-                  {["Pentana eraPower", "Other (please say)"].map((r) => <option key={r}>{r}</option>)}
-                </select>
+                <label className={label} htmlFor="demo-dms">Main DMS (optional)</label>
+                <input id="demo-dms" className={field} value={form.dms} onChange={set("dms")} maxLength={100} />
                 {errors.dms && <p className="mt-1 text-xs text-destructive">{errors.dms}</p>}
               </div>
               <div>
                 <label className={label} htmlFor="demo-interest">I'm interested in *</label>
                 <select id="demo-interest" className={field} value={form.interest} onChange={set("interest")}>
                   <option value="">Select…</option>
-                  {["Demo", "Pricing", "90-day pilot"].map((r) => <option key={r}>{r}</option>)}
+                  {["Demo", "Pricing", "Pilot enquiry"].map((r) => <option key={r}>{r}</option>)}
                 </select>
                 {errors.interest && <p className="mt-1 text-xs text-destructive">{errors.interest}</p>}
               </div>
@@ -165,10 +162,10 @@ function DemoPage() {
               </div>
             </div>
             <button type="submit" className="mt-7 w-full rounded-lg bg-brand py-3 text-sm font-semibold text-primary-foreground shadow-glow transition hover:opacity-90">
-              Book my rooftop demo
+              Book my prototype demo
             </button>
             <p className="mt-4 text-xs text-muted-foreground">
-              We'll reply within one business day to set a time. We use your details only to arrange the demo. See our <Link to="/privacy" className="underline hover:text-foreground">Privacy Policy</Link>.
+              We aim to reply within one business day. Andrew Phan trading as SYNORA TECH collects the details in this form to respond to your enquiry and arrange a demo or pilot discussion. If you do not provide the required fields, we may not be able to arrange a demo. We store your details with our service providers, which may store data outside Australia. We won't send you marketing emails without your consent. Our <Link to="/privacy" className="underline hover:text-foreground">Privacy Policy</Link> explains how to access or correct your information and how to complain.
             </p>
           </form>
         </div>

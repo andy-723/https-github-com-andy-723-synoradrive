@@ -99,10 +99,6 @@ export function SiteHeader() {
           <Dropdown label="Company" links={companyLinks} />
         </nav>
         <div className="flex items-center gap-3">
-          {/* [CONFIRM] Staff sign in must point to the new app domain, not thedealflow.com.au */}
-          <a href="#" className="nav-link hidden text-sm text-muted-foreground sm:block">
-            Staff sign in
-          </a>
           <Button asChild className="nav-cta rounded-lg px-4 font-semibold shadow-glow">
           <Link to="/demo">
             Book a demo

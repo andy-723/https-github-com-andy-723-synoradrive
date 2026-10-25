@@ -8,21 +8,21 @@ import { CheckCircle2, Clock3, Lock, FileText, LayoutDashboard, BarChart3, Megap
 
 const stages = [
   { name: "In-Queue", owner: "Sales", count: 4, dot: "bg-brand-sky", deals: [
-    { id: "DEMO-001", name: "Alex Morgan", car: "BMW X5 xDrive30d", value: "$102,900", badge: "Held: Signed Order", extra: "" },
-    { id: "DEMO-002", name: "Jamie Parker", car: "BMW X2 sDrive20i", value: "$76,400", badge: "T-3", extra: "" },
+    { id: "DEMO-001", name: "Alex Morgan", car: "Example SUV (large)", value: "$100,000", badge: "Held: Signed Order", extra: "" },
+    { id: "DEMO-002", name: "Jamie Parker", car: "Example SUV (compact)", value: "$75,000", badge: "T-3", extra: "" },
   ] },
   { name: "Document Prep", owner: "Admin", count: 16, dot: "bg-primary", deals: [
-    { id: "DEMO-003", name: "Taylor Bennett", car: "BMW X1 xDrive25e", value: "$83,200", badge: "14/14 Docs Generated", extra: "CASH" },
-    { id: "DEMO-004", name: "Example Fleet Co.", car: "BMW X6", value: "$165,500", badge: "ASIC & PPSR Verified", extra: "" },
+    { id: "DEMO-003", name: "Taylor Bennett", car: "Example plug-in hybrid SUV", value: "$85,000", badge: "14/14 Docs Generated", extra: "CASH" },
+    { id: "DEMO-004", name: "Example Fleet Co.", car: "Example coupé SUV", value: "$165,000", badge: "ASIC & PPSR Verified", extra: "" },
   ] },
   { name: "Finance & Approvals", owner: "F&I", count: 5, dot: "bg-brand-violet", deals: [
-    { id: "DEMO-005", name: "Casey Ellis", car: "BMW iX1 xDrive30", value: "$86,800", badge: "NCCP Stips 11/12", extra: "Conditional" },
+    { id: "DEMO-005", name: "Casey Ellis", car: "Example electric SUV", value: "$85,000", badge: "NCCP Stips 11/12", extra: "Conditional" },
   ] },
   { name: "Workshop & PDI", owner: "Workshop", count: 3, dot: "bg-brand-sky", deals: [
-    { id: "DEMO-006", name: "Jordan Riley", car: "BMW X1 xDrive20i", value: "$72,600", badge: "VIC eRWC Clear", extra: "Needs Plate (T-1)" },
+    { id: "DEMO-006", name: "Jordan Riley", car: "Example SUV", value: "$70,000", badge: "VIC eRWC Clear", extra: "Needs Plate (T-1)" },
   ] },
   { name: "Ready for Delivery", owner: "Delivery", count: 2, dot: "bg-brand-mint", deals: [
-    { id: "DEMO-007", name: "Example Studio Co.", car: "BMW M2 Coupé", value: "$109,900", badge: "$0 Balance Cleared", extra: "Bay 2 @ 2:00 PM" },
+    { id: "DEMO-007", name: "Example Studio Co.", car: "Example coupé", value: "$110,000", badge: "$0 Balance Cleared", extra: "Bay 2 @ 2:00 PM" },
   ] },
 ];
 
@@ -119,7 +119,7 @@ export function ProductPreview() {
     </div>
     <LaptopShowcase openDeal={open} showExecutive={() => setTab("executive")} settled={settledIds.includes("DEMO-001")} settle={() => { setSelectedId("DEMO-001"); settle("DEMO-001"); }}>
       <div className="light-section h-full bg-surface text-surface-foreground">
-        <div className="laptop-browser"><span /><span /><span /><div>app.synoradrive.com.au/{tab === "board" ? "board" : "executive-doc"}</div><Lock className="size-3" /></div>
+        <div className="laptop-browser"><span /><span /><span /><div>Illustration only · fictional demo data</div><Lock className="size-3" /></div>
         <TabsContent value="board" className="mt-0"><Board selectedId={selectedId} openDeal={open} raci={raci} settledIds={settledIds} /></TabsContent><TabsContent value="executive" className="mt-0"><CommandReport /></TabsContent>
       </div>
     </LaptopShowcase>
