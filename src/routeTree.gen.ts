@@ -24,6 +24,7 @@ import { Route as PlatformComplianceRouteImport } from './routes/platform.compli
 import { Route as PlatformCustomerExperienceRouteImport } from './routes/platform.customer-experience'
 import { Route as PlatformOperationsRouteImport } from './routes/platform.operations'
 import { Route as PlatformReportingRouteImport } from './routes/platform.reporting'
+import { Route as LovableEmailTransactionalPreviewRouteImport } from './routes/lovable/email/transactional/preview'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -101,6 +102,12 @@ const PlatformReportingRoute = PlatformReportingRouteImport.update({
   path: '/platform/reporting',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LovableEmailTransactionalPreviewRoute =
+  LovableEmailTransactionalPreviewRouteImport.update({
+    id: '/lovable/email/transactional/preview',
+    path: '/lovable/email/transactional/preview',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -118,6 +125,7 @@ export interface FileRoutesByFullPath {
   '/platform/operations': typeof PlatformOperationsRoute
   '/platform/reporting': typeof PlatformReportingRoute
   '/platform/': typeof PlatformIndexRoute
+  '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -135,6 +143,7 @@ export interface FileRoutesByTo {
   '/platform/operations': typeof PlatformOperationsRoute
   '/platform/reporting': typeof PlatformReportingRoute
   '/platform': typeof PlatformIndexRoute
+  '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -153,6 +162,7 @@ export interface FileRoutesById {
   '/platform/operations': typeof PlatformOperationsRoute
   '/platform/reporting': typeof PlatformReportingRoute
   '/platform/': typeof PlatformIndexRoute
+  '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -172,6 +182,7 @@ export interface FileRouteTypes {
     | '/platform/operations'
     | '/platform/reporting'
     | '/platform/'
+    | '/lovable/email/transactional/preview'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -189,6 +200,7 @@ export interface FileRouteTypes {
     | '/platform/operations'
     | '/platform/reporting'
     | '/platform'
+    | '/lovable/email/transactional/preview'
   id:
     | '__root__'
     | '/'
@@ -206,6 +218,7 @@ export interface FileRouteTypes {
     | '/platform/operations'
     | '/platform/reporting'
     | '/platform/'
+    | '/lovable/email/transactional/preview'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -224,6 +237,7 @@ export interface RootRouteChildren {
   PlatformOperationsRoute: typeof PlatformOperationsRoute
   PlatformReportingRoute: typeof PlatformReportingRoute
   PlatformIndexRoute: typeof PlatformIndexRoute
+  LovableEmailTransactionalPreviewRoute: typeof LovableEmailTransactionalPreviewRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -333,6 +347,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PlatformReportingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/lovable/email/transactional/preview': {
+      id: '/lovable/email/transactional/preview'
+      path: '/lovable/email/transactional/preview'
+      fullPath: '/lovable/email/transactional/preview'
+      preLoaderRoute: typeof LovableEmailTransactionalPreviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -352,6 +373,7 @@ const rootRouteChildren: RootRouteChildren = {
   PlatformOperationsRoute: PlatformOperationsRoute,
   PlatformReportingRoute: PlatformReportingRoute,
   PlatformIndexRoute: PlatformIndexRoute,
+  LovableEmailTransactionalPreviewRoute: LovableEmailTransactionalPreviewRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
