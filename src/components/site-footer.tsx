@@ -26,7 +26,7 @@ const columns = [
     links: [
       { to: "/security", label: "Security" },
       { to: "/privacy", label: "Privacy Policy" },
-      { to: "/terms", label: "Terms and Disclaimer" },
+      { to: "/terms", label: "Terms of Use and Disclaimer" },
     ],
   },
   {
