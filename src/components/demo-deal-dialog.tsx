@@ -4,6 +4,7 @@ import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/compone
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { demoRecord, settlementBalance, type DemoDeal } from "@/lib/demo-deal";
+import type { DemoTab } from "@/components/laptop-showcase";
 
 const money = (value: number) => new Intl.NumberFormat("en-AU", { style: "currency", currency: "AUD", maximumFractionDigits: 0 }).format(value);
 const tabs = [
@@ -21,19 +22,20 @@ function Checklist({ items }: { items: string[] }) {
   return <ul className="divide-y divide-border">{items.map(item => <li key={item} className="flex items-start gap-3 py-4 text-sm"><CheckCircle2 className="mt-0.5 size-4 shrink-0 text-success" />{item}</li>)}</ul>;
 }
 
-export function DemoDealDialog({ deal, onClose, onReturnFocus }: { deal: DemoDeal | null; onClose: () => void; onReturnFocus: () => void }) {
+export function DemoDealDialog({ deal, onClose, onReturnFocus, initialTab = "overview", settled, onSettle }: { deal: DemoDeal | null; onClose: () => void; onReturnFocus: () => void; initialTab?: DemoTab; settled?: boolean; onSettle?: () => void }) {
   return <Dialog open={deal !== null} onOpenChange={open => { if (!open) onClose(); }}>
     <DialogContent onCloseAutoFocus={event => { event.preventDefault(); onReturnFocus(); }} className="light-section flex max-h-[90dvh] w-[calc(100%-1.5rem)] max-w-6xl flex-col gap-0 overflow-hidden rounded-lg bg-background p-0 text-foreground [&>button]:z-10 [&>button]:grid [&>button]:size-9 [&>button]:place-items-center [&>button]:bg-background">
-      {deal && <DealRecord key={deal.id} deal={deal} />}
+      {deal && <DealRecord key={`${deal.id}-${initialTab}`} deal={deal} initialTab={initialTab} sharedSettled={settled} onSettle={onSettle} />}
     </DialogContent>
   </Dialog>;
 }
 
-function DealRecord({ deal }: { deal: DemoDeal }) {
+function DealRecord({ deal, initialTab, sharedSettled, onSettle }: { deal: DemoDeal; initialTab: DemoTab; sharedSettled: boolean | undefined; onSettle: (() => void) | undefined }) {
   const record = demoRecord(deal);
-  const [settled, setSettled] = useState(deal.id === "DEMO-007");
+  const [localSettled, setSettled] = useState(deal.id === "DEMO-007");
+  const settled = sharedSettled ?? localSettled;
   const balance = settlementBalance(record.price, record.allowance, record.payout, record.deposit);
-  const [tab, setTab] = useState("overview");
+  const [tab, setTab] = useState<string>(initialTab);
   const scrollArea = useRef<HTMLDivElement | null>(null);
   const changeTab = (value: string) => {
     setTab(value);
@@ -47,7 +49,7 @@ function DealRecord({ deal }: { deal: DemoDeal }) {
       <div className="flex justify-between gap-4 border-t border-success/30 pt-3 font-semibold"><dt>Balance due</dt><dd>{money(settled ? 0 : balance)}</dd></div>
     </dl>
     <div className="mt-4 flex items-start gap-2 text-xs leading-relaxed">{settled ? <CheckCircle2 className="size-4 shrink-0 text-success" /> : <Lock className="size-4 shrink-0 text-warning" />}<span>{settled ? "Settlement check cleared · other delivery gates still apply" : "Handover held · settlement outstanding"}</span></div>
-    <Button variant="outline" size="sm" className="mt-4 h-auto min-h-10 w-full whitespace-normal" disabled={settled} onClick={() => setSettled(true)}><Wallet className="size-4 shrink-0" />{settled ? "Sample settlement recorded" : "Simulate final settlement"}</Button>
+    <Button variant="outline" size="sm" className="mt-4 h-auto min-h-11 w-full whitespace-normal" disabled={settled} onClick={() => { setSettled(true); onSettle?.(); }}><Wallet className="size-4 shrink-0" />{settled ? "Sample settlement recorded" : "Simulate final settlement"}</Button>
     <p role="status" className="mt-2 text-[10px] text-muted-foreground">{settled ? "Demo only · no payment processed." : "Simulated actions only · no payment processing."}</p>
   </section>;
 
@@ -60,7 +62,7 @@ function DealRecord({ deal }: { deal: DemoDeal }) {
     </div>
     <Tabs value={tab} onValueChange={changeTab} className="flex min-h-0 flex-1 flex-col">
       <div className="shrink-0 overflow-x-auto border-b px-3 sm:px-5">
-        <TabsList aria-label="Deal record tabs" className="h-auto w-max justify-start gap-1 rounded-none bg-transparent py-2">{tabs.map(([value, label, Icon]) => <TabsTrigger key={value} value={value} className="brand-preview-tab min-h-10 gap-2 text-xs"><Icon className="size-3.5" />{label}</TabsTrigger>)}</TabsList>
+        <TabsList aria-label="Deal record tabs" className="h-auto w-max justify-start gap-1 rounded-none bg-transparent py-2">{tabs.map(([value, label, Icon]) => <TabsTrigger key={value} value={value} className="brand-preview-tab min-h-11 gap-2 text-xs"><Icon className="size-3.5" />{label}</TabsTrigger>)}</TabsList>
       </div>
       <div ref={scrollArea} className="min-h-0 overflow-y-auto overscroll-contain px-5 py-5 sm:px-7 sm:py-6">
         <TabsContent value="overview" className="mt-0">

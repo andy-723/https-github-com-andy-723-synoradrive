@@ -11,6 +11,7 @@
 
 - Keep dealership marketing sections in the existing index route and use imported image assets with semantic overlay tokens; this preserves navigation while supporting a cohesive photographic identity.
 - Keep the interactive product demonstration in a dedicated browser-safe component with explicitly labelled sample data and simulated actions; marketing previews must not imply real integrations or send requests.
+- Keep laptop showcase framing in a lightweight CSS/SVG presentation component and share view, dialog selection and per-deal simulated settlement state in ProductPreview; satellites and board must read the same state without bypassing other delivery gates.
 - Keep expanded demo deal records and trade-in settlement arithmetic in a browser-safe shared data module, rendered through an accessible dialog; reference screenshots guide layout only and never supply public customer data.
 - Keep pricing tier data and group-total calculation in a shared module with boundary tests; this prevents per-group and per-rooftop pricing from diverging.
 - Render navbar and footer branding through a shared inline-SVG logo with unique gradient IDs and global semantic palette tokens; this keeps duplicate emblems and light/dark wordmarks consistent.

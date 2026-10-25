@@ -1,9 +1,10 @@
 import { useRef, useState } from "react";
 import { DemoDealDialog } from "@/components/demo-deal-dialog";
+import { LaptopShowcase, type DemoTab } from "@/components/laptop-showcase";
 import type { DemoDeal } from "@/lib/demo-deal";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { CheckCircle2, Clock3, Lock, FileText, LayoutDashboard, BarChart3, Megaphone, AlertTriangle, Upload } from "lucide-react";
+import { CheckCircle2, Clock3, Lock, FileText, LayoutDashboard, BarChart3, Megaphone, AlertTriangle, Upload, Users } from "lucide-react";
 
 const stages = [
   { name: "In-Queue", owner: "Sales", count: 4, dot: "bg-brand-sky", deals: [
@@ -25,47 +26,54 @@ const stages = [
   ] },
 ];
 
-function Board() {
-  const [selectedId, setSelectedId] = useState("DEMO-006");
-  const [openDeal, setOpenDeal] = useState<DemoDeal | null>(null);
-  const returnFocus = useRef<HTMLButtonElement | null>(null);
+const raciRoles = [
+  ["Sales", "GSM", "F&I", "Admin"],
+  ["Admin", "Stock Control", "Sales", "F&I"],
+  ["F&I", "Business Manager", "Sales Manager", "Admin"],
+  ["Workshop", "Service Manager", "Registration", "Sales"],
+  ["Delivery", "Handover Manager", "F&I", "Sales"],
+];
+
+function Board({ selectedId, openDeal, raci, settledIds }: { selectedId: string; openDeal: (id: string, tab: DemoTab, target: HTMLButtonElement) => void; raci: boolean; settledIds: string[] }) {
   const selected = stages.flatMap(stage => stage.deals).find(deal => deal.id === selectedId);
   if (!selected) return null;
   const ready = selected.id === "DEMO-007";
+  const settled = settledIds.includes(selected.id);
   return <>
     <div className="flex flex-wrap items-center justify-between gap-3 border-b border-surface-border px-5 py-4">
       <div><h3 className="text-sm font-semibold">Dealership Board <span className="ml-2 font-mono text-[10px] text-muted-foreground">October · Week 3</span></h3><p className="mt-1 text-[11px] text-muted-foreground">30 active deals · 9 departments · fictional demo data</p></div>
       <span className="flex items-center gap-2 text-[11px] text-muted-foreground"><Upload className="size-3.5" /> Contract of Sale intake</span>
     </div>
-    <div className="grid xl:grid-cols-[1fr_260px]">
+    <div className="raci-pipeline" aria-label="RACI ownership pipeline">Sales (R) <span>→</span> Admin (R) <span>→</span> F&I Business Manager (A) <span>→</span> Workshop PDI (R) <span>→</span> Delivery Handover (A)</div>
+    <div className="preview-board-layout">
       <div className="overflow-x-auto p-4" aria-label="Five-stage dealership board">
         <div className="grid min-w-[880px] grid-cols-5 gap-3">
           {stages.map((stage, index) => <div key={stage.name} className="min-h-[330px] border-t-2 border-surface-border bg-surface-muted p-2.5">
             <div className="flex items-center gap-1.5 text-[10px] font-semibold"><span className={`indicator-light size-1.5 shrink-0 rounded-full ${stage.dot} stage-light-${index}`} />{stage.name}</div>
             <div className="mt-1 mb-3 flex justify-between text-[10px] text-muted-foreground"><span>{stage.owner}</span><span>{stage.count}</span></div>
-            {stage.deals.map(deal => <Button key={deal.id} variant="ghost" aria-haspopup="dialog" aria-pressed={selectedId === deal.id} onClick={event => { returnFocus.current = event.currentTarget; setSelectedId(deal.id); setOpenDeal(deal); }} className={`mb-2 block h-auto w-full whitespace-normal rounded-md border bg-surface p-2.5 text-left hover:bg-accent ${selectedId === deal.id ? "border-primary ring-1 ring-primary/30" : "border-surface-border"}`}>
+            {raci && <dl className="raci-column" aria-label={`${stage.name} RACI roles`}>{raciRoles[index]?.map((owner, roleIndex) => <div key={owner}><dt>{["R", "A", "C", "I"][roleIndex]}</dt><dd>{owner}</dd></div>)}</dl>}
+            {stage.deals.map(deal => <Button key={deal.id} variant="ghost" aria-haspopup="dialog" aria-pressed={selectedId === deal.id} onClick={event => openDeal(deal.id, "overview", event.currentTarget)} className={`mb-2 block h-auto min-h-11 w-full whitespace-normal rounded-md border bg-surface p-2.5 text-left hover:bg-accent ${selectedId === deal.id ? "border-primary ring-1 ring-primary/30" : "border-surface-border"}`}>
               <div className="font-mono text-[10px] text-primary">{deal.id}</div>
               <div className="mt-1 text-[11px] font-semibold">{deal.name}</div>
               <div className="mt-1 text-[10px] text-muted-foreground">{deal.car}</div>
               <div className="mt-2 text-xs font-semibold">{deal.value}</div>
-              <div className="mt-2 rounded-sm bg-accent px-1.5 py-1 text-[9px] leading-relaxed text-accent-foreground">{deal.badge}</div>
+              <div className="mt-2 rounded-sm bg-accent px-1.5 py-1 text-[9px] leading-relaxed text-accent-foreground">{settledIds.includes(deal.id) ? "$0 Balance Cleared" : deal.badge}</div>
               {deal.extra && <div className="mt-1 text-[9px] text-muted-foreground">{deal.extra}</div>}
             </Button>)}
           </div>)}
         </div>
       </div>
-      <aside className="border-t border-surface-border p-5 xl:border-t-0 xl:border-l" aria-label="Deal Card inspector">
+      <aside className="preview-inspector border-t border-surface-border p-5" aria-label="Deal Card inspector">
         <div className="flex items-center gap-2 text-[10px] font-semibold uppercase text-muted-foreground"><FileText className="size-3.5" /> Deal Card</div>
         <h3 className="mt-3 text-sm font-semibold">{selected.name}</h3><p className="mt-1 font-mono text-[10px] text-primary">{selected.id}</p><p className="mt-1 text-xs text-muted-foreground">{selected.car}</p>
         <div className="mt-5 space-y-4 text-[11px] leading-relaxed">
           <div className="flex gap-2"><CheckCircle2 className="mt-0.5 size-4 shrink-0 text-success" />Pentana Contract of Sale parsed</div>
           <div className="flex gap-2"><CheckCircle2 className="mt-0.5 size-4 shrink-0 text-success" />14 Statutory & Showroom PDFs generated</div>
-          <div className="flex gap-2">{ready ? <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-success" /> : <Clock3 className="mt-0.5 size-4 shrink-0 text-warning" />}Finance settlement ($0 Rec Check)</div>
+          <div className="flex gap-2">{settled ? <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-success" /> : <Clock3 className="mt-0.5 size-4 shrink-0 text-warning" />}Finance settlement ({settled ? "$0 cleared" : "$0 Rec Check"})</div>
         </div>
-        <div className="mt-5 border-t border-surface-border pt-4"><div className="flex items-center gap-2 text-[11px] text-muted-foreground"><Lock className="size-3.5" />Handover Gate</div><p className="mt-2 text-xs font-semibold">{ready ? "Cleared · Bay 2 @ 2:00 PM" : selected.id === "DEMO-006" ? "Awaiting Plate Allocation" : "Awaiting Finance Settlement"}</p></div>
+        <div className="mt-5 border-t border-surface-border pt-4"><div className="flex items-center gap-2 text-[11px] text-muted-foreground"><Lock className="size-3.5" />Handover Gate</div><p className="mt-2 text-xs font-semibold">{ready ? "Cleared · Bay 2 @ 2:00 PM" : selected.id === "DEMO-006" ? "Awaiting Plate Allocation" : settled ? "Settlement cleared · other gates pending" : "Awaiting Finance Settlement"}</p></div>
       </aside>
     </div>
-    <DemoDealDialog deal={openDeal} onClose={() => setOpenDeal(null)} onReturnFocus={() => returnFocus.current?.focus({ preventScroll: true })} />
   </>;
 }
 
@@ -88,14 +96,33 @@ function ExecutiveLog() {
 
 export function ProductPreview() {
   const [tab, setTab] = useState("board");
-  return <Tabs value={tab} onValueChange={setTab}>
-    <TabsList className="mb-5 grid h-auto w-full grid-cols-1 gap-1 p-1 sm:inline-flex sm:w-auto" aria-label="Platform preview">
-      <TabsTrigger value="board" className="brand-preview-tab gap-2 whitespace-normal py-3 text-xs"><LayoutDashboard className="size-4 shrink-0" />Live Dealership Board (Frontline)</TabsTrigger>
+  const [raci, setRaci] = useState(false);
+  const [selectedId, setSelectedId] = useState("DEMO-006");
+  const [openDeal, setOpenDeal] = useState<DemoDeal | null>(null);
+  const [initialTab, setInitialTab] = useState<DemoTab>("overview");
+  const [settledIds, setSettledIds] = useState(["DEMO-007"]);
+  const returnFocus = useRef<HTMLButtonElement | null>(null);
+  const open = (id: string, destination: DemoTab, target: HTMLButtonElement) => {
+    const deal = stages.flatMap(stage => stage.deals).find(item => item.id === id);
+    if (!deal) return;
+    returnFocus.current = target;
+    setSelectedId(id); setInitialTab(destination); setOpenDeal(deal);
+  };
+  const settle = (id: string) => setSettledIds(ids => ids.includes(id) ? ids : [...ids, id]);
+  return <Tabs value={tab} onValueChange={setTab} className="product-laptop-preview">
+    <div className="showcase-controls">
+    <TabsList className="showcase-tabs grid h-auto w-full grid-cols-1 gap-1 p-1 sm:inline-flex sm:w-auto" aria-label="Platform preview">
+      <TabsTrigger value="board" className="brand-preview-tab gap-2 whitespace-normal py-3 text-xs"><LayoutDashboard className="size-4 shrink-0" />Live Dealership Board (Frontline RACI Kanban)</TabsTrigger>
       <TabsTrigger value="executive" className="brand-preview-tab gap-2 whitespace-normal py-3 text-xs"><BarChart3 className="size-4 shrink-0" />DP & GSM Executive Sales Log (Quota & Rebates)</TabsTrigger>
     </TabsList>
-    <div className="overflow-hidden rounded-lg border bg-card p-2 shadow-elegant">
-      <div className="flex items-center gap-1.5 px-3 py-3"><span className="size-2 rounded-full bg-muted" /><span className="size-2 rounded-full bg-muted" /><span className="size-2 rounded-full bg-muted" /><span className="ml-2 break-all font-mono text-[10px] text-muted-foreground">app.synoradrive.com.au/{tab === "board" ? "board" : "executive-doc"}</span></div>
-      <div className="overflow-hidden rounded-md bg-surface text-surface-foreground"><TabsContent value="board" className="mt-0"><Board /></TabsContent><TabsContent value="executive" className="mt-0"><ExecutiveLog /></TabsContent></div>
+    <Button variant="outline" className="raci-toggle min-h-11 whitespace-normal text-xs" aria-pressed={raci} onClick={() => { setRaci(value => !value); setTab("board"); }}><Users className="size-4" />RACI Accountability Matrix Overlay</Button>
     </div>
+    <LaptopShowcase openDeal={open} showExecutive={() => setTab("executive")} settled={settledIds.includes("DEMO-001")} settle={() => { setSelectedId("DEMO-001"); settle("DEMO-001"); }}>
+      <div className="light-section h-full bg-surface text-surface-foreground">
+        <div className="laptop-browser"><span /><span /><span /><div>app.synoradrive.com.au/{tab === "board" ? "board" : "executive-doc"}</div><Lock className="size-3" /></div>
+        <TabsContent value="board" className="mt-0"><Board selectedId={selectedId} openDeal={open} raci={raci} settledIds={settledIds} /></TabsContent><TabsContent value="executive" className="mt-0"><ExecutiveLog /></TabsContent>
+      </div>
+    </LaptopShowcase>
+    <DemoDealDialog deal={openDeal} initialTab={initialTab} settled={openDeal ? settledIds.includes(openDeal.id) : false} onSettle={() => { if (openDeal) settle(openDeal.id); }} onClose={() => setOpenDeal(null)} onReturnFocus={() => returnFocus.current?.focus({ preventScroll: true })} />
   </Tabs>;
 }
