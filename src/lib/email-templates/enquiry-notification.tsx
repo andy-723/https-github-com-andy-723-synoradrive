@@ -30,7 +30,7 @@ const EnquiryNotification = ({ kind = 'New enquiry', fields = [] }: Props) => (
 
 export const template = {
   component: EnquiryNotification,
-  subject: (d: Record<string, any>) => `${d.kind ?? 'New enquiry'} — SynoraDrive website`,
+  subject: (d: Record<string, any>) => `${d['kind'] ?? 'New enquiry'} — SynoraDrive website`,
   displayName: 'Website enquiry (to owner)',
   to: 'andrew@synoratech.ai',
   previewData: {
