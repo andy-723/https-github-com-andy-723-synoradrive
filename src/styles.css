@@ -475,7 +475,7 @@
 
 .founder-portrait { position: relative; width: min(320px, 70vw); }
 .founder-portrait img { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 160px 160px 24px 24px; border: 1px solid color-mix(in oklab, var(--logo-accent, #00f5d4) 35%, transparent); box-shadow: 0 30px 80px -20px color-mix(in oklab, var(--brand-violet, #6366f1) 45%, transparent), 0 0 0 8px color-mix(in oklab, var(--logo-accent, #00f5d4) 6%, transparent); }
-.founder-portrait-ring { position: absolute; inset: -16px; border: 1.5px dashed color-mix(in oklab, var(--logo-accent, #00f5d4) 45%, transparent); border-radius: 180px 180px 36px 36px; animation: founder-ring-spin 24s linear infinite; pointer-events: none; }
+.founder-portrait-ring { position: absolute; inset: -16px; border: 1.5px dashed color-mix(in oklab, var(--logo-accent, #00f5d4) 45%, transparent); border-radius: 180px 180px 36px 36px; animation: founder-ring-spin 5s ease-in-out infinite; pointer-events: none; }
 @keyframes founder-ring-spin { 0%, 100% { opacity: 0.9; scale: 1; } 50% { opacity: 0.5; scale: 1.015; } }
 
 .founder-nameplate { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 12px 24px; border: 1px solid color-mix(in oklab, var(--logo-accent, #00f5d4) 25%, transparent); border-radius: 12px; background: color-mix(in oklab, var(--logo-accent, #00f5d4) 5%, transparent); backdrop-filter: blur(10px); }
