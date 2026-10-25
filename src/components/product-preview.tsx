@@ -68,7 +68,7 @@ function Board({ selectedId, openDeal, raci, settledIds }: { selectedId: string;
         <h3 className="mt-3 text-sm font-semibold">{selected.name}</h3><p className="mt-1 font-mono text-[10px] text-primary">{selected.id}</p><p className="mt-1 text-xs text-muted-foreground">{selected.car}</p>
         <div className="mt-5 space-y-4 text-[11px] leading-relaxed">
           <div className="flex gap-2"><CheckCircle2 className="mt-0.5 size-4 shrink-0 text-success" />Contract of sale read</div>
-          <div className="flex gap-2"><CheckCircle2 className="mt-0.5 size-4 shrink-0 text-success" />14 Statutory & Showroom PDFs generated</div>
+          <div className="flex gap-2"><CheckCircle2 className="mt-0.5 size-4 shrink-0 text-success" />Deal pack prepared — awaiting staff check</div>
           <div className="flex gap-2">{settled ? <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-success" /> : <Clock3 className="mt-0.5 size-4 shrink-0 text-warning" />}Finance settlement ({settled ? "$0 cleared" : "$0 Rec Check"})</div>
         </div>
         <div className="mt-5 border-t border-surface-border pt-4"><div className="flex items-center gap-2 text-[11px] text-muted-foreground"><Lock className="size-3.5" />Handover Gate</div><p className="mt-2 text-xs font-semibold">{ready ? "Cleared · Bay 2 @ 2:00 PM" : selected.id === "DEMO-006" ? "Awaiting Plate Allocation" : settled ? "Settlement cleared · other gates pending" : "Awaiting Finance Settlement"}</p></div>
