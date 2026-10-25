@@ -462,7 +462,7 @@
 }
 
 /* ===== About page: founder showcase + journey road ===== */
-.founder-stage { position: relative; margin-top: 4rem; min-height: 640px; }
+.founder-stage { position: relative; margin-top: 4rem; min-height: 560px; }
 .founder-wires { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
 .founder-wire { stroke: var(--logo-accent, #00f5d4); stroke-width: 1.5; stroke-dasharray: 6 8; opacity: 0.5; animation: founder-wire-flow 3.2s linear infinite; }
 .founder-wire-alt { stroke: var(--brand-violet, #6366f1); animation-duration: 4.4s; animation-direction: reverse; }
@@ -482,9 +482,9 @@
 
 .founder-chip { position: absolute; z-index: 3; width: min(240px, 30%); }
 .founder-chip-tl { top: 6%; left: 2%; }
-.founder-chip-bl { bottom: 18%; left: 4%; }
+.founder-chip-bl { bottom: 6%; left: 4%; }
 .founder-chip-tr { top: 14%; right: 2%; }
-.founder-chip-br { bottom: 12%; right: 4%; }
+.founder-chip-br { bottom: 2%; right: 4%; }
 .founder-chip-inner { display: block; padding: 14px 16px; border: 1px solid color-mix(in oklab, var(--brand-violet, #6366f1) 35%, transparent); border-radius: 12px; background: color-mix(in oklab, var(--brand-violet, #6366f1) 8%, oklch(0.12 0.02 280)); backdrop-filter: blur(12px); box-shadow: 0 16px 40px -16px rgb(0 0 0 / 0.6); animation: founder-chip-drift 7s ease-in-out infinite; }
 .founder-chip-bl .founder-chip-inner { animation-delay: -2s; }
 .founder-chip-tr .founder-chip-inner { animation-delay: -3.5s; }
