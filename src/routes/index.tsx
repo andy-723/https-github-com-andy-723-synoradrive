@@ -15,9 +15,9 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "SynoraDrive: Dealership contract-to-delivery platform" },
-      { name: "description", content: "One live view of every vehicle from signed contract to keys. Compliant deal packs, gated workflow and live month book for Australian dealers." },
+      { name: "description", content: "A working prototype for Australian dealerships: reads the contract-of-sale PDF and prepares the deal pack for staff to check. Gated workflow and month-book reporting planned." },
       { property: "og:title", content: "SynoraDrive: Dealership contract-to-delivery platform" },
-      { property: "og:description", content: "One live view of every vehicle from signed contract to keys. Compliant deal packs, gated workflow and live month book for Australian dealers." },
+      { property: "og:description", content: "A working prototype for Australian dealerships: reads the contract-of-sale PDF and prepares the deal pack for staff to check. Gated workflow and month-book reporting planned." },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -58,23 +58,23 @@ function Hero() {
       <div className="mx-auto flex min-h-[680px] max-w-7xl flex-col justify-center px-6 py-20 lg:px-8">
         <div className="hero-copy max-w-2xl">
           <div className="mb-7 flex items-center gap-3 font-mono text-xs text-primary-glow"><span className="h-px w-8 bg-primary-glow" /> THE NEXT SHIFT IN AUTOMOTIVE OPERATIONS</div>
-          <h1 className="text-5xl font-semibold leading-[1.08] sm:text-6xl lg:text-7xl">SynoraDrive<span className="mt-3 block text-3xl font-normal leading-tight sm:text-4xl lg:text-5xl">Intelligence behind<br />every handover.</span></h1>
-          <p className="mt-6 max-w-lg text-base leading-relaxed text-muted-foreground sm:text-lg">One live operating layer for every vehicle, from signed Contract of Sale to customer keys. Every deal pack generated, every compliance gate checked, every department working in parallel. No more chasing manila folders.</p>
+          <h1 className="text-5xl font-semibold leading-[1.08] sm:text-6xl lg:text-7xl">SynoraDrive<span className="mt-3 block text-3xl font-normal leading-tight sm:text-4xl lg:text-5xl">One deal record behind<br />every handover.</span></h1>
+          <p className="mt-6 max-w-lg text-base leading-relaxed text-muted-foreground sm:text-lg">SynoraDrive is a working prototype. It reads the contract-of-sale PDFs your staff already produce and prepares the deal pack for staff to check before it goes anywhere. Stage gates and departmental workflow are in development.</p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Button asChild size="lg" className="h-12 bg-brand"><Link to="/demo">Book a rooftop demo <ArrowRight /></Link></Button>
+            <Button asChild size="lg" className="h-12 bg-brand"><Link to="/demo">Book a prototype demo <ArrowRight /></Link></Button>
             <Button asChild variant="outline" size="lg" className="h-12 border-foreground/25 bg-background/30"><Link to="/platform">Explore the platform <ArrowRight /></Link></Button>
           </div>
           <div className="mt-10 flex flex-wrap gap-x-6 gap-y-3 text-xs text-muted-foreground">
-            <span className="flex items-center gap-2"><Cloud className="size-4 text-primary-glow" /> Hosted in Australia on Microsoft Azure</span>
-            <span className="flex items-center gap-2"><KeyRound className="size-4 text-primary-glow" /> Staff multi-factor sign-in</span>
-            <span className="flex items-center gap-2"><Building2 className="size-4 text-primary-glow" /> Built and running on a Melbourne prestige dealership floor</span>
+            <span className="flex items-center gap-2"><Cloud className="size-4 text-primary-glow" /> Built to host its primary data in Microsoft Azure, Australia East</span>
+            <span className="flex items-center gap-2"><KeyRound className="size-4 text-primary-glow" /> Staff password sign-in (multi-factor sign-in planned)</span>
+            <span className="flex items-center gap-2"><Building2 className="size-4 text-primary-glow" /> Working prototype · pilot dealerships wanted, subject to contract</span>
           </div>
         </div>
       </div>
       <div className="border-t border-foreground/15 bg-background/60">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-6 py-5 font-mono text-[10px] text-muted-foreground sm:text-xs lg:px-8">
-          <span className="flex items-center gap-2"><span className="indicator-light size-1.5 rounded-full bg-success" /> BUILT FOR THE DEALERSHIP FLOOR</span>
-          <span>SIGNED CONTRACT → DEAL PACK → FIVE GATED STAGES → DELIVERY</span>
+          <span className="flex items-center gap-2"><span className="indicator-light size-1.5 rounded-full bg-success" /> DESIGNED FOR THE DEALERSHIP FLOOR</span>
+          <span>SIGNED CONTRACT → DEAL PACK → PLANNED: FIVE GATED STAGES → DELIVERY</span>
           <Link to="/how-it-works" className="flex items-center gap-2 text-foreground">SEE HOW A DEAL MOVES <ArrowRight className="size-4" /></Link>
         </div>
       </div>
@@ -83,13 +83,13 @@ function Hero() {
 }
 
 function WorksWith() {
-  const tools = ["Pentana eraPower Contracts of Sale", "VicRoads registration and transfer forms", "PPSR certificates", "ASIC company extracts", "ACCC new-car rights notices", "DocuSign", "Microsoft 365"];
+  const tools = ["Contract-of-sale PDFs from your DMS", "Victorian registration and transfer forms", "PPSR certificates (planned)", "Company extracts (planned)"];
   return (
     <section className="light-section border-y bg-background text-foreground">
       <div className="mx-auto max-w-7xl px-6 pt-10 lg:px-8">
-        <div className="text-[10px] font-semibold uppercase tracking-wider text-logo-accent">Works with the tools and documents your dealership already uses</div>
+        <div className="text-[10px] font-semibold uppercase tracking-wider text-logo-accent">Designed around the documents your dealership already produces</div>
       </div>
-      <div className="marquee mt-4 pb-10 text-[11px] text-muted-foreground" aria-label="Compatible tools and documents">
+      <div className="marquee mt-4 pb-10 text-[11px] text-muted-foreground" aria-label="Documents SynoraDrive is designed around">
         <div className="marquee-track px-3">
           {[...tools, ...tools].map((name, i) => (
             <span key={`${name}-${i}`} aria-hidden={i >= tools.length} className="shrink-0 rounded-full border border-foreground/10 bg-background px-3 py-1.5">{name}</span>
@@ -106,11 +106,11 @@ function Positioning() {
       <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
         <Reveal className="max-w-3xl">
           <h2 className="text-3xl font-semibold leading-tight sm:text-5xl">Your DMS runs the books.<br />SynoraDrive runs the deal.</h2>
-          <p className="mt-6 leading-relaxed text-muted-foreground">The most expensive, error-prone part of a car sale is the two to six weeks after the buyer signs. Sales, stock control, the Business Manager, aftermarket, the workshop and the rego desk pass one car between them using folders, whiteboards and spreadsheets.</p>
-          <p className="mt-4 leading-relaxed text-muted-foreground">SynoraDrive is the post-contract operating layer for franchised dealerships. Drop in a signed Contract of Sale from your DMS, and SynoraDrive builds the deal pack, enforces your compliance and finance gates, and runs every department in parallel until the keys are in the customer's hand.</p>
+          <p className="mt-6 leading-relaxed text-muted-foreground">The weeks after the buyer signs can be one of the most paper-heavy parts of a car sale. Sales, stock control, the Business Manager, aftermarket, the workshop and the rego desk pass one car between them using folders, whiteboards and spreadsheets.</p>
+          <p className="mt-4 leading-relaxed text-muted-foreground">Upload a signed contract-of-sale PDF from your DMS. The SynoraDrive prototype prepares the deal pack for your staff to preview and check, then download or print. Compliance and finance gates and parallel departmental tasks are planned.</p>
         </Reveal>
         <div className="mt-10 flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-xs text-muted-foreground">
-          {["Signed contract", "Deal pack built", "Five gated stages", "On-time delivery and a live month book"].map((step, i) => (
+          {["Signed contract", "Deal pack prepared for staff to check", "Planned: five gated stages", "Planned: delivery tracking and month-book reporting"].map((step, i) => (
             <Reveal key={step} as="span" delay={i * 120} className="flex items-center gap-3">
               {i > 0 && <ArrowRight className="size-3.5 text-primary" />}
               <span className="rounded-full border bg-card px-3 py-1.5">{step}</span>
@@ -124,10 +124,10 @@ function Positioning() {
 
 function Pillars() {
   const pillars = [
-    { Icon: ShieldCheck, t: "Compliance and OEM rebate protection", b: "Every deal is built inside a digital deal jacket with a checklist for its deal type, ASIC deferred sales tracking and a Pre-Reported (RDA) watchlist. Files are complete before handover, protecting your OEM money and standing up to audit.", to: "/platform/compliance" },
-    { Icon: Workflow, t: "Unified operations", b: "One live deal card across five gated stages, with sales, stock, F&I, aftermarket, workshop, rego and delivery on the same board. Parallel tasks and on-deal @mentions replace status-chasing calls.", to: "/platform/operations" },
-    { Icon: Gauge, t: "Centralised reporting", b: "Retire the spreadsheet tracker. Your live month book shows locked deliveries, scheduled go-outs, the RDA watchlist and a weighted prospect pipeline in one view.", to: "/platform/reporting" },
-    { Icon: Users, t: "A better customer experience", b: "Buyers get a private, dealer-branded link to upload their licence and finance documents from their phone and sign by DocuSign ahead of time. Pickup day is about the car, not the paperwork.", to: "/platform/customer-experience" },
+    { Icon: ShieldCheck, t: "Compliance aids", b: "Planned: a deal-type checklist, deferred-sales-model date tracking for add-on insurance, and a pre-reported (RDA) vehicle watchlist. Designed to help staff see what is missing before handover. These are aids only. They do not guarantee compliance, OEM incentive payments or audit outcomes.", to: "/platform/compliance" },
+    { Icon: Workflow, t: "Unified operations", b: "Planned: one deal card across five gated stages, with sales, stock, F&I, aftermarket, workshop, rego and delivery on the same board. Designed to reduce status-chasing calls.", to: "/platform/operations" },
+    { Icon: Gauge, t: "Centralised reporting", b: "Planned: a month book designed to show locked deliveries, scheduled go-outs, the RDA watchlist and a weighted prospect pipeline in one view.", to: "/platform/reporting" },
+    { Icon: Users, t: "A better customer experience", b: "Planned: a private, dealer-branded link for buyers to upload documents from their phone, and DocuSign e-signature (subject to agreement with DocuSign).", to: "/platform/customer-experience" },
   ] as const;
   return (
     <section className="light-section border-t bg-background text-foreground">
@@ -155,7 +155,7 @@ function WorkflowTeaser() {
     <section className="light-section mist-section border-t bg-background text-foreground">
       <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
         <Reveal className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
-          <h2 className="max-w-xl text-3xl font-semibold sm:text-4xl">Five stages. Every gate checked.</h2>
+          <h2 className="max-w-xl text-3xl font-semibold sm:text-4xl">Five planned stages, each with a gate your team sets.</h2>
           <Link to="/how-it-works" className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary">See how a deal moves <ArrowRight className="size-4" /></Link>
         </Reveal>
         <div className="mt-12 grid gap-4 md:grid-cols-5">
@@ -178,9 +178,9 @@ function ProductView() {
     <section className="product-showcase-section border-t text-foreground" aria-labelledby="product-view-title">
       <div className="mx-auto max-w-[1600px] px-5 py-24 sm:px-8">
         <Reveal className="mx-auto mb-10 max-w-3xl text-center">
-          <div className="showcase-eyebrow font-mono text-[10px] sm:text-xs">PRODUCT VIEW · RACI PROJECT KANBAN & LIVE OPERATING LAYER</div>
+          <div className="showcase-eyebrow font-mono text-[10px] sm:text-xs">ILLUSTRATIVE PRODUCT CONCEPT · FICTIONAL DEMO DATA</div>
           <h2 id="product-view-title" className="mt-5 text-3xl font-semibold leading-tight sm:text-5xl">Every car is a project.<br />Every stage has a RACI owner.</h2>
-          <p className="mt-5 text-sm leading-relaxed text-muted-foreground">Watch a vehicle cycle from In-Queue to Delivery inside one live Kanban workspace. Every department knows who is Responsible (R), who is Accountable (A) for the gate, and what is holding handover back.</p>
+          <p className="mt-5 text-sm leading-relaxed text-muted-foreground">An illustration of the planned board, using fictional demo data: a vehicle cycles from In-Queue to Delivery, and every department can see who is Responsible (R), who is Accountable (A) for the gate, and what is holding handover back.</p>
         </Reveal>
         <ProductPreview />
       </div>
@@ -195,9 +195,9 @@ function ProofBand() {
       <div className="yard-shade absolute inset-0 -z-10" />
       <div className="mx-auto max-w-7xl px-6 py-32 lg:px-8">
         <Reveal>
-          <div className="font-mono text-xs uppercase tracking-[0.2em] text-primary-glow">Proof</div>
-          <h2 className="mt-4 max-w-2xl text-3xl font-semibold sm:text-4xl">Built on the dealership floor, not in a boardroom.</h2>
-          <p className="mt-5 max-w-2xl leading-relaxed text-muted-foreground">SynoraDrive was built inside a working Melbourne prestige dealer group and has run in daily production since September 2026 across three rooftops. Every gate, escalation timer and document rule exists because a real deal went wrong without it.</p>
+          <div className="font-mono text-xs uppercase tracking-[0.2em] text-primary-glow">Where we are</div>
+          <h2 className="mt-4 max-w-2xl text-3xl font-semibold sm:text-4xl">Where we are.</h2>
+          <p className="mt-5 max-w-2xl leading-relaxed text-muted-foreground">SynoraDrive is a working prototype. It is not yet in production with any dealership. We are looking for pilot dealerships, subject to contract.</p>
         </Reveal>
       </div>
     </section>
@@ -211,8 +211,8 @@ function RoiTeaser() {
         <Reveal className="flex flex-col justify-between gap-8 md:flex-row md:items-center">
           <div className="max-w-xl">
             <h2 className="text-3xl font-semibold sm:text-4xl">What does a manual deal folder cost your rooftop?</h2>
-            <p className="mt-4 text-muted-foreground">At 60 deals a month, saving 45 minutes a deal returns 45 staff hours a month to the floor.</p>
-            <p className="mt-2 text-xs text-muted-foreground">Estimates from the SynoraDrive business plan, not measured results.</p>
+            <p className="mt-4 text-muted-foreground">Illustrative example: at 60 deliveries a month, if each deal pack took 45 minutes less to prepare, that would free up 45 staff hours a month.</p>
+            <p className="mt-2 text-xs text-muted-foreground">This is arithmetic on assumed inputs, not a measured result. SynoraDrive has not yet been measured in production, and actual results will vary.</p>
           </div>
           <Link to="/pricing" className="inline-flex shrink-0 items-center gap-2 rounded-lg bg-brand px-6 py-3 text-sm font-semibold text-primary-foreground shadow-glow">
             Estimate your rooftop <ArrowRight className="size-4" />

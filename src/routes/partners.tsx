@@ -23,17 +23,17 @@ const partnerTypes = [
   {
     Icon: Plug,
     t: "DMS, CRM and digital retail providers",
-    b: "Connect your lead-to-contract tools to SynoraDrive's post-contract compliance and delivery layer.",
+    b: "Talk to us about how your lead-to-contract tools could work alongside SynoraDrive's planned post-contract workflow.",
   },
   {
     Icon: Calculator,
     t: "Dealer accountants and advisory firms",
-    b: "Give dealer group clients a practical lever to protect OEM rebates, tighten audit readiness and cut holding days.",
+    b: "Explore a tool designed to help dealer group clients keep deal files complete and reduce paperwork delays.",
   },
   {
     Icon: Users,
     t: "Automotive associations",
-    b: "Help member dealerships modernise compliance and cut admin cost per car sold.",
+    b: "Explore a tool designed to help member dealerships reduce paperwork.",
   },
   {
     Icon: Handshake,
@@ -49,7 +49,7 @@ function PartnersPage() {
         <PageHero
           eyebrow="Partner with us"
           title="Better together."
-          intro="SynoraDrive is DMS-agnostic by design. It reads the contract your systems already produce instead of competing with them, which makes it a natural partner for technology providers, industry bodies and dealership advisers."
+          intro="SynoraDrive is designed to read the contract your systems already produce, rather than replace them. We'd like to talk with technology providers, industry bodies and dealership advisers. We have no partnerships in place today. Planned integrations with dealer management systems are subject to partner agreements."
         >
           <div className="mt-7">
             <Link to="/contact" className="inline-flex items-center gap-2 rounded-lg bg-brand px-6 py-3 text-sm font-semibold text-primary-foreground shadow-glow">

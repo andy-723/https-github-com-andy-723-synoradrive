@@ -6,10 +6,10 @@ import { ArrowRight, CheckCircle2 } from "lucide-react";
 export const Route = createFileRoute("/platform/compliance")({
   head: () => ({
     meta: [
-      { title: "Compliance and OEM rebate protection, SynoraDrive" },
-      { name: "description", content: "Deal-type checklists, enforced stage gates, ASIC DSM tracking and an RDA watchlist that keep every deal file complete before handover." },
-      { property: "og:title", content: "Compliance and OEM rebate protection, SynoraDrive" },
-      { property: "og:description", content: "Deal-type checklists, enforced stage gates, ASIC DSM tracking and an RDA watchlist that keep every deal file complete before handover." },
+      { title: "Compliance aids, SynoraDrive" },
+      { name: "description", content: "Planned compliance aids: deal-type checklists, stage gates, deferred-sales date tracking and an RDA watchlist. Aids only; they do not guarantee compliance." },
+      { property: "og:title", content: "Compliance aids, SynoraDrive" },
+      { property: "og:description", content: "Planned compliance aids: deal-type checklists, stage gates, deferred-sales date tracking and an RDA watchlist. Aids only; they do not guarantee compliance." },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/platform/compliance" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -20,14 +20,14 @@ export const Route = createFileRoute("/platform/compliance")({
 });
 
 const features = [
-  ["Enforced gates on every deal", "A car cannot move to the next stage until its gate is met, such as a generated deal pack and a signed order before Finance & Approvals."],
-  ["A checklist for every deal and buyer type", "New, Demo, Used, company and fleet deals each get their exact documents: Authority to Register, the ACCC new-car rights notice, Form 4, transfer papers, PPSR certificate and ASIC company extract."],
-  ["ASIC deferred sales model built in", "The four-clear-day blackout before add-on insurance can be sold is tracked on every deal, so the Business Manager can see exactly when a deal is clear."],
-  ["Pre-Reported (RDA) watchlist", "Reported vehicles are matched to live deals and delivery dates, so management never loses sight of a reported unit awaiting handover before OEM cut-off."],
-  ["SyncZero: enter it once", "Upload or email the Contract of Sale once. Buyer, vehicle, trade-in and finance details flow into every required form, with no re-keying."],
-  ["A complete audit trail", "Every upload, signature and stage change is logged against the deal, so you can show what happened and when."],
-  ["DMS-agnostic and multi-franchise", "SynoraDrive reads the contract PDF your DMS already produces (Pentana eraPower today) and applies brand-specific templates on every rooftop."],
-  ["A handover that protects your survey scores", "Removing last-minute paperwork, stalled finance and missed aftermarket orders takes away the delivery-day friction behind poor post-delivery surveys."],
+  ["Stage gates (planned)", "Planned: a car will not move to the next stage until the gate your team configures is marked as met (for example, a prepared deal pack and a signed order before Finance & Approvals)."],
+  ["Deal-type checklists (planned)", "Planned: New, Demo, Used, company and fleet deals each get a document checklist configured with you during onboarding (for example authority to register, transfer papers, PPSR certificate and company extract). You remain responsible for confirming what each deal legally requires."],
+  ["Deferred-sales-model date tracking (planned)", "Planned: designed to show the Business Manager a date calculated from the details entered. It does not determine whether the add-on insurance deferred sales model (ASIC Act) has been complied with. Your Business Manager must confirm this."],
+  ["Pre-Reported (RDA) watchlist (planned)", "Planned: designed to help management keep track of reported units awaiting handover before OEM cut-off."],
+  ["SyncZero: enter it once", "Upload the contract of sale once. SynoraDrive reads buyer, vehicle, trade-in and finance details and uses them to prepare the forms in the deal pack, which staff then check against the contract. Email intake is planned."],
+  ["Activity log (planned)", "Planned: an activity log. Designed to record uploads, signatures and stage changes against the deal."],
+  ["Designed to work after your DMS", "Designed to read the contract-of-sale PDF your DMS already produces. Support for your DMS's contract format is confirmed during onboarding. Planned integrations with dealer management systems are subject to partner agreements."],
+  ["A smoother handover", "Designed to reduce last-minute paperwork on delivery day."],
 ] as const;
 
 const related = [
@@ -45,9 +45,9 @@ function CompliancePage() {
           <Breadcrumb items={[{ to: "/", label: "Home" }, { to: "/platform", label: "Platform" }, { label: "Compliance" }]} />
         </div>
         <PageHero
-          eyebrow="Compliance and OEM rebate protection"
-          title="The audit shield for multi-franchise groups."
-          intro="In Australian dealerships, much of the net profit sits in back-end OEM bonuses, and it disappears when an incomplete file triggers a clawback. SynoraDrive builds compliance into the daily workflow: a document checklist for every deal type, hard stage gates and a time-stamped record of every action. Your rooftops protect their margin without manual folder audits."
+          eyebrow="Compliance aids"
+          title="Compliance aids designed for multi-franchise groups (in development)."
+          intro="OEM incentives can depend on complete deal files. SynoraDrive is being designed to help staff see what documents a deal still needs, through planned checklists and stage gates. It is an aid only. It does not guarantee compliance, incentive payments or audit outcomes, and it does not replace your own file reviews."
         />
         <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
           <div className="grid gap-x-10 gap-y-8 md:grid-cols-2">

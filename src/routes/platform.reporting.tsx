@@ -7,9 +7,9 @@ export const Route = createFileRoute("/platform/reporting")({
   head: () => ({
     meta: [
       { title: "Centralised dealership reporting, SynoraDrive" },
-      { name: "description", content: "A live month book of locked, scheduled and stretch deliveries, a weighted pipeline and MTD and QTD performance, without spreadsheets." },
+      { name: "description", content: "Planned: a month book of locked, scheduled and stretch deliveries, a weighted pipeline and MTD and QTD performance, designed to replace manual spreadsheet trackers." },
       { property: "og:title", content: "Centralised dealership reporting, SynoraDrive" },
-      { property: "og:description", content: "A live month book of locked, scheduled and stretch deliveries, a weighted pipeline and MTD and QTD performance, without spreadsheets." },
+      { property: "og:description", content: "Planned: a month book of locked, scheduled and stretch deliveries, a weighted pipeline and MTD and QTD performance, designed to replace manual spreadsheet trackers." },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/platform/reporting" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -20,11 +20,11 @@ export const Route = createFileRoute("/platform/reporting")({
 });
 
 const features = [
-  ["Live month book", "Locked deliveries, cars scheduled to go out this month, and a stretch forecast from the open pipeline, against your targets."],
-  ["Targets by deal type", "Monthly New, Demo and Used targets per rooftop."],
-  ["Weighted pipeline", "Consultants log prospects and nominated vehicles, and stage weightings turn them into a realistic forecast."],
-  ["Status breakdown", "Every unit across Sold, Contracted, Pre-Reported (RDA) and Delivered, without reconciling spreadsheets."],
-  ["Staff performance", "Month-to-date and quarter-to-date results by consultant, so coaching starts early."],
+  ["Month book (planned)", "Locked deliveries, cars scheduled to go out this month, and a stretch forecast from the open pipeline, against your targets."],
+  ["Targets by deal type (planned)", "Monthly New, Demo and Used targets per rooftop."],
+  ["Weighted pipeline (planned)", "Consultants log prospects and nominated vehicles, and stage weightings turn them into a realistic forecast."],
+  ["Status breakdown (planned)", "Designed to show units across Sold, Contracted, Pre-Reported (RDA) and Delivered."],
+  ["Staff performance (planned)", "Month-to-date and quarter-to-date results by consultant, so coaching starts early."],
   ["Coming with Insights and Forecasting", "Group dashboards across rooftops, multi-quarter forecasting and OEM target tracking."],
 ] as const;
 
@@ -44,8 +44,8 @@ function ReportingPage() {
         </div>
         <PageHero
           eyebrow="Centralised reporting"
-          title="Retire the spreadsheet. Run your month book live."
-          intro="DMS reports tell you what happened after the month closes, so GSMs keep fragile spreadsheet trackers by hand. SynoraDrive's Command Center gives the dealer principal and GSM a live, self-updating month book that joins signed contracts on the delivery board with live prospects in the built-in pipeline."
+          title="Planned: a month book designed to replace manual spreadsheet trackers."
+          intro="DMS reports tell you what happened after the month closes, so GSMs keep fragile spreadsheet trackers by hand. SynoraDrive's planned Command Report is designed to give the dealer principal and GSM a month book that joins signed contracts on the delivery board with prospects in the pipeline."
         />
         <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
           <div className="grid gap-x-10 gap-y-8 md:grid-cols-2">

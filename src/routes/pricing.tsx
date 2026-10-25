@@ -10,9 +10,9 @@ export const Route = createFileRoute("/pricing")({
   head: () => ({
     meta: [
       { title: "Pricing, SynoraDrive" },
-      { name: "description", content: "Simple monthly pricing per rooftop, a 90-day pilot, and onboarding on your floor. Estimate your time saved." },
+      { name: "description", content: "Indicative per-rooftop pricing for the SynoraDrive prototype, pilots subject to contract, and an illustrative time estimator." },
       { property: "og:title", content: "Pricing, SynoraDrive" },
-      { property: "og:description", content: "Simple monthly pricing per rooftop, a 90-day pilot, and onboarding on your floor. Estimate your time saved." },
+      { property: "og:description", content: "Indicative per-rooftop pricing for the SynoraDrive prototype, pilots subject to contract, and an illustrative time estimator." },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/pricing" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -25,34 +25,34 @@ export const Route = createFileRoute("/pricing")({
 const faqs = [
   {
     q: "Do we have to replace our DMS?",
-    a: "No. SynoraDrive sits after your DMS. Your team keeps producing the Contract of Sale in Pentana eraPower, then uploads or emails it to SynoraDrive, which runs the post-contract paperwork, workflow and delivery.",
+    a: "No. Your team keeps producing the contract of sale in your DMS, then uploads the PDF to SynoraDrive (email intake is planned). SynoraDrive prepares the deal pack for staff to check. Workflow and delivery tracking are planned.",
   },
   {
     q: "Will our staff actually use it?",
-    a: "It was built on a working dealership floor to remove data entry. Consultants don't re-type contract details, and each department gets deal-specific notifications instead of hunting through spreadsheets.",
+    a: "It is designed to reduce data entry. SynoraDrive reads the contract details so staff check them rather than re-type them. Department notifications are planned. We will measure staff uptake during pilots.",
   },
   {
     q: "How does document retention affect OEM or tax audits?",
-    a: "DocuSign keeps the signed record, and completed packs can be downloaded to your own records for as long as you need them. SynoraDrive keeps its own copies only for a short period to reduce privacy risk.",
+    a: "Your dealership should download completed packs and keep them in its own records for as long as the law and your OEM agreements require. SynoraDrive is not an archive. Our retention period is still to be confirmed and will be set out in our Privacy Policy and customer terms. DocuSign e-signature is planned.",
   },
   {
     q: "Do we pay per user?",
-    a: "No. Every rooftop subscription includes all your staff.",
+    a: "Indicatively, no. Each rooftop subscription is intended to include all your staff. Subject to contract.",
   },
   {
     q: "Which states' registration forms are supported?",
-    a: "Victoria (VicRoads) registration and transfer forms are built and running today. NSW and QLD are next on the roadmap.",
+    a: "The prototype currently prepares Victorian registration and transfer forms. It is not yet in production use. NSW and QLD forms are on the roadmap.",
   },
   {
     q: "Do we need our own DocuSign account?",
-    a: "We'll confirm the DocuSign licensing arrangement for your dealership as part of your pricing conversation.",
+    a: "DocuSign e-signature is a planned feature. Licensing arrangements will be confirmed before it is offered.",
   },
 ] as const;
 
 const onboarding = [
   ["Packs and branding", "We load your branding, set up your rooftop's dealer and OEM forms, and map your DMS contract."],
-  ["On-floor training", "We train sales admin, Business Managers, consultants and workshop leads on your floor, using real deals."],
-  ["90-day pilot, then rollout", "Prove the time saved and audit readiness on one rooftop, then roll out across your group."],
+  ["On-floor training", "We train sales admin, Business Managers, consultants and workshop leads on your floor, using sample or de-identified deals. Live deals are used only once a signed pilot agreement covering data handling is in place."],
+  ["Pilot, then rollout", "Pilots are subject to contract. A pilot is designed to measure time saved on one rooftop before any wider rollout."],
 ] as const;
 
 function RoiEstimator() {
@@ -87,7 +87,7 @@ function RoiEstimator() {
           <input id="roi-deals" type="number" min={0} className={field} value={deals} onChange={(e) => setDeals(Number(e.target.value))} />
         </div>
         <div>
-          <label className={label} htmlFor="roi-minutes">Minutes preparing and chasing each deal pack</label>
+          <label className={label} htmlFor="roi-minutes">Minutes you expect to save per deal pack (your estimate)</label>
           <input id="roi-minutes" type="number" min={0} className={field} value={minutes} onChange={(e) => setMinutes(Number(e.target.value))} />
         </div>
         <div>
@@ -108,19 +108,19 @@ function RoiEstimator() {
       <div className="flex flex-col justify-center gap-6 rounded-xl bg-accent/40 p-8">
         <div>
           <div className="font-display text-4xl font-semibold text-primary">{fmt.format(result.staffHoursPerYear)} hrs</div>
-          <div className="mt-1 text-sm text-muted-foreground">staff hours returned to the floor per year</div>
+          <div className="mt-1 text-sm text-muted-foreground">illustrative staff hours per year</div>
         </div>
         <div>
           <div className="font-display text-4xl font-semibold text-primary">{money.format(result.staffCostSavedPerYearAud)}</div>
-          <div className="mt-1 text-sm text-muted-foreground">estimated staff cost saved per year</div>
+          <div className="mt-1 text-sm text-muted-foreground">illustrative staff cost per year</div>
         </div>
         {result.floorplanSavedPerYearAud != null && (
           <div>
             <div className="font-display text-4xl font-semibold text-primary">{money.format(result.floorplanSavedPerYearAud)}</div>
-            <div className="mt-1 text-sm text-muted-foreground">estimated floorplan saving per year</div>
+            <div className="mt-1 text-sm text-muted-foreground">illustrative floorplan cost per year</div>
           </div>
         )}
-        <p className="text-xs text-muted-foreground">Estimates only, based on your inputs. Actual results depend on volume, deal mix and workflow.</p>
+        <p className="text-xs text-muted-foreground">Illustrative estimate only. Hours = deliveries per month × minutes saved per deal ÷ 60 × 12. Cost = hours × staff cost per hour. The default values are assumptions, not results measured at any dealership. SynoraDrive is a prototype and has not been measured in production. Actual results will vary.</p>
       </div>
     </div>
   );
@@ -132,8 +132,8 @@ function PricingPage() {
       <section className="light-section bg-background text-foreground">
         <PageHero
           eyebrow="Pricing"
-          title="Flat per-rooftop pricing. No legacy-vendor bloat."
-          intro="One predictable monthly subscription per rooftop, with unlimited staff logins and no per-seat fees."
+          title="Simple per-rooftop pricing."
+          intro="Indicative pricing: a monthly subscription per rooftop, intended to include all staff logins. Pricing is indicative only. It is not an offer and is subject to contract."
         />
         <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
           <div className="grid gap-6 md:grid-cols-3">
@@ -160,14 +160,14 @@ function PricingPage() {
           </div>
 
           <div className="mt-24">
-            <SectionHead eyebrow="Estimate your rooftop" title="See what manual deal folders cost your rooftop." />
+            <SectionHead eyebrow="Estimate your rooftop" title="An illustrative time estimate for your rooftop." />
             <div className="mt-12">
               <RoiEstimator />
             </div>
           </div>
 
           <div className="mt-24">
-            <SectionHead eyebrow="Onboarding" title="Onboarding in weeks, not months." body="A fixed one-off onboarding fee per rooftop, not a six-figure implementation project." />
+            <SectionHead eyebrow="Onboarding" title="Onboarding, planned per rooftop." body="Onboarding time depends on your forms and DMS. An onboarding fee may apply, confirmed in writing before any pilot." />
             <div className="mt-12 grid gap-6 md:grid-cols-3">
               {onboarding.map(([t, b], i) => (
                 <div key={t} className="rounded-xl border bg-card p-7">
@@ -196,7 +196,7 @@ function PricingPage() {
               Talk to us about pricing <ArrowRight className="size-4" />
             </Link>
             <Link to="/demo" className="inline-flex items-center gap-2 rounded-lg border px-6 py-3 text-sm font-semibold transition-colors hover:bg-accent">
-              Book a rooftop demo
+              Book a prototype demo
             </Link>
           </div>
         </div>
