@@ -1,6 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { z } from "zod";
+import { useServerFn } from "@tanstack/react-start";
+import { contactSchema } from "@/lib/enquiry-schemas";
+import { submitContact } from "@/lib/enquiries.functions";
 import { PageHero } from "@/components/marketing";
 import { CheckCircle2 } from "lucide-react";
 
@@ -20,13 +23,6 @@ export const Route = createFileRoute("/contact")({
   component: ContactPage,
 });
 
-const contactSchema = z.object({
-  name: z.string().trim().nonempty("Name is required").max(100),
-  workEmail: z.string().trim().email("Enter a valid work email").max(255),
-  organisation: z.string().trim().max(150).optional(),
-  enquiryType: z.string().trim().nonempty("Select an enquiry type"),
-  message: z.string().trim().nonempty("Message cannot be empty").max(1000, "Message must be less than 1000 characters"),
-});
 
 type ContactForm = z.infer<typeof contactSchema>;
 
@@ -39,11 +35,14 @@ function ContactPage() {
   const [form, setForm] = useState<ContactForm>(empty);
   const [errors, setErrors] = useState<Partial<Record<keyof ContactForm, string>>>({});
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [sendError, setSendError] = useState<string | null>(null);
+  const send = useServerFn(submitContact);
 
   const set = (k: keyof ContactForm) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
     setForm((f) => ({ ...f, [k]: e.target.value }));
 
-  function onSubmit(e: React.FormEvent) {
+  async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
     const parsed = contactSchema.safeParse(form);
     if (!parsed.success) {
@@ -53,8 +52,16 @@ function ContactPage() {
       return;
     }
     setErrors({});
-    // TODO: persist the enquiry and notify the team once Lovable Cloud is enabled.
-    setSubmitted(true);
+    setSendError(null);
+    setSending(true);
+    try {
+      await send({ data: parsed.data });
+      setSubmitted(true);
+    } catch (err) {
+      setSendError(err instanceof Error && err.message.length < 120 ? err.message : "Something went wrong. Please try again or email andrew@synoratech.ai.");
+    } finally {
+      setSending(false);
+    }
   }
 
   if (submitted) {
@@ -118,9 +125,10 @@ function ContactPage() {
                 {errors.message && <p className="mt-1 text-xs text-destructive">{errors.message}</p>}
               </div>
             </div>
-            <button type="submit" className="mt-7 w-full rounded-lg bg-brand py-3 text-sm font-semibold text-primary-foreground shadow-glow transition hover:opacity-90">
-              Send message
+            <button type="submit" className="mt-7 w-full rounded-lg bg-brand py-3 text-sm font-semibold text-primary-foreground shadow-glow transition hover:opacity-90 disabled:opacity-60" disabled={sending}>
+              {sending ? "Sending…" : "Send message"}
             </button>
+            {sendError && <p role="alert" className="mt-3 text-sm text-destructive">{sendError}</p>}
             <p className="mt-4 text-xs text-muted-foreground">
               We use the details in this form to respond to your enquiry. If you don't provide the required fields, we may not be able to reply. Your details are handled by Andrew Phan trading as SYNORA TECH and our email provider, which may store data outside Australia. See our <Link to="/privacy" className="underline hover:text-foreground">Privacy Policy</Link> for how to access or correct your information or make a complaint.
             </p>
