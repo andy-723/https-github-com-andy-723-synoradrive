@@ -14,29 +14,25 @@ const CHIPS = [
     id: "floor",
     label: "From the floor",
     detail: "Frontline prestige dealership sales, Melbourne",
-    side: "left",
-    top: "12%",
+    pos: "tl",
   },
   {
     id: "problem",
     label: "Lived the problem",
     detail: "Manila folders, whiteboards, pretty spreadsheets",
-    side: "left",
-    top: "58%",
+    pos: "bl",
   },
   {
     id: "built",
     label: "Built the fix",
     detail: "One contract in, every gate enforced",
-    side: "right",
-    top: "22%",
+    pos: "tr",
   },
   {
     id: "mission",
     label: "The mission",
     detail: "Every car visible from signature to keys",
-    side: "right",
-    top: "66%",
+    pos: "br",
   },
 ] as const;
 
@@ -84,16 +80,10 @@ export function FounderShowcase() {
 
       {/* Orbiting fact chips */}
       {CHIPS.map((chip, i) => (
-        <Reveal
-          key={chip.id}
-          delay={150 + i * 120}
-          className={`founder-chip founder-chip-${chip.side}`}
-          // eslint-disable-next-line react/forbid-dom-props
-          // position comes from the chip config, not user input
-        >
-          <div className="founder-chip-inner" style={{ top: chip.top }}>
+        <Reveal key={chip.id} delay={150 + i * 120} className={`founder-chip founder-chip-${chip.pos}`}>
+          <div className="founder-chip-inner">
             <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary">{chip.label}</span>
-            <span className="mt-1 text-sm font-medium leading-snug">{chip.detail}</span>
+            <span className="mt-1 block text-sm font-medium leading-snug">{chip.detail}</span>
           </div>
         </Reveal>
       ))}
