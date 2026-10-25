@@ -52,6 +52,7 @@ function AboutPage() {
           intro="For decades, the way a dealership runs a car sale after the handshake has barely changed. SynoraDrive is the system we wished existed while we were working the floor."
         />
       </section>
+      <div className="section-blend section-blend-to-dark" aria-hidden="true" />
 
       {/* Founder showcase — dark, cinematic */}
       <section className="dark-section bg-[oklch(0.09_0.02_280)] text-[oklch(0.96_0.01_280)]">
@@ -64,6 +65,7 @@ function AboutPage() {
           <FounderShowcase />
         </div>
       </section>
+      <div className="section-blend section-blend-to-light" aria-hidden="true" />
 
       {/* Journey — the road from folders to SynoraDrive */}
       <section className="light-section bg-background text-foreground">
@@ -88,6 +90,7 @@ function AboutPage() {
           </div>
         </div>
       </section>
+      <div className="section-blend section-blend-to-dark" aria-hidden="true" />
 
       {/* Photo band — the world we come from */}
       <section className="dark-section bg-[oklch(0.09_0.02_280)] text-[oklch(0.96_0.01_280)]">
@@ -120,6 +123,7 @@ function AboutPage() {
           </div>
         </div>
       </section>
+      <div className="section-blend section-blend-to-light" aria-hidden="true" />
 
       {/* Mission & vision */}
       <section className="light-section bg-background text-foreground">
@@ -144,6 +148,7 @@ function AboutPage() {
           </div>
         </div>
       </section>
+      <div className="section-blend section-blend-to-dark" aria-hidden="true" />
 
       <ClosingCta />
     </>

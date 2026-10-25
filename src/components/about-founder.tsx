@@ -42,19 +42,17 @@ export function FounderShowcase() {
       {/* Dashed wiring behind the portrait */}
       <svg
         className="founder-wires"
-        viewBox="0 0 1000 620"
+        viewBox="0 0 1000 460"
         fill="none"
         aria-hidden="true"
         preserveAspectRatio="none"
       >
-        <path className="founder-wire" d="M 500 180 C 340 160, 240 130, 150 120" />
-        <path className="founder-wire founder-wire-alt" d="M 500 420 C 330 440, 230 400, 150 380" />
-        <path className="founder-wire" d="M 500 200 C 660 190, 760 180, 850 170" />
-        <path className="founder-wire founder-wire-alt" d="M 500 440 C 670 450, 770 430, 850 420" />
-        <circle className="founder-wire-node" cx="150" cy="120" r="6" />
-        <circle className="founder-wire-node" cx="150" cy="380" r="6" />
-        <circle className="founder-wire-node" cx="850" cy="170" r="6" />
-        <circle className="founder-wire-node" cx="850" cy="420" r="6" />
+        {/* Wires overshoot and run underneath the glass chips, so they
+            always read as connected at any viewport width. */}
+        <path className="founder-wire" d="M 368 150 C 300 120, 250 85, 175 55" />
+        <path className="founder-wire founder-wire-alt" d="M 368 330 C 300 360, 260 395, 195 418" />
+        <path className="founder-wire" d="M 632 160 C 700 130, 740 105, 825 82" />
+        <path className="founder-wire founder-wire-alt" d="M 632 340 C 700 370, 730 400, 805 425" />
       </svg>
 
       {/* Floating portrait */}
