@@ -77,10 +77,10 @@ function Board({ selectedId, openDeal, raci, settledIds }: { selectedId: string;
   </>;
 }
 
-function ExecutiveLog() {
+function CommandReport() {
   const [requested, setRequested] = useState(false);
   return <div className="p-5 sm:p-7">
-    <div className="flex flex-wrap justify-between gap-2"><h3 className="text-base font-semibold">Executive Sales Log & Quota Control</h3><span className="font-mono text-[10px] text-muted-foreground">OCTOBER 2026 · FICTIONAL DEMO DATA</span></div>
+    <div className="flex flex-wrap justify-between gap-2"><h3 className="text-base font-semibold">Command Report · Forecast & Reporting</h3><span className="font-mono text-[10px] text-muted-foreground">OCTOBER 2026 · FICTIONAL DEMO DATA</span></div>
     <div className="mt-6 border-y border-surface-border py-6">
       <div className="flex flex-wrap justify-between gap-2"><span className="text-[10px] font-semibold uppercase text-primary">Month-End Landing Strip</span><span className="text-xs font-semibold">OCTOBER QUOTA: 50 UNITS ($300k Gross)</span></div>
       <div className="mt-5 flex h-4 overflow-hidden rounded-sm bg-surface-muted" role="img" aria-label="14 delivered, 16 confirmed going out, 8 stretch or at-risk, 12 remaining of 50 units"><span className="w-[28%] bg-brand-mint" /><span className="w-[32%] bg-brand-sky" /><span className="w-[16%] bg-brand" /></div>
@@ -113,14 +113,14 @@ export function ProductPreview() {
     <div className="showcase-controls">
     <TabsList className="showcase-tabs grid h-auto w-full grid-cols-1 gap-1 p-1 sm:inline-flex sm:w-auto" aria-label="Platform preview">
       <TabsTrigger value="board" className="brand-preview-tab gap-2 whitespace-normal py-3 text-xs"><LayoutDashboard className="size-4 shrink-0" />Live Dealership Board (Frontline RACI Kanban)</TabsTrigger>
-      <TabsTrigger value="executive" className="brand-preview-tab gap-2 whitespace-normal py-3 text-xs"><BarChart3 className="size-4 shrink-0" />DP & GSM Executive Sales Log (Quota & Rebates)</TabsTrigger>
+      <TabsTrigger value="executive" className="brand-preview-tab gap-2 whitespace-normal py-3 text-xs"><BarChart3 className="size-4 shrink-0" />Command Report (Forecast & Reporting)</TabsTrigger>
     </TabsList>
     <Button variant="outline" className="raci-toggle min-h-11 whitespace-normal text-xs" aria-pressed={raci} onClick={() => { setRaci(value => !value); setTab("board"); }}><Users className="size-4" />RACI Accountability Matrix Overlay</Button>
     </div>
     <LaptopShowcase openDeal={open} showExecutive={() => setTab("executive")} settled={settledIds.includes("DEMO-001")} settle={() => { setSelectedId("DEMO-001"); settle("DEMO-001"); }}>
       <div className="light-section h-full bg-surface text-surface-foreground">
         <div className="laptop-browser"><span /><span /><span /><div>app.synoradrive.com.au/{tab === "board" ? "board" : "executive-doc"}</div><Lock className="size-3" /></div>
-        <TabsContent value="board" className="mt-0"><Board selectedId={selectedId} openDeal={open} raci={raci} settledIds={settledIds} /></TabsContent><TabsContent value="executive" className="mt-0"><ExecutiveLog /></TabsContent>
+        <TabsContent value="board" className="mt-0"><Board selectedId={selectedId} openDeal={open} raci={raci} settledIds={settledIds} /></TabsContent><TabsContent value="executive" className="mt-0"><CommandReport /></TabsContent>
       </div>
     </LaptopShowcase>
     <DemoDealDialog deal={openDeal} initialTab={initialTab} settled={openDeal ? settledIds.includes(openDeal.id) : false} onSettle={() => { if (openDeal) settle(openDeal.id); }} onClose={() => setOpenDeal(null)} onReturnFocus={() => returnFocus.current?.focus({ preventScroll: true })} />
