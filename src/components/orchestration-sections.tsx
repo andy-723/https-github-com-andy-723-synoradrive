@@ -1,4 +1,4 @@
-import { useId, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { ArrowRight, Check, CircleHelp, FileCheck2, Handshake, KeyRound, Landmark, Radio, Sparkles, Wrench } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/reveal";
@@ -57,8 +57,54 @@ const milestones = [
 
 export function DeliveryVisibilitySection() {
   const [connected, setConnected] = useState(true);
+  // Auto-alternate between the two views every 4s. Manual clicks restart the
+  // timer so a chosen view stays on screen for a full cycle. Paused while the
+  // section is off-screen or the document is hidden, and skipped entirely for
+  // reduced-motion users.
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const sectionRef = useRef<HTMLElement | null>(null);
+
+  const startTimer = () => {
+    if (timerRef.current) clearInterval(timerRef.current);
+    timerRef.current = setInterval(() => setConnected(value => !value), 4000);
+  };
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    let inView = false;
+    const observer = new IntersectionObserver(([entry]) => {
+      inView = entry ? entry.isIntersecting : false;
+      if (inView && !document.hidden) startTimer();
+      else if (timerRef.current) {
+        clearInterval(timerRef.current);
+        timerRef.current = null;
+      }
+    }, { threshold: 0.25 });
+    const node = sectionRef.current;
+    if (node) observer.observe(node);
+    const onVisibility = () => {
+      if (document.hidden || !inView) {
+        if (timerRef.current) {
+          clearInterval(timerRef.current);
+          timerRef.current = null;
+        }
+      } else startTimer();
+    };
+    document.addEventListener("visibilitychange", onVisibility);
+    return () => {
+      observer.disconnect();
+      document.removeEventListener("visibilitychange", onVisibility);
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
+  }, []);
+
+  const chooseView = (value: boolean) => {
+    setConnected(value);
+    startTimer();
+  };
+
   return (
-    <section className="light-section mist-section overflow-hidden border-y bg-background text-foreground" aria-labelledby="blackhole-heading">
+    <section ref={sectionRef} className="light-section mist-section overflow-hidden border-y bg-background text-foreground" aria-labelledby="blackhole-heading">
       <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
         <Reveal className="grid gap-8 lg:grid-cols-2 lg:items-end">
           <div><div className="font-mono text-xs text-primary">FROM SILENCE TO SIGHTLINE</div><h2 id="blackhole-heading" className="mt-4 text-3xl font-semibold leading-tight sm:text-5xl">End the delivery<br />“black hole”.</h2></div>
@@ -66,8 +112,8 @@ export function DeliveryVisibilitySection() {
         </Reveal>
         <div className="mt-10 flex flex-wrap items-center justify-between gap-4 border-b pb-5">
           <div className="flex gap-1 rounded-md border bg-card p-1" role="group" aria-label="Delivery visibility comparison">
-            <Button variant={connected ? "ghost" : "secondary"} aria-pressed={!connected} onClick={() => setConnected(false)}>The old hand-off</Button>
-            <Button variant={connected ? "secondary" : "ghost"} aria-pressed={connected} onClick={() => setConnected(true)}>With SynoraDrive</Button>
+            <Button variant={connected ? "ghost" : "secondary"} aria-pressed={!connected} onClick={() => chooseView(false)}>The old hand-off</Button>
+            <Button variant={connected ? "secondary" : "ghost"} aria-pressed={connected} onClick={() => chooseView(true)}>With SynoraDrive</Button>
           </div>
           <span className="font-mono text-[10px] text-muted-foreground">ILLUSTRATIVE DELIVERY JOURNEY</span>
         </div>
