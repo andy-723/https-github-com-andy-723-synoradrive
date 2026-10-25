@@ -38,7 +38,7 @@ const controls = [
   {
     Icon: FileClock,
     t: "Short document retention (planned)",
-    b: "Planned: automatic deletion of deal documents after a short retention period, still to be confirmed. Your dealership should keep its own copies of completed packs.",
+    b: "Planned: automatic deletion of deal documents after a retention period of generally 30 days. Signed documents will sit in your own DocuSign account once e-signature is released. Your dealership should keep its own copies of completed packs.",
   },
   {
     Icon: Database,
