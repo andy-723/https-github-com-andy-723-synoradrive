@@ -44,7 +44,7 @@ export function PageHero({
   children?: ReactNode;
 }) {
   return (
-    <Reveal className="mx-auto max-w-7xl px-6 pt-20 lg:px-8">
+    <Reveal className="mx-auto max-w-7xl px-6 pb-24 pt-20 lg:px-8">
       {eyebrow && <div className="font-mono text-xs uppercase tracking-[0.2em] text-primary">{eyebrow}</div>}
       <h1 className="mt-4 max-w-3xl text-4xl font-semibold leading-tight sm:text-5xl">{title}</h1>
       {intro && <p className="mt-5 max-w-2xl leading-relaxed text-muted-foreground">{intro}</p>}
