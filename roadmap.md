@@ -1,8 +1,8 @@
 # Roadmap
 
 ## Laptop product showcase
-- [ ] Review supplied HTML laptop animation and adapt suitable motion for mobile without extra dependencies.
-- [ ] Replace Product View with an opening laptop, six interactive satellites and RACI overlay; verify deal tabs, shared simulated settlement, touch and reduced-motion layouts.
+- [x] Review supplied HTML laptop animation and adapt suitable motion for mobile without extra dependencies.
+- [x] Replace Product View with an opening laptop, six interactive satellites and RACI overlay; verify all seven records and tabs, shared simulated settlement, focus return, phone/tablet layouts and reduced-motion behavior. No new showcase media or animation dependencies; the <1.5s mobile-load target is not verified on a physical mobile connection.
 
 ## Terms and Disclaimer update
 - [x] Replace the Terms outline with supplied October 24 draft Terms and Disclaimer, preserve review warnings and unconfirmed clauses, exclude internal lawyer notes, and verify document navigation.
