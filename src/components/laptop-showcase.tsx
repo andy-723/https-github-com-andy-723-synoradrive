@@ -11,7 +11,6 @@ export function LaptopShowcase({ children, openDeal, showExecutive, settled, set
   settled: boolean;
   settle: () => void;
 }) {
-  const frame = useRef<HTMLDivElement>(null);
   const device = useRef<HTMLDivElement>(null);
   const [opened, setOpened] = useState(false);
   useEffect(() => {
@@ -40,7 +39,7 @@ export function LaptopShowcase({ children, openDeal, showExecutive, settled, set
     { icon: Gauge, label: "Command Report", title: "Forecast & Reporting", detail: "A clear view across your dealership", tab: null, body: <ul className="satellite-checks"><li>Delivery pipeline visibility</li><li>Month-end forecasting</li><li>Reporting across rooftops</li></ul> },
     { icon: Activity, label: "No more chasing", title: "Connected Communication", detail: "Every update stays with the deal", tab: "activity" as const, body: <ul className="satellite-checks"><li>Shared team updates</li><li>Clear next steps</li><li>A complete activity history</li></ul> },
   ];
-  return <div ref={frame} className="laptop-showcase" data-open={opened} data-revealed={revealed}>
+  return <div className="laptop-showcase" data-open={opened}>
     <svg className="laptop-circuits" viewBox="0 0 1400 780" preserveAspectRatio="none" aria-hidden="true">
       {["M260 100 H370 V230 H470", "M260 350 H350 V390 H470", "M260 610 H370 V510 H470", "M1140 100 H1030 V230 H930", "M1140 350 H1050 V390 H930", "M1140 610 H1030 V510 H930"].map((d, i) => <g key={d} className={i % 2 ? "circuit-teal" : "circuit-violet"}><path d={d} /><circle cx={i < 3 ? 260 : 1140} cy={[100, 350, 610][i % 3]} r="4" /></g>)}
     </svg>
