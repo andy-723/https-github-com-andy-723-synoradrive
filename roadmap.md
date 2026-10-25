@@ -1,6 +1,7 @@
 # Roadmap
 
 ## Laptop product showcase
+- [ ] Review supplied HTML laptop animation and adapt suitable motion for mobile without extra dependencies.
 - [ ] Replace Product View with an opening laptop, six interactive satellites and RACI overlay; verify deal tabs, shared simulated settlement, touch and reduced-motion layouts.
 
 ## Terms and Disclaimer update
