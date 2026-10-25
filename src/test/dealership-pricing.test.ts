@@ -6,8 +6,16 @@ describe("Pricing plans (Website Copy v4: prices on request)", () => {
     expect(pricingPlans.map((p) => p.n)).toEqual(["Document & Compliance", "Pipeline", "Insights & Forecasting"]);
   });
 
-  it("marks Pipeline as the single most-popular plan", () => {
-    expect(pricingPlans.filter((p) => p.hi).map((p) => p.n)).toEqual(["Pipeline"]);
+  it("shows no 'Most popular' badge (legal review PR4)", () => {
+    expect(pricingPlans.some((p) => p.tag === "Most popular")).toBe(false);
+  });
+
+  it("labels Pipeline as planned (legal review PR5)", () => {
+    expect(pricingPlans.find((p) => p.n === "Pipeline")?.tag).toBe("Planned");
+  });
+
+  it("never names a DMS vendor", () => {
+    expect(JSON.stringify(pricingPlans)).not.toMatch(/pentana|erapower/i);
   });
 
   it("publishes no dollar figures until commercially set", () => {

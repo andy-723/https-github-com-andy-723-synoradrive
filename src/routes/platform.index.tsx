@@ -10,9 +10,9 @@ export const Route = createFileRoute("/platform/")({
   head: () => ({
     meta: [
       { title: "Platform overview, SynoraDrive" },
-      { name: "description", content: "Six modules on one deal record: deal packs, delivery board, command reporting, customer portal, governance and forecasting." },
+      { name: "description", content: "Six modules planned around one deal record: deal packs (prototype), delivery board, Command Report, customer portal, governance and forecasting." },
       { property: "og:title", content: "Platform overview, SynoraDrive" },
-      { property: "og:description", content: "Six modules on one deal record: deal packs, delivery board, command reporting, customer portal, governance and forecasting." },
+      { property: "og:description", content: "Six modules planned around one deal record: deal packs (prototype), delivery board, Command Report, customer portal, governance and forecasting." },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/platform" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -26,35 +26,35 @@ const modules = [
   {
     Icon: FileText,
     t: "Digital Deal Pack and SyncZero",
-    b: "Upload or email a Pentana eraPower Contract of Sale. SynoraDrive reads it once, selects the forms that deal needs by deal type, buyer type, finance path and trade-in, and fills them into print-ready or DocuSign-ready packs. Guided verification highlights any field that needs a dealer entry or a second look before the pack is issued. Uploaded PPSR certificates are read automatically.",
+    b: "Upload a contract-of-sale PDF produced by your DMS. SynoraDrive reads it using rule-based field mapping, with OCR for scanned pages, and prepares the deal pack for your staff to check before it goes anywhere. Staff preview each form, then download or print the pack. Planned: email intake, DocuSign-ready packs and PPSR certificate reading.",
     to: "/platform/compliance",
     toLabel: "Compliance",
   },
   {
     Icon: Workflow,
-    t: "Five-Stage Delivery Board",
-    b: "A Kanban board that runs every car from In Queue to Ready for Delivery, with a gate between each stage. It routes Sales Manager approvals, runs aftermarket and PDI tasks in parallel, and escalates stalled finance and registration transfer deadlines.",
+    t: "Five-Stage Delivery Board (planned)",
+    b: "Planned: a Kanban board designed to run every car from In Queue to Ready for Delivery, with a gate between each stage. It is designed to route Sales Manager approvals, run aftermarket and PDI tasks in parallel, and escalate stalled finance and registration transfer deadlines.",
     to: "/platform/operations",
     toLabel: "Unified operations",
   },
   {
     Icon: Gauge,
-    t: "Command Reporting and weighted pipeline",
-    b: "Your delivery board and showroom prospect pipeline in one view. Monthly targets by New, Demo and Used; locked, scheduled and stretch deliveries; the RDA watchlist; and MTD and QTD results by consultant.",
+    t: "Command Report and weighted pipeline (planned)",
+    b: "Planned: your delivery board and showroom prospect pipeline in one view. Monthly targets by New, Demo and Used; locked, scheduled and stretch deliveries; the RDA watchlist; and MTD and QTD results by consultant.",
     to: "/platform/reporting",
     toLabel: "Centralised reporting",
   },
   {
     Icon: Users,
-    t: "Customer portal and eSigning",
-    b: "A private, dealer-branded link lets buyers upload identity and finance documents from their phone and sign by DocuSign before delivery. Their files land straight on the deal checklist.",
+    t: "Customer portal and eSigning (planned)",
+    b: "Planned: a private, dealer-branded link for buyers to upload documents and e-sign (DocuSign integration subject to agreement).",
     to: "/platform/customer-experience",
     toLabel: "Customer experience",
   },
   {
     Icon: Building2,
-    t: "Multi-rooftop governance",
-    b: "Role-based access for multi-franchise groups, brand-specific document packs per rooftop, and a full activity log of every upload, approval and stage change.",
+    t: "Multi-rooftop governance (planned)",
+    b: "Planned: role-based access for multi-franchise groups, brand-specific document packs per rooftop, and an activity log of uploads, approvals and stage changes.",
     to: "/security",
     toLabel: "Security",
   },
@@ -75,7 +75,7 @@ function PlatformPage() {
         <div className="showroom-shade absolute inset-0 -z-10" />
         <div className="scan-sweep mx-auto max-w-7xl px-6 py-28 lg:px-8">
           <h1 className="hero-copy max-w-2xl text-4xl font-semibold leading-tight sm:text-5xl">One platform from signed contract to keys.</h1>
-          <p className="mt-5 max-w-xl leading-relaxed text-muted-foreground">Six modules running off a single deal record, so your showroom, F&I office, workshop, admin desk and leadership team never work out of sync.</p>
+          <p className="mt-5 max-w-xl leading-relaxed text-muted-foreground">Six modules planned around a single deal record. Today, the working prototype covers the Digital Deal Pack. The other modules are in development.</p>
         </div>
       </div>
       <section className="light-section bg-background text-foreground">
