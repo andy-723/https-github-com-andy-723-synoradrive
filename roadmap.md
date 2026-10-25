@@ -1,7 +1,7 @@
 # Roadmap
 
 ## Laptop product showcase
-- [ ] Replay laptop opening/closing on scroll, gently float banners, simplify capability headings and rename reporting to Command Report; verify interactions and phone layouts.
+- [x] Replay laptop opening/closing on scroll, gently float banners, simplify capability headings and rename reporting to Command Report; verified report/document navigation, shared settlement, 1075/768/390px layouts and reduced motion.
 - [x] Review supplied HTML laptop animation and adapt suitable motion for mobile without extra dependencies.
 - [x] Replace Product View with an opening laptop, six interactive satellites and RACI overlay; verify all seven records and tabs, shared simulated settlement, focus return, phone/tablet layouts and reduced-motion behavior. No new showcase media or animation dependencies; the <1.5s mobile-load target is not verified on a physical mobile connection.
 
