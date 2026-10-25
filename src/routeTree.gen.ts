@@ -24,6 +24,8 @@ import { Route as PlatformComplianceRouteImport } from './routes/platform.compli
 import { Route as PlatformCustomerExperienceRouteImport } from './routes/platform.customer-experience'
 import { Route as PlatformOperationsRouteImport } from './routes/platform.operations'
 import { Route as PlatformReportingRouteImport } from './routes/platform.reporting'
+import { Route as LovableEmailAuthPreviewRouteImport } from './routes/lovable/email/auth/preview'
+import { Route as LovableEmailAuthWebhookRouteImport } from './routes/lovable/email/auth/webhook'
 import { Route as LovableEmailTransactionalPreviewRouteImport } from './routes/lovable/email/transactional/preview'
 
 const IndexRoute = IndexRouteImport.update({
@@ -102,6 +104,16 @@ const PlatformReportingRoute = PlatformReportingRouteImport.update({
   path: '/platform/reporting',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LovableEmailAuthPreviewRoute = LovableEmailAuthPreviewRouteImport.update({
+  id: '/lovable/email/auth/preview',
+  path: '/lovable/email/auth/preview',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LovableEmailAuthWebhookRoute = LovableEmailAuthWebhookRouteImport.update({
+  id: '/lovable/email/auth/webhook',
+  path: '/lovable/email/auth/webhook',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LovableEmailTransactionalPreviewRoute =
   LovableEmailTransactionalPreviewRouteImport.update({
     id: '/lovable/email/transactional/preview',
@@ -125,6 +137,8 @@ export interface FileRoutesByFullPath {
   '/platform/operations': typeof PlatformOperationsRoute
   '/platform/reporting': typeof PlatformReportingRoute
   '/platform/': typeof PlatformIndexRoute
+  '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
+  '/lovable/email/auth/webhook': typeof LovableEmailAuthWebhookRoute
   '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
 }
 export interface FileRoutesByTo {
@@ -143,6 +157,8 @@ export interface FileRoutesByTo {
   '/platform/operations': typeof PlatformOperationsRoute
   '/platform/reporting': typeof PlatformReportingRoute
   '/platform': typeof PlatformIndexRoute
+  '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
+  '/lovable/email/auth/webhook': typeof LovableEmailAuthWebhookRoute
   '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
 }
 export interface FileRoutesById {
@@ -162,6 +178,8 @@ export interface FileRoutesById {
   '/platform/operations': typeof PlatformOperationsRoute
   '/platform/reporting': typeof PlatformReportingRoute
   '/platform/': typeof PlatformIndexRoute
+  '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
+  '/lovable/email/auth/webhook': typeof LovableEmailAuthWebhookRoute
   '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
 }
 export interface FileRouteTypes {
@@ -182,6 +200,8 @@ export interface FileRouteTypes {
     | '/platform/operations'
     | '/platform/reporting'
     | '/platform/'
+    | '/lovable/email/auth/preview'
+    | '/lovable/email/auth/webhook'
     | '/lovable/email/transactional/preview'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -200,6 +220,8 @@ export interface FileRouteTypes {
     | '/platform/operations'
     | '/platform/reporting'
     | '/platform'
+    | '/lovable/email/auth/preview'
+    | '/lovable/email/auth/webhook'
     | '/lovable/email/transactional/preview'
   id:
     | '__root__'
@@ -218,6 +240,8 @@ export interface FileRouteTypes {
     | '/platform/operations'
     | '/platform/reporting'
     | '/platform/'
+    | '/lovable/email/auth/preview'
+    | '/lovable/email/auth/webhook'
     | '/lovable/email/transactional/preview'
   fileRoutesById: FileRoutesById
 }
@@ -237,6 +261,8 @@ export interface RootRouteChildren {
   PlatformOperationsRoute: typeof PlatformOperationsRoute
   PlatformReportingRoute: typeof PlatformReportingRoute
   PlatformIndexRoute: typeof PlatformIndexRoute
+  LovableEmailAuthPreviewRoute: typeof LovableEmailAuthPreviewRoute
+  LovableEmailAuthWebhookRoute: typeof LovableEmailAuthWebhookRoute
   LovableEmailTransactionalPreviewRoute: typeof LovableEmailTransactionalPreviewRoute
 }
 
@@ -347,6 +373,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PlatformReportingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/lovable/email/auth/preview': {
+      id: '/lovable/email/auth/preview'
+      path: '/lovable/email/auth/preview'
+      fullPath: '/lovable/email/auth/preview'
+      preLoaderRoute: typeof LovableEmailAuthPreviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lovable/email/auth/webhook': {
+      id: '/lovable/email/auth/webhook'
+      path: '/lovable/email/auth/webhook'
+      fullPath: '/lovable/email/auth/webhook'
+      preLoaderRoute: typeof LovableEmailAuthWebhookRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/lovable/email/transactional/preview': {
       id: '/lovable/email/transactional/preview'
       path: '/lovable/email/transactional/preview'
@@ -373,6 +413,8 @@ const rootRouteChildren: RootRouteChildren = {
   PlatformOperationsRoute: PlatformOperationsRoute,
   PlatformReportingRoute: PlatformReportingRoute,
   PlatformIndexRoute: PlatformIndexRoute,
+  LovableEmailAuthPreviewRoute: LovableEmailAuthPreviewRoute,
+  LovableEmailAuthWebhookRoute: LovableEmailAuthWebhookRoute,
   LovableEmailTransactionalPreviewRoute: LovableEmailTransactionalPreviewRoute,
 }
 export const routeTree = rootRouteImport
