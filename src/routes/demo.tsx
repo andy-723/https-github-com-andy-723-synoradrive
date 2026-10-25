@@ -1,6 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { z } from "zod";
+import { useServerFn } from "@tanstack/react-start";
+import { demoSchema } from "@/lib/enquiry-schemas";
+import { submitDemoRequest } from "@/lib/enquiries.functions";
 import { PageHero } from "@/components/marketing";
 import { CheckCircle2 } from "lucide-react";
 
@@ -20,17 +23,6 @@ export const Route = createFileRoute("/demo")({
   component: DemoPage,
 });
 
-const demoSchema = z.object({
-  fullName: z.string().trim().nonempty("Full name is required").max(100),
-  workEmail: z.string().trim().email("Enter a valid work email").max(255),
-  mobile: z.string().trim().max(30).optional(),
-  role: z.string().trim().nonempty("Select your role"),
-  dealership: z.string().trim().nonempty("Dealership or group name is required").max(150),
-  rooftops: z.string().trim().nonempty("Select the number of rooftops"),
-  dms: z.string().trim().max(100).optional(),
-  interest: z.string().trim().nonempty("Select what you're interested in"),
-  notes: z.string().trim().max(1000).optional(),
-});
 
 type DemoForm = z.infer<typeof demoSchema>;
 
@@ -53,11 +45,14 @@ function DemoPage() {
   const [form, setForm] = useState<DemoForm>(empty);
   const [errors, setErrors] = useState<Partial<Record<keyof DemoForm, string>>>({});
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [sendError, setSendError] = useState<string | null>(null);
+  const send = useServerFn(submitDemoRequest);
 
   const set = (k: keyof DemoForm) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
     setForm((f) => ({ ...f, [k]: e.target.value }));
 
-  function onSubmit(e: React.FormEvent) {
+  async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
     const parsed = demoSchema.safeParse(form);
     if (!parsed.success) {
@@ -67,8 +62,16 @@ function DemoPage() {
       return;
     }
     setErrors({});
-    // TODO: persist the enquiry and notify the team once Lovable Cloud is enabled.
-    setSubmitted(true);
+    setSendError(null);
+    setSending(true);
+    try {
+      await send({ data: parsed.data });
+      setSubmitted(true);
+    } catch (err) {
+      setSendError(err instanceof Error && err.message.length < 120 ? err.message : "Something went wrong. Please try again or email andrew@synoratech.ai.");
+    } finally {
+      setSending(false);
+    }
   }
 
   if (submitted) {
@@ -161,9 +164,10 @@ function DemoPage() {
                 <textarea id="demo-notes" rows={4} className={field} value={form.notes} onChange={set("notes")} maxLength={1000} />
               </div>
             </div>
-            <button type="submit" className="mt-7 w-full rounded-lg bg-brand py-3 text-sm font-semibold text-primary-foreground shadow-glow transition hover:opacity-90">
-              Book my prototype demo
+            <button type="submit" className="mt-7 w-full rounded-lg bg-brand py-3 text-sm font-semibold text-primary-foreground shadow-glow transition hover:opacity-90 disabled:opacity-60" disabled={sending}>
+              {sending ? "Sending…" : "Book my prototype demo"}
             </button>
+            {sendError && <p role="alert" className="mt-3 text-sm text-destructive">{sendError}</p>}
             <p className="mt-4 text-xs text-muted-foreground">
               We aim to reply within one business day. Andrew Phan trading as SYNORA TECH collects the details in this form to respond to your enquiry and arrange a demo or pilot discussion. If you do not provide the required fields, we may not be able to arrange a demo. We store your details with our service providers, which may store data outside Australia. We won't send you marketing emails without your consent. Our <Link to="/privacy" className="underline hover:text-foreground">Privacy Policy</Link> explains how to access or correct your information and how to complain.
             </p>
