@@ -85,7 +85,7 @@ function ContactPage() {
             {/* [CONFIRM] public email address on the final domain before launch */}
             <div>
               <h2 className="text-lg font-semibold">Direct contact</h2>
-              <p className="mt-2 text-sm text-muted-foreground">hello@synoradrive.com.au · Victoria, Australia</p>
+              <p className="mt-2 text-sm text-muted-foreground">andrew@synoratech.ai · Victoria, Australia</p>
             </div>
           </div>
           <form onSubmit={onSubmit} noValidate className="rounded-2xl border bg-card p-8">

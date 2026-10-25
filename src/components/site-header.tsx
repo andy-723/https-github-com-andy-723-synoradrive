@@ -83,7 +83,7 @@ export function SiteHeader() {
   return (
     <header ref={header} className="site-nav glass sticky top-0 z-50 border-b" onKeyDown={(event) => { if (event.key === "Escape" && open) { setOpen(false); menuTrigger.current?.focus(); } }}>
       <div role="note" className="border-b bg-muted px-4 py-1.5 text-center text-[11px] leading-snug text-muted-foreground">
-        SynoraDrive is a working prototype in development. Features marked "Planned" are not available today and may change. Pilots are subject to contract.
+        SynoraDrive is a working prototype in development. Features marked "Planned" are not available today and may change. Pilots planned from 30 November 2026, subject to contract.
       </div>
       <ScrollProgressBar />
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">

@@ -33,7 +33,7 @@ const faqs = [
   },
   {
     q: "How does document retention affect OEM or tax audits?",
-    a: "Your dealership should download completed packs and keep them in its own records for as long as the law and your OEM agreements require. SynoraDrive is not an archive. Our retention period is still to be confirmed and will be set out in our Privacy Policy and customer terms. DocuSign e-signature is planned.",
+    a: "Your dealership should download completed packs and keep them in its own records for as long as the law and your OEM agreements require. SynoraDrive is not an archive. Our planned retention period is generally 30 days. DocuSign e-signature is planned; once released, signed documents will be held in your dealership's own DocuSign account.",
   },
   {
     q: "Do we pay per user?",
@@ -52,7 +52,7 @@ const faqs = [
 const onboarding = [
   ["Packs and branding", "We load your branding, set up your rooftop's dealer and OEM forms, and map your DMS contract."],
   ["On-floor training", "We train sales admin, Business Managers, consultants and workshop leads on your floor, using sample or de-identified deals. Live deals are used only once a signed pilot agreement covering data handling is in place."],
-  ["Pilot, then rollout", "Pilots are subject to contract. A pilot is designed to measure time saved on one rooftop before any wider rollout."],
+  ["Pilot, then rollout", "Pilots are planned to start from 30 November 2026 and are subject to contract. A pilot is designed to measure time saved on one rooftop before any wider rollout."],
 ] as const;
 
 function RoiEstimator() {

@@ -1,4 +1,4 @@
-This Disclaimer applies to the SynoraDrive platform (the **Service**) and the SynoraDrive website. It is provided by Andrew Phan trading as SYNORA TECH (**we**, **us**). For any customer who signs an agreement with us, it forms part of that agreement (**Terms**). If this Disclaimer and the Terms conflict, the Terms prevail.
+This Disclaimer applies to the SynoraDrive platform (the **Service**) and the SynoraDrive website. It is provided by Andrew Phan trading as SYNORA TECH (ABN 42 234 662 138) (**we**, **us**). For any customer who signs an agreement with us, it forms part of that agreement (**Terms**). If this Disclaimer and the Terms conflict, the Terms prevail.
 
 ## 1. Your rights under the Australian Consumer Law
 
@@ -43,7 +43,7 @@ SynoraDrive works with documents and information that come from services we do n
 
 ## 8. Document retention
 
-To reduce privacy risk, SynoraDrive is designed to delete documents automatically after a short retention period (planned; see our Privacy Policy). SynoraDrive is not an archive. You must download and keep your own copies of anything you need for OEM audits, tax, ASIC, registration or other record-keeping obligations. Deleted documents cannot be recovered.
+To reduce privacy risk, SynoraDrive is designed to delete documents automatically after a retention period of generally 30 days (planned; see our Privacy Policy). Once DocuSign e-signature is released, signed documents will sit in your own DocuSign account under your agreement with DocuSign. SynoraDrive is not an archive. You must download and keep your own copies of anything you need for OEM audits, tax, ASIC, registration or other record-keeping obligations. Deleted documents cannot be recovered.
 
 ## 9. Website content and ROI estimates
 
@@ -55,4 +55,4 @@ To the extent permitted by law, and subject to section 1 of this Disclaimer, our
 
 ## 11. Contact
 
-Questions about this Disclaimer can be sent to hello@synoradrive.com.au.
+Questions about this Disclaimer can be sent to andrew@synoratech.ai.

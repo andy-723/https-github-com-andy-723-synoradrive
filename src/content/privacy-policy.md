@@ -1,8 +1,8 @@
 ## 1. Who we are and how to contact us
 
-This Privacy Policy explains how Andrew Phan, trading as SYNORA TECH (**we**, **us**), handles personal information in connection with the SynoraDrive website and platform. If a company takes over the business, we will update this policy to name it.
+This Privacy Policy explains how Andrew Phan, trading as SYNORA TECH (ABN 42 234 662 138) (**we**, **us**), handles personal information in connection with the SynoraDrive website and platform. If a company takes over the business, we will update this policy to name it.
 
-Privacy questions can be sent to hello@synoradrive.com.au.
+Privacy questions can be sent to andrew@synoratech.ai.
 
 ## 2. What we collect
 
@@ -28,7 +28,7 @@ The SynoraDrive platform is built to host its primary data in Microsoft Azure, A
 
 ## 7. Cookies and analytics
 
-We use essential cookies to run this website and may use analytics to understand how it is used. Analytics data may include your IP address and device information and may be processed outside Australia. You can manage cookies through your browser settings.
+We use essential cookies to run this website and may use analytics to understand how it is used. Analytics data may include your IP address and device information and may be processed outside Australia. Analytics only run if you choose "Accept all" in our cookie banner. You can also manage cookies through your browser settings.
 
 ## 8. Security and data breaches
 
@@ -36,7 +36,7 @@ We take reasonable steps to protect personal information from misuse, interferen
 
 ## 9. How long we keep it
 
-We keep enquiry details only for as long as we need them to deal with your enquiry, unless you become a customer. Deal documents processed on the platform are planned to be deleted automatically after a short retention period, still to be confirmed. Dealerships must keep their own records. When we no longer need personal information, we take reasonable steps to destroy or de-identify it.
+We keep enquiry details only for as long as we need them to deal with your enquiry, unless you become a customer. Deal documents processed on the platform are planned to be deleted automatically after a retention period of generally 30 days. Once DocuSign e-signature is released, signed documents will also be held in the dealership's own DocuSign account under its agreement with DocuSign. Dealerships must keep their own records. When we no longer need personal information, we take reasonable steps to destroy or de-identify it.
 
 ## 10. Automated decisions
 
@@ -52,7 +52,7 @@ You can make general enquiries without identifying yourself, but we need contact
 
 ## 13. Access, correction and complaints
 
-You can ask to access or correct personal information we hold about you by emailing hello@synoradrive.com.au. We will respond within 30 days. If your information was supplied by a dealership, we may refer your request to that dealership and help it respond.
+You can ask to access or correct personal information we hold about you by emailing andrew@synoratech.ai. We will respond within 30 days. If your information was supplied by a dealership, we may refer your request to that dealership and help it respond.
 
 Complaints: contact us first and we will respond within 30 days. If you are not satisfied, you can complain to the Office of the Australian Information Commissioner (www.oaic.gov.au, 1300 363 992).
 
