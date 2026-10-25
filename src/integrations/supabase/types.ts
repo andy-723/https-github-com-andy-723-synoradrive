@@ -14,7 +14,78 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      contact_submissions: {
+        Row: {
+          created_at: string
+          enquiry_type: string
+          id: string
+          message: string
+          name: string
+          organisation: string | null
+          work_email: string
+        }
+        Insert: {
+          created_at?: string
+          enquiry_type: string
+          id?: string
+          message: string
+          name: string
+          organisation?: string | null
+          work_email: string
+        }
+        Update: {
+          created_at?: string
+          enquiry_type?: string
+          id?: string
+          message?: string
+          name?: string
+          organisation?: string | null
+          work_email?: string
+        }
+        Relationships: []
+      }
+      demo_requests: {
+        Row: {
+          created_at: string
+          dealership: string
+          dms: string | null
+          full_name: string
+          id: string
+          interest: string
+          mobile: string | null
+          notes: string | null
+          role: string
+          rooftops: string
+          work_email: string
+        }
+        Insert: {
+          created_at?: string
+          dealership: string
+          dms?: string | null
+          full_name: string
+          id?: string
+          interest: string
+          mobile?: string | null
+          notes?: string | null
+          role: string
+          rooftops: string
+          work_email: string
+        }
+        Update: {
+          created_at?: string
+          dealership?: string
+          dms?: string | null
+          full_name?: string
+          id?: string
+          interest?: string
+          mobile?: string | null
+          notes?: string | null
+          role?: string
+          rooftops?: string
+          work_email?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
