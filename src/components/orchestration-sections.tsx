@@ -112,8 +112,8 @@ export function DeliveryVisibilitySection() {
         </Reveal>
         <div className="mt-10 flex flex-wrap items-center justify-between gap-4 border-b pb-5">
           <div className="flex gap-1 rounded-md border bg-card p-1" role="group" aria-label="Delivery visibility comparison">
-            <Button variant={connected ? "ghost" : "secondary"} aria-pressed={!connected} onClick={() => setConnected(false)}>The old hand-off</Button>
-            <Button variant={connected ? "secondary" : "ghost"} aria-pressed={connected} onClick={() => setConnected(true)}>With SynoraDrive</Button>
+            <Button variant={connected ? "ghost" : "secondary"} aria-pressed={!connected} onClick={() => chooseView(false)}>The old hand-off</Button>
+            <Button variant={connected ? "secondary" : "ghost"} aria-pressed={connected} onClick={() => chooseView(true)}>With SynoraDrive</Button>
           </div>
           <span className="font-mono text-[10px] text-muted-foreground">ILLUSTRATIVE DELIVERY JOURNEY</span>
         </div>
