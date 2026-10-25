@@ -9,9 +9,9 @@ export const Route = createFileRoute("/platform/operations")({
   head: () => ({
     meta: [
       { title: "Unified dealership operations, SynoraDrive" },
-      { name: "description", content: "Sales, stock, F&I, aftermarket, workshop and rego on one five-stage board, with parallel tasks, @mentions and escalations." },
+      { name: "description", content: "Planned: sales, stock, F&I, aftermarket, workshop and rego on one five-stage board, with parallel tasks, @mentions and escalations." },
       { property: "og:title", content: "Unified dealership operations, SynoraDrive" },
-      { property: "og:description", content: "Sales, stock, F&I, aftermarket, workshop and rego on one five-stage board, with parallel tasks, @mentions and escalations." },
+      { property: "og:description", content: "Planned: sales, stock, F&I, aftermarket, workshop and rego on one five-stage board, with parallel tasks, @mentions and escalations." },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/platform/operations" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -22,12 +22,12 @@ export const Route = createFileRoute("/platform/operations")({
 });
 
 const features = [
-  ["Five-stage delivery board", "In Queue → Document Prep → Finance & Approvals → Workshop & PDI → Ready for Delivery."],
-  ["Parallel task orchestration", "Stock, F&I, aftermarket and workshop work start together instead of waiting for a folder to arrive."],
-  ["Live rooftop visibility", "Every car, its stage, its owner and its delivery date on one screen, ending \u201cis the car ready?\u201d calls across the yard."],
-  ["On-deal communication", "@mention F&I, the workshop or the Sales Manager on the deal itself, with in-app notifications, so every decision stays with the vehicle record."],
-  ["Proactive escalation", "Stalled external finance is flagged to the Sales Manager, registration transfer and inspection deadlines run on clocks, and deals near or past their customer ETA are surfaced."],
-  ["Activity log", "Every upload, form, approval and stage change is recorded with the user and time."],
+  ["Five-stage delivery board (planned)", "In Queue → Document Prep → Finance & Approvals → Workshop & PDI → Ready for Delivery."],
+  ["Parallel tasks (planned)", "Designed so stock, F&I, aftermarket and workshop work can start together instead of waiting for a folder to arrive."],
+  ["Rooftop visibility (planned)", "Every car, its stage, its owner and its delivery date on one screen, designed to reduce \u201cis the car ready?\u201d calls across the yard."],
+  ["On-deal communication (planned)", "@mention F&I, the workshop or the Sales Manager on the deal itself, with in-app notifications, so every decision stays with the vehicle record."],
+  ["Proactive escalation (planned)", "Designed to flag stalled external finance to the Sales Manager, track registration transfer and inspection deadlines, and surface deals near or past their customer ETA."],
+  ["Activity log (planned)", "Planned: an activity log designed to record uploads, approvals and stage changes with the user and time."],
 ] as const;
 
 const related = [
@@ -49,8 +49,8 @@ function OperationsPage() {
         <div className="pb-20">
           <PageHero
             eyebrow="Unified operations"
-            title="One live timeline for every department, across five gated stages."
-            intro="Folder hand-offs cost dealerships floorplan days, workshop jams and registration errors. SynoraDrive puts sales, stock control, the Business Manager, aftermarket, the workshop and PDI, rego and delivery on one shared board. The moment a contract lands, departmental tasks start in parallel, backed by @mentions on the deal and a complete activity log."
+            title="Planned: one shared timeline for every department, across five gated stages."
+            intro="Folder hand-offs can slow deliveries. SynoraDrive is being designed to put sales, stock control, the Business Manager, aftermarket, the workshop and PDI, rego and delivery on one shared board, so departmental tasks can start in parallel, with on-deal @mentions and an activity log. These features are in development."
           />
         </div>
       </section>

@@ -7,9 +7,9 @@ export const Route = createFileRoute("/platform/customer-experience")({
   head: () => ({
     meta: [
       { title: "Customer portal and eSigning, SynoraDrive" },
-      { name: "description", content: "Customers upload documents from their phone and sign by DocuSign before delivery day, through your dealership-branded portal." },
+      { name: "description", content: "Planned: a dealership-branded portal for customers to upload documents from their phone, with DocuSign e-signature subject to agreement." },
       { property: "og:title", content: "Customer portal and eSigning, SynoraDrive" },
-      { property: "og:description", content: "Customers upload documents from their phone and sign by DocuSign before delivery day, through your dealership-branded portal." },
+      { property: "og:description", content: "Planned: a dealership-branded portal for customers to upload documents from their phone, with DocuSign e-signature subject to agreement." },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/platform/customer-experience" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -20,10 +20,10 @@ export const Route = createFileRoute("/platform/customer-experience")({
 });
 
 const features = [
-  ["A private, dealer-branded portal", "Buyers get a secure link by email, with no password to remember, and upload their licence and finance documents from their phone."],
-  ["DocuSign built in", "Send showroom and pre-delivery packs for electronic signature before the customer arrives."],
-  ["Your brand, not ours", "Portal pages and emails carry your dealership's name and branding."],
-  ["A handover about the car", "With documents, signatures, finance and registration done ahead of time, pickup day is spent on the vehicle, not chasing missing pages."],
+  ["A private, dealer-branded portal (planned)", "Planned: buyers will receive a private link by email to upload their licence and finance documents from their phone."],
+  ["DocuSign e-signature (planned, subject to agreement with DocuSign)", "Designed to send showroom and pre-delivery packs for electronic signature before the customer arrives."],
+  ["Your brand, not ours (planned)", "Portal pages and emails carry your dealership's name and branding."],
+  ["A handover about the car", "Designed so more of the paperwork can be done ahead of time, and pickup day is spent on the vehicle, not chasing missing pages."],
 ] as const;
 
 const related = [
@@ -43,7 +43,7 @@ function CustomerExperiencePage() {
         <PageHero
           eyebrow="Customer experience"
           title="End the paperwork scramble before delivery day."
-          intro="The weeks between signing and pickup are where buyers feel forgotten, and handover day often turns into a long session at the desk. SynoraDrive closes that gap with a simple, mobile-first portal."
+          intro="The weeks between signing and pickup are where buyers feel forgotten, and handover day often turns into a long session at the desk. SynoraDrive is designed to close that gap with a simple, mobile-first portal. The customer portal and DocuSign e-signature are planned features. They are not available in the current prototype."
         />
         <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
           <div className="grid gap-x-10 gap-y-8 md:grid-cols-2">
