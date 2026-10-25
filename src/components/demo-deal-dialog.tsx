@@ -30,7 +30,7 @@ export function DemoDealDialog({ deal, onClose, onReturnFocus, initialTab = "ove
   </Dialog>;
 }
 
-function DealRecord({ deal, initialTab, sharedSettled, onSettle }: { deal: DemoDeal; initialTab: DemoTab; sharedSettled?: boolean; onSettle?: () => void }) {
+function DealRecord({ deal, initialTab, sharedSettled, onSettle }: { deal: DemoDeal; initialTab: DemoTab; sharedSettled: boolean | undefined; onSettle: (() => void) | undefined }) {
   const record = demoRecord(deal);
   const [localSettled, setSettled] = useState(deal.id === "DEMO-007");
   const settled = sharedSettled ?? localSettled;
