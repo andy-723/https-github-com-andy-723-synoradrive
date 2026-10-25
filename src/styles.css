@@ -460,3 +460,67 @@
 @media (prefers-reduced-motion: reduce) {
   .laptop-lid,.glass-satellite,[data-open="true"] .glass-satellite { transform: none; translate: none; opacity: 1; transition: none; animation: none; }.glass-satellite:hover { transform: none; }
 }
+
+/* ===== About page: founder showcase + journey road ===== */
+.founder-stage { position: relative; margin-top: 4rem; min-height: 640px; }
+.founder-wires { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.founder-wire { stroke: var(--logo-accent, #00f5d4); stroke-width: 1.5; stroke-dasharray: 6 8; opacity: 0.5; animation: founder-wire-flow 3.2s linear infinite; }
+.founder-wire-alt { stroke: var(--brand-violet, #6366f1); animation-duration: 4.4s; animation-direction: reverse; }
+.founder-wire-node { fill: var(--logo-accent, #00f5d4); opacity: 0.9; }
+@keyframes founder-wire-flow { to { stroke-dashoffset: -56; } }
+
+.founder-portrait-wrap { position: relative; z-index: 2; display: flex; justify-content: center; }
+.founder-portrait-float { display: flex; flex-direction: column; align-items: center; gap: 18px; animation: founder-float 6s ease-in-out infinite; }
+@keyframes founder-float { 0%, 100% { translate: 0 0; } 50% { translate: 0 -12px; } }
+
+.founder-portrait { position: relative; width: min(320px, 70vw); }
+.founder-portrait img { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 160px 160px 24px 24px; border: 1px solid color-mix(in oklab, var(--logo-accent, #00f5d4) 35%, transparent); box-shadow: 0 30px 80px -20px color-mix(in oklab, var(--brand-violet, #6366f1) 45%, transparent), 0 0 0 8px color-mix(in oklab, var(--logo-accent, #00f5d4) 6%, transparent); }
+.founder-portrait-ring { position: absolute; inset: -16px; border: 1.5px dashed color-mix(in oklab, var(--logo-accent, #00f5d4) 45%, transparent); border-radius: 180px 180px 36px 36px; animation: founder-ring-spin 24s linear infinite; pointer-events: none; }
+@keyframes founder-ring-spin { to { rotate: 0.5deg; } }
+
+.founder-nameplate { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 12px 24px; border: 1px solid color-mix(in oklab, var(--logo-accent, #00f5d4) 25%, transparent); border-radius: 12px; background: color-mix(in oklab, var(--logo-accent, #00f5d4) 5%, transparent); backdrop-filter: blur(10px); }
+
+.founder-chip { position: absolute; z-index: 3; width: min(240px, 30%); }
+.founder-chip-tl { top: 6%; left: 2%; }
+.founder-chip-bl { bottom: 18%; left: 4%; }
+.founder-chip-tr { top: 14%; right: 2%; }
+.founder-chip-br { bottom: 12%; right: 4%; }
+.founder-chip-inner { display: block; padding: 14px 16px; border: 1px solid color-mix(in oklab, var(--brand-violet, #6366f1) 35%, transparent); border-radius: 12px; background: color-mix(in oklab, var(--brand-violet, #6366f1) 8%, oklch(0.12 0.02 280)); backdrop-filter: blur(12px); box-shadow: 0 16px 40px -16px rgb(0 0 0 / 0.6); animation: founder-chip-drift 7s ease-in-out infinite; }
+.founder-chip-bl .founder-chip-inner { animation-delay: -2s; }
+.founder-chip-tr .founder-chip-inner { animation-delay: -3.5s; }
+.founder-chip-br .founder-chip-inner { animation-delay: -5s; }
+@keyframes founder-chip-drift { 0%, 100% { translate: 0 0; } 50% { translate: 0 -8px; } }
+@media (hover: hover) and (pointer: fine) {
+  .founder-chip-inner:hover { border-color: var(--logo-accent, #00f5d4); animation-play-state: paused; }
+}
+
+/* Journey road */
+.about-road { position: relative; display: grid; gap: 2.5rem; }
+@media (min-width: 768px) {
+  .about-road { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem; }
+  .about-road::before { content: ""; position: absolute; top: 11px; left: 4%; right: 4%; border-top: 2px dashed color-mix(in oklab, var(--primary) 40%, transparent); }
+}
+.about-road-stop { position: relative; padding-top: 2.25rem; }
+.about-road-marker { position: absolute; top: 0; left: 0; display: flex; align-items: center; }
+.about-road-dot { display: block; width: 22px; height: 22px; border-radius: 50%; border: 2px solid var(--primary); background: var(--background); box-shadow: 0 0 0 5px color-mix(in oklab, var(--primary) 12%, transparent); }
+@media (max-width: 767px) {
+  .about-road { padding-left: 1.75rem; }
+  .about-road::before { content: ""; position: absolute; top: 8px; bottom: 8px; left: 10px; border-left: 2px dashed color-mix(in oklab, var(--primary) 40%, transparent); }
+  .about-road-stop { padding-top: 0; }
+  .about-road-marker { left: -1.75rem; top: 4px; }
+}
+
+/* Photo band */
+.about-shot img { filter: saturate(0.95); }
+
+/* Responsive founder stage */
+@media (max-width: 1023px) {
+  .founder-stage { min-height: 0; display: flex; flex-direction: column; align-items: center; gap: 1.25rem; }
+  .founder-wires { display: none; }
+  .founder-chip { position: static; width: min(420px, 100%); }
+  .founder-portrait { width: min(280px, 78vw); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .founder-portrait-float, .founder-chip-inner, .founder-wire, .founder-wire-alt, .founder-portrait-ring { animation: none; }
+}
