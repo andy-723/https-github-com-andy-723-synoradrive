@@ -21,6 +21,8 @@ export const Route = createFileRoute("/")({
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:image", content: vehicleAsset.url },
+      { name: "twitter:image", content: vehicleAsset.url },
     ],
     links: [{ rel: "canonical", href: "/" }],
   }),
@@ -173,15 +175,14 @@ function WorkflowTeaser() {
 
 function ProductView() {
   return (
-    <section className="light-section border-t bg-background text-foreground">
-      <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
-        <Reveal className="mb-10 flex flex-col justify-between gap-6 md:flex-row md:items-end">
-          <div><div className="font-mono text-xs text-primary-glow">PRODUCT VIEW</div><h2 className="mt-4 max-w-xl text-3xl font-semibold sm:text-4xl">Every car, every stage, every owner, on one board.</h2></div>
-          <p className="max-w-sm text-sm leading-relaxed text-muted-foreground">A live look at the delivery board and executive sales log, running on fictional demo data.</p>
+    <section className="product-showcase-section border-t text-foreground" aria-labelledby="product-view-title">
+      <div className="mx-auto max-w-[1600px] px-5 py-24 sm:px-8">
+        <Reveal className="mx-auto mb-10 max-w-3xl text-center">
+          <div className="showcase-eyebrow font-mono text-[10px] sm:text-xs">PRODUCT VIEW · RACI PROJECT KANBAN & LIVE OPERATING LAYER</div>
+          <h2 id="product-view-title" className="mt-5 text-3xl font-semibold leading-tight sm:text-5xl">Every car is a project.<br />Every stage has a RACI owner.</h2>
+          <p className="mt-5 text-sm leading-relaxed text-muted-foreground">Watch a vehicle cycle from In-Queue to Delivery inside one live Kanban workspace. Every department knows who is Responsible (R), who is Accountable (A) for the gate, and what is holding handover back.</p>
         </Reveal>
-        <Reveal delay={150}>
-          <ProductPreview />
-        </Reveal>
+        <ProductPreview />
       </div>
     </section>
   );
