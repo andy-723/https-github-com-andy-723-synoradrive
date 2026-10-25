@@ -4,7 +4,7 @@ import { LaptopShowcase, type DemoTab } from "@/components/laptop-showcase";
 import type { DemoDeal } from "@/lib/demo-deal";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { CheckCircle2, Clock3, Lock, FileText, LayoutDashboard, BarChart3, Megaphone, AlertTriangle, Upload } from "lucide-react";
+import { CheckCircle2, Clock3, Lock, FileText, LayoutDashboard, BarChart3, Megaphone, AlertTriangle, Upload, Users } from "lucide-react";
 
 const stages = [
   { name: "In-Queue", owner: "Sales", count: 4, dot: "bg-brand-sky", deals: [
