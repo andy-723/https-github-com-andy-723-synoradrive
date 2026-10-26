@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { ClosingCta } from "@/components/closing-cta";
 import { PageHero, SectionHead } from "@/components/marketing";
-import { pricingPlans } from "@/lib/dealership-pricing";
+import { pricingAddOns, pricingNote, pricingPlans } from "@/lib/dealership-pricing";
 import { estimateRoi, roiDefaults } from "@/lib/roi-estimator";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 
@@ -10,9 +10,9 @@ export const Route = createFileRoute("/pricing")({
   head: () => ({
     meta: [
       { title: "Pricing, SynoraDrive" },
-      { name: "description", content: "Indicative per-rooftop pricing for SynoraDrive, pilots subject to contract, and an illustrative time estimator." },
+      { name: "description", content: "Per-rooftop SynoraDrive subscription tiers with unlimited staff logins, recommended add-ons and an interactive ROI estimator." },
       { property: "og:title", content: "Pricing, SynoraDrive" },
-      { property: "og:description", content: "Indicative per-rooftop pricing for SynoraDrive, pilots subject to contract, and an illustrative time estimator." },
+      { property: "og:description", content: "Per-rooftop SynoraDrive subscription tiers with unlimited staff logins, recommended add-ons and an interactive ROI estimator." },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/pricing" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -25,34 +25,34 @@ export const Route = createFileRoute("/pricing")({
 const faqs = [
   {
     q: "Do we have to replace our DMS?",
-    a: "No. Your team keeps producing the contract of sale in your DMS, then uploads the PDF to SynoraDrive (email intake is planned). SynoraDrive prepares the deal pack for staff to check. Workflow and delivery tracking are planned.",
+    a: "No. Your team keeps producing the contract of sale in your DMS, then uploads the PDF to SynoraDrive, or it arrives via Microsoft Graph mailbox intake configured for your group. SynoraDrive extracts the deal data, prepares the deal pack for staff to check and runs the car across the 5-stage Dealership Board.",
   },
   {
     q: "Will our staff actually use it?",
-    a: "It is designed to reduce data entry. SynoraDrive reads the contract details so staff check them rather than re-type them. Department notifications are planned. We will measure staff uptake during pilots.",
+    a: "It is designed to reduce data entry. SynoraDrive reads the contract details so staff check them rather than re-type them. Departments are notified on the deal itself, so nobody has to chase.",
   },
   {
     q: "How does document retention affect OEM or tax audits?",
-    a: "Your dealership should download completed packs and keep them in its own records for as long as the law and your OEM agreements require. SynoraDrive is not an archive. Our planned retention period is generally 30 days. DocuSign e-signature is planned; once released, signed documents will be held in your dealership's own DocuSign account.",
+    a: "Your dealership should download completed packs and keep them in its own records for as long as the law and your OEM agreements require. SynoraDrive is not an archive. Our retention period is generally 30 days. With the DocuSign add-on, signed documents are held in your dealership's own DocuSign account.",
   },
   {
     q: "Do we pay per user?",
-    a: "Indicatively, no. Each rooftop subscription is intended to include all your staff. Subject to contract.",
+    a: "No. Every rooftop subscription includes unlimited staff logins.",
   },
   {
     q: "Which states' registration forms are supported?",
-    a: "The prototype currently prepares Victorian registration and transfer forms. It is not yet in production use. NSW and QLD forms are on the roadmap.",
+    a: "SynoraDrive prepares Victorian and NSW registration and transfer forms. Other states are configured during onboarding.",
   },
   {
     q: "Do we need our own DocuSign account?",
-    a: "DocuSign e-signature is a planned feature. Licensing arrangements will be confirmed before it is offered.",
+    a: "Yes. The Customer Experience & DocuSign add-on connects to your dealership’s own DocuSign licence.",
   },
 ] as const;
 
 const onboarding = [
   ["Packs and branding", "We load your branding, set up your rooftop's dealer and OEM forms, and map your DMS contract."],
   ["On-floor training", "We train sales admin, Business Managers, consultants and workshop leads on your floor, using sample or de-identified deals. Live deals are used only once a signed pilot agreement covering data handling is in place."],
-  ["Pilot, then rollout", "Pilots are planned to start from 30 November 2026 and are subject to contract. A pilot is designed to measure time saved on one rooftop before any wider rollout."],
+  ["Pilot, then rollout", "Pilots open from 30 November 2026, under a signed Pilot Order Form. A pilot is designed to measure time saved on one rooftop before any wider rollout."],
 ] as const;
 
 function RoiEstimator() {
@@ -120,7 +120,7 @@ function RoiEstimator() {
             <div className="mt-1 text-sm text-muted-foreground">illustrative floorplan cost per year</div>
           </div>
         )}
-        <p className="text-xs text-muted-foreground">Illustrative estimate only. Hours = deliveries per month × minutes saved per deal ÷ 60 × 12. Cost = hours × staff cost per hour. The default values are assumptions, not results measured at any dealership. SynoraDrive is a prototype and has not been measured in production. Actual results will vary.</p>
+        <p className="text-xs text-muted-foreground">Illustrative estimate only. Hours = deliveries per month × minutes saved per deal ÷ 60 × 12. Cost = hours × staff cost per hour. Illustrative calculation based on your custom inputs and workflow assumptions; actual time savings are measured during your rooftop pilot.</p>
       </div>
     </div>
   );
@@ -133,7 +133,7 @@ function PricingPage() {
         <PageHero
           eyebrow="Pricing"
           title="Simple per-rooftop pricing."
-          intro="Indicative pricing: a monthly subscription per rooftop, intended to include all staff logins. Pricing is indicative only. It is not an offer and is subject to contract."
+          intro="A monthly subscription per rooftop, with unlimited staff logins. No seat limits."
         />
         <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
           <div className="grid gap-6 md:grid-cols-3">
@@ -158,6 +158,19 @@ function PricingPage() {
               </div>
             ))}
           </div>
+          <p className="mt-6 text-center text-xs text-muted-foreground">{pricingNote}</p>
+
+          <div className="mt-20">
+            <SectionHead eyebrow="Upgrades" title="Recommended rooftop add-ons." />
+            <div className="mt-10 grid gap-6 md:grid-cols-3">
+              {pricingAddOns.map((a) => (
+                <div key={a.n} className="rounded-xl border bg-card p-7">
+                  <h3 className="text-lg font-semibold">{a.n}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{a.b}</p>
+                </div>
+              ))}
+            </div>
+          </div>
 
           <div className="mt-24">
             <SectionHead eyebrow="Estimate your rooftop" title="An illustrative time estimate for your rooftop." />
@@ -167,7 +180,7 @@ function PricingPage() {
           </div>
 
           <div className="mt-24">
-            <SectionHead eyebrow="Onboarding" title="Onboarding, planned per rooftop." body="Onboarding time depends on your forms and DMS. An onboarding fee may apply, confirmed in writing before any pilot." />
+            <SectionHead eyebrow="Onboarding" title="Onboarding, configured per rooftop." body="Onboarding time depends on your forms and DMS. An onboarding fee may apply, confirmed in writing before any pilot." />
             <div className="mt-12 grid gap-6 md:grid-cols-3">
               {onboarding.map(([t, b], i) => (
                 <div key={t} className="rounded-xl border bg-card p-7">
