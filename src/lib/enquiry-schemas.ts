@@ -10,6 +10,7 @@ export const demoSchema = z.object({
   dms: z.string().trim().max(100).optional(),
   interest: z.string().trim().nonempty("Select what you're interested in").max(100),
   notes: z.string().trim().max(1000).optional(),
+  marketingOptIn: z.boolean().optional(),
 });
 
 export const contactSchema = z.object({
@@ -18,4 +19,5 @@ export const contactSchema = z.object({
   organisation: z.string().trim().max(150).optional(),
   enquiryType: z.string().trim().nonempty("Select an enquiry type").max(100),
   message: z.string().trim().nonempty("Message cannot be empty").max(1000, "Message must be less than 1000 characters"),
+  marketingOptIn: z.boolean().optional(),
 });

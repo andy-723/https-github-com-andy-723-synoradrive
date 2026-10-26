@@ -4,7 +4,7 @@ This website is operated by Andrew Phan trading as SYNORA TECH (**we**, **us**).
 
 ## 2. General information only
 
-Content on this website is general information about a product in development. It is not legal, compliance, financial or other professional advice, and it may change without notice.
+Content on this website is general information about the SynoraDrive platform. Commercial use of the platform is governed by a signed Pilot or Subscription Order Form, and its automated extraction and compliance checklists are workflow aids that require dealership staff verification before document lodgement or vehicle handover. It is not legal, compliance, financial or other professional advice, and it may change without notice.
 
 ## 3. No reliance
 

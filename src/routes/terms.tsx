@@ -25,7 +25,7 @@ function TermsPage() {
     <section className="light-section bg-background text-foreground">
       <PageHero
         eyebrow="Trust"
-        title="Terms of Use and Disclaimer"
+        title="Website Terms of Use & Platform Disclaimer"
         intro="How you may use this website, and the limits of what SynoraDrive does. Customer subscription terms are provided only with a signed agreement."
       />
       <div className="mx-auto max-w-3xl px-6 py-12 lg:px-8">
@@ -41,7 +41,7 @@ function TermsPage() {
           <h2 id="disclaimer-heading" className="text-2xl font-semibold sm:text-3xl">SynoraDrive Disclaimer</h2>
           <LegalDocument content={disclaimer} />
         </article>
-        <p className="mt-14 border-t pt-6 text-xs text-muted-foreground">Last updated: 25 October 2026.</p>
+        <p className="mt-14 border-t pt-6 text-xs text-muted-foreground">Last updated: 26 October 2026.</p>
       </div>
     </section>
   );

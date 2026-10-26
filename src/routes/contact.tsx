@@ -36,6 +36,7 @@ function ContactPage() {
   const [errors, setErrors] = useState<Partial<Record<keyof ContactForm, string>>>({});
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
+  const [optIn, setOptIn] = useState(false);
   const [sendError, setSendError] = useState<string | null>(null);
   const send = useServerFn(submitContact);
 
@@ -55,7 +56,7 @@ function ContactPage() {
     setSendError(null);
     setSending(true);
     try {
-      await send({ data: parsed.data });
+      await send({ data: { ...parsed.data, marketingOptIn: optIn } });
       setSubmitted(true);
     } catch (err) {
       setSendError(err instanceof Error && err.message.length < 120 ? err.message : "Something went wrong. Please try again or email andrew@synoratech.ai.");
@@ -89,7 +90,6 @@ function ContactPage() {
       <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-[1fr_1.4fr]">
           <div className="space-y-8">
-            {/* [CONFIRM] public email address on the final domain before launch */}
             <div>
               <h2 className="text-lg font-semibold">Direct contact</h2>
               <p className="mt-2 text-sm text-muted-foreground">andrew@synoratech.ai · Victoria, Australia</p>
@@ -125,6 +125,10 @@ function ContactPage() {
                 {errors.message && <p className="mt-1 text-xs text-destructive">{errors.message}</p>}
               </div>
             </div>
+            <label className="mt-5 flex items-start gap-2 text-sm text-muted-foreground">
+              <input type="checkbox" className="mt-1" checked={optIn} onChange={(e) => setOptIn(e.target.checked)} />
+              <span>Optional: send me occasional SynoraDrive product and pilot updates. You can unsubscribe at any time.</span>
+            </label>
             <button type="submit" className="mt-7 w-full rounded-lg bg-brand py-3 text-sm font-semibold text-primary-foreground shadow-glow transition hover:opacity-90 disabled:opacity-60" disabled={sending}>
               {sending ? "Sending…" : "Send message"}
             </button>

@@ -46,6 +46,7 @@ function DemoPage() {
   const [errors, setErrors] = useState<Partial<Record<keyof DemoForm, string>>>({});
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
+  const [optIn, setOptIn] = useState(false);
   const [sendError, setSendError] = useState<string | null>(null);
   const send = useServerFn(submitDemoRequest);
 
@@ -65,7 +66,7 @@ function DemoPage() {
     setSendError(null);
     setSending(true);
     try {
-      await send({ data: parsed.data });
+      await send({ data: { ...parsed.data, marketingOptIn: optIn } });
       setSubmitted(true);
     } catch (err) {
       setSendError(err instanceof Error && err.message.length < 120 ? err.message : "Something went wrong. Please try again or email andrew@synoratech.ai.");
@@ -164,6 +165,10 @@ function DemoPage() {
                 <textarea id="demo-notes" rows={4} className={field} value={form.notes} onChange={set("notes")} maxLength={1000} />
               </div>
             </div>
+            <label className="mt-5 flex items-start gap-2 text-sm text-muted-foreground">
+              <input type="checkbox" className="mt-1" checked={optIn} onChange={(e) => setOptIn(e.target.checked)} />
+              <span>Optional: send me occasional SynoraDrive product and pilot updates. You can unsubscribe at any time.</span>
+            </label>
             <button type="submit" className="mt-7 w-full rounded-lg bg-brand py-3 text-sm font-semibold text-primary-foreground shadow-glow transition hover:opacity-90 disabled:opacity-60" disabled={sending}>
               {sending ? "Sending…" : "Book my rooftop walkthrough"}
             </button>

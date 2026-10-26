@@ -25,7 +25,7 @@ function PrivacyPage() {
       <PageHero eyebrow="Trust" title="Privacy Policy" intro="How we handle personal information under the Privacy Act 1988 (Cth) and the Australian Privacy Principles." />
       <div className="mx-auto max-w-3xl break-words px-6 py-12 lg:px-8">
         <LegalDocument content={policy} />
-        <p className="mt-14 border-t pt-6 text-xs text-muted-foreground">Last updated: 25 October 2026.</p>
+        <p className="mt-14 border-t pt-6 text-xs text-muted-foreground">Last updated: 26 October 2026.</p>
       </div>
     </section>
   );
