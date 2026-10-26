@@ -31,14 +31,14 @@ const stages = [
     n: 2,
     name: "Document Prep",
     who: "Sales consultant, sales admin, customer",
-    what: "The checklist for the deal type is set, forms are filled and the pack is generated. Planned: the customer gets a portal link to upload their documents and e-sign.",
+    what: "The checklist for the deal type is set, forms are filled and the pack is generated. The customer gets a portal link to upload their documents and e-sign.",
     gate: "Deal pack generated and signed order on file.",
   },
   {
     n: 3,
     name: "Finance & Approvals",
     who: "Business Manager, Sales Manager",
-    what: "Deposit, finance path and Business Manager checks. Planned: the deferred-sales-model date is tracked for the Business Manager to confirm, and stalled external finance is escalated.",
+    what: "Deposit, finance path and Business Manager checks. The deferred-sales-model date is tracked for the Business Manager to confirm, and stalled external finance is escalated.",
     gate: "Finance path cleared.",
   },
   {

@@ -13,9 +13,9 @@ export const pricingPlans = [
       "Contract-of-sale reading (PDF from your DMS)",
       "Deal pack prepared for staff to check",
       "Staff preview, then download or print",
-      "Planned: deal-type checklists and deferred-sales date tracking",
-      "Planned: PPSR certificate reading and company search",
-      "Planned: customer portal and DocuSign e-signature",
+      "Deal-type checklists and deferred-sales date tracking",
+      "PPSR certificate reading and company search",
+      "Customer portal and DocuSign e-signature",
     ],
   },
   {

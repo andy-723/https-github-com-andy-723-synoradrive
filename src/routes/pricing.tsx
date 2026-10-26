@@ -10,9 +10,9 @@ export const Route = createFileRoute("/pricing")({
   head: () => ({
     meta: [
       { title: "Pricing, SynoraDrive" },
-      { name: "description", content: "Indicative per-rooftop pricing for the SynoraDrive prototype, pilots subject to contract, and an illustrative time estimator." },
+      { name: "description", content: "Indicative per-rooftop pricing for SynoraDrive, pilots subject to contract, and an illustrative time estimator." },
       { property: "og:title", content: "Pricing, SynoraDrive" },
-      { property: "og:description", content: "Indicative per-rooftop pricing for the SynoraDrive prototype, pilots subject to contract, and an illustrative time estimator." },
+      { property: "og:description", content: "Indicative per-rooftop pricing for SynoraDrive, pilots subject to contract, and an illustrative time estimator." },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/pricing" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -196,7 +196,7 @@ function PricingPage() {
               Talk to us about pricing <ArrowRight className="size-4" />
             </Link>
             <Link to="/demo" className="inline-flex items-center gap-2 rounded-lg border px-6 py-3 text-sm font-semibold transition-colors hover:bg-accent">
-              Book a prototype demo
+              Book a rooftop walkthrough
             </Link>
           </div>
         </div>

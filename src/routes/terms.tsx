@@ -8,9 +8,9 @@ export const Route = createFileRoute("/terms")({
   head: () => ({
     meta: [
       { title: "Website Terms of Use and Disclaimer, SynoraDrive" },
-      { name: "description", content: "The terms for using the SynoraDrive website and the Disclaimer for the SynoraDrive prototype, including your Australian Consumer Law rights." },
+      { name: "description", content: "The terms for using the SynoraDrive website and the Disclaimer for SynoraDrive, including your Australian Consumer Law rights." },
       { property: "og:title", content: "Website Terms of Use and Disclaimer, SynoraDrive" },
-      { property: "og:description", content: "Website Terms of Use and Disclaimer for the SynoraDrive prototype." },
+      { property: "og:description", content: "Website Terms of Use and Disclaimer for SynoraDrive." },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/terms" },
       { name: "twitter:card", content: "summary_large_image" },

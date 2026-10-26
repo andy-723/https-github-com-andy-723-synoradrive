@@ -11,9 +11,9 @@ export const Route = createFileRoute("/demo")({
   head: () => ({
     meta: [
       { title: "Book a rooftop demo, SynoraDrive" },
-      { name: "description", content: "See the SynoraDrive prototype in 30 minutes." },
+      { name: "description", content: "See SynoraDrive in 30 minutes." },
       { property: "og:title", content: "Book a rooftop demo, SynoraDrive" },
-      { property: "og:description", content: "See the SynoraDrive prototype in 30 minutes." },
+      { property: "og:description", content: "See SynoraDrive in 30 minutes." },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/demo" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -96,7 +96,7 @@ function DemoPage() {
     <section className="light-section bg-background text-foreground">
       <PageHero
         eyebrow="Book a demo"
-        title="See the SynoraDrive prototype in 30 minutes."
+        title="See SynoraDrive in 30 minutes."
         intro="Use our fictional demo data, or bring a sample or de-identified contract of sale (please don't bring live customer documents). See SynoraDrive read the contract and prepare the deal pack for staff to check. We'll also walk you through the planned workflow, gates and month book."
       />
       <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">

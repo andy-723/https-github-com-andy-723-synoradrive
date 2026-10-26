@@ -114,14 +114,14 @@ export function DemoReel() {
                   <Play className="size-3.5" /> The SynoraDrive film
                 </div>
                 <p className="mt-2 max-w-md text-sm text-muted-foreground">
-                  A walkthrough of the SynoraDrive prototype using fictional demo data.
+                  A walkthrough of SynoraDrive using fictional demo data.
                 </p>
               </div>
               <Link
                 to="/demo"
                 className="inline-flex shrink-0 items-center gap-2 rounded-lg bg-brand px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-glow"
               >
-                Book a prototype demo <ArrowRight className="size-4" />
+                Book a rooftop walkthrough <ArrowRight className="size-4" />
               </Link>
             </div>
           </div>

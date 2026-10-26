@@ -7,9 +7,9 @@ export const Route = createFileRoute("/platform/customer-experience")({
   head: () => ({
     meta: [
       { title: "Customer portal and eSigning, SynoraDrive" },
-      { name: "description", content: "Planned: a dealership-branded portal for customers to upload documents from their phone, with DocuSign e-signature subject to agreement." },
+      { name: "description", content: "A dealership-branded portal for customers to upload documents from their phone, with DocuSign e-signature subject to agreement." },
       { property: "og:title", content: "Customer portal and eSigning, SynoraDrive" },
-      { property: "og:description", content: "Planned: a dealership-branded portal for customers to upload documents from their phone, with DocuSign e-signature subject to agreement." },
+      { property: "og:description", content: "A dealership-branded portal for customers to upload documents from their phone, with DocuSign e-signature subject to agreement." },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/platform/customer-experience" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -20,9 +20,9 @@ export const Route = createFileRoute("/platform/customer-experience")({
 });
 
 const features = [
-  ["A private, dealer-branded portal (planned)", "Planned: buyers will receive a private link by email to upload their licence and finance documents from their phone."],
+  ["A private, dealer-branded portal", "Buyers will receive a private link by email to upload their licence and finance documents from their phone."],
   ["DocuSign e-signature (planned, subject to agreement with DocuSign)", "Designed to send showroom and pre-delivery packs for electronic signature before the customer arrives."],
-  ["Your brand, not ours (planned)", "Portal pages and emails carry your dealership's name and branding."],
+  ["Your brand, not ours", "Portal pages and emails carry your dealership's name and branding."],
   ["A handover about the car", "Designed so more of the paperwork can be done ahead of time, and pickup day is spent on the vehicle, not chasing missing pages."],
 ] as const;
 

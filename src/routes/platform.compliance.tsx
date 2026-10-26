@@ -20,12 +20,12 @@ export const Route = createFileRoute("/platform/compliance")({
 });
 
 const features = [
-  ["Stage gates (planned)", "Planned: a car will not move to the next stage until the gate your team configures is marked as met (for example, a prepared deal pack and a signed order before Finance & Approvals)."],
-  ["Deal-type checklists (planned)", "Planned: New, Demo, Used, company and fleet deals each get a document checklist configured with you during onboarding (for example authority to register, transfer papers, PPSR certificate and company extract). You remain responsible for confirming what each deal legally requires."],
-  ["Deferred-sales-model date tracking (planned)", "Planned: designed to show the Business Manager a date calculated from the details entered. It does not determine whether the add-on insurance deferred sales model (ASIC Act) has been complied with. Your Business Manager must confirm this."],
-  ["Pre-Reported (RDA) watchlist (planned)", "Planned: designed to help management keep track of reported units awaiting handover before OEM cut-off."],
+  ["Stage gates", "A car will not move to the next stage until the gate your team configures is marked as met (for example, a prepared deal pack and a signed order before Finance & Approvals)."],
+  ["Deal-type checklists", "New, Demo, Used, company and fleet deals each get a document checklist configured with you during onboarding (for example authority to register, transfer papers, PPSR certificate and company extract). You remain responsible for confirming what each deal legally requires."],
+  ["Deferred-sales-model date tracking", "Designed to show the Business Manager a date calculated from the details entered. It does not determine whether the add-on insurance deferred sales model (ASIC Act) has been complied with. Your Business Manager must confirm this."],
+  ["Pre-Reported (RDA) watchlist", "Designed to help management keep track of reported units awaiting handover before OEM cut-off."],
   ["SyncZero: enter it once", "Upload the contract of sale once. SynoraDrive reads buyer, vehicle, trade-in and finance details and uses them to prepare the forms in the deal pack, which staff then check against the contract. Email intake is planned."],
-  ["Activity log (planned)", "Planned: an activity log. Designed to record uploads, signatures and stage changes against the deal."],
+  ["Activity log", "An activity log. Designed to record uploads, signatures and stage changes against the deal."],
   ["Designed to work after your DMS", "Designed to read the contract-of-sale PDF your DMS already produces. Support for your DMS's contract format is confirmed during onboarding. Planned integrations with dealer management systems are subject to partner agreements."],
   ["A smoother handover", "Designed to reduce last-minute paperwork on delivery day."],
 ] as const;
@@ -47,7 +47,7 @@ function CompliancePage() {
         <PageHero
           eyebrow="Compliance aids"
           title="Compliance aids designed for multi-franchise groups (in development)."
-          intro="OEM incentives can depend on complete deal files. SynoraDrive is being designed to help staff see what documents a deal still needs, through planned checklists and stage gates. It is an aid only. It does not guarantee compliance, incentive payments or audit outcomes, and it does not replace your own file reviews."
+          intro="OEM incentives can depend on complete deal files. SynoraDrive is designed to help staff see what documents a deal still needs, through planned checklists and stage gates. It is an aid only. It does not guarantee compliance, incentive payments or audit outcomes, and it does not replace your own file reviews."
         />
         <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
           <div className="grid gap-x-10 gap-y-8 md:grid-cols-2">

@@ -27,18 +27,18 @@ const controls = [
   },
   {
     Icon: Lock,
-    t: "Role-based access (planned)",
-    b: "Planned: role-based access by rooftop and role, with group and local administrator roles. Today, staff sign in with a password.",
+    t: "Role-based access",
+    b: "Role-based access by rooftop and role, with group and local administrator roles. Today, staff sign in with a password.",
   },
   {
     Icon: KeyRound,
-    t: "Multi-factor sign-in (planned)",
-    b: "Planned: multi-factor sign-in with authenticator-app codes (TOTP).",
+    t: "Multi-factor sign-in",
+    b: "Multi-factor sign-in with authenticator-app codes (TOTP).",
   },
   {
     Icon: FileClock,
-    t: "Short document retention (planned)",
-    b: "Planned: automatic deletion of deal documents after a retention period of generally 30 days. Signed documents will sit in your own DocuSign account once e-signature is released. Your dealership should keep its own copies of completed packs.",
+    t: "Short document retention",
+    b: "Automatic deletion of deal documents after a retention period of generally 30 days. Signed documents will sit in your own DocuSign account once e-signature is released. Your dealership should keep its own copies of completed packs.",
   },
   {
     Icon: Database,
@@ -68,7 +68,7 @@ function SecurityPage() {
         >
           <div className="mt-7 flex flex-wrap gap-3">
             <Link to="/demo" className="inline-flex items-center gap-2 rounded-lg bg-brand px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-glow">
-              Book a prototype demo <ArrowRight className="size-4" />
+              Book a rooftop walkthrough <ArrowRight className="size-4" />
             </Link>
             <Link to="/contact" className="inline-flex items-center gap-2 rounded-lg border px-5 py-2.5 text-sm font-semibold transition-colors hover:bg-accent">
               Ask a security question
