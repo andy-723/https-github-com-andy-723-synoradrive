@@ -119,7 +119,7 @@ export function ProductPreview() {
     </div>
     <LaptopShowcase openDeal={open} showExecutive={() => setTab("executive")} settled={settledIds.includes("DEMO-001")} settle={() => { setSelectedId("DEMO-001"); settle("DEMO-001"); }}>
       <div className="light-section h-full bg-surface text-surface-foreground">
-        <div className="laptop-browser"><span /><span /><span /><div>Illustration only · fictional demo data</div><Lock className="size-3" /></div>
+        <div className="laptop-browser"><span /><span /><span /><div>Live platform UI preview · illustrative demo data</div><Lock className="size-3" /></div>
         <TabsContent value="board" className="mt-0"><Board selectedId={selectedId} openDeal={open} raci={raci} settledIds={settledIds} /></TabsContent><TabsContent value="executive" className="mt-0"><CommandReport /></TabsContent>
       </div>
     </LaptopShowcase>

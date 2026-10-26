@@ -4,6 +4,7 @@ import { ChevronDown, Menu, X } from "lucide-react";
 import { SynoraDriveLogo } from "@/components/synoradrive-logo";
 import { ScrollProgressBar } from "@/components/gamified";
 import { Button } from "@/components/ui/button";
+import { PilotSignInDialog } from "@/components/pilot-signin-dialog";
 
 const platformLinks = [
   { to: "/platform", label: "Platform overview" },
@@ -83,7 +84,7 @@ export function SiteHeader() {
   return (
     <header ref={header} className="site-nav glass sticky top-0 z-50 border-b" onKeyDown={(event) => { if (event.key === "Escape" && open) { setOpen(false); menuTrigger.current?.focus(); } }}>
       <div role="note" className="border-b bg-muted px-4 py-1.5 text-center text-[11px] leading-snug text-muted-foreground">
-        SynoraDrive is a working prototype in development. Features marked "Planned" are not available today and may change. Pilots planned from 30 November 2026, subject to contract.
+        <span className="font-semibold text-foreground">AUSTRALIAN DEALERSHIP PILOT PROGRAM • CONFIGURED FOR YOUR ROOFTOP:</span> SynoraDrive is an enterprise post-contract automation platform engineered on Microsoft Azure (Australia East). Each deployment is tailored to your dealership group's DMS contract layouts and compliance workflow during pilot onboarding.
       </div>
       <ScrollProgressBar />
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
@@ -102,6 +103,9 @@ export function SiteHeader() {
           <Dropdown label="Company" links={companyLinks} />
         </nav>
         <div className="flex items-center gap-3">
+          <PilotSignInDialog>
+            <Button variant="ghost" className="nav-link hidden h-auto rounded-none p-0 text-sm font-normal text-muted-foreground hover:bg-transparent sm:inline-flex">Pilot Portal Sign-In</Button>
+          </PilotSignInDialog>
           <Button asChild className="nav-cta rounded-lg px-4 font-semibold shadow-glow">
           <Link to="/demo">
             Book a demo

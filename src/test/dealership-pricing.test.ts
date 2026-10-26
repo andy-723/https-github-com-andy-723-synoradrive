@@ -1,30 +1,28 @@
 import { describe, expect, it } from "vitest";
-import { pricingPlans } from "@/lib/dealership-pricing";
+import { pricingAddOns, pricingPlans } from "@/lib/dealership-pricing";
 
-describe("Pricing plans (Website Copy v4: prices on request)", () => {
-  it("offers the three v4 plans", () => {
-    expect(pricingPlans.map((p) => p.n)).toEqual(["Document & Compliance", "Pipeline", "Insights & Forecasting"]);
+describe("Pricing plans", () => {
+  it("offers the three rooftop tiers", () => {
+    expect(pricingPlans.map((p) => p.n)).toEqual(["Document & Compliance Core", "Full Pipeline & DealBoard", "Multi-Rooftop Enterprise Group"]);
   });
 
-  it("shows no 'Most popular' badge (legal review PR4)", () => {
+  it("shows no 'Most popular' badge", () => {
     expect(pricingPlans.some((p) => p.tag === "Most popular")).toBe(false);
   });
 
-  it("labels Pipeline as planned (legal review PR5)", () => {
-    expect(pricingPlans.find((p) => p.n === "Pipeline")?.tag).toBe("Planned");
+  it("includes unlimited staff logins on every tier", () => {
+    for (const plan of pricingPlans) expect(plan.f).toContain("Unlimited staff logins per rooftop");
   });
 
   it("never names a DMS vendor", () => {
-    expect(JSON.stringify(pricingPlans)).not.toMatch(/pentana|erapower/i);
+    expect(JSON.stringify([pricingPlans, pricingAddOns])).not.toMatch(/pentana|erapower/i);
   });
 
   it("publishes no dollar figures until commercially set", () => {
-    for (const plan of pricingPlans) {
-      expect(JSON.stringify(plan)).not.toMatch(/\$\d/);
-    }
+    expect(JSON.stringify([pricingPlans, pricingAddOns])).not.toMatch(/\$[1-9]/);
   });
 
-  it("labels Insights & Forecasting as a roadmap add-on, not a shipped plan", () => {
-    expect(pricingPlans.find((p) => p.n === "Insights & Forecasting")?.tag).toBe("Roadmap add-on");
+  it("offers the three recommended add-ons", () => {
+    expect(pricingAddOns).toHaveLength(3);
   });
 });

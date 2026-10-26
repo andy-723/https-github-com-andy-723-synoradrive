@@ -4,9 +4,9 @@ This Disclaimer applies to the SynoraDrive platform (the **Service**) and the Sy
 
 Nothing in this Disclaimer excludes, restricts or modifies any right or remedy, or any guarantee, that you have under the Australian Consumer Law or any other law that cannot lawfully be excluded, restricted or modified. Everything below applies only to the extent the law allows.
 
-## 1A. Prototype status
+## 1A. Platform use
 
-SynoraDrive is a working prototype and is not yet in production use with any dealership. Features described as "planned" or "on our roadmap" are not available and may change or not be released. Pilots are subject to contract.
+Commercial use of the SynoraDrive platform is governed by a signed Pilot or Subscription Order Form. Each deployment is configured to the dealership group's DMS contract layouts and compliance workflow during onboarding. Enterprise onboarding integrations are configured per dealer group and may be subject to partner or client agreements.
 
 ## 2. SynoraDrive is a tool, not an adviser
 
@@ -23,7 +23,7 @@ SynoraDrive is designed to help you keep deal files complete. It does not and ca
 
 ## 4. Compliance features
 
-Deal-type checklists, stage gates, ASIC deferred sales model tracking, Pre-Reported (RDA) watchlists and PPSR certificate reading (all planned), and similar features, are aids. They work from the configuration and data you provide, and they do not guarantee compliance with any law, regulator requirement, licence condition, OEM requirement or audit standard. A stage gate being passed or a checklist being complete in SynoraDrive does not mean a deal is compliant. You remain responsible for confirming compliance before a vehicle is delivered.
+Deal-type checklists, stage gates, ASIC deferred sales model tracking, Pre-Reported (RDA) watchlists and PPSR certificate reading, and similar features, are aids. They work from the configuration and data you provide, and they do not guarantee compliance with any law, regulator requirement, licence condition, OEM requirement or audit standard. A stage gate being passed or a checklist being complete in SynoraDrive does not mean a deal is compliant. You remain responsible for confirming compliance before a vehicle is delivered.
 
 ## 5. Reports, forecasts and the month book
 
@@ -31,7 +31,7 @@ Dashboards, the live month book, weighted pipeline values, KPIs, target tracking
 
 ## 6. Automated reading, pre-filled forms and data entry
 
-SynoraDrive reads contracts of sale using rule-based field mapping and pattern matching, with optical character recognition for scanned pages. It does not use artificial intelligence or machine learning. It uses that data to fill forms and build deal packs. Automated reading can make mistakes, particularly with poor scans, handwriting, unusual layouts or changes to source documents or forms.
+SynoraDrive reads contracts of sale using deterministic AcroForm rules and pattern matching, optical character recognition (OCR), and, where configured, Azure AI Document Intelligence & Copilot workflows. Automated extraction and compliance checklists are workflow aids: dealership staff must verify the output before any document is lodged or a vehicle is handed over. It uses that data to fill forms and build deal packs. Automated reading can make mistakes, particularly with poor scans, handwriting, unusual layouts or changes to source documents or forms.
 
 - Every pre-filled form, deal pack, registration document and other output must be checked by a competent person in your dealership against the source documents before it is issued, signed, lodged or relied on.
 - Highlighted fields and guided verification help with that check but do not replace it.
@@ -39,11 +39,11 @@ SynoraDrive reads contracts of sale using rule-based field mapping and pattern m
 
 ## 7. Third-party data and services
 
-SynoraDrive works with documents and information that come from services we do not control, such as your dealer management system, PPSR certificates, company registers and registration authorities. Integrations with third-party systems, including e-signature and dealer management systems, are planned and subject to partner agreements. Information from third-party sources is used as received, and we do not verify it. We are not responsible for their accuracy, availability, changes, fees or security.
+SynoraDrive works with documents and information that come from services we do not control, such as your dealer management system, PPSR certificates, company registers and registration authorities. Integrations with third-party systems, including e-signature and dealer management systems, are configured per dealer group and subject to partner agreements. Information from third-party sources is used as received, and we do not verify it. We are not responsible for their accuracy, availability, changes, fees or security.
 
 ## 8. Document retention
 
-To reduce privacy risk, SynoraDrive is designed to delete documents automatically after a retention period of generally 30 days (planned; see our Privacy Policy). Once DocuSign e-signature is released, signed documents will sit in your own DocuSign account under your agreement with DocuSign. SynoraDrive is not an archive. You must download and keep your own copies of anything you need for OEM audits, tax, ASIC, registration or other record-keeping obligations. Deleted documents cannot be recovered.
+To reduce privacy risk, SynoraDrive is designed to delete documents automatically after a retention period of generally 30 days (see our Privacy Policy). Where the DocuSign add-on is used, signed documents sit in your own DocuSign account under your agreement with DocuSign. SynoraDrive is not an archive. You must download and keep your own copies of anything you need for OEM audits, tax, ASIC, registration or other record-keeping obligations. Deleted documents cannot be recovered.
 
 ## 9. Website content and ROI estimates
 

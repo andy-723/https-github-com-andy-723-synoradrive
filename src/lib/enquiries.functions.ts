@@ -42,13 +42,13 @@ export const submitDemoRequest = createServerFn({ method: "POST" })
       rooftops: data.rooftops,
       dms: data.dms || null,
       interest: data.interest,
-      notes: data.notes || null,
+      notes: [data.notes, data.marketingOptIn ? "[Opted in to product updates]" : ""].filter(Boolean).join("\n\n") || null,
     }).select("id").single();
     if (error) throw new Error("We couldn't save your request. Please try again.");
     await notifyOwner(row.id, "Demo request", email, [
       ["Name", data.fullName], ["Work email", email], ["Mobile", data.mobile], ["Role", data.role],
       ["Dealership", data.dealership], ["Rooftops", data.rooftops], ["DMS", data.dms],
-      ["Interested in", data.interest], ["Notes", data.notes],
+      ["Interested in", data.interest], ["Notes", data.notes], ["Product updates", data.marketingOptIn ? "Yes, opted in" : "No"],
     ]);
     return { ok: true };
   });
@@ -64,12 +64,12 @@ export const submitContact = createServerFn({ method: "POST" })
       work_email: email,
       organisation: data.organisation || null,
       enquiry_type: data.enquiryType,
-      message: data.message,
+      message: data.marketingOptIn ? `${data.message}\n\n[Opted in to product updates]` : data.message,
     }).select("id").single();
     if (error) throw new Error("We couldn't send your message. Please try again.");
     await notifyOwner(row.id, "Contact enquiry", email, [
       ["Name", data.name], ["Work email", email], ["Organisation", data.organisation],
-      ["Enquiry type", data.enquiryType], ["Message", data.message],
+      ["Enquiry type", data.enquiryType], ["Message", data.message], ["Product updates", data.marketingOptIn ? "Yes, opted in" : "No"],
     ]);
     return { ok: true };
   });

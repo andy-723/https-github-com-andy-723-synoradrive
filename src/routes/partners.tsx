@@ -23,7 +23,7 @@ const partnerTypes = [
   {
     Icon: Plug,
     t: "DMS, CRM and digital retail providers",
-    b: "Talk to us about how your lead-to-contract tools could work alongside SynoraDrive's planned post-contract workflow.",
+    b: "Talk to us about how your lead-to-contract tools could work alongside SynoraDrive's post-contract workflow.",
   },
   {
     Icon: Calculator,
@@ -49,7 +49,7 @@ function PartnersPage() {
         <PageHero
           eyebrow="Partner with us"
           title="Better together."
-          intro="SynoraDrive is designed to read the contract your systems already produce, rather than replace them. We'd like to talk with technology providers, industry bodies and dealership advisers. We have no partnerships in place today. Planned integrations with dealer management systems are subject to partner agreements."
+          intro="SynoraDrive is designed to read the contract your systems already produce, rather than replace them. We'd like to talk with technology providers, industry bodies and dealership advisers. We have no partnerships in place today. Integrations with dealer management systems are subject to partner agreements."
         >
           <div className="mt-7">
             <Link to="/contact" className="inline-flex items-center gap-2 rounded-lg bg-brand px-6 py-3 text-sm font-semibold text-primary-foreground shadow-glow">

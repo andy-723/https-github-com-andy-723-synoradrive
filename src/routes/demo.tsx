@@ -11,9 +11,9 @@ export const Route = createFileRoute("/demo")({
   head: () => ({
     meta: [
       { title: "Book a rooftop demo, SynoraDrive" },
-      { name: "description", content: "See the SynoraDrive prototype in 30 minutes." },
+      { name: "description", content: "See SynoraDrive in 30 minutes." },
       { property: "og:title", content: "Book a rooftop demo, SynoraDrive" },
-      { property: "og:description", content: "See the SynoraDrive prototype in 30 minutes." },
+      { property: "og:description", content: "See SynoraDrive in 30 minutes." },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/demo" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -46,6 +46,7 @@ function DemoPage() {
   const [errors, setErrors] = useState<Partial<Record<keyof DemoForm, string>>>({});
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
+  const [optIn, setOptIn] = useState(false);
   const [sendError, setSendError] = useState<string | null>(null);
   const send = useServerFn(submitDemoRequest);
 
@@ -65,7 +66,7 @@ function DemoPage() {
     setSendError(null);
     setSending(true);
     try {
-      await send({ data: parsed.data });
+      await send({ data: { ...parsed.data, marketingOptIn: optIn } });
       setSubmitted(true);
     } catch (err) {
       setSendError(err instanceof Error && err.message.length < 120 ? err.message : "Something went wrong. Please try again or email andrew@synoratech.ai.");
@@ -96,15 +97,15 @@ function DemoPage() {
     <section className="light-section bg-background text-foreground">
       <PageHero
         eyebrow="Book a demo"
-        title="See the SynoraDrive prototype in 30 minutes."
-        intro="Use our fictional demo data, or bring a sample or de-identified contract of sale (please don't bring live customer documents). See SynoraDrive read the contract and prepare the deal pack for staff to check. We'll also walk you through the planned workflow, gates and month book."
+        title="See SynoraDrive in 30 minutes."
+        intro="Use our fictional demo data, or bring a sample or de-identified contract of sale (please don't bring live customer documents). See SynoraDrive read the contract and prepare the deal pack for staff to check. We'll also walk you through the workflow, gates and month book."
       />
       <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-[1fr_1.4fr]">
           <div>
             <h2 className="text-lg font-semibold">In 30 minutes you will see:</h2>
             <ul className="mt-5 space-y-3 text-sm">
-              {["A contract read and a deal pack prepared for staff to check", "A walkthrough of the planned five-stage workflow", "A preview of planned month-book reporting (illustrative data)"].map((item) => (
+              {["A contract read and a deal pack prepared for staff to check", "A walkthrough of the five-stage Dealership Board", "A preview of Command Center reporting (illustrative data)"].map((item) => (
                 <li key={item} className="flex gap-2"><CheckCircle2 className="mt-0.5 size-4 shrink-0 text-success" />{item}</li>
               ))}
             </ul>
@@ -164,8 +165,12 @@ function DemoPage() {
                 <textarea id="demo-notes" rows={4} className={field} value={form.notes} onChange={set("notes")} maxLength={1000} />
               </div>
             </div>
+            <label className="mt-5 flex items-start gap-2 text-sm text-muted-foreground">
+              <input type="checkbox" className="mt-1" checked={optIn} onChange={(e) => setOptIn(e.target.checked)} />
+              <span>Optional: send me occasional SynoraDrive product and pilot updates. You can unsubscribe at any time.</span>
+            </label>
             <button type="submit" className="mt-7 w-full rounded-lg bg-brand py-3 text-sm font-semibold text-primary-foreground shadow-glow transition hover:opacity-90 disabled:opacity-60" disabled={sending}>
-              {sending ? "Sending…" : "Book my prototype demo"}
+              {sending ? "Sending…" : "Book my rooftop walkthrough"}
             </button>
             {sendError && <p role="alert" className="mt-3 text-sm text-destructive">{sendError}</p>}
             <p className="mt-4 text-xs text-muted-foreground">

@@ -9,7 +9,7 @@ import type { DemoTab } from "@/components/laptop-showcase";
 const money = (value: number) => new Intl.NumberFormat("en-AU", { style: "currency", currency: "AUD", maximumFractionDigits: 0 }).format(value);
 const tabs = [
   ["overview", "Overview", User], ["documents", "Document Vault", FileText],
-  ["trade", "Trade-in", Car], ["workshop", "PDI & Workshop", Wrench],
+  ["workshop", "PDI & Workshop", Wrench], ["trade", "Vehicle Prep", Car],
   ["activity", "Activity Feed", Activity], ["financials", "Financials", Wallet],
   ["audit", "Audit Trail", ShieldCheck],
 ] as const;
@@ -68,6 +68,11 @@ function DealRecord({ deal, initialTab, sharedSettled, onSettle }: { deal: DemoD
         <TabsContent value="overview" className="mt-0">
           <div className="grid gap-7 lg:grid-cols-[minmax(0,1fr)_300px]">
             <div className="space-y-6">
+              <ul aria-label="Platform highlights" className="grid gap-2 sm:grid-cols-2">
+                {["DMS Contract of Sale Parsed (OCR + AcroForm Engine)", "Showroom & Pre-Delivery PDF Packs Prepared for Staff Check", "Status Checker: SALES → F&I → AFTERMARKET → WORKSHOP → REGO → PD", "Vehicle Settlement Gate: Mandatory $0 Balance Due Reconciliation Before Handover"].map((item) => (
+                  <li key={item} className="flex gap-2 rounded-md border bg-accent/30 px-3 py-2 text-[11px] font-medium"><ShieldCheck className="mt-0.5 size-3.5 shrink-0 text-primary" />{item}</li>
+                ))}
+              </ul>
               <section><h3 className="mb-3 flex items-center gap-2 text-xs font-semibold uppercase text-muted-foreground"><User className="size-4" />Customer</h3><dl className="grid gap-3 sm:grid-cols-2"><Field label="Name" value={deal.name} /><Field label="Mobile" value={record.mobile} /><Field label="Email" value={record.email} /><Field label="Address" value={record.address} /></dl></section>
               <section><h3 className="mb-3 flex items-center gap-2 text-xs font-semibold uppercase text-muted-foreground"><Car className="size-4" />Vehicle</h3><dl className="grid gap-3 sm:grid-cols-2"><Field label="Make / model" value={deal.car} /><Field label="Colour" value={record.colour} /><Field label="Stock number" value={record.stockNumber} /><Field label="VIN · sample identifier" value={record.vin} /></dl></section>
               <section className="border-t pt-5"><div className="flex flex-wrap items-center justify-between gap-3"><div><h3 className="text-sm font-semibold">Trade-in attached</h3><p className="mt-1 text-xs text-muted-foreground">{record.trade.car} · {record.trade.kms}</p></div><Button variant="outline" size="sm" onClick={() => changeTab("trade")}>View trade-in <ArrowRight className="size-4" /></Button></div><div className="mt-4 grid grid-cols-2 gap-4 text-xs"><div><p className="text-muted-foreground">Allowance</p><p className="mt-1 font-semibold">{money(record.allowance)}</p></div><div><p className="text-muted-foreground">Payout owing</p><p className="mt-1 font-semibold">{money(record.payout)}</p></div></div></section>

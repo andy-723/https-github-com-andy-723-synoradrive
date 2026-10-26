@@ -11,9 +11,9 @@ export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
       { title: "About SynoraDrive and SYNORA TECH" },
-      { name: "description", content: "A working prototype designed to replace manila folders and spreadsheets between contract and delivery." },
+      { name: "description", content: "An enterprise post-contract platform built to replace manila folders and spreadsheets between contract and delivery." },
       { property: "og:title", content: "About SynoraDrive and SYNORA TECH" },
-      { property: "og:description", content: "A working prototype designed to replace manila folders and spreadsheets between contract and delivery." },
+      { property: "og:description", content: "An enterprise post-contract platform built to replace manila folders and spreadsheets between contract and delivery." },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/about" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -37,7 +37,7 @@ const JOURNEY = [
   {
     era: "The fix",
     title: "SynoraDrive",
-    body: "One contract in, a deal pack prepared for staff to check, with gates and tracking on the roadmap.",
+    body: "One contract in, a deal pack prepared for staff to check, then five gated stages through to the keys.",
   },
 ] as const;
 

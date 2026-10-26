@@ -85,6 +85,6 @@ export function LaptopShowcase({ children, openDeal, showExecutive, settled, set
         <p role="status" className="satellite-status">{settled ? "Demo only · other delivery gates still apply" : "Demo only · no payment processed"}</p>
       </article>
     </div>
-    <p className="showcase-caption"><span className="indicator-light" /> FICTIONAL DEMO DATA · SIMULATED ACTIONS · NO LIVE CONNECTIONS</p>
+    <p className="showcase-caption"><span className="indicator-light" /> LIVE PLATFORM UI PREVIEW • ILLUSTRATIVE DEMO DATA</p>
   </div>;
 }

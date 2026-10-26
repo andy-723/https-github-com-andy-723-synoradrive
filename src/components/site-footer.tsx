@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { SynoraDriveLogo } from "@/components/synoradrive-logo";
+import { PilotSignInDialog } from "@/components/pilot-signin-dialog";
 
 const columns = [
   {
@@ -46,8 +47,11 @@ export function SiteFooter() {
           <div>
             <SynoraDriveLogo />
             <p className="mt-4 max-w-xs text-sm text-muted-foreground">
-              A post-contract workflow tool in development for Australian franchised dealerships.
+              The post-contract operating layer for Australian franchised dealerships.
             </p>
+            <PilotSignInDialog>
+              <button type="button" className="mt-4 text-sm font-semibold text-primary transition-colors hover:text-foreground">Pilot Portal Sign-In</button>
+            </PilotSignInDialog>
           </div>
           {columns.map((col) => (
             <div key={col.title}>
@@ -64,17 +68,12 @@ export function SiteFooter() {
             </div>
           ))}
         </div>
-        {/* LinkedIn icon once the company page is live */}
         <div className="mt-12 border-t pt-6 text-sm text-muted-foreground">
-          SynoraDrive™ is a proprietary software platform of Andrew Phan trading as SYNORA TECH (ABN 42 234 662 138). Hosted natively on Microsoft Azure (Australia East). Enterprise Contact:{" "}
+          SynoraDrive™ is a proprietary software platform of Andrew Phan trading as SYNORA TECH (ABN 42 234 662 138). Built to host its primary data in Microsoft Azure, Australia East. Enterprise Contact:{" "}
           <a href="mailto:andrew@synoratech.ai" className="transition-colors hover:text-foreground">
             andrew@synoratech.ai
-          </a>{" "}
-          | Web:{" "}
-          <a href="https://synoradrive.com.au" className="transition-colors hover:text-foreground">
-            synoradrive.com.au
           </a>
-          . © 2026 SYNORA TECH. All rights reserved
+          . © 2026 SYNORA TECH. All rights reserved.
         </div>
       </div>
     </footer>
