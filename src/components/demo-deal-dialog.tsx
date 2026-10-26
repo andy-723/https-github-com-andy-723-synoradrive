@@ -9,7 +9,7 @@ import type { DemoTab } from "@/components/laptop-showcase";
 const money = (value: number) => new Intl.NumberFormat("en-AU", { style: "currency", currency: "AUD", maximumFractionDigits: 0 }).format(value);
 const tabs = [
   ["overview", "Overview", User], ["documents", "Document Vault", FileText],
-  ["trade", "Trade-in", Car], ["workshop", "PDI & Workshop", Wrench],
+  ["workshop", "PDI & Workshop", Wrench], ["trade", "Vehicle Prep", Car],
   ["activity", "Activity Feed", Activity], ["financials", "Financials", Wallet],
   ["audit", "Audit Trail", ShieldCheck],
 ] as const;
