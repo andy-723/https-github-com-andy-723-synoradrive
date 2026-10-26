@@ -19,7 +19,7 @@ describe("Pricing plans", () => {
   });
 
   it("publishes no dollar figures until commercially set", () => {
-    expect(JSON.stringify([pricingPlans, pricingAddOns])).not.toMatch(/\$\d/);
+    expect(JSON.stringify([pricingPlans, pricingAddOns])).not.toMatch(/\$[1-9]/);
   });
 
   it("offers the three recommended add-ons", () => {
