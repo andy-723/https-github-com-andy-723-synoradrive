@@ -97,14 +97,14 @@ function DemoPage() {
       <PageHero
         eyebrow="Book a demo"
         title="See SynoraDrive in 30 minutes."
-        intro="Use our fictional demo data, or bring a sample or de-identified contract of sale (please don't bring live customer documents). See SynoraDrive read the contract and prepare the deal pack for staff to check. We'll also walk you through the planned workflow, gates and month book."
+        intro="Use our fictional demo data, or bring a sample or de-identified contract of sale (please don't bring live customer documents). See SynoraDrive read the contract and prepare the deal pack for staff to check. We'll also walk you through the workflow, gates and month book."
       />
       <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-[1fr_1.4fr]">
           <div>
             <h2 className="text-lg font-semibold">In 30 minutes you will see:</h2>
             <ul className="mt-5 space-y-3 text-sm">
-              {["A contract read and a deal pack prepared for staff to check", "A walkthrough of the planned five-stage workflow", "A preview of planned month-book reporting (illustrative data)"].map((item) => (
+              {["A contract read and a deal pack prepared for staff to check", "A walkthrough of the five-stage Dealership Board", "A preview of Command Center reporting (illustrative data)"].map((item) => (
                 <li key={item} className="flex gap-2"><CheckCircle2 className="mt-0.5 size-4 shrink-0 text-success" />{item}</li>
               ))}
             </ul>
@@ -165,7 +165,7 @@ function DemoPage() {
               </div>
             </div>
             <button type="submit" className="mt-7 w-full rounded-lg bg-brand py-3 text-sm font-semibold text-primary-foreground shadow-glow transition hover:opacity-90 disabled:opacity-60" disabled={sending}>
-              {sending ? "Sending…" : "Book my prototype demo"}
+              {sending ? "Sending…" : "Book my rooftop walkthrough"}
             </button>
             {sendError && <p role="alert" className="mt-3 text-sm text-destructive">{sendError}</p>}
             <p className="mt-4 text-xs text-muted-foreground">
