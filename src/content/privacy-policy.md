@@ -16,7 +16,7 @@ We collect enquiry details directly from you through our website forms or by ema
 
 ## 4. Why we collect it and how we use it
 
-We use enquiry details to respond to you, arrange demos and pilots and, if you opt in, send product updates. We process dealership customer information only to provide the SynoraDrive service to the dealership that supplied it, acting as its service provider. We do not sell personal information. SynoraDrive does not use artificial intelligence or machine learning to process this information.
+We use enquiry details to respond to you, arrange demos and pilots and, if you opt in, send product updates. We process dealership customer information only to provide the SynoraDrive service to the dealership that supplied it, acting as its service provider. We do not sell personal information.
 
 ## 5. Who we disclose it to
 
@@ -32,15 +32,15 @@ We use essential cookies to run this website and may use analytics to understand
 
 ## 8. Security and data breaches
 
-We take reasonable steps to protect personal information from misuse, interference, loss and unauthorised access, modification or disclosure. Planned measures include encryption in transit and at rest, role-based access and multi-factor sign-in. If we experience a data breach that is likely to cause serious harm, we will follow the Notifiable Data Breaches scheme in the Privacy Act 1988 (Cth).
+We take reasonable steps to protect personal information from misuse, interference, loss and unauthorised access, modification or disclosure. Our measures include primary platform data hosting in Microsoft Azure (Australia East), encryption in transit and at rest, role-based access and staff TOTP multi-factor sign-in. If we experience a data breach that is likely to cause serious harm, we will follow the Notifiable Data Breaches scheme in the Privacy Act 1988 (Cth).
 
 ## 9. How long we keep it
 
-We keep enquiry details only for as long as we need them to deal with your enquiry, unless you become a customer. Deal documents processed on the platform are planned to be deleted automatically after a retention period of generally 30 days. Once DocuSign e-signature is released, signed documents will also be held in the dealership's own DocuSign account under its agreement with DocuSign. Dealerships must keep their own records. When we no longer need personal information, we take reasonable steps to destroy or de-identify it.
+We keep enquiry details only for as long as we need them to deal with your enquiry, unless you become a customer. Deal documents processed on the platform are deleted automatically after a retention period of generally 30 days. Where a dealership uses the DocuSign add-on, signed documents are held in the dealership's own DocuSign account under its agreement with DocuSign. Dealerships must keep their own records. When we no longer need personal information, we take reasonable steps to destroy or de-identify it.
 
 ## 10. Automated decisions
 
-SynoraDrive uses rule-based software to read contracts and prepare documents for dealership staff to check. It does not use artificial intelligence or machine learning. Decisions about a sale, finance, insurance or delivery are made by dealership staff, not by SynoraDrive. If we start using computer programs to make decisions that could significantly affect individuals, we will update this policy.
+SynoraDrive is powered by deterministic AcroForm rules, optical character recognition (OCR), and Azure AI Document Intelligence & Copilot workflows. Where Azure AI services are configured for a dealer group, they process data within Microsoft Azure to read contracts and flag exceptions for dealership staff to check. Decisions about a sale, finance, insurance or delivery are made by dealership staff, not by SynoraDrive. If we start using computer programs to make decisions that could significantly affect individuals, we will update this policy.
 
 ## 11. Dealership customers
 
