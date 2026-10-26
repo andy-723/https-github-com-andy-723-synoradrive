@@ -67,7 +67,7 @@ function HowItWorksPage() {
           <div className="hero-copy max-w-2xl">
             <div className="font-mono text-xs uppercase tracking-[0.2em] text-brand-mint">How it works</div>
             <h1 className="mt-4 text-4xl font-semibold leading-tight sm:text-6xl">From signed contract to keys, in five gated stages.</h1>
-            <p className="mt-5 leading-relaxed text-muted-foreground">Each department sees what it owns, works in parallel, and moves the deal on only when its gate is met. This page shows how the workflow runs. Today's prototype covers reading the contract and preparing the deal pack for staff to check. Stages 2–5 are in development. Scroll to drive a deal through.</p>
+            <p className="mt-5 leading-relaxed text-muted-foreground">Each department sees what it owns, works in parallel, and moves the deal on only when its gate is met. This page shows how the workflow runs. Scroll to drive a deal through.</p>
             <div className="mt-8 flex gap-8 font-mono">
               <div><div className="text-3xl font-semibold text-brand-mint"><CountUp to={5} /></div><div className="text-xs uppercase text-muted-foreground">Stages</div></div>
               <div><div className="text-3xl font-semibold text-brand-sky"><CountUp to={5} /></div><div className="text-xs uppercase text-muted-foreground">Gates</div></div>

@@ -21,7 +21,7 @@ export const Route = createFileRoute("/platform/customer-experience")({
 
 const features = [
   ["A private, dealer-branded portal", "Buyers will receive a private link by email to upload their licence and finance documents from their phone."],
-  ["DocuSign e-signature (planned, subject to agreement with DocuSign)", "Designed to send showroom and pre-delivery packs for electronic signature before the customer arrives."],
+  ["DocuSign e-signature (enterprise onboarding integration, subject to partner/client agreement)", "Designed to send showroom and pre-delivery packs for electronic signature before the customer arrives."],
   ["Your brand, not ours", "Portal pages and emails carry your dealership's name and branding."],
   ["A handover about the car", "Designed so more of the paperwork can be done ahead of time, and pickup day is spent on the vehicle, not chasing missing pages."],
 ] as const;
@@ -43,7 +43,7 @@ function CustomerExperiencePage() {
         <PageHero
           eyebrow="Customer experience"
           title="End the paperwork scramble before delivery day."
-          intro="The weeks between signing and pickup are where buyers feel forgotten, and handover day often turns into a long session at the desk. SynoraDrive is designed to close that gap with a simple, mobile-first portal. The customer portal and DocuSign e-signature are planned features. They are not available in the current prototype."
+          intro="The weeks between signing and pickup are where buyers feel forgotten, and handover day often turns into a long session at the desk. SynoraDrive is designed to close that gap with a simple, mobile-first portal. The customer document upload portal and DocuSign e-signature are enterprise onboarding integrations, configured per dealer group and subject to partner/client agreements."
         />
         <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
           <div className="grid gap-x-10 gap-y-8 md:grid-cols-2">
