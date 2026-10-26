@@ -66,7 +66,15 @@ export function SiteFooter() {
         </div>
         {/* LinkedIn icon once the company page is live */}
         <div className="mt-12 border-t pt-6 text-sm text-muted-foreground">
-          SynoraDrive is a working product name of Andrew Phan trading as SYNORA TECH (ABN 42 234 662 138). Built to host its primary data in Microsoft Azure, Australia East. © 2026 SYNORA TECH.
+          SynoraDrive™ is a proprietary software platform of Andrew Phan trading as SYNORA TECH (ABN 42 234 662 138). Hosted natively on Microsoft Azure (Australia East). Enterprise Contact:{" "}
+          <a href="mailto:andrew@synoratech.ai" className="transition-colors hover:text-foreground">
+            andrew@synoratech.ai
+          </a>{" "}
+          | Web:{" "}
+          <a href="https://synoradrive.com.au" className="transition-colors hover:text-foreground">
+            synoradrive.com.au
+          </a>
+          . © 2026 SYNORA TECH. All rights reserved
         </div>
       </div>
     </footer>
