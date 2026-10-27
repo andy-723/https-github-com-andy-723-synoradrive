@@ -15,9 +15,9 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "SynoraDrive: Dealership contract-to-delivery platform" },
-      { name: "description", content: "The intelligent operating layer for Australian dealerships: contract extraction, deal pack automation and a 5-stage Dealership Board from signed contract to customer keys." },
+      { name: "description", content: "Intelligence behind every handover. SynoraDrive extracts deal data from signed contracts, automates deal packs and runs a 5-stage Dealership Board from signed contract to customer keys for Australian dealerships." },
       { property: "og:title", content: "SynoraDrive: Dealership contract-to-delivery platform" },
-      { property: "og:description", content: "The intelligent operating layer for Australian dealerships: contract extraction, deal pack automation and a 5-stage Dealership Board from signed contract to customer keys." },
+      { property: "og:description", content: "Intelligence behind every handover. SynoraDrive extracts deal data from signed contracts, automates deal packs and runs a 5-stage Dealership Board from signed contract to customer keys for Australian dealerships." },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -58,7 +58,7 @@ function Hero() {
       <div className="mx-auto flex min-h-[680px] max-w-7xl flex-col justify-center px-6 py-20 lg:px-8">
         <div className="hero-copy max-w-2xl">
           <div className="mb-7 flex items-center gap-3 font-mono text-xs text-primary-glow"><span className="h-px w-8 bg-primary-glow" /> THE NEXT SHIFT IN AUTOMOTIVE OPERATIONS</div>
-          <h1 className="text-5xl font-semibold leading-[1.08] sm:text-6xl lg:text-7xl"><span className="block text-4xl leading-[1.08] sm:text-5xl lg:text-6xl">The Intelligent Operating Layer Behind Every Handover.</span></h1>
+          <h1 className="text-5xl font-semibold leading-[1.08] sm:text-6xl lg:text-7xl"><span className="block text-4xl leading-[1.08] sm:text-5xl lg:text-6xl">Intelligence Behind Every Handover.</span></h1>
           <p className="mt-6 max-w-lg text-base leading-relaxed text-muted-foreground sm:text-lg">Upload a signed Contract of Sale PDF from your DMS. SynoraDrive extracts deal data, populates your dealership's Showroom and Pre-Delivery document packs for staff verification, and coordinates Sales, F&I, Aftermarket, Workshop PDI, and Registration across a 5-stage Dealership Board.</p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Button asChild size="lg" className="h-12 bg-brand"><Link to="/demo">Book a 30-Minute Rooftop Walkthrough <ArrowRight /></Link></Button>
