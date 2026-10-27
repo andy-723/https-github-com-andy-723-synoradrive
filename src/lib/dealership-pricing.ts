@@ -1,12 +1,13 @@
 /**
  * Per-rooftop subscription tiers and recommended add-ons. Prices stay
- * "on request" until commercially set; no "Most popular" badge.
+ * shown per rooftop per month (excl. GST); enterprise stays on request.
  */
 export const pricingPlans = [
   {
     n: "Document & Compliance Core",
     s: "Rooftops digitising deal jackets and compliance",
     hi: false,
+    price: "$499" as string | null,
     tag: null as string | null,
     f: [
       "DMS Contract of Sale extraction (OCR + AcroForm engine)",
@@ -21,6 +22,7 @@ export const pricingPlans = [
     n: "Full Pipeline & DealBoard",
     s: "Dealerships running sale-to-delivery on one board",
     hi: false,
+    price: "$1,490" as string | null,
     tag: null as string | null,
     f: [
       "Everything in Document & Compliance Core, plus:",
@@ -35,6 +37,7 @@ export const pricingPlans = [
     n: "Multi-Rooftop Enterprise Group",
     s: "Dealer groups across multiple rooftops",
     hi: false,
+    price: null as string | null,
     tag: null as string | null,
     f: [
       "Everything in Full Pipeline & DealBoard, plus:",
@@ -53,4 +56,4 @@ export const pricingAddOns = [
   { n: "Customer Experience & DocuSign Add-On", b: "Branded mobile portals for easy document upload and secure DocuSign integration (subject to customer licence)." },
 ];
 
-export const pricingNote = "Indicative pilot and commercial pricing (excl. GST), subject to rooftop onboarding scope and signed Order Form.";
+export const pricingNote = "Pricing per rooftop per month (excl. GST), subject to rooftop onboarding scope and signed Order Form.";
