@@ -10,9 +10,9 @@ import { ReauthenticationEmail } from '@/lib/email-templates/reauthentication'
 
 // Configuration
 const SITE_NAME = "SynoraDrive"
-const SENDER_DOMAIN = "notify.synoratech.ai"
-const ROOT_DOMAIN = "synoratech.ai"
-const FROM_DOMAIN = "notify.synoratech.ai"
+const SENDER_DOMAIN = "notify.synoradrive.com.au"
+const ROOT_DOMAIN = "synoradrive.com.au"
+const FROM_DOMAIN = "notify.synoradrive.com.au"
 const SITE_URL = `https://${ROOT_DOMAIN}`
 
 // The SDK handler owns verification, dispatch, and retry semantics; this file
