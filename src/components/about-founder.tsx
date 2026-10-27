@@ -1,12 +1,12 @@
 import { Reveal } from "@/components/reveal";
-import founderPortrait from "@/assets/founder-portrait.jpg";
+import founderPortrait from "@/assets/founder-portrait.jpg.asset.json";
 
 /**
  * Founder showcase: an arch-framed portrait that floats gently, with
  * animated dashed "wiring" connecting it to orbiting fact chips —
  * the same visual language as the SynoraCNS orchestration diagram.
  *
- * To use the real founder photo, replace src/assets/founder-portrait.jpg.
+ * The founder photo is served from src/assets/founder-portrait.jpg.asset.json.
  */
 
 const CHIPS = [
@@ -60,8 +60,8 @@ export function FounderShowcase() {
         <div className="founder-portrait-float">
           <div className="founder-portrait">
             <img
-              src={founderPortrait}
-              alt="Andrew Phan, founder of SYNORA TECH, in a dealership showroom"
+              src={founderPortrait.url}
+              alt="Andrew Phan, founder of SYNORA TECH"
               width={1024}
               height={1280}
               loading="lazy"
