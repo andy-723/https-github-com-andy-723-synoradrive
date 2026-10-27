@@ -17,7 +17,7 @@ export const Route = createFileRoute("/")({
       { title: "SynoraDrive: Dealership contract-to-delivery platform" },
       { name: "description", content: "Intelligence behind every handover. SynoraDrive extracts deal data from signed contracts, automates deal packs and runs a 5-stage Dealership Board from signed contract to customer keys for Australian dealerships." },
       { property: "og:title", content: "SynoraDrive: Dealership contract-to-delivery platform" },
-      { property: "og:description", content: "The intelligent operating layer for Australian dealerships: contract extraction, deal pack automation and a 5-stage Dealership Board from signed contract to customer keys." },
+      { property: "og:description", content: "Intelligence behind every handover. SynoraDrive extracts deal data from signed contracts, automates deal packs and runs a 5-stage Dealership Board from signed contract to customer keys for Australian dealerships." },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/" },
       { name: "twitter:card", content: "summary_large_image" },
