@@ -92,7 +92,18 @@ function ContactPage() {
           <div className="space-y-8">
             <div>
               <h2 className="text-lg font-semibold">Direct contact</h2>
-              <p className="mt-2 text-sm text-muted-foreground">andrew@synoratech.ai · Victoria, Australia</p>
+              <p className="mt-2 text-sm text-muted-foreground">
+                <a href="mailto:andrew@synoratech.ai" className="underline-offset-4 hover:underline">andrew@synoratech.ai</a>
+              </p>
+            </div>
+            <div>
+              <h2 className="text-lg font-semibold">Office</h2>
+              <address className="mt-2 text-sm not-italic leading-relaxed text-muted-foreground">
+                Suite 1208/530 Little Collins Street<br />
+                Melbourne<br />
+                VICTORIA 3000<br />
+                AU
+              </address>
             </div>
           </div>
           <form onSubmit={onSubmit} noValidate className="rounded-2xl border bg-card p-8">

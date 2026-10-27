@@ -2,7 +2,7 @@
 
 This Privacy Policy explains how Andrew Phan, trading as SYNORA TECH (ABN 42 234 662 138) (**we**, **us**), handles personal information in connection with the SynoraDrive website and platform. If a company takes over the business, we will update this policy to name it.
 
-Privacy questions can be sent to andrew@synoratech.ai.
+Privacy questions can be sent to andrew@synoratech.ai, or by post to Suite 1208/530 Little Collins Street, Melbourne VICTORIA 3000, AU.
 
 ## 2. What we collect
 
