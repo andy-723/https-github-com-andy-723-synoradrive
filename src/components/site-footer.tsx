@@ -1,6 +1,5 @@
 import { Link } from "@tanstack/react-router";
 import { SynoraDriveLogo } from "@/components/synoradrive-logo";
-import { PilotSignInDialog } from "@/components/pilot-signin-dialog";
 
 const columns = [
   {
@@ -49,9 +48,6 @@ export function SiteFooter() {
             <p className="mt-4 max-w-xs text-sm text-muted-foreground">
               The post-contract operating layer for Australian franchised dealerships.
             </p>
-            <PilotSignInDialog>
-              <button type="button" className="mt-4 text-sm font-semibold text-primary transition-colors hover:text-foreground">Pilot Portal Sign-In</button>
-            </PilotSignInDialog>
           </div>
           {columns.map((col) => (
             <div key={col.title}>
