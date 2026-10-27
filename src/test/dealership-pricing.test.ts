@@ -18,8 +18,8 @@ describe("Pricing plans", () => {
     expect(JSON.stringify([pricingPlans, pricingAddOns])).not.toMatch(/pentana|erapower/i);
   });
 
-  it("publishes no dollar figures until commercially set", () => {
-    expect(JSON.stringify([pricingPlans, pricingAddOns])).not.toMatch(/\$[1-9]/);
+  it("prices Core at $499, Full Pipeline at $1,490, Enterprise on request", () => {
+    expect(pricingPlans.map((p) => p.price)).toEqual(["$499", "$1,490", null]);
   });
 
   it("offers the three recommended add-ons", () => {

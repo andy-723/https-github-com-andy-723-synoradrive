@@ -146,7 +146,7 @@ function PricingPage() {
                 )}
                 <div className="text-sm text-muted-foreground">{t.s}</div>
                 <h2 className="mt-1 text-xl font-semibold">{t.n}</h2>
-                <div className="mt-6 font-display text-2xl font-semibold">Prices on request</div>
+                <div className="mt-6 font-display text-2xl font-semibold">{t.price ? <>{t.price}<span className="text-sm font-normal text-muted-foreground"> /rooftop/month excl. GST</span></> : "Prices on request"}</div>
                 <ul className="mt-8 space-y-3 text-sm">
                   {t.f.map((f) => (
                     <li key={f} className="flex gap-2"><CheckCircle2 className="mt-0.5 size-4 shrink-0 text-success" />{f}</li>
