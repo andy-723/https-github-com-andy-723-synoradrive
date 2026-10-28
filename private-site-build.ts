@@ -42,7 +42,8 @@ export async function buildPrivateSite() {
       builder.onLoad({ filter: /.*/, namespace: 'private-raw' }, async ({ path: filename }) => ({ contents: await readFile(filename, 'utf8'), loader: 'text' }));
       builder.onLoad({ filter: /.*/, namespace: 'private-media' }, async ({ path: filename }) => ({ contents: `export default ${JSON.stringify(await embed(filename, await readFile(filename)))}`, loader: 'js' }));
       builder.onLoad({ filter: /.*/, namespace: 'private-pointer' }, async ({ path: filename }) => {
-        const pointer = JSON.parse(await readFile(filename, 'utf8'));
+        const source = filename.endsWith('demo-reel.mp4.asset.json') ? filename.replace('demo-reel.mp4.asset.json', 'demo-reel.webm.asset.json') : filename;
+        const pointer = JSON.parse(await readFile(source, 'utf8'));
         // Build-only fetch of app media. Original public URLs are never sent to viewers.
         const response = await fetch('https://www.synoradrive.com.au' + pointer.url);
         if (!response.ok) throw new Error('Unable to package private media: ' + path.basename(filename));
@@ -55,6 +56,9 @@ export async function buildPrivateSite() {
   if (!output) throw new Error('Private website packaging produced no output');
   files['site.js'] = { contentType: 'text/javascript; charset=utf-8', base64: Buffer.from(output.contents).toString('base64') };
   await mkdir('src/private-generated', { recursive: true });
+  // Remove stale generated files so superseded media cannot ship accidentally.
+  const { readdir } = await import('node:fs/promises');
+  for (const name of await readdir('src/private-generated')) await rm(path.join('src/private-generated', name));
   const imports: string[] = [];
   const entries: string[] = [];
   for (const [key, file] of Object.entries(files)) {
