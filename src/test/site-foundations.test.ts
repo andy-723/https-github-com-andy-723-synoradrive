@@ -46,22 +46,24 @@ function oklchToRgb(l: number, c: number, h: number): RGB {
 
 const css = readFileSync(path.join(SRC, "styles.css"), "utf8");
 
-function block(selector: string): Scope {
-  const start = css.indexOf(`${selector} {`);
-  expect(start, `styles.css has no "${selector}" block`).toBeGreaterThan(-1);
-  const end = css.indexOf("\n}", start);
+/** Merges every top-level (or nested) rule block for a bare selector. */
+function collect(selector: string): Scope {
+  const escaped = selector.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   const map: Scope = new Map();
-  for (const m of css.slice(start, end).matchAll(/(--[a-z0-9-]+)\s*:\s*([^;]+);/g)) {
-    map.set(m[1], m[2].trim());
+  const blocks = new RegExp(`^\\s*${escaped}\\s*\\{([\\s\\S]*?)\\n\\s*\\}`, "gm");
+  for (const block of css.matchAll(blocks)) {
+    for (const decl of block[1].matchAll(/(--[a-z0-9-]+)\s*:\s*([^;]+);/g)) {
+      map.set(decl[1], decl[2].trim());
+    }
   }
+  expect(map.size, `styles.css declares no tokens in "${selector}" blocks`).toBeGreaterThan(0);
   return map;
 }
 
-const rootBlock = block(":root");
-const themeBlock = block("@theme");
-const lightBlock = block(".light-section");
-const dark: Scope[] = [rootBlock, themeBlock];
-const light: Scope[] = [lightBlock, rootBlock, themeBlock];
+const rootBlock = collect(":root");
+const lightBlock = collect(".light-section");
+const dark: Scope[] = [rootBlock];
+const light: Scope[] = [lightBlock, rootBlock];
 
 function token(name: string, scopes: Scope[]): string {
   for (const scope of scopes) if (scope.has(name)) return scope.get(name)!;
