@@ -1,5 +1,9 @@
 # Roadmap
 
+## Temporary IP protection
+- [x] Replace public website with a neutral holding page; archive marketing routes and route-linked navigation outside the active build; block submissions with 503 and request no indexing. Verified Home, Pricing, Demo, Contact, Platform, About and unknown links show only the holding page, mobile has no overflow, 33 active tests pass and build is clean. Previously downloaded/cached content cannot be withdrawn by this change.
+- [ ] Activate protection on the live domain: requires publishing the holding-page changes or Andrew selecting Invite only in Publish for private access.
+
 ## Laptop product showcase
 - [x] Replay laptop opening/closing on scroll, gently float banners, simplify capability headings and rename reporting to Command Report; verified report/document navigation, shared settlement, 1075/768/390px layouts and reduced motion.
 - [x] Review supplied HTML laptop animation and adapt suitable motion for mobile without extra dependencies.
