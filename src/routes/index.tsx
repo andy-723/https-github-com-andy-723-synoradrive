@@ -145,8 +145,8 @@ function Hero() {
           <h1 className="text-5xl font-semibold leading-[1.08] sm:text-6xl lg:text-7xl"><span className="block text-4xl leading-[1.08] sm:text-5xl lg:text-6xl">Intelligence Behind Every Handover.</span></h1>
           <p className="mt-6 max-w-lg text-base leading-relaxed text-muted-foreground sm:text-lg">Upload a signed Contract of Sale PDF from your DMS. SynoraDrive extracts deal data, populates your dealership's Showroom and Pre-Delivery document packs for staff verification, and coordinates Sales, F&I, Aftermarket, Workshop PDI, and Registration across a 5-stage Dealership Board.</p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Button asChild size="lg" className="h-12 bg-brand"><Link to="/demo">Book a 30-Minute Rooftop Walkthrough <ArrowRight /></Link></Button>
-            <Button asChild variant="outline" size="lg" className="h-12 border-foreground/25 bg-background/30"><a href="#product-view-title">Explore Interactive Dealership Board <ArrowRight /></a></Button>
+            <Button asChild variant="brand" size="lg" className="min-h-12 h-auto whitespace-normal"><Link to="/demo">Book a 30-Minute Rooftop Walkthrough <ArrowRight /></Link></Button>
+            <Button asChild variant="link" size="lg" className="min-h-12 h-auto whitespace-normal px-2 text-foreground underline decoration-primary underline-offset-8 hover:text-brand-mint"><a href="#product-view-title">Explore Interactive Dealership Board <ArrowRight /></a></Button>
           </div>
           <div className="mt-10 flex flex-wrap gap-x-6 gap-y-3 text-xs text-muted-foreground">
             <span className="flex items-center gap-2"><Cloud className="size-4 text-primary-glow" /> Architected on Microsoft Azure (Australia East)</span>
@@ -159,7 +159,7 @@ function Hero() {
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-6 py-5 font-mono text-xs text-muted-foreground lg:px-8">
           <span className="flex items-center gap-2"><span className="indicator-light size-1.5 rounded-full bg-success" /> DESIGNED FOR THE DEALERSHIP FLOOR</span>
           <span>SIGNED CONTRACT → DEAL PACK → FIVE GATED STAGES → DELIVERY</span>
-          <Link to="/how-it-works" className="flex items-center gap-2 text-foreground">SEE HOW A DEAL MOVES <ArrowRight className="size-4" /></Link>
+          <Link to="/how-it-works" className="inline-flex min-h-11 items-center gap-2 px-3 py-2 text-foreground">SEE HOW A DEAL MOVES <ArrowRight className="size-4" /></Link>
         </div>
       </div>
     </section>

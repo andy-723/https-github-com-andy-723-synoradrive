@@ -48,7 +48,7 @@ function Dropdown({ label, links }: { label: string; links: readonly { to: strin
       <div id={`nav-${label.toLowerCase()}`} className="nav-dropdown-panel absolute left-0 top-full z-50 pt-3" inert={!expanded}>
         <div className="w-64 rounded-lg border bg-popover p-2 shadow-elegant">
           {links.map((l) => (
-            <Button key={l.to} asChild variant="ghost" className="nav-menu-link inline-flex min-h-11 w-full items-center justify-start whitespace-normal rounded-lg px-3 py-2 font-normal text-popover-foreground/80">
+            <Button key={l.to} asChild variant="ghost" className="nav-menu-link inline-flex min-h-11 w-full items-center justify-start whitespace-normal rounded-lg px-3 py-2 font-normal text-popover-foreground">
             <Link to={l.to} onClick={() => setExpanded(false)}>
               {l.label}
             </Link>
@@ -62,9 +62,16 @@ function Dropdown({ label, links }: { label: string; links: readonly { to: strin
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const header = useRef<HTMLElement>(null);
   const menuTrigger = useRef<HTMLButtonElement>(null);
   const pathname = useLocation({ select: (location) => location.pathname });
+  useEffect(() => {
+    const update = () => setIsScrolled(window.scrollY > 500);
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    return () => window.removeEventListener("scroll", update);
+  }, [pathname]);
   useEffect(() => { setOpen(false); }, [pathname]);
   useEffect(() => {
     const desktop = window.matchMedia("(min-width: 1024px)");
@@ -99,11 +106,11 @@ export function SiteHeader() {
           <Dropdown label="Company" links={companyLinks} />
         </nav>
         <div className="flex items-center gap-3">
-          <Button asChild className="nav-cta hidden min-h-11 rounded-lg px-4 font-semibold shadow-glow md:inline-flex">
+          {(pathname !== "/" || isScrolled) && <Button asChild variant="brand" className="nav-cta hidden min-h-11 rounded-lg px-4 font-semibold shadow-glow md:inline-flex">
           <Link to="/demo">
             Book a demo
           </Link>
-          </Button>
+          </Button>}
           <Button ref={menuTrigger} variant="outline" size="icon" className="min-h-11 min-w-11 lg:hidden" onClick={() => setOpen((v) => !v)} aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} aria-controls="mobile-navigation">
             {open ? <X className="size-4" /> : <Menu className="size-4" />}
           </Button>

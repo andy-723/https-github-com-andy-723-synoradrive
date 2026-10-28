@@ -14,6 +14,19 @@ export function DemoReel() {
   const trackRef = useRef<HTMLDivElement | null>(null);
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [progress, setProgress] = useState(0);
+  const [loadVideo, setLoadVideo] = useState(false);
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry?.isIntersecting) return;
+      setLoadVideo(true);
+      observer.disconnect();
+    }, { rootMargin: "250px" });
+    observer.observe(track);
+    return () => observer.disconnect();
+  }, []);
 
   // Scroll progress (0 → 1) across the tall sticky track.
   useEffect(() => {
@@ -42,7 +55,7 @@ export function DemoReel() {
       window.removeEventListener("resize", onScroll);
       if (raf) cancelAnimationFrame(raf);
     };
-  }, []);
+  }, [loadVideo]);
 
   // Play only while on screen.
   useEffect(() => {
@@ -98,13 +111,13 @@ export function DemoReel() {
           >
             <video
               ref={videoRef}
-              src={demoReel.url}
+              src={loadVideo ? demoReel.url : undefined}
               poster={demoPoster}
               className="aspect-video w-full object-cover"
               muted
               loop
               playsInline
-              preload="auto"
+              preload="none"
               aria-label="Cinematic film of a dealership floor and the SynoraDrive delivery board"
             />
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent" />
