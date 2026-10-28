@@ -26,7 +26,7 @@ const luminance = ([r, g, b]: RGB) =>
   0.2126 * toLinear(r / 255) + 0.7152 * toLinear(g / 255) + 0.0722 * toLinear(b / 255);
 
 function contrast(a: RGB, b: RGB) {
-  const [hi, lo] = [luminance(a), luminance(b)].sort((x, y) => y - x);
+  const [hi = 0, lo = 0] = [luminance(a), luminance(b)].sort((x, y) => y - x);
   return (hi + 0.05) / (lo + 0.05);
 }
 
@@ -52,8 +52,8 @@ function collect(selector: string): Scope {
   const map: Scope = new Map();
   const blocks = new RegExp(`^\\s*${escaped}\\s*\\{([\\s\\S]*?)\\n\\s*\\}`, "gm");
   for (const block of css.matchAll(blocks)) {
-    for (const decl of block[1].matchAll(/(--[a-z0-9-]+)\s*:\s*([^;]+);/g)) {
-      map.set(decl[1], decl[2].trim());
+    for (const decl of block[1]!.matchAll(/(--[a-z0-9-]+)\s*:\s*([^;]+);/g)) {
+      map.set(decl[1]!, decl[2]!.trim());
     }
   }
   expect(map.size, `styles.css declares no tokens in "${selector}" blocks`).toBeGreaterThan(0);
@@ -73,21 +73,27 @@ function token(name: string, scopes: Scope[]): string {
 function colour(value: string, scopes: Scope[]): RGB {
   const v = value.trim();
   const ref = /^var\((--[a-z0-9-]+)\)$/.exec(v);
-  if (ref) return colour(token(ref[1], scopes), scopes);
+  if (ref) return colour(token(ref[1]!, scopes), scopes);
   const mix = /^color-mix\(in srgb,\s*(.+?)\s+([\d.]+)%\s*,\s*(.+)\)$/.exec(v);
   if (mix) {
-    const a = colour(mix[1], scopes);
-    const b = colour(mix[3], scopes);
-    const p = Number(mix[2]) / 100;
-    return [0, 1, 2].map((i) => Math.round(a[i] * p + b[i] * (1 - p))) as RGB;
+    const a = colour(mix[1]!, scopes);
+    const b = colour(mix[3]!, scopes);
+    const p = Number(mix[2]!) / 100;
+    const [ar, ag, ab] = a;
+    const [br, bg, bb] = b;
+    return [ar * p + br * (1 - p), ag * p + bg * (1 - p), ab * p + bb * (1 - p)].map(
+      (n) => Math.round(n),
+    ) as RGB;
   }
   const hex = /^#([0-9a-f]{3}|[0-9a-f]{6})$/i.exec(v);
   if (hex) {
-    const digits = hex[1].length === 3 ? hex[1].replace(/./g, (d) => d + d) : hex[1];
-    return [0, 2, 4].map((i) => parseInt(digits.slice(i, i + 2), 16)) as RGB;
+    const raw = hex[1]!;
+    const digits = raw.length === 3 ? raw.replace(/./g, (d) => d + d) : raw;
+    const parts = [0, 2, 4].map((i) => parseInt(digits.slice(i, i + 2), 16));
+    return [parts[0] ?? 0, parts[1] ?? 0, parts[2] ?? 0];
   }
   const ok = /^oklch\(\s*([\d.]+)\s+([\d.]+)\s+([\d.]+)\s*\)$/.exec(v);
-  if (ok) return oklchToRgb(Number(ok[1]), Number(ok[2]), Number(ok[3]));
+  if (ok) return oklchToRgb(Number(ok[1]!), Number(ok[2]!), Number(ok[3]!));
   throw new Error(`unparsed colour: ${v}`);
 }
 
@@ -157,12 +163,12 @@ describe("Page descriptions", () => {
   function descriptionOf(file: string): string {
     const src = readFileSync(file, "utf8");
     const literal = /\{ name: "description", content: "([^"]+)" \}/.exec(src);
-    if (literal) return literal[1];
+    if (literal) return literal[1]!;
     const named = /\{ name: "description", content: ([A-Z][A-Z0-9_]*) \}/.exec(src);
     if (named) {
       const value = new RegExp(`const ${named[1]} =\\s*"([^"]+)"`).exec(src);
       expect(value, `${file}: description constant ${named[1]} not found`).not.toBeNull();
-      return value![1];
+      return value![1]!;
     }
     throw new Error(`${file} has no meta description`);
   }
