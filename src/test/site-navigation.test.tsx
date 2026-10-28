@@ -10,11 +10,22 @@ vi.mock("@tanstack/react-router", () => ({
 vi.mock("@/components/gamified", () => ({ ScrollProgressBar: () => null }));
 
 beforeEach(() => {
+  Object.defineProperty(window, "scrollY", { configurable: true, value: 0 });
   vi.stubGlobal("matchMedia", vi.fn(() => ({ matches: false, addEventListener: vi.fn(), removeEventListener: vi.fn() })));
 });
 afterEach(() => { cleanup(); vi.unstubAllGlobals(); });
 
 describe("Navigation dismissal", () => {
+  it("shows the homepage demo CTA only after 500px of scrolling", () => {
+    render(<SiteHeader />);
+    expect(screen.queryByRole("link", { name: "Book a demo" })).not.toBeInTheDocument();
+    Object.defineProperty(window, "scrollY", { configurable: true, value: 500 });
+    fireEvent.scroll(window);
+    expect(screen.queryByRole("link", { name: "Book a demo" })).not.toBeInTheDocument();
+    Object.defineProperty(window, "scrollY", { configurable: true, value: 501 });
+    fireEvent.scroll(window);
+    expect(screen.getByRole("link", { name: "Book a demo" })).toHaveAttribute("href", "/demo");
+  });
   it("toggles a touch disclosure and dismisses outside it", () => {
     render(<SiteHeader />);
     const platform = screen.getByRole("button", { name: "Platform" });

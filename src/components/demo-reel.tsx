@@ -55,12 +55,12 @@ export function DemoReel() {
       window.removeEventListener("resize", onScroll);
       if (raf) cancelAnimationFrame(raf);
     };
-  }, [loadVideo]);
+  }, []);
 
   // Play only while on screen.
   useEffect(() => {
     const video = videoRef.current;
-    if (!video || typeof IntersectionObserver === "undefined") return;
+    if (!loadVideo || !video || typeof IntersectionObserver === "undefined") return;
     const io = new IntersectionObserver(
       (entries) => {
         const entry = entries[0];
@@ -75,7 +75,7 @@ export function DemoReel() {
     );
     io.observe(video);
     return () => io.disconnect();
-  }, []);
+  }, [loadVideo]);
 
   // Ease the expansion so the opening feels weighted, not linear.
   const eased = 1 - Math.pow(1 - progress, 3);

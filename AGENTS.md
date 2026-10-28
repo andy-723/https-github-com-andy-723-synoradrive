@@ -23,3 +23,5 @@
 - Demo and contact enquiries are validated by shared zod schemas and stored via server functions using the admin client into RLS-locked tables (no public policies); this keeps submissions private and lets owner emails be added in the same handler later.
 - Keep the public site URL in one module (src/lib/site.ts SITE_URL) and build canonical, og:url and sitemap entries from it, so SEO URLs follow the domain without hard-coded hosts in each route.
 - Keep accessibility and search foundations (theme contrast ratios, minimum text size, description length, sitemap route coverage, single main landmark) asserted by src/test/site-foundations.test.ts rather than reviewed by eye, so regressions surface in the test suite.
+- Keep homepage navigation CTA visibility scroll-aware while other pages retain direct demo access; defer cinematic media requests until its section approaches the viewport to avoid competing with the opening photo.
+- Render cookie consent as a labelled non-modal region, not a dialog, so consent stays available without falsely signalling a focus-trapped popup.
