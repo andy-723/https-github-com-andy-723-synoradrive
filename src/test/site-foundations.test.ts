@@ -189,7 +189,7 @@ describe("Page descriptions", () => {
   });
 });
 
-describe("Crawlability", () => {
+describe("Crawling paused during IP hold", () => {
   const routePaths = readdirSync(path.join(SRC, "routes"))
     .filter((f) => f.endsWith(".tsx") && f !== "__root.tsx")
     .map((f) => f.replace(/\.tsx$/, ""))
@@ -201,16 +201,13 @@ describe("Crawlability", () => {
   const sitemap = readFileSync(path.join(SRC, "..", "public", "sitemap.xml"), "utf8");
   const robots = readFileSync(path.join(SRC, "..", "public", "robots.txt"), "utf8");
 
-  it("lists every public page in the sitemap under the live domain", () => {
-    for (const route of routePaths) {
-      expect(sitemap, `sitemap is missing ${route}`).toContain(`<loc>${SITE_URL}${route}</loc>`);
-    }
-    expect(sitemap.match(/<loc>/g)).toHaveLength(routePaths.length);
+  it("does not advertise protected pages in the public sitemap", () => {
+    expect(sitemap.match(/<loc>/g) ?? []).toHaveLength(0);
   });
 
-  it("points crawlers at the sitemap and never blocks the whole site", () => {
-    expect(robots).toContain(`Sitemap: ${SITE_URL}/sitemap.xml`);
-    expect(robots).not.toMatch(/^Disallow:\s*\/\s*$/m);
+  it("asks all crawlers to stay out during the IP review", () => {
+    expect(robots).toContain("User-agent: *");
+    expect(robots).toMatch(/^Disallow:\s*\/\s*$/m);
   });
 });
 
