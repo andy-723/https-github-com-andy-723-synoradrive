@@ -87,7 +87,7 @@ export const Route = createFileRoute("/")({
         type: "image/webp",
         href: `${SITE_URL}${heroVehicle.url}`,
         media: "(min-width: 768px)",
-        fetchpriority: "high",
+        fetchPriority: "high",
       },
       {
         rel: "preload",
@@ -95,7 +95,7 @@ export const Route = createFileRoute("/")({
         type: "image/webp",
         href: `${SITE_URL}${heroVehicleMobile.url}`,
         media: "(max-width: 767px)",
-        fetchpriority: "high",
+        fetchPriority: "high",
       },
     ],
     scripts: [{ type: "application/ld+json", children: structuredData }],
