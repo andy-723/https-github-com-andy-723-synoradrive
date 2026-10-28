@@ -11,6 +11,9 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as SplatRouteImport } from './routes/$'
+import { Route as PrivateRouteImport } from './routes/private'
+import { Route as ApiPublicPrivateAccessRouteImport } from './routes/api/public/private-access'
+import { Route as ApiPublicPrivateFileRouteImport } from './routes/api/public/private-file'
 import { Route as LovableEmailAuthPreviewRouteImport } from './routes/lovable/email/auth/preview'
 import { Route as LovableEmailAuthWebhookRouteImport } from './routes/lovable/email/auth/webhook'
 import { Route as LovableEmailTransactionalPreviewRouteImport } from './routes/lovable/email/transactional/preview'
@@ -23,6 +26,21 @@ const IndexRoute = IndexRouteImport.update({
 const SplatRoute = SplatRouteImport.update({
   id: '/$',
   path: '/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivateRoute = PrivateRouteImport.update({
+  id: '/private',
+  path: '/private',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicPrivateAccessRoute = ApiPublicPrivateAccessRouteImport.update({
+  id: '/api/public/private-access',
+  path: '/api/public/private-access',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicPrivateFileRoute = ApiPublicPrivateFileRouteImport.update({
+  id: '/api/public/private-file',
+  path: '/api/public/private-file',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LovableEmailAuthPreviewRoute = LovableEmailAuthPreviewRouteImport.update({
@@ -45,6 +63,9 @@ const LovableEmailTransactionalPreviewRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
+  '/private': typeof PrivateRoute
+  '/api/public/private-access': typeof ApiPublicPrivateAccessRoute
+  '/api/public/private-file': typeof ApiPublicPrivateFileRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
   '/lovable/email/auth/webhook': typeof LovableEmailAuthWebhookRoute
   '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
@@ -52,6 +73,9 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
+  '/private': typeof PrivateRoute
+  '/api/public/private-access': typeof ApiPublicPrivateAccessRoute
+  '/api/public/private-file': typeof ApiPublicPrivateFileRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
   '/lovable/email/auth/webhook': typeof LovableEmailAuthWebhookRoute
   '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
@@ -60,6 +84,9 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
+  '/private': typeof PrivateRoute
+  '/api/public/private-access': typeof ApiPublicPrivateAccessRoute
+  '/api/public/private-file': typeof ApiPublicPrivateFileRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
   '/lovable/email/auth/webhook': typeof LovableEmailAuthWebhookRoute
   '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
@@ -69,6 +96,9 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/$'
+    | '/private'
+    | '/api/public/private-access'
+    | '/api/public/private-file'
     | '/lovable/email/auth/preview'
     | '/lovable/email/auth/webhook'
     | '/lovable/email/transactional/preview'
@@ -76,6 +106,9 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/$'
+    | '/private'
+    | '/api/public/private-access'
+    | '/api/public/private-file'
     | '/lovable/email/auth/preview'
     | '/lovable/email/auth/webhook'
     | '/lovable/email/transactional/preview'
@@ -83,6 +116,9 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/$'
+    | '/private'
+    | '/api/public/private-access'
+    | '/api/public/private-file'
     | '/lovable/email/auth/preview'
     | '/lovable/email/auth/webhook'
     | '/lovable/email/transactional/preview'
@@ -91,6 +127,9 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   SplatRoute: typeof SplatRoute
+  PrivateRoute: typeof PrivateRoute
+  ApiPublicPrivateAccessRoute: typeof ApiPublicPrivateAccessRoute
+  ApiPublicPrivateFileRoute: typeof ApiPublicPrivateFileRoute
   LovableEmailAuthPreviewRoute: typeof LovableEmailAuthPreviewRoute
   LovableEmailAuthWebhookRoute: typeof LovableEmailAuthWebhookRoute
   LovableEmailTransactionalPreviewRoute: typeof LovableEmailTransactionalPreviewRoute
@@ -110,6 +149,27 @@ declare module '@tanstack/react-router' {
       path: '/$'
       fullPath: '/$'
       preLoaderRoute: typeof SplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/private': {
+      id: '/private'
+      path: '/private'
+      fullPath: '/private'
+      preLoaderRoute: typeof PrivateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/private-access': {
+      id: '/api/public/private-access'
+      path: '/api/public/private-access'
+      fullPath: '/api/public/private-access'
+      preLoaderRoute: typeof ApiPublicPrivateAccessRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/private-file': {
+      id: '/api/public/private-file'
+      path: '/api/public/private-file'
+      fullPath: '/api/public/private-file'
+      preLoaderRoute: typeof ApiPublicPrivateFileRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/lovable/email/auth/preview': {
@@ -139,6 +199,9 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   SplatRoute: SplatRoute,
+  PrivateRoute: PrivateRoute,
+  ApiPublicPrivateAccessRoute: ApiPublicPrivateAccessRoute,
+  ApiPublicPrivateFileRoute: ApiPublicPrivateFileRoute,
   LovableEmailAuthPreviewRoute: LovableEmailAuthPreviewRoute,
   LovableEmailAuthWebhookRoute: LovableEmailAuthWebhookRoute,
   LovableEmailTransactionalPreviewRoute: LovableEmailTransactionalPreviewRoute,
