@@ -3,9 +3,12 @@ import { FounderShowcase } from "@/components/about-founder";
 import { ClosingCta } from "@/components/closing-cta";
 import { SectionHead } from "@/components/marketing";
 import { Reveal } from "@/components/reveal";
-import dealershipYard from "@/assets/dealership-yard.jpg";
-import deliveryHandover from "@/assets/delivery-handover.jpg";
-import deliveryBayNight from "@/assets/delivery-bay-night.jpg";
+import dealershipYard from "@/assets/dealership-yard-1600.webp";
+import dealershipYardMobile from "@/assets/dealership-yard-800.webp";
+import deliveryHandover from "@/assets/delivery-handover-1600.webp";
+import deliveryHandoverMobile from "@/assets/delivery-handover-800.webp";
+import deliveryBayNight from "@/assets/delivery-bay-night-1600.webp";
+import deliveryBayNightMobile from "@/assets/delivery-bay-night-800.webp";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -42,9 +45,9 @@ const JOURNEY = [
 ] as const;
 
 const SHOTS = [
-  { src: dealershipYard, alt: "Dealership yard at dusk with rows of vehicles", caption: "The yard — where stock waits for its paperwork to catch up" },
-  { src: deliveryHandover, alt: "Clean key handover between dealer and customer", caption: "The handover — the moment the paperwork leads to" },
-  { src: deliveryBayNight, alt: "Vehicle in a delivery bay at night under lights", caption: "The delivery bay — where month-end is won or lost" },
+  { src: dealershipYard, mobile: dealershipYardMobile, alt: "Dealership yard at dusk with rows of vehicles", caption: "The yard — where stock waits for its paperwork to catch up" },
+  { src: deliveryHandover, mobile: deliveryHandoverMobile, alt: "Clean key handover between dealer and customer", caption: "The handover — the moment the paperwork leads to" },
+  { src: deliveryBayNight, mobile: deliveryBayNightMobile, alt: "Vehicle in a delivery bay at night under lights", caption: "The delivery bay — where month-end is won or lost" },
 ] as const;
 
 function AboutPage() {
@@ -54,8 +57,14 @@ function AboutPage() {
       <section className="relative overflow-hidden">
         <img
           src={dealershipYard}
+          srcSet={`${dealershipYardMobile} 800w, ${dealershipYard} 1600w`}
+          sizes="100vw"
           alt=""
           aria-hidden="true"
+          fetchPriority="high"
+          decoding="async"
+          width={1536}
+          height={1024}
           className="hero-vehicle absolute inset-0 h-full w-full object-cover"
         />
         <div className="hero-shade absolute inset-0" aria-hidden="true" />
@@ -118,8 +127,13 @@ function AboutPage() {
               <figure className="framed-card about-shot group overflow-hidden rounded-xl border">
                 <img
                   src={shot.src}
+                  srcSet={`${shot.mobile} 800w, ${shot.src} 1600w`}
+                  sizes="(min-width: 768px) 33vw, 100vw"
                   alt={shot.alt}
                   loading="lazy"
+                  decoding="async"
+                  width={1536}
+                  height={1024}
                   className="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <figcaption className="border-t border-white/10 px-4 py-3 text-xs text-muted-foreground">

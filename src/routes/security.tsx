@@ -7,7 +7,7 @@ export const Route = createFileRoute("/security")({
   head: () => ({
     meta: [
       { title: "Security and data residency, SynoraDrive" },
-      { name: "description", content: "Engineered on Microsoft Azure (Australia East): encryption in transit and at rest, role-based access, staff TOTP MFA, strict CSP and 725 automated backend checks." },
+      { name: "description", content: "How SynoraDrive protects dealership deal data: role-based access, staff TOTP MFA, activity logs and hosting in Microsoft Azure Australia East." },
       { property: "og:title", content: "Security and data residency, SynoraDrive" },
       { property: "og:description", content: "Engineered on Microsoft Azure (Australia East): encryption in transit and at rest, role-based access, staff TOTP MFA, strict CSP and 725 automated backend checks." },
       { property: "og:type", content: "website" },

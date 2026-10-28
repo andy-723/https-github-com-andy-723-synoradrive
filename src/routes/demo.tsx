@@ -11,7 +11,7 @@ export const Route = createFileRoute("/demo")({
   head: () => ({
     meta: [
       { title: "Book a rooftop demo, SynoraDrive" },
-      { name: "description", content: "See SynoraDrive in 30 minutes." },
+      { name: "description", content: "Book a 30-minute rooftop walkthrough of SynoraDrive. See a sample contract of sale become a checked deal pack, using fictional demo data." },
       { property: "og:title", content: "Book a rooftop demo, SynoraDrive" },
       { property: "og:description", content: "See SynoraDrive in 30 minutes." },
       { property: "og:type", content: "website" },
