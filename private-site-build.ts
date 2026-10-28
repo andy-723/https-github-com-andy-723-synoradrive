@@ -1,5 +1,5 @@
 import { build } from 'esbuild';
-import { readFile, writeFile, mkdir } from 'node:fs/promises';
+import { readFile, writeFile, mkdir, rm } from 'node:fs/promises';
 import path from 'node:path';
 import { createHash } from 'node:crypto';
 
@@ -55,5 +55,15 @@ export async function buildPrivateSite() {
   if (!output) throw new Error('Private website packaging produced no output');
   files['site.js'] = { contentType: 'text/javascript; charset=utf-8', base64: Buffer.from(output.contents).toString('base64') };
   await mkdir('src/private-generated', { recursive: true });
-  await writeFile('src/private-generated/site.server.ts', 'export const privateFiles: Record<string, { contentType: string; base64: string }> = ' + JSON.stringify(files) + ';\n');
+  const imports: string[] = [];
+  const entries: string[] = [];
+  for (const [key, file] of Object.entries(files)) {
+    const id = 'f' + imports.length;
+    const filename = id + '.server.ts';
+    await writeFile('src/private-generated/' + filename, 'export default ' + JSON.stringify(file) + ';\n');
+    imports.push(`import ${id} from './${id}.server';`);
+    entries.push(JSON.stringify(key) + ':' + id);
+  }
+  await rm('src/private-generated/site.server.ts', { force: true });
+  await writeFile('src/private-generated/site.server.ts', imports.join('\n') + '\nexport const privateFiles: Record<string, { contentType: string; base64: string }> = {' + entries.join(',') + '};\n');
 }
