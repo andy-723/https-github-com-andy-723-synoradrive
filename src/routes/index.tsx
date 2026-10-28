@@ -72,7 +72,7 @@ function Hero() {
         </div>
       </div>
       <div className="border-t border-foreground/15 bg-background/60">
-        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-6 py-5 font-mono text-[10px] text-muted-foreground sm:text-xs lg:px-8">
+        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-6 py-5 font-mono text-xs text-muted-foreground sm:text-xs lg:px-8">
           <span className="flex items-center gap-2"><span className="indicator-light size-1.5 rounded-full bg-success" /> DESIGNED FOR THE DEALERSHIP FLOOR</span>
           <span>SIGNED CONTRACT → DEAL PACK → FIVE GATED STAGES → DELIVERY</span>
           <Link to="/how-it-works" className="flex items-center gap-2 text-foreground">SEE HOW A DEAL MOVES <ArrowRight className="size-4" /></Link>
@@ -87,9 +87,9 @@ function WorksWith() {
   return (
     <section className="light-section border-y bg-background text-foreground">
       <div className="mx-auto max-w-7xl px-6 pt-10 lg:px-8">
-        <div className="text-[10px] font-semibold uppercase tracking-wider text-logo-accent">Engineered around the documents Australian dealerships produce daily</div>
+        <div className="text-xs font-semibold uppercase tracking-wider text-logo-accent">Engineered around the documents Australian dealerships produce daily</div>
       </div>
-      <div className="marquee mt-4 pb-10 text-[11px] text-muted-foreground" aria-label="Documents SynoraDrive is designed around">
+      <div className="marquee mt-4 pb-10 text-xs text-muted-foreground" aria-label="Documents SynoraDrive is designed around">
         <div className="marquee-track px-3">
           {[...tools, ...tools].map((name, i) => (
             <span key={`${name}-${i}`} aria-hidden={i >= tools.length} className="shrink-0 rounded-full border border-foreground/10 bg-background px-3 py-1.5">{name}</span>
@@ -179,7 +179,7 @@ function ProductView() {
     <section className="product-showcase-section border-t text-foreground" aria-labelledby="product-view-title">
       <div className="mx-auto max-w-[1600px] px-5 py-24 sm:px-8">
         <Reveal className="mx-auto mb-10 max-w-3xl text-center">
-          <div className="showcase-eyebrow font-mono text-[10px] sm:text-xs">LIVE PLATFORM UI PREVIEW • ILLUSTRATIVE DEMO DATA</div>
+          <div className="showcase-eyebrow font-mono text-xs sm:text-xs">LIVE PLATFORM UI PREVIEW • ILLUSTRATIVE DEMO DATA</div>
           <h2 id="product-view-title" className="mt-5 text-3xl font-semibold leading-tight sm:text-5xl">Every car is a project.<br />Every stage has a RACI owner.</h2>
           <p className="mt-5 text-sm leading-relaxed text-muted-foreground">The Dealership Board, shown with illustrative demo data: a vehicle cycles from In-Queue to Delivery, and every department can see who is Responsible (R), who is Accountable (A) for the gate, and what is holding handover back.</p>
         </Reveal>

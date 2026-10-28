@@ -96,7 +96,7 @@ function AboutPage() {
                 <span className="about-road-dot" />
               </div>
               <div className="framed-card rounded-xl border bg-card p-6">
-                <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-primary">{step.era}</span>
+                <span className="font-mono text-xs uppercase tracking-[0.25em] text-primary">{step.era}</span>
                 <h3 className="mt-2 text-xl font-semibold">{step.title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{step.body}</p>
               </div>
@@ -136,7 +136,7 @@ function AboutPage() {
         <div className="grid gap-6 md:grid-cols-2">
           <Reveal>
             <div className="framed-card h-full rounded-xl border bg-card p-8">
-              <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-primary">Our mission</span>
+              <span className="font-mono text-xs uppercase tracking-[0.25em] text-primary">Our mission</span>
               <p className="mt-4 text-lg leading-relaxed">
                 To replace manila folders and disconnected spreadsheets with a post-DMS workflow layer designed to help dealership teams work faster and reduce re-keying errors, so every buyer gets a smooth path from signature to keys.
               </p>
@@ -144,7 +144,7 @@ function AboutPage() {
           </Reveal>
           <Reveal delay={150}>
             <div className="framed-card h-full rounded-xl border bg-card p-8">
-              <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-primary">Our vision</span>
+              <span className="font-mono text-xs uppercase tracking-[0.25em] text-primary">Our vision</span>
               <p className="mt-4 text-lg leading-relaxed">
                 The operating layer between the DMS and the delivery bay for every franchised dealership in Australia, and the place where dealer principals run, measure and forecast their whole sales operation.
               </p>

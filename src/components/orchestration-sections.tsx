@@ -35,7 +35,7 @@ export function SynoraCnsSection() {
               <path d={`M 500 300 Q ${d.x * 10} 300 ${d.x * 10} ${d.y * 6}`} className={`cns-signal cns-signal-${i}`} stroke={`url(#${gradientId})`} />
             </g>)}
           </svg>
-          <div className="cns-core"><div className="cns-core-ring" aria-hidden="true" /><Radio className="size-8 text-brand-mint" /><span className="mt-3 text-xl font-semibold">Synora<span className="text-brand-mint">CNS</span></span><span className="mt-2 font-mono text-[10px] text-muted-foreground">ONE DEAL · EVERY OWNER</span></div>
+          <div className="cns-core"><div className="cns-core-ring" aria-hidden="true" /><Radio className="size-8 text-brand-mint" /><span className="mt-3 text-xl font-semibold">Synora<span className="text-brand-mint">CNS</span></span><span className="mt-2 font-mono text-xs text-muted-foreground">ONE DEAL · EVERY OWNER</span></div>
           {departments.map(({ name, Icon, work }, i) => <Button key={name} variant="ghost" className={`cns-node cns-node-${i}`} aria-pressed={selected === i} aria-controls="cns-department-detail" onClick={() => setSelected(i)}><span className="cns-node-icon"><Icon className="size-5" /></span><span className="cns-node-name">{name}</span><span className="cns-node-work">{work}</span></Button>)}
         </div>
         <div id="cns-department-detail" className="cns-detail mx-auto mt-6 max-w-3xl border-t pt-6" aria-live="polite" aria-atomic="true">
@@ -115,7 +115,7 @@ export function DeliveryVisibilitySection() {
             <Button variant={connected ? "ghost" : "secondary"} aria-pressed={!connected} onClick={() => chooseView(false)}>The old hand-off</Button>
             <Button variant={connected ? "secondary" : "ghost"} aria-pressed={connected} onClick={() => chooseView(true)}>With SynoraDrive</Button>
           </div>
-          <span className="font-mono text-[10px] text-muted-foreground">ILLUSTRATIVE DELIVERY JOURNEY</span>
+          <span className="font-mono text-xs text-muted-foreground">ILLUSTRATIVE DELIVERY JOURNEY</span>
         </div>
         <div className="visibility-journey relative mt-10" data-connected={connected}>
           <div className="visibility-line" aria-hidden="true" />
@@ -123,7 +123,7 @@ export function DeliveryVisibilitySection() {
           <div className="relative grid gap-6 md:grid-cols-4">
             {milestones.map(({ title, owner, message, Icon }, i) => <div key={title} className={`visibility-stop visibility-stop-${i}`}>
               <div className="visibility-marker"><Icon className="size-6" /></div>
-              <div className="mt-5 font-mono text-[10px] text-muted-foreground">0{i + 1}</div>
+              <div className="mt-5 font-mono text-xs text-muted-foreground">0{i + 1}</div>
               <h3 className="mt-2 text-lg font-semibold">{title}</h3>
               <p className="mt-2 text-sm text-primary">{connected ? owner : i === 0 ? "Sales" : "Who owns this?"}</p>
               <p className="mt-3 text-sm text-muted-foreground">{connected ? message : i === 0 ? "Contract handed over." : "Another call. Another email."}</p>

@@ -15,7 +15,7 @@ const tabs = [
 ] as const;
 
 function Field({ label, value }: { label: string; value: string }) {
-  return <div className="min-w-0 rounded-md border border-surface-border bg-surface-muted p-3"><dt className="text-[10px] font-semibold uppercase text-muted-foreground">{label}</dt><dd className="mt-1 break-words text-xs font-medium leading-relaxed">{value}</dd></div>;
+  return <div className="min-w-0 rounded-md border border-surface-border bg-surface-muted p-3"><dt className="text-xs font-semibold uppercase text-muted-foreground">{label}</dt><dd className="mt-1 break-words text-xs font-medium leading-relaxed">{value}</dd></div>;
 }
 
 function Checklist({ items }: { items: string[] }) {
@@ -43,20 +43,20 @@ function DealRecord({ deal, initialTab, sharedSettled, onSettle }: { deal: DemoD
   };
   const settlement = <section aria-label="Vehicle settlement" className="border-l-2 border-success bg-success/5 p-4">
     <h3 className="flex items-center gap-2 text-xs font-semibold uppercase text-success"><Wallet className="size-4" />Vehicle settlement</h3>
-    <p className="mt-2 text-[11px] leading-relaxed text-muted-foreground">Reconciliation check · $0 required before handover</p>
+    <p className="mt-2 text-xs leading-relaxed text-muted-foreground">Reconciliation check · $0 required before handover</p>
     <dl className="mt-4 space-y-3 text-xs">
       {[["Vehicle price", money(record.price)], ["Trade-in allowance", `− ${money(record.allowance)}`], ["Trade-in payout owing", `+ ${money(record.payout)}`], ["Deposit received", `− ${money(record.deposit)}`], ...(settled ? [["Final settlement", `− ${money(balance)}`]] : [])].map(([label, value]) => <div key={label} className="flex justify-between gap-4"><dt>{label}</dt><dd className="shrink-0 font-semibold">{value}</dd></div>)}
       <div className="flex justify-between gap-4 border-t border-success/30 pt-3 font-semibold"><dt>Balance due</dt><dd>{money(settled ? 0 : balance)}</dd></div>
     </dl>
     <div className="mt-4 flex items-start gap-2 text-xs leading-relaxed">{settled ? <CheckCircle2 className="size-4 shrink-0 text-success" /> : <Lock className="size-4 shrink-0 text-warning" />}<span>{settled ? "Settlement check cleared · other delivery gates still apply" : "Handover held · settlement outstanding"}</span></div>
     <Button variant="outline" size="sm" className="mt-4 h-auto min-h-11 w-full whitespace-normal" disabled={settled} onClick={() => { setSettled(true); onSettle?.(); }}><Wallet className="size-4 shrink-0" />{settled ? "Sample settlement recorded" : "Simulate final settlement"}</Button>
-    <p role="status" className="mt-2 text-[10px] text-muted-foreground">{settled ? "Demo only · no payment processed." : "Simulated actions only · no payment processing."}</p>
+    <p role="status" className="mt-2 text-xs text-muted-foreground">{settled ? "Demo only · no payment processed." : "Simulated actions only · no payment processing."}</p>
   </section>;
 
   return <>
-    <div className="shrink-0 bg-accent px-4 py-2 text-center text-[10px] font-semibold text-accent-foreground sm:px-6">SAMPLE · Fictional demo data · Not a real customer or transaction</div>
+    <div className="shrink-0 bg-accent px-4 py-2 text-center text-xs font-semibold text-accent-foreground sm:px-6">SAMPLE · Fictional demo data · Not a real customer or transaction</div>
     <div className="shrink-0 border-b px-5 py-5 pr-16 sm:px-7">
-      <div className="mb-2 flex flex-wrap items-center gap-2 font-mono text-[10px] text-primary"><span>{deal.id}</span><span>· {record.customerNumber}</span><span className="rounded-sm bg-accent px-2 py-1 text-accent-foreground">{deal.badge}</span></div>
+      <div className="mb-2 flex flex-wrap items-center gap-2 font-mono text-xs text-primary"><span>{deal.id}</span><span>· {record.customerNumber}</span><span className="rounded-sm bg-accent px-2 py-1 text-accent-foreground">{deal.badge}</span></div>
       <DialogTitle className="text-xl leading-snug">{deal.name}</DialogTitle>
       <DialogDescription className="mt-2 text-xs">{deal.car} · {deal.value} · Demo Motors</DialogDescription>
     </div>
@@ -70,7 +70,7 @@ function DealRecord({ deal, initialTab, sharedSettled, onSettle }: { deal: DemoD
             <div className="space-y-6">
               <ul aria-label="Platform highlights" className="grid gap-2 sm:grid-cols-2">
                 {["DMS Contract of Sale Parsed (OCR + AcroForm Engine)", "Showroom & Pre-Delivery PDF Packs Prepared for Staff Check", "Status Checker: SALES → F&I → AFTERMARKET → WORKSHOP → REGO → PD", "Vehicle Settlement Gate: Mandatory $0 Balance Due Reconciliation Before Handover"].map((item) => (
-                  <li key={item} className="flex gap-2 rounded-md border bg-accent/30 px-3 py-2 text-[11px] font-medium"><ShieldCheck className="mt-0.5 size-3.5 shrink-0 text-primary" />{item}</li>
+                  <li key={item} className="flex gap-2 rounded-md border bg-accent/30 px-3 py-2 text-xs font-medium"><ShieldCheck className="mt-0.5 size-3.5 shrink-0 text-primary" />{item}</li>
                 ))}
               </ul>
               <section><h3 className="mb-3 flex items-center gap-2 text-xs font-semibold uppercase text-muted-foreground"><User className="size-4" />Customer</h3><dl className="grid gap-3 sm:grid-cols-2"><Field label="Name" value={deal.name} /><Field label="Mobile" value={record.mobile} /><Field label="Email" value={record.email} /><Field label="Address" value={record.address} /></dl></section>

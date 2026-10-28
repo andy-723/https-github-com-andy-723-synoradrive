@@ -69,7 +69,7 @@ export function FounderShowcase() {
             <div className="founder-portrait-ring" aria-hidden="true" />
           </div>
           <div className="founder-nameplate">
-            <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-primary">Founder</span>
+            <span className="font-mono text-xs uppercase tracking-[0.25em] text-primary">Founder</span>
             <span className="text-lg font-semibold">Andrew Phan</span>
             <span className="text-xs text-muted-foreground">SYNORA TECH</span>
           </div>
@@ -80,7 +80,7 @@ export function FounderShowcase() {
       {CHIPS.map((chip, i) => (
         <Reveal key={chip.id} delay={150 + i * 120} className={`founder-chip founder-chip-${chip.pos}`}>
           <div className="founder-chip-inner">
-            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary">{chip.label}</span>
+            <span className="font-mono text-xs uppercase tracking-[0.2em] text-primary">{chip.label}</span>
             <span className="mt-1 block text-sm font-medium leading-snug">{chip.detail}</span>
           </div>
         </Reveal>
