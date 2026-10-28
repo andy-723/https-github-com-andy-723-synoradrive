@@ -1,7 +1,7 @@
 # Roadmap
 
 ## Temporary IP protection
-- [ ] Enable private viewing for Andrew and individually invited people, without profiles: Andrew must choose Invite only in Publish and name the viewers before the full website can safely be restored behind access protection.
+- [ ] Enable full-website viewing through a link and shared password, without accounts or profiles; keep public content locked until server-side access protection and private viewing are verified.
 - [x] Replace public website with a neutral holding page; archive marketing routes and route-linked navigation outside the active build; block submissions with 503 and request no indexing. Verified Home, Pricing, Demo, Contact, Platform, About and unknown links show only the holding page, mobile has no overflow, 33 active tests pass and build is clean. Previously downloaded/cached content cannot be withdrawn by this change.
 - [ ] Activate protection on the live domain: requires publishing the holding-page changes or Andrew selecting Invite only in Publish for private access.
 
