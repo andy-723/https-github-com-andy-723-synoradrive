@@ -44,7 +44,7 @@ export async function buildPrivateSite() {
       builder.onLoad({ filter: /.*/, namespace: 'private-pointer' }, async ({ path: filename }) => {
         const pointer = JSON.parse(await readFile(filename, 'utf8'));
         // Build-only fetch of app media. Original public URLs are never sent to viewers.
-        const response = await fetch('http://localhost:8080' + pointer.url);
+        const response = await fetch('https://www.synoradrive.com.au' + pointer.url);
         if (!response.ok) throw new Error('Unable to package private media: ' + path.basename(filename));
         const url = await embed(pointer.original_filename, new Uint8Array(await response.arrayBuffer()));
         return { contents: `export default ${JSON.stringify({ url })}`, loader: 'js' };
