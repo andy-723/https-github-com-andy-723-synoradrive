@@ -160,7 +160,7 @@ describe("Page descriptions", () => {
     if (literal) return literal[1];
     const named = /\{ name: "description", content: ([A-Z][A-Z0-9_]*) \}/.exec(src);
     if (named) {
-      const value = new RegExp(`const ${named[1]} = "([^"]+)"`).exec(src);
+      const value = new RegExp(`const ${named[1]} =\\s*"([^"]+)"`).exec(src);
       expect(value, `${file}: description constant ${named[1]} not found`).not.toBeNull();
       return value![1];
     }

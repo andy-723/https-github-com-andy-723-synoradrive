@@ -148,6 +148,7 @@
   --accent: color-mix(in srgb, var(--brand-indigo) 10%, var(--background));
   --accent-foreground: color-mix(in srgb, var(--brand-indigo) 78%, var(--brand-ink));
   --primary: #4338ca;
+  --primary-foreground: oklch(0.99 0 0);
   --primary-glow: color-mix(in srgb, var(--brand-sky) 55%, var(--brand-ink));
   --border: oklch(0.87 0.006 260);
   --input: var(--border);
