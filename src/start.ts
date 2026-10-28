@@ -2,6 +2,18 @@ import { createStart, createCsrfMiddleware, createMiddleware } from "@tanstack/r
 
 import { renderErrorPage } from "./lib/error-page";
 import { attachSupabaseAuth } from "@/integrations/supabase/auth-attacher";
+import { blockedSiteRequest } from "@/lib/site-lock";
+
+const publicLockMiddleware = createMiddleware().server(async ({ request, next }) => {
+  const blocked = blockedSiteRequest(request);
+  if (blocked) return blocked;
+  const result = await next();
+  if (!new URL(request.url).pathname.startsWith("/lovable/email/")) {
+    result.response.headers.set("X-Robots-Tag", "noindex, nofollow, noarchive");
+    result.response.headers.set("Cache-Control", "no-store");
+  }
+  return result;
+});
 
 const errorMiddleware = createMiddleware().server(async ({ request, next }) => {
   if (new URL(request.url).pathname.startsWith("/lovable/")) return next();
@@ -28,5 +40,5 @@ const csrfMiddleware = createCsrfMiddleware({
 
 export const startInstance = createStart(() => ({
   functionMiddleware: [attachSupabaseAuth],
-  requestMiddleware: [errorMiddleware, csrfMiddleware],
+  requestMiddleware: [publicLockMiddleware, errorMiddleware, csrfMiddleware],
 }));
