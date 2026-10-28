@@ -17,8 +17,10 @@ const publicLockMiddleware = createMiddleware().server(async ({ request, next })
   }
   const result = await next();
   if (!new URL(request.url).pathname.startsWith("/lovable/email/")) {
-    result.response.headers.set("X-Robots-Tag", "noindex, nofollow, noarchive");
-    result.response.headers.set("Cache-Control", "no-store");
+    const headers = new Headers(result.response.headers);
+    headers.set("X-Robots-Tag", "noindex, nofollow, noarchive");
+    headers.set("Cache-Control", "no-store");
+    return new Response(result.response.body, { status: result.response.status, statusText: result.response.statusText, headers });
   }
   return result;
 });
