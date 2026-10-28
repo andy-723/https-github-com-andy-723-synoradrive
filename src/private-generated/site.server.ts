@@ -14,5 +14,4 @@ import f12 from './f12.server';
 import f13 from './f13.server';
 import f14 from './f14.server';
 import f15 from './f15.server';
-import f16 from './f16.server';
-export const privateFiles: Record<string, { contentType: string; base64: string }> = {"348b27002c00416cf71a.webp":f0,"ddc72517b10a870d28d4.webp":f1,"7d461af4febe3cc13b4c.webp":f2,"2b43adbff18b900674c3.webp":f3,"3cb8021d9bb950a87ca2.webp":f4,"e77abf048886ac8a2541.webp":f5,"815885e349b801cf1cf3.webp":f6,"11df3cd23fb8e38819d8.webp":f7,"0a15102d484b2ac4b3ad.webp":f8,"7b8c6bbf3b60fc4ee1dc.webp":f9,"cb8d39f4f532d0615c7d.webp":f10,"bd3b62133fa344b6c79e.webp":f11,"7163c449ac5d77ff7f2d.webp":f12,"c04088b02e6c39e43263.jpg":f13,"33de4c5d1ce26ae06726.webm":f14,"68d34fa40a103d4ea512.mp4":f15,"site.js":f16};
+export const privateFiles: Record<string, { contentType: string; base64: string }> = {"348b27002c00416cf71a.webp":f0,"ddc72517b10a870d28d4.webp":f1,"7d461af4febe3cc13b4c.webp":f2,"11df3cd23fb8e38819d8.webp":f3,"e77abf048886ac8a2541.webp":f4,"815885e349b801cf1cf3.webp":f5,"2b43adbff18b900674c3.webp":f6,"3cb8021d9bb950a87ca2.webp":f7,"0a15102d484b2ac4b3ad.webp":f8,"7b8c6bbf3b60fc4ee1dc.webp":f9,"cb8d39f4f532d0615c7d.webp":f10,"7163c449ac5d77ff7f2d.webp":f11,"33de4c5d1ce26ae06726.webm":f12,"c04088b02e6c39e43263.jpg":f13,"bd3b62133fa344b6c79e.webp":f14,"site.js":f15};
