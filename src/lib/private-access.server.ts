@@ -1,6 +1,6 @@
 import { useSession } from '@tanstack/react-start/server';
 import { createHash, timingSafeEqual } from 'node:crypto';
-import { PRIVATE_SESSION_SECONDS } from './private-access-rules';
+import { PRIVATE_SESSION_SECONDS, isCurrentPrivateSession } from './private-access-rules';
 
 export function passwordMatches(input: string, expected: string) {
   return timingSafeEqual(createHash('sha256').update(input).digest(), createHash('sha256').update(expected).digest());
@@ -21,8 +21,6 @@ export async function isPrivateUnlocked() {
   if (!expected) return false;
   try {
     const session = await privateSession();
-    const openedAt = session.data.openedAt;
-    return typeof openedAt === 'number' && Date.now() - openedAt < PRIVATE_SESSION_SECONDS * 1000
-      && session.data.fingerprint === passwordFingerprint(expected);
+    return isCurrentPrivateSession(session.data, passwordFingerprint(expected));
   } catch { return false; }
 }

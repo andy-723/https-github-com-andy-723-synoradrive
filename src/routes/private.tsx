@@ -7,7 +7,7 @@ export const Route = createFileRoute('/private')({
   validateSearch: (search: Record<string, unknown>) => ({ error: search['error'] === 'incorrect' ? 'incorrect' : undefined }),
   head: () => ({ meta: [
     { title: 'SynoraDrive — Private viewing' },
-    { name: 'description', content: 'Password-protected private viewing of SynoraDrive. Public website access remains paused.' },
+    { name: "description", content: "Password-protected private viewing of SynoraDrive. Public website access remains paused." },
     { property: 'og:title', content: 'SynoraDrive — Private viewing' },
     { property: 'og:description', content: 'Private website viewing by invitation.' },
     { property: 'og:type', content: 'website' }, { name: 'twitter:card', content: 'summary' },
