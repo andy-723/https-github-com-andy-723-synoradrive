@@ -34,14 +34,18 @@
 - [x] ROI estimator module + boundary tests; pricing module updated to v4 plans
 
 ## Open items (blocked on Andrew)
-- [ ] Enable Lovable Cloud so demo/contact enquiries are stored and emailed (forms currently validate and show thank-you only)
-- [ ] [CONFIRM] pricing figures: v4 says "prices on request" — publish dollar amounts only once commercially set
-- [ ] [CONFIRM] retention 35 days (code) vs 30 days (plan); MFA mandatory vs opt-in wording
-- [ ] [CONFIRM] legal entity name + ABN for footer/Privacy/Terms; staff sign-in URL; public contact email
-- [ ] Lawyer review of Privacy Policy and Terms
+- [ ] Restore receiving email at andrew@synoratech.ai with the mail provider so enquiry alerts arrive (submissions are stored in Cloud; inbox arrival unverified)
+- [ ] Lawyer review of Privacy Policy, Website Terms and Disclaimer
+- [ ] Staff sign-in destination for the header (Pilot Portal sign-in removed; link still to be chosen)
 - [ ] Product screenshots with dummy data for Home and pillar pages (visual gaps in v4)
 
 - [x] Visual refresh: scroll-reveal animations, marquee ticker, glow orbs, dealership yard/workshop/handover image bands
 
 ## About page visual redesign
-- [x] Cinematic founder showcase (floating arch portrait, animated dashed wiring, orbiting fact chips), journey road timeline, dealership photo band, mission/vision cards; verified desktop/mobile layouts, image loading and reduced-motion. Founder photo is a generated placeholder — replace src/assets/founder-portrait.jpg with the real photo.
+- [x] Cinematic founder showcase (floating arch portrait, animated dashed wiring, orbiting fact chips), journey road timeline, dealership photo band, mission/vision cards; verified desktop/mobile layouts, image loading and reduced-motion. Founder photo replaced with Andrew's real portrait.
+
+## Performance, accessibility and search foundations
+- [x] Responsive WebP photo variants under 180KB with srcset/sizes; hero preload plus high fetch priority; lazy below-fold images with explicit dimensions
+- [x] One main landmark plus skip-to-content link; 12px minimum text; WCAG AA contrast tokens per theme; 44px tap targets; duplicate mobile nav CTA removed
+- [x] Meta descriptions within 155 characters; JSON-LD (SoftwareApplication and Organization); sitemap.xml plus robots Sitemap directive; absolute canonical and og:url on every page
+- [x] src/test/site-foundations.test.ts guards contrast, text floor, descriptions, sitemap coverage and landmarks; 34 tests pass, build clean, no console errors on any page
