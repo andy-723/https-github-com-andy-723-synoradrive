@@ -2,8 +2,11 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ClosingCta } from "@/components/closing-cta";
 import { Breadcrumb, PageHero } from "@/components/marketing";
 import { Reveal } from "@/components/reveal";
-import workshopImage from "@/assets/workshop-pdi.jpg";
+import workshopImage from "@/assets/workshop-pdi-1600.webp";
+import workshopImageMobile from "@/assets/workshop-pdi-800.webp";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
+
+import { SITE_URL } from "@/lib/site";
 
 export const Route = createFileRoute("/platform/operations")({
   head: () => ({
@@ -13,10 +16,10 @@ export const Route = createFileRoute("/platform/operations")({
       { property: "og:title", content: "Unified dealership operations, SynoraDrive" },
       { property: "og:description", content: "Sales, stock, F&I, aftermarket, workshop and rego on one five-stage board, with parallel tasks, @mentions and escalations." },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/platform/operations" },
+      { property: "og:url", content: `${SITE_URL}/platform/operations` },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "/platform/operations" }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/platform/operations` }],
   }),
   component: OperationsPage,
 });
@@ -41,7 +44,17 @@ function OperationsPage() {
   return (
     <>
       <section className="band relative isolate overflow-hidden">
-        <img src={workshopImage} alt="A technician inspecting a vehicle on a hoist in a dealership workshop" loading="lazy" width={1536} height={1024} className="band-img absolute inset-0 -z-20 h-full w-full object-cover" />
+        <img
+          src={workshopImage}
+          srcSet={`${workshopImageMobile} 800w, ${workshopImage} 1600w`}
+          sizes="100vw"
+          alt="A technician inspecting a vehicle on a hoist in a dealership workshop"
+          fetchPriority="high"
+          decoding="async"
+          width={1536}
+          height={1024}
+          className="band-img absolute inset-0 -z-20 h-full w-full object-cover"
+        />
         <div className="workshop-shade absolute inset-0 -z-10" />
         <div className="mx-auto max-w-7xl px-6 pt-8 lg:px-8">
           <Breadcrumb items={[{ to: "/", label: "Home" }, { to: "/platform", label: "Platform" }, { label: "Unified operations" }]} />

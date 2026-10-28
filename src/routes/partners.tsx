@@ -3,6 +3,8 @@ import { ClosingCta } from "@/components/closing-cta";
 import { PageHero } from "@/components/marketing";
 import { ArrowRight, Handshake, Calculator, Users, Plug } from "lucide-react";
 
+import { SITE_URL } from "@/lib/site";
+
 export const Route = createFileRoute("/partners")({
   head: () => ({
     meta: [
@@ -11,10 +13,10 @@ export const Route = createFileRoute("/partners")({
       { property: "og:title", content: "Partner with SynoraDrive" },
       { property: "og:description", content: "Partnerships for DMS, CRM and digital retail providers, automotive associations and dealer advisers." },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/partners" },
+      { property: "og:url", content: `${SITE_URL}/partners` },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "/partners" }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/partners` }],
   }),
   component: PartnersPage,
 });

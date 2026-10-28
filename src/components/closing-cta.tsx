@@ -1,7 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { Reveal } from "@/components/reveal";
-import handoverImage from "@/assets/delivery-handover.jpg";
+import handoverImage from "@/assets/delivery-handover-1600.webp";
+import handoverImageMobile from "@/assets/delivery-handover-800.webp";
 
 export function ClosingCta() {
   return (
@@ -9,8 +10,11 @@ export function ClosingCta() {
       <div className="band relative isolate overflow-hidden rounded-2xl border px-6 py-20 text-center shadow-elegant">
         <img
           src={handoverImage}
+          srcSet={`${handoverImageMobile} 800w, ${handoverImage} 1600w`}
+          sizes="100vw"
           alt="A salesperson handing keys to a customer in a dealership delivery bay"
           loading="lazy"
+          decoding="async"
           width={1536}
           height={1024}
           className="band-img absolute inset-0 -z-20 h-full w-full object-cover"

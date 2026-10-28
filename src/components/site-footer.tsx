@@ -52,10 +52,10 @@ export function SiteFooter() {
           {columns.map((col) => (
             <div key={col.title}>
               <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">{col.title}</div>
-              <ul className="mt-4 space-y-2.5 text-sm">
+              <ul className="mt-2 text-sm">
                 {col.links.map((l) => (
                   <li key={l.label}>
-                    <Link to={l.to} className="text-muted-foreground transition-colors hover:text-foreground">
+                    <Link to={l.to} className="inline-flex min-h-11 items-center text-muted-foreground transition-colors hover:text-foreground">
                       {l.label}
                     </Link>
                   </li>

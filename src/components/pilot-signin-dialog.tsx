@@ -36,7 +36,7 @@ export function PilotSignInDialog({ children }: { children: ReactNode }) {
           <Button type="submit" className="w-full bg-brand">Sign in</Button>
           <Button type="button" variant="outline" className="w-full" onClick={() => setNotice(true)}>Sign in with Microsoft Entra ID (Dealer Group SSO)</Button>
           {notice && (
-            <p role="status" className="rounded-md border bg-muted p-3 text-sm text-muted-foreground">
+            <p role="status" className="rounded-xl border bg-muted p-3 text-sm text-muted-foreground">
               Portal access is issued to invited pilot rooftops during onboarding. If you have been invited, use the sign-in link in your onboarding email.
             </p>
           )}

@@ -132,7 +132,7 @@ export function StageQuest({ stages }: { stages: readonly Stage[] }) {
                 <div>
                   <div className="font-mono text-xs text-muted-foreground">STAGE 0{s.n}</div>
                   <h2 className="mt-1 text-lg font-semibold">{s.name}</h2>
-                  <div className={cn("quest-badge mt-3 inline-flex items-center gap-1 rounded-full px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider", done ? "quest-badge-on" : "bg-muted text-muted-foreground")}>
+                  <div className={cn("quest-badge mt-3 inline-flex items-center gap-1 rounded-full px-2.5 py-1 font-mono text-xs uppercase tracking-wider", done ? "quest-badge-on" : "bg-muted text-muted-foreground")}>
                     {done ? "Gate cleared +20 XP" : "Locked"}
                   </div>
                 </div>

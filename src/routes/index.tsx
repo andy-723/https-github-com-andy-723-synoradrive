@@ -5,26 +5,100 @@ import { SynoraCnsSection, DeliveryVisibilitySection } from "@/components/orches
 import { ClosingCta } from "@/components/closing-cta";
 import { Reveal } from "@/components/reveal";
 import { Button } from "@/components/ui/button";
-import vehicleAsset from "@/assets/synoradrive-vehicle.jpeg.asset.json";
-import yardImage from "@/assets/dealership-yard.jpg";
+import heroVehicle from "@/assets/hero-vehicle-1600.webp.asset.json";
+import heroVehicleMobile from "@/assets/hero-vehicle-800.webp.asset.json";
+import yardImage from "@/assets/dealership-yard-1600.webp";
+import yardImageMobile from "@/assets/dealership-yard-800.webp";
+import { SITE_URL } from "@/lib/site";
 import {
   ArrowRight, ShieldCheck, Cloud, BadgeCheck, Workflow, Gauge, KeyRound, Building2,
 } from "lucide-react";
+
+const PAGE_DESCRIPTION =
+  "SynoraDrive turns an Australian dealership's signed contract-of-sale PDF into a checked deal pack, then runs five gated stages through to handover.";
+
+const SOCIAL_IMAGE = `${SITE_URL}${heroVehicle.url}`;
+
+const structuredData = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      name: "SynoraDrive",
+      applicationCategory: "BusinessApplication",
+      operatingSystem: "Web",
+      url: `${SITE_URL}/`,
+      description: PAGE_DESCRIPTION,
+      offers: [
+        {
+          "@type": "Offer",
+          name: "Document & Compliance Core",
+          price: "499",
+          priceCurrency: "AUD",
+          url: `${SITE_URL}/pricing`,
+        },
+        {
+          "@type": "Offer",
+          name: "Full Pipeline & DealBoard",
+          price: "1490",
+          priceCurrency: "AUD",
+          url: `${SITE_URL}/pricing`,
+        },
+      ],
+    },
+    {
+      "@type": "Organization",
+      name: "SYNORA TECH",
+      legalName: "Andrew Phan trading as SYNORA TECH",
+      identifier: "42 234 662 138",
+      url: `${SITE_URL}/`,
+      email: "andrew@synoratech.ai",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "Suite 1208/530 Little Collins Street",
+        addressLocality: "Melbourne",
+        addressRegion: "VIC",
+        postalCode: "3000",
+        addressCountry: "AU",
+      },
+    },
+  ],
+});
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "SynoraDrive: Dealership contract-to-delivery platform" },
-      { name: "description", content: "Intelligence behind every handover. SynoraDrive extracts deal data from signed contracts, automates deal packs and runs a 5-stage Dealership Board from signed contract to customer keys for Australian dealerships." },
+      { name: "description", content: PAGE_DESCRIPTION },
       { property: "og:title", content: "SynoraDrive: Dealership contract-to-delivery platform" },
-      { property: "og:description", content: "Intelligence behind every handover. SynoraDrive extracts deal data from signed contracts, automates deal packs and runs a 5-stage Dealership Board from signed contract to customer keys for Australian dealerships." },
+      { property: "og:description", content: "Intelligence behind every handover. SynoraDrive reads a signed contract-of-sale PDF, prepares a checked deal pack and runs five gated stages to delivery." },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/" },
+      { property: "og:url", content: `${SITE_URL}/` },
+      { property: "og:image", content: SOCIAL_IMAGE },
+      { property: "og:image:alt", content: "A vehicle outside a modern dealership at dusk" },
       { name: "twitter:card", content: "summary_large_image" },
-      { property: "og:image", content: vehicleAsset.url },
-      { name: "twitter:image", content: vehicleAsset.url },
+      { name: "twitter:image", content: SOCIAL_IMAGE },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [
+      { rel: "canonical", href: `${SITE_URL}/` },
+      {
+        rel: "preload",
+        as: "image",
+        type: "image/webp",
+        href: `${SITE_URL}${heroVehicle.url}`,
+        media: "(min-width: 768px)",
+        fetchPriority: "high",
+      },
+      {
+        rel: "preload",
+        as: "image",
+        type: "image/webp",
+        href: `${SITE_URL}${heroVehicleMobile.url}`,
+        media: "(max-width: 767px)",
+        fetchPriority: "high",
+      },
+    ],
+    scripts: [{ type: "application/ld+json", children: structuredData }],
   }),
   component: Index,
 });
@@ -51,7 +125,17 @@ function Index() {
 function Hero() {
   return (
     <section className="automotive-hero relative isolate overflow-hidden">
-      <img src={vehicleAsset.url} alt="A vehicle outside a modern dealership at dusk" className="hero-vehicle absolute inset-0 -z-20 h-full w-full object-cover" fetchPriority="high" width={1356} height={768} />
+      <img
+        src={heroVehicle.url}
+        srcSet={`${heroVehicleMobile.url} 800w, ${heroVehicle.url} 1600w`}
+        sizes="100vw"
+        alt="A vehicle outside a modern dealership at dusk"
+        className="hero-vehicle absolute inset-0 -z-20 h-full w-full object-cover"
+        fetchPriority="high"
+        decoding="sync"
+        width={1600}
+        height={907}
+      />
       <div className="hero-shade absolute inset-0 -z-10" />
       <div className="glow-orb glow-orb-indigo -z-10 left-[8%] top-[12%] size-72" />
       <div className="glow-orb glow-orb-mint -z-10 bottom-[18%] right-[6%] size-56" />
@@ -72,7 +156,7 @@ function Hero() {
         </div>
       </div>
       <div className="border-t border-foreground/15 bg-background/60">
-        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-6 py-5 font-mono text-[10px] text-muted-foreground sm:text-xs lg:px-8">
+        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-6 py-5 font-mono text-xs text-muted-foreground lg:px-8">
           <span className="flex items-center gap-2"><span className="indicator-light size-1.5 rounded-full bg-success" /> DESIGNED FOR THE DEALERSHIP FLOOR</span>
           <span>SIGNED CONTRACT → DEAL PACK → FIVE GATED STAGES → DELIVERY</span>
           <Link to="/how-it-works" className="flex items-center gap-2 text-foreground">SEE HOW A DEAL MOVES <ArrowRight className="size-4" /></Link>
@@ -87,9 +171,9 @@ function WorksWith() {
   return (
     <section className="light-section border-y bg-background text-foreground">
       <div className="mx-auto max-w-7xl px-6 pt-10 lg:px-8">
-        <div className="text-[10px] font-semibold uppercase tracking-wider text-logo-accent">Engineered around the documents Australian dealerships produce daily</div>
+        <div className="text-xs font-semibold uppercase tracking-wider text-logo-accent">Engineered around the documents Australian dealerships produce daily</div>
       </div>
-      <div className="marquee mt-4 pb-10 text-[11px] text-muted-foreground" aria-label="Documents SynoraDrive is designed around">
+      <div className="marquee mt-4 pb-10 text-xs text-muted-foreground" aria-label="Documents SynoraDrive is designed around">
         <div className="marquee-track px-3">
           {[...tools, ...tools].map((name, i) => (
             <span key={`${name}-${i}`} aria-hidden={i >= tools.length} className="shrink-0 rounded-full border border-foreground/10 bg-background px-3 py-1.5">{name}</span>
@@ -138,7 +222,7 @@ function Pillars() {
               <Link to={to} className="lift group flex h-full flex-col rounded-xl border bg-card p-7 hover:border-primary/40 hover:shadow-elegant">
                 <div className="grid size-10 place-items-center rounded-lg bg-accent"><Icon className="size-5 text-accent-foreground" /></div>
                 <h3 className="mt-5 text-xl font-semibold">{t}</h3>
-                <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">{b}</p>
+                <p className="mt-2 flex-1 text-base leading-relaxed text-muted-foreground">{b}</p>
                 <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-primary">Learn more <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" /></span>
               </Link>
             </Reveal>
@@ -157,7 +241,7 @@ function WorkflowTeaser() {
       <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
         <Reveal className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <h2 className="max-w-xl text-3xl font-semibold sm:text-4xl">Five stages, each with a gate your team sets.</h2>
-          <Link to="/how-it-works" className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary">See how a deal moves <ArrowRight className="size-4" /></Link>
+          <Link to="/how-it-works" className="inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold text-primary">See how a deal moves <ArrowRight className="size-4" /></Link>
         </Reveal>
         <div className="mt-12 grid gap-4 md:grid-cols-5">
           {stages.map((s, i) => (
@@ -179,9 +263,9 @@ function ProductView() {
     <section className="product-showcase-section border-t text-foreground" aria-labelledby="product-view-title">
       <div className="mx-auto max-w-[1600px] px-5 py-24 sm:px-8">
         <Reveal className="mx-auto mb-10 max-w-3xl text-center">
-          <div className="showcase-eyebrow font-mono text-[10px] sm:text-xs">LIVE PLATFORM UI PREVIEW • ILLUSTRATIVE DEMO DATA</div>
+          <div className="showcase-eyebrow font-mono text-xs">LIVE PLATFORM UI PREVIEW • ILLUSTRATIVE DEMO DATA</div>
           <h2 id="product-view-title" className="mt-5 text-3xl font-semibold leading-tight sm:text-5xl">Every car is a project.<br />Every stage has a RACI owner.</h2>
-          <p className="mt-5 text-sm leading-relaxed text-muted-foreground">The Dealership Board, shown with illustrative demo data: a vehicle cycles from In-Queue to Delivery, and every department can see who is Responsible (R), who is Accountable (A) for the gate, and what is holding handover back.</p>
+          <p className="mt-5 text-base leading-relaxed text-muted-foreground">The Dealership Board, shown with illustrative demo data: a vehicle cycles from In-Queue to Delivery, and every department can see who is Responsible (R), who is Accountable (A) for the gate, and what is holding handover back.</p>
         </Reveal>
         <ProductPreview />
       </div>
@@ -192,7 +276,17 @@ function ProductView() {
 function ProofBand() {
   return (
     <section className="band relative isolate overflow-hidden border-t">
-      <img src={yardImage} alt="A dealership car yard at dusk, rows of vehicles under string lights" loading="lazy" width={1536} height={1024} className="band-img absolute inset-0 -z-20 h-full w-full object-cover" />
+      <img
+        src={yardImage}
+        srcSet={`${yardImageMobile} 800w, ${yardImage} 1600w`}
+        sizes="100vw"
+        alt="A dealership car yard at dusk, rows of vehicles under string lights"
+        loading="lazy"
+        decoding="async"
+        width={1536}
+        height={1024}
+        className="band-img absolute inset-0 -z-20 h-full w-full object-cover"
+      />
       <div className="yard-shade absolute inset-0 -z-10" />
       <div className="mx-auto max-w-7xl px-6 py-32 lg:px-8">
         <Reveal>
@@ -215,7 +309,7 @@ function RoiTeaser() {
             <p className="mt-4 text-muted-foreground">Illustrative example: at 60 deliveries a month, if each deal pack took 45 minutes less to prepare, that would free up 45 staff hours a month.</p>
             <p className="mt-2 text-xs text-muted-foreground">Illustrative calculation based on your custom inputs and workflow assumptions; actual time savings are measured during your rooftop pilot.</p>
           </div>
-          <Link to="/pricing" className="inline-flex shrink-0 items-center gap-2 rounded-lg bg-brand px-6 py-3 text-sm font-semibold text-primary-foreground shadow-glow">
+          <Link to="/pricing" className="inline-flex min-h-11 shrink-0 items-center gap-2 rounded-lg bg-brand px-6 py-3 text-sm font-semibold text-brand-ink shadow-glow">
             Estimate your rooftop <ArrowRight className="size-4" />
           </Link>
         </Reveal>

@@ -1,7 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ClosingCta } from "@/components/closing-cta";
 import { StageQuest, CountUp } from "@/components/gamified";
-import bayImage from "@/assets/delivery-bay-night.jpg";
+import bayImage from "@/assets/delivery-bay-night-1600.webp";
+import bayImageMobile from "@/assets/delivery-bay-night-800.webp";
+
+import { SITE_URL } from "@/lib/site";
 
 export const Route = createFileRoute("/how-it-works")({
   head: () => ({
@@ -11,10 +14,10 @@ export const Route = createFileRoute("/how-it-works")({
       { property: "og:title", content: "How a deal moves, SynoraDrive" },
       { property: "og:description", content: "The workflow from signed contract to keys in five gated stages. See what each department does and what clears each gate." },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/how-it-works" },
+      { property: "og:url", content: `${SITE_URL}/how-it-works` },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "/how-it-works" }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/how-it-works` }],
   }),
   component: HowItWorksPage,
 });
@@ -61,7 +64,17 @@ function HowItWorksPage() {
   return (
     <>
       <div className="relative isolate overflow-hidden">
-        <img src={bayImage} alt="A dealership vehicle delivery bay at night lit in indigo and mint" width={1920} height={1088} className="band-img absolute inset-0 -z-20 h-full w-full object-cover" />
+        <img
+          src={bayImage}
+          srcSet={`${bayImageMobile} 800w, ${bayImage} 1600w`}
+          sizes="100vw"
+          alt="A dealership vehicle delivery bay at night lit in indigo and mint"
+          fetchPriority="high"
+          decoding="async"
+          width={1600}
+          height={907}
+          className="band-img absolute inset-0 -z-20 h-full w-full object-cover"
+        />
         <div className="bay-shade absolute inset-0 -z-10" />
         <div className="scan-sweep mx-auto max-w-7xl px-6 py-28 lg:px-8">
           <div className="hero-copy max-w-2xl">

@@ -3,6 +3,8 @@ import { PageHero } from "@/components/marketing";
 import { LegalDocument } from "@/components/legal-document";
 import policy from "@/content/privacy-policy.md?raw";
 
+import { SITE_URL } from "@/lib/site";
+
 export const Route = createFileRoute("/privacy")({
   head: () => ({
     meta: [
@@ -11,10 +13,10 @@ export const Route = createFileRoute("/privacy")({
       { property: "og:title", content: "Privacy Policy, SynoraDrive" },
       { property: "og:description", content: "How SYNORA TECH handles personal information for the SynoraDrive website and platform." },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/privacy" },
+      { property: "og:url", content: `${SITE_URL}/privacy` },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "/privacy" }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/privacy` }],
   }),
   component: PrivacyPage,
 });

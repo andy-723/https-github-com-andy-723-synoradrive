@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, Play } from "lucide-react";
 import demoReel from "@/assets/demo-reel.mp4.asset.json";
-import demoPoster from "@/assets/demo-reel-poster.jpg";
+import demoPoster from "@/assets/demo-reel-poster-1600.webp";
 
 /**
  * Cinematic demo reel with a scroll-driven opening transition: the video
@@ -110,7 +110,7 @@ export function DemoReel() {
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 flex flex-wrap items-end justify-between gap-4 p-6 sm:p-8">
               <div>
-                <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-primary-glow sm:text-xs">
+                <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-primary-glow sm:text-xs">
                   <Play className="size-3.5" /> The SynoraDrive film
                 </div>
                 <p className="mt-2 max-w-md text-sm text-muted-foreground">

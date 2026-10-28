@@ -7,18 +7,20 @@ import { submitContact } from "@/lib/enquiries.functions";
 import { PageHero } from "@/components/marketing";
 import { CheckCircle2 } from "lucide-react";
 
+import { SITE_URL } from "@/lib/site";
+
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
       { title: "Contact SynoraDrive" },
-      { name: "description", content: "Questions about partnerships, security or support." },
+      { name: "description", content: "Talk to SYNORA TECH about SynoraDrive: partnerships, security questions, or support for your dealership rooftops." },
       { property: "og:title", content: "Contact SynoraDrive" },
-      { property: "og:description", content: "Questions about partnerships, security or support." },
+      { property: "og:description", content: "Talk to SYNORA TECH about SynoraDrive: partnerships, security questions, or support for your dealership rooftops." },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/contact" },
+      { property: "og:url", content: `${SITE_URL}/contact` },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "/contact" }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/contact` }],
   }),
   component: ContactPage,
 });

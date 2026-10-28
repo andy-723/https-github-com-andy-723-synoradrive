@@ -3,6 +3,8 @@ import { ClosingCta } from "@/components/closing-cta";
 import { Breadcrumb, PageHero } from "@/components/marketing";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 
+import { SITE_URL } from "@/lib/site";
+
 export const Route = createFileRoute("/platform/customer-experience")({
   head: () => ({
     meta: [
@@ -11,10 +13,10 @@ export const Route = createFileRoute("/platform/customer-experience")({
       { property: "og:title", content: "Customer portal and eSigning, SynoraDrive" },
       { property: "og:description", content: "A dealership-branded portal for customers to upload documents from their phone, with DocuSign e-signature subject to agreement." },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/platform/customer-experience" },
+      { property: "og:url", content: `${SITE_URL}/platform/customer-experience` },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "/platform/customer-experience" }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/platform/customer-experience` }],
   }),
   component: CustomerExperiencePage,
 });
