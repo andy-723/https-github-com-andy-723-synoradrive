@@ -48,7 +48,7 @@ function Dropdown({ label, links }: { label: string; links: readonly { to: strin
       <div id={`nav-${label.toLowerCase()}`} className="nav-dropdown-panel absolute left-0 top-full z-50 pt-3" inert={!expanded}>
         <div className="w-64 rounded-lg border bg-popover p-2 shadow-elegant">
           {links.map((l) => (
-            <Button key={l.to} asChild variant="ghost" className="nav-menu-link h-auto w-full justify-start whitespace-normal rounded-md px-3 py-2 font-normal text-popover-foreground/80">
+            <Button key={l.to} asChild variant="ghost" className="nav-menu-link h-auto w-full justify-start whitespace-normal rounded-lg px-3 py-2 font-normal text-popover-foreground/80">
             <Link to={l.to} onClick={() => setExpanded(false)}>
               {l.label}
             </Link>

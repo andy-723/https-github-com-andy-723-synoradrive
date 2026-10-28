@@ -111,7 +111,7 @@ export function DeliveryVisibilitySection() {
           <p className="max-w-lg leading-relaxed text-muted-foreground">The buyer has signed. But who is working on the car? What is done? What is next? Replace the silence between sale and delivery with a shared view your team can act on—and a clearer answer for your customer.</p>
         </Reveal>
         <div className="mt-10 flex flex-wrap items-center justify-between gap-4 border-b pb-5">
-          <div className="flex gap-1 rounded-md border bg-card p-1" role="group" aria-label="Delivery visibility comparison">
+          <div className="flex gap-1 rounded-lg border bg-card p-1" role="group" aria-label="Delivery visibility comparison">
             <Button variant={connected ? "ghost" : "secondary"} aria-pressed={!connected} onClick={() => chooseView(false)}>The old hand-off</Button>
             <Button variant={connected ? "secondary" : "ghost"} aria-pressed={connected} onClick={() => chooseView(true)}>With SynoraDrive</Button>
           </div>
