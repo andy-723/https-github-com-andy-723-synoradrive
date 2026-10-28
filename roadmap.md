@@ -1,7 +1,7 @@
 # Roadmap
 
 ## Temporary IP protection
-- [ ] Replace public website with a neutral holding page, exclude marketing routes from the public build, block enquiries and indexing, and verify direct links.
+- [x] Replace public website with a neutral holding page; archive marketing routes and route-linked navigation outside the active build; block submissions with 503 and request no indexing. Verified Home, Pricing, Demo, Contact, Platform, About and unknown links show only the holding page, mobile has no overflow, 33 active tests pass and build is clean. Previously downloaded/cached content cannot be withdrawn by this change.
 - [ ] Activate protection on the live domain: requires publishing the holding-page changes or Andrew selecting Invite only in Publish for private access.
 
 ## Laptop product showcase
