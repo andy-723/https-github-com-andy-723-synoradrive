@@ -7,11 +7,12 @@ import { blockedSiteRequest } from "@/lib/site-lock";
 const publicLockMiddleware = createMiddleware().server(async ({ request, next }) => {
   const blocked = blockedSiteRequest(request);
   if (blocked) return blocked;
-  if (new URL(request.url).pathname.startsWith('/private/site')) {
+  const pathname = new URL(request.url).pathname;
+  if (pathname === '/private/site' || pathname.startsWith('/private/site/')) {
     const { isPrivateUnlocked } = await import('@/lib/private-access.server');
-    if (!await isPrivateUnlocked()) return Response.redirect(new URL('/private', request.url), 303);
+    if (!await isPrivateUnlocked()) return new Response(null, { status: 303, headers: { Location: new URL('/private', request.url).href, 'Cache-Control': 'no-store', 'X-Robots-Tag': 'noindex, nofollow, noarchive' } });
     const css = (await import('@/styles.css?url')).default;
-    return new Response(`<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive"><title>SynoraDrive — Private website</title><link rel="stylesheet" href="${css}"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"></head><body><div id="private-site"></div><script src="/api/public/private-file?name=site.js"></script></body></html>`, {
+    return new Response(`<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive"><title>SynoraDrive — Private website</title><meta name="description" content="Password-protected SynoraDrive website viewing."><meta property="og:title" content="SynoraDrive — Private website"><meta property="og:description" content="Password-protected SynoraDrive website viewing."><meta property="og:type" content="website"><meta name="twitter:card" content="summary"><link rel="stylesheet" href="${css}"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"></head><body><div id="private-site"></div><script src="/api/public/private-file?name=site.js"></script></body></html>`, {
       headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'private, no-store', 'X-Robots-Tag': 'noindex, nofollow, noarchive' },
     });
   }
