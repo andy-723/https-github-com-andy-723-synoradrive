@@ -3,7 +3,8 @@ import { ClosingCta } from "@/components/closing-cta";
 import { PageHero } from "@/components/marketing";
 import { Reveal } from "@/components/reveal";
 import { TiltCard } from "@/components/gamified";
-import showroomImage from "@/assets/dealership-showroom.jpg";
+import showroomImage from "@/assets/dealership-showroom-1600.webp";
+import showroomImageMobile from "@/assets/dealership-showroom-800.webp";
 import { ArrowRight, FileText, Workflow, Gauge, Users, Building2, Sparkles } from "lucide-react";
 
 export const Route = createFileRoute("/platform/")({
@@ -71,7 +72,17 @@ function PlatformPage() {
   return (
     <>
       <div className="showroom-band relative isolate overflow-hidden">
-        <img src={showroomImage} alt="A modern dealership showroom with a vehicle and customer cafe lounge" width={1536} height={1024} className="band-img absolute inset-0 -z-20 h-full w-full object-cover" />
+        <img
+          src={showroomImage}
+          srcSet={`${showroomImageMobile} 800w, ${showroomImage} 1600w`}
+          sizes="100vw"
+          alt="A modern dealership showroom with a vehicle and customer cafe lounge"
+          fetchPriority="high"
+          decoding="async"
+          width={1536}
+          height={1024}
+          className="band-img absolute inset-0 -z-20 h-full w-full object-cover"
+        />
         <div className="showroom-shade absolute inset-0 -z-10" />
         <div className="scan-sweep mx-auto max-w-7xl px-6 py-28 lg:px-8">
           <h1 className="hero-copy max-w-2xl text-4xl font-semibold leading-tight sm:text-5xl">One platform from signed contract to keys.</h1>

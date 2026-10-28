@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, Play } from "lucide-react";
 import demoReel from "@/assets/demo-reel.mp4.asset.json";
-import demoPoster from "@/assets/demo-reel-poster.jpg";
+import demoPoster from "@/assets/demo-reel-poster-1600.webp";
 
 /**
  * Cinematic demo reel with a scroll-driven opening transition: the video

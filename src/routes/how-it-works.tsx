@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ClosingCta } from "@/components/closing-cta";
 import { StageQuest, CountUp } from "@/components/gamified";
-import bayImage from "@/assets/delivery-bay-night.jpg";
+import bayImage from "@/assets/delivery-bay-night-1600.webp";
+import bayImageMobile from "@/assets/delivery-bay-night-800.webp";
 
 export const Route = createFileRoute("/how-it-works")({
   head: () => ({
@@ -61,7 +62,17 @@ function HowItWorksPage() {
   return (
     <>
       <div className="relative isolate overflow-hidden">
-        <img src={bayImage} alt="A dealership vehicle delivery bay at night lit in indigo and mint" width={1920} height={1088} className="band-img absolute inset-0 -z-20 h-full w-full object-cover" />
+        <img
+          src={bayImage}
+          srcSet={`${bayImageMobile} 800w, ${bayImage} 1600w`}
+          sizes="100vw"
+          alt="A dealership vehicle delivery bay at night lit in indigo and mint"
+          fetchPriority="high"
+          decoding="async"
+          width={1600}
+          height={907}
+          className="band-img absolute inset-0 -z-20 h-full w-full object-cover"
+        />
         <div className="bay-shade absolute inset-0 -z-10" />
         <div className="scan-sweep mx-auto max-w-7xl px-6 py-28 lg:px-8">
           <div className="hero-copy max-w-2xl">
