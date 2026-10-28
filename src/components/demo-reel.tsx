@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, Play } from "lucide-react";
 import demoReel from "@/assets/demo-reel.mp4.asset.json";
+import demoReelWeb from "@/assets/demo-reel.webm.asset.json";
 import demoPoster from "@/assets/demo-reel-poster-1600.webp";
 
 /**
@@ -14,6 +15,21 @@ export function DemoReel() {
   const trackRef = useRef<HTMLDivElement | null>(null);
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [progress, setProgress] = useState(0);
+  const [loadVideo, setLoadVideo] = useState(false);
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry?.isIntersecting) return;
+      const video = videoRef.current;
+      if (video && video.getBoundingClientRect().top >= window.innerHeight + 250) return;
+      setLoadVideo(true);
+      observer.disconnect();
+    }, { rootMargin: "250px" });
+    observer.observe(videoRef.current ?? track);
+    return () => observer.disconnect();
+  }, []);
 
   // Scroll progress (0 → 1) across the tall sticky track.
   useEffect(() => {
@@ -47,7 +63,8 @@ export function DemoReel() {
   // Play only while on screen.
   useEffect(() => {
     const video = videoRef.current;
-    if (!video || typeof IntersectionObserver === "undefined") return;
+    if (!loadVideo || !video || typeof IntersectionObserver === "undefined") return;
+    video.load();
     const io = new IntersectionObserver(
       (entries) => {
         const entry = entries[0];
@@ -62,7 +79,7 @@ export function DemoReel() {
     );
     io.observe(video);
     return () => io.disconnect();
-  }, []);
+  }, [loadVideo]);
 
   // Ease the expansion so the opening feels weighted, not linear.
   const eased = 1 - Math.pow(1 - progress, 3);
@@ -98,15 +115,16 @@ export function DemoReel() {
           >
             <video
               ref={videoRef}
-              src={demoReel.url}
               poster={demoPoster}
               className="aspect-video w-full object-cover"
               muted
               loop
               playsInline
-              preload="auto"
+              preload="none"
               aria-label="Cinematic film of a dealership floor and the SynoraDrive delivery board"
-            />
+            >
+              {loadVideo && <><source src={demoReelWeb.url} type="video/webm" /><source src={demoReel.url} type="video/mp4" /></>}
+            </video>
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 flex flex-wrap items-end justify-between gap-4 p-6 sm:p-8">
               <div>

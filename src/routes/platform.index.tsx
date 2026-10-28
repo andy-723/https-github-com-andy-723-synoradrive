@@ -87,8 +87,10 @@ function PlatformPage() {
         />
         <div className="showroom-shade absolute inset-0 -z-10" />
         <div className="scan-sweep mx-auto max-w-7xl px-6 py-28 lg:px-8">
-          <h1 className="hero-copy max-w-2xl text-4xl font-semibold leading-tight sm:text-5xl">One platform from signed contract to keys.</h1>
-          <p className="mt-5 max-w-xl leading-relaxed text-muted-foreground">Six modules built around a single deal record. Core modules are built and configured per rooftop during pilot onboarding; Microsoft Graph mailbox intake, Azure AI exception auditing, Entra ID SSO and DocuSign are enterprise onboarding integrations configured per dealer group.</p>
+          <div className="hero-copy max-w-2xl">
+            <h1 className="text-4xl font-semibold leading-tight sm:text-5xl">One platform from signed contract to keys.</h1>
+            <p className="mt-5 max-w-xl leading-relaxed text-muted-foreground">Six modules built around a single deal record. Core modules are built and configured per rooftop during pilot onboarding; Microsoft Graph mailbox intake, Azure AI exception auditing, Entra ID SSO and DocuSign are enterprise onboarding integrations configured per dealer group.</p>
+          </div>
         </div>
       </div>
       <section className="light-section bg-background text-foreground">

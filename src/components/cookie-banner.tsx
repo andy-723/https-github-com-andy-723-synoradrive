@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
+import { Button } from "@/components/ui/button";
 
 const KEY = "synoradrive-cookie-consent";
 export type CookieConsent = "accepted" | "essential";
@@ -23,7 +24,7 @@ export function CookieBanner() {
 
   return (
     <div
-      role="dialog"
+      role="region"
       aria-live="polite"
       aria-label="Cookie preferences"
       className="fixed inset-x-4 bottom-4 z-[60] mx-auto max-w-3xl rounded-2xl border bg-card/95 p-5 text-card-foreground shadow-glow backdrop-blur sm:flex sm:items-center sm:gap-6"
@@ -33,12 +34,12 @@ export function CookieBanner() {
         <Link to="/privacy" className="underline hover:text-foreground">Privacy Policy</Link>.
       </p>
       <div className="mt-4 flex shrink-0 gap-2 sm:mt-0">
-        <button onClick={() => choose("essential")} className="min-h-11 rounded-lg border px-4 text-sm font-semibold transition-colors hover:bg-accent">
+        <Button variant="outline" onClick={() => choose("essential")} className="min-h-11 px-4 text-sm font-semibold">
           Essential only
-        </button>
-        <button onClick={() => choose("accepted")} className="min-h-11 rounded-lg bg-brand px-4 text-sm font-semibold text-primary-foreground transition hover:opacity-90">
+        </Button>
+        <Button variant="brand" onClick={() => choose("accepted")} className="min-h-11 px-4 text-sm font-semibold">
           Accept all
-        </button>
+        </Button>
       </div>
     </div>
   );

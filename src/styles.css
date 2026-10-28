@@ -46,6 +46,8 @@
   --color-brand-indigo: var(--brand-indigo);
   --color-brand-violet: var(--brand-violet);
   --color-brand-foreground: var(--brand-ink);
+  --color-cta: var(--cta);
+  --color-cta-foreground: var(--cta-foreground);
 }
 
 :root {
@@ -71,7 +73,7 @@
   --secondary: oklch(0.21 0.016 285);
   --secondary-foreground: oklch(0.95 0.005 285);
   --muted: oklch(0.21 0.016 285);
-  --muted-foreground: oklch(0.77 0.008 285);
+  --muted-foreground: #cbd5e1;
   --accent: color-mix(in srgb, var(--brand-indigo) 18%, var(--background));
   --accent-foreground: var(--brand-violet);
   --success: var(--brand-mint);
@@ -88,6 +90,10 @@
   --surface-border: oklch(0.91 0.008 285);
 
   --gradient-brand: linear-gradient(120deg, var(--brand-indigo), var(--brand-violet));
+  --cta: #4338ca;
+  --cta-foreground: #ffffff;
+  --gradient-cta: linear-gradient(100deg, #4f46e5, #6d28d9, #0369a1);
+  --photo-copy-scrim: linear-gradient(90deg, #05050a, #05050a);
   --gradient-glow: radial-gradient(60% 50% at 50% 0%, color-mix(in srgb, var(--brand-indigo) 28%, transparent), transparent 70%);
   --shadow-elegant: 0 30px 80px -20px color-mix(in srgb, var(--brand-indigo) 35%, transparent), 0 0 0 1px oklch(1 0 0 / 8%);
   --shadow-glow: 0 10px 30px -10px color-mix(in srgb, var(--brand-indigo) 60%, transparent);
@@ -112,6 +118,7 @@
   color: transparent;
 }
 @utility bg-brand { background: var(--gradient-brand); color: var(--brand-ink); }
+@utility bg-cta { background-color: var(--cta); background-image: var(--gradient-cta); }
 @utility bg-glow { background: var(--gradient-glow); }
 @utility shadow-elegant { box-shadow: var(--shadow-elegant); }
 @utility shadow-glow { box-shadow: var(--shadow-glow); }
@@ -169,7 +176,18 @@
 .hero-vehicle { object-position: 65% center; opacity: 0.85; }
 .showroom-shade { background: var(--showroom-overlay); }
 .showroom-band { min-height: 430px; }
-.hero-copy { animation: arrive 800ms ease-out both; }
+.hero-copy { position: relative; isolation: isolate; animation: arrive 800ms ease-out both; }
+.hero-copy::before {
+  content: "";
+  position: absolute;
+  inset: -2rem;
+  z-index: -1;
+  background: var(--photo-copy-scrim);
+  opacity: 0.8;
+  mask-image: linear-gradient(90deg, black 65%, transparent), linear-gradient(180deg, transparent, black 15%, black 85%, transparent);
+  mask-composite: intersect;
+  pointer-events: none;
+}
 @keyframes arrive { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
 .indicator-light { animation: light-blink 2.6s ease-in-out infinite; }
 .stage-light-0 { animation-delay: 0s; }
@@ -205,6 +223,9 @@
   transform: translateY(0);
   outline: 2px solid var(--color-ring);
   outline-offset: 2px;
+}
+@media (max-width: 767px) {
+  a, button, [role="button"] { min-width: 32px; min-height: 32px; }
 }
 
 /* ---- Scroll reveal ---- */

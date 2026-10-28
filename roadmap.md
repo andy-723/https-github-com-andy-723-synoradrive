@@ -45,6 +45,8 @@
 - [x] Cinematic founder showcase (floating arch portrait, animated dashed wiring, orbiting fact chips), journey road timeline, dealership photo band, mission/vision cards; verified desktop/mobile layouts, image loading and reduced-motion. Founder photo replaced with Andrew's real portrait.
 
 ## Performance, accessibility and search foundations
+- [x] Final surgical polish: solid text/CTA colours, photo scrims, scroll-only homepage nav CTA, non-modal consent, mobile target checks; 35 tests pass. Film reduced from 6MB to 650KB WebM with MP4 fallback and deferred loading. Live Google crawling allowed; actual index status unavailable without Search Console.
+- [ ] Google indexing diagnosis and sitemap submission: needs Andrew's verified Google Search Console access; current live custom-domain sitemap is reachable and intentionally canonical to www.synoradrive.com.au.
 - [x] Responsive WebP photo variants under 180KB with srcset/sizes; hero preload plus high fetch priority; lazy below-fold images with explicit dimensions
 - [x] One main landmark plus skip-to-content link; 12px minimum text; WCAG AA contrast tokens per theme; 44px tap targets; duplicate mobile nav CTA removed
 - [x] Meta descriptions within 155 characters; JSON-LD (SoftwareApplication and Organization); sitemap.xml plus robots Sitemap directive; absolute canonical and og:url on every page
