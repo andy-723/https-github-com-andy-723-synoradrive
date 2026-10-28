@@ -65,9 +65,9 @@
   --card-foreground: oklch(0.97 0.005 285);
   --popover: oklch(0.17 0.014 285);
   --popover-foreground: oklch(0.97 0.005 285);
-  --primary: var(--brand-indigo);
+  --primary: #818cf8;
   --primary-glow: var(--brand-sky);
-  --primary-foreground: oklch(0.99 0 0);
+  --primary-foreground: var(--brand-ink);
   --secondary: oklch(0.21 0.016 285);
   --secondary-foreground: oklch(0.95 0.005 285);
   --muted: oklch(0.21 0.016 285);
@@ -135,7 +135,7 @@
   --workshop-overlay: linear-gradient(90deg, oklch(0.1 0.004 285 / 92%) 0%, oklch(0.1 0.004 285 / 70%) 45%, oklch(0.1 0.004 285 / 25%) 100%);
 }
 .light-section {
-  --logo-accent: var(--brand-indigo);
+  --logo-accent: #4338ca;
   --logo-wordmark: var(--brand-ink);
   --background: oklch(0.995 0.001 260);
   --foreground: oklch(0.22 0.008 260);
@@ -147,11 +147,13 @@
   --secondary-foreground: var(--foreground);
   --accent: color-mix(in srgb, var(--brand-indigo) 10%, var(--background));
   --accent-foreground: color-mix(in srgb, var(--brand-indigo) 78%, var(--brand-ink));
-  --primary: var(--brand-indigo);
+  --primary: #4338ca;
   --primary-glow: color-mix(in srgb, var(--brand-sky) 55%, var(--brand-ink));
   --border: oklch(0.87 0.006 260);
   --input: var(--border);
   --success: color-mix(in srgb, var(--brand-mint) 45%, var(--brand-ink));
+  --warning: #b45309;
+  --destructive: #b91c1c;
   --shadow-elegant: 0 20px 55px -20px oklch(0.22 0.008 260 / 18%);
 }
 .mist-section { --background: oklch(0.965 0.004 260); }

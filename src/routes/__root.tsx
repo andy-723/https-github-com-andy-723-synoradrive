@@ -142,9 +142,12 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <div className="site-hover-effects min-h-screen overflow-x-clip">
         <SiteHoverEffects />
+        <a href="#main-content" className="skip-link">Skip to content</a>
         <SiteHeader />
-        {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-        <Outlet />
+        <main id="main-content">
+          {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+          <Outlet />
+        </main>
         <SiteFooter />
         <CookieBanner />
       </div>
