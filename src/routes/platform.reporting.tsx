@@ -3,6 +3,8 @@ import { ClosingCta } from "@/components/closing-cta";
 import { Breadcrumb, PageHero } from "@/components/marketing";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 
+import { SITE_URL } from "@/lib/site";
+
 export const Route = createFileRoute("/platform/reporting")({
   head: () => ({
     meta: [
@@ -11,10 +13,10 @@ export const Route = createFileRoute("/platform/reporting")({
       { property: "og:title", content: "Centralised dealership reporting, SynoraDrive" },
       { property: "og:description", content: "A month book of locked, scheduled and stretch deliveries, a weighted pipeline and MTD and QTD performance, designed to replace manual spreadsheet trackers." },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/platform/reporting" },
+      { property: "og:url", content: `${SITE_URL}/platform/reporting` },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "/platform/reporting" }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/platform/reporting` }],
   }),
   component: ReportingPage,
 });

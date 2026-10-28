@@ -6,6 +6,8 @@ import workshopImage from "@/assets/workshop-pdi-1600.webp";
 import workshopImageMobile from "@/assets/workshop-pdi-800.webp";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 
+import { SITE_URL } from "@/lib/site";
+
 export const Route = createFileRoute("/platform/operations")({
   head: () => ({
     meta: [
@@ -14,10 +16,10 @@ export const Route = createFileRoute("/platform/operations")({
       { property: "og:title", content: "Unified dealership operations, SynoraDrive" },
       { property: "og:description", content: "Sales, stock, F&I, aftermarket, workshop and rego on one five-stage board, with parallel tasks, @mentions and escalations." },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/platform/operations" },
+      { property: "og:url", content: `${SITE_URL}/platform/operations` },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "/platform/operations" }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/platform/operations` }],
   }),
   component: OperationsPage,
 });

@@ -10,6 +10,8 @@ import deliveryHandoverMobile from "@/assets/delivery-handover-800.webp";
 import deliveryBayNight from "@/assets/delivery-bay-night-1600.webp";
 import deliveryBayNightMobile from "@/assets/delivery-bay-night-800.webp";
 
+import { SITE_URL } from "@/lib/site";
+
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
@@ -18,10 +20,10 @@ export const Route = createFileRoute("/about")({
       { property: "og:title", content: "About SynoraDrive and SYNORA TECH" },
       { property: "og:description", content: "An enterprise post-contract platform built to replace manila folders and spreadsheets between contract and delivery." },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/about" },
+      { property: "og:url", content: `${SITE_URL}/about` },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "/about" }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/about` }],
   }),
   component: AboutPage,
 });

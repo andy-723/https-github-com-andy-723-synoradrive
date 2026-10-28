@@ -4,6 +4,8 @@ import { LegalDocument } from "@/components/legal-document";
 import websiteTerms from "@/content/website-terms.md?raw";
 import disclaimer from "@/content/disclaimer.md?raw";
 
+import { SITE_URL } from "@/lib/site";
+
 export const Route = createFileRoute("/terms")({
   head: () => ({
     meta: [
@@ -12,10 +14,10 @@ export const Route = createFileRoute("/terms")({
       { property: "og:title", content: "Website Terms of Use and Disclaimer, SynoraDrive" },
       { property: "og:description", content: "Website Terms of Use and Disclaimer for SynoraDrive." },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/terms" },
+      { property: "og:url", content: `${SITE_URL}/terms` },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "/terms" }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/terms` }],
   }),
   component: TermsPage,
 });

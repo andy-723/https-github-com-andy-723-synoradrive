@@ -3,6 +3,8 @@ import { ClosingCta } from "@/components/closing-cta";
 import { Breadcrumb, PageHero } from "@/components/marketing";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 
+import { SITE_URL } from "@/lib/site";
+
 export const Route = createFileRoute("/platform/compliance")({
   head: () => ({
     meta: [
@@ -11,10 +13,10 @@ export const Route = createFileRoute("/platform/compliance")({
       { property: "og:title", content: "Compliance aids, SynoraDrive" },
       { property: "og:description", content: "Compliance aids: deal-type checklists, stage gates, deferred-sales date tracking and an RDA watchlist. Aids only; they do not guarantee compliance." },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/platform/compliance" },
+      { property: "og:url", content: `${SITE_URL}/platform/compliance` },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "/platform/compliance" }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/platform/compliance` }],
   }),
   component: CompliancePage,
 });

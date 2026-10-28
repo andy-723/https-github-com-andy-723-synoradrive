@@ -4,6 +4,8 @@ import { StageQuest, CountUp } from "@/components/gamified";
 import bayImage from "@/assets/delivery-bay-night-1600.webp";
 import bayImageMobile from "@/assets/delivery-bay-night-800.webp";
 
+import { SITE_URL } from "@/lib/site";
+
 export const Route = createFileRoute("/how-it-works")({
   head: () => ({
     meta: [
@@ -12,10 +14,10 @@ export const Route = createFileRoute("/how-it-works")({
       { property: "og:title", content: "How a deal moves, SynoraDrive" },
       { property: "og:description", content: "The workflow from signed contract to keys in five gated stages. See what each department does and what clears each gate." },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/how-it-works" },
+      { property: "og:url", content: `${SITE_URL}/how-it-works` },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "/how-it-works" }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/how-it-works` }],
   }),
   component: HowItWorksPage,
 });

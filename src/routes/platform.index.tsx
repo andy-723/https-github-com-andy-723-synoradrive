@@ -7,6 +7,8 @@ import showroomImage from "@/assets/dealership-showroom-1600.webp";
 import showroomImageMobile from "@/assets/dealership-showroom-800.webp";
 import { ArrowRight, FileText, Workflow, Gauge, Users, Building2, Sparkles } from "lucide-react";
 
+import { SITE_URL } from "@/lib/site";
+
 export const Route = createFileRoute("/platform/")({
   head: () => ({
     meta: [
@@ -15,10 +17,10 @@ export const Route = createFileRoute("/platform/")({
       { property: "og:title", content: "Platform overview, SynoraDrive" },
       { property: "og:description", content: "Six modules built around one deal record: deal packs, delivery board, Command Report, customer portal, governance and forecasting." },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/platform" },
+      { property: "og:url", content: `${SITE_URL}/platform` },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "/platform" }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/platform` }],
   }),
   component: PlatformPage,
 });

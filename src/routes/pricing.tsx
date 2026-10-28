@@ -6,6 +6,8 @@ import { pricingAddOns, pricingNote, pricingPlans } from "@/lib/dealership-prici
 import { estimateRoi, roiDefaults } from "@/lib/roi-estimator";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 
+import { SITE_URL } from "@/lib/site";
+
 export const Route = createFileRoute("/pricing")({
   head: () => ({
     meta: [
@@ -14,10 +16,10 @@ export const Route = createFileRoute("/pricing")({
       { property: "og:title", content: "Pricing, SynoraDrive" },
       { property: "og:description", content: "Per-rooftop SynoraDrive subscription tiers with unlimited staff logins, recommended add-ons and an interactive ROI estimator." },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/pricing" },
+      { property: "og:url", content: `${SITE_URL}/pricing` },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "/pricing" }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/pricing` }],
   }),
   component: PricingPage,
 });

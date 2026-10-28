@@ -7,6 +7,8 @@ import { submitDemoRequest } from "@/lib/enquiries.functions";
 import { PageHero } from "@/components/marketing";
 import { CheckCircle2 } from "lucide-react";
 
+import { SITE_URL } from "@/lib/site";
+
 export const Route = createFileRoute("/demo")({
   head: () => ({
     meta: [
@@ -15,10 +17,10 @@ export const Route = createFileRoute("/demo")({
       { property: "og:title", content: "Book a rooftop demo, SynoraDrive" },
       { property: "og:description", content: "See SynoraDrive in 30 minutes." },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/demo" },
+      { property: "og:url", content: `${SITE_URL}/demo` },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "/demo" }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/demo` }],
   }),
   component: DemoPage,
 });

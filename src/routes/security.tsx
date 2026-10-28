@@ -3,6 +3,8 @@ import { ClosingCta } from "@/components/closing-cta";
 import { PageHero } from "@/components/marketing";
 import { Cloud, KeyRound, Lock, Database, FileClock, ShieldCheck, Award, ArrowRight } from "lucide-react";
 
+import { SITE_URL } from "@/lib/site";
+
 export const Route = createFileRoute("/security")({
   head: () => ({
     meta: [
@@ -11,10 +13,10 @@ export const Route = createFileRoute("/security")({
       { property: "og:title", content: "Security and data residency, SynoraDrive" },
       { property: "og:description", content: "Engineered on Microsoft Azure (Australia East): encryption in transit and at rest, role-based access, staff TOTP MFA, strict CSP and 725 automated backend checks." },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/security" },
+      { property: "og:url", content: `${SITE_URL}/security` },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "/security" }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/security` }],
   }),
   component: SecurityPage,
 });
