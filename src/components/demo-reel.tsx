@@ -64,6 +64,7 @@ export function DemoReel() {
   useEffect(() => {
     const video = videoRef.current;
     if (!loadVideo || !video || typeof IntersectionObserver === "undefined") return;
+    video.load();
     const io = new IntersectionObserver(
       (entries) => {
         const entry = entries[0];
