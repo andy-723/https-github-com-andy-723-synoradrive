@@ -7,7 +7,7 @@ export const pricingPlans = [
     n: "Document & Compliance Core",
     s: "Rooftops digitising deal jackets and compliance",
     hi: false,
-    price: "$499" as string | null,
+    price: "$699" as string | null,
     tag: null as string | null,
     f: [
       "DMS Contract of Sale extraction (OCR + AcroForm engine)",

@@ -33,7 +33,7 @@ const structuredData = JSON.stringify({
         {
           "@type": "Offer",
           name: "Document & Compliance Core",
-          price: "499",
+          price: "699",
           priceCurrency: "AUD",
           url: `${SITE_URL}/pricing`,
         },
