@@ -26,3 +26,4 @@
 - Keep accessibility and search foundations (theme contrast ratios, minimum text size, description length, sitemap route coverage, single main landmark) asserted by src/test/site-foundations.test.ts rather than reviewed by eye, so regressions surface in the test suite.
 - Keep homepage navigation CTA visibility scroll-aware while other pages retain direct demo access; defer cinematic media requests until its section approaches the viewport to avoid competing with the opening photo.
 - Render cookie consent as a labelled non-modal region, not a dialog, so consent stays available without falsely signalling a focus-trapped popup.
+- Keep the customer journey email preview browser-only and illustrative with no send actions; this demonstrates roadmap notifications without activating messaging.

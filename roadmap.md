@@ -1,5 +1,8 @@
 # Roadmap
 
+## Enhanced Customer Experience
+- [ ] Update the feature page and pricing add-on with explicitly planned stage-triggered customer updates; verify desktop and phone previews.
+
 ## Reopen public website
 - [x] Removed IP-hold lock, holding page and private viewing; restored all pages, robots and sitemap.
 
