@@ -189,25 +189,22 @@ describe("Page descriptions", () => {
   });
 });
 
-describe("Crawling paused during IP hold", () => {
+describe("Search crawling", () => {
   const routePaths = readdirSync(path.join(SRC, "routes"))
-    .filter((f) => f.endsWith(".tsx") && f !== "__root.tsx")
+    .filter((f) => f.endsWith(".tsx") && f !== "__root.tsx" && !f.startsWith("$"))
     .map((f) => f.replace(/\.tsx$/, ""))
-    .map((name) =>
-      name === "index" ? "/" : `/${name.replace(/\.index$/, "").replace(/\./g, "/")}`,
-    )
+    .map((name) => (name === "index" ? "/" : `/${name.replace(/\.index$/, "").replace(/\./g, "/")}`))
     .sort();
-
   const sitemap = readFileSync(path.join(SRC, "..", "public", "sitemap.xml"), "utf8");
   const robots = readFileSync(path.join(SRC, "..", "public", "robots.txt"), "utf8");
 
-  it("does not advertise protected pages in the public sitemap", () => {
-    expect(sitemap.match(/<loc>/g) ?? []).toHaveLength(0);
+  it("lists every public page in the sitemap", () => {
+    for (const p of routePaths) expect(sitemap).toContain(`<loc>${SITE_URL}${p === "/" ? "/" : p}</loc>`);
   });
 
-  it("asks all crawlers to stay out during the IP review", () => {
-    expect(robots).toContain("User-agent: *");
-    expect(robots).toMatch(/^Disallow:\s*\/\s*$/m);
+  it("allows crawlers and points them at the sitemap", () => {
+    expect(robots).not.toMatch(/^Disallow:\s*\/\s*$/m);
+    expect(robots).toContain(`${SITE_URL}/sitemap.xml`);
   });
 });
 

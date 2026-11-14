@@ -10,10 +10,20 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as SplatRouteImport } from './routes/$'
-import { Route as PrivateRouteImport } from './routes/private'
-import { Route as ApiPublicPrivateAccessRouteImport } from './routes/api/public/private-access'
-import { Route as ApiPublicPrivateFileRouteImport } from './routes/api/public/private-file'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as DemoRouteImport } from './routes/demo'
+import { Route as HowItWorksRouteImport } from './routes/how-it-works'
+import { Route as PartnersRouteImport } from './routes/partners'
+import { Route as PricingRouteImport } from './routes/pricing'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as SecurityRouteImport } from './routes/security'
+import { Route as TermsRouteImport } from './routes/terms'
+import { Route as PlatformIndexRouteImport } from './routes/platform.index'
+import { Route as PlatformComplianceRouteImport } from './routes/platform.compliance'
+import { Route as PlatformCustomerExperienceRouteImport } from './routes/platform.customer-experience'
+import { Route as PlatformOperationsRouteImport } from './routes/platform.operations'
+import { Route as PlatformReportingRouteImport } from './routes/platform.reporting'
 import { Route as LovableEmailAuthPreviewRouteImport } from './routes/lovable/email/auth/preview'
 import { Route as LovableEmailAuthWebhookRouteImport } from './routes/lovable/email/auth/webhook'
 import { Route as LovableEmailTransactionalPreviewRouteImport } from './routes/lovable/email/transactional/preview'
@@ -23,24 +33,75 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const SplatRoute = SplatRouteImport.update({
-  id: '/$',
-  path: '/$',
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
-const PrivateRoute = PrivateRouteImport.update({
-  id: '/private',
-  path: '/private',
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ApiPublicPrivateAccessRoute = ApiPublicPrivateAccessRouteImport.update({
-  id: '/api/public/private-access',
-  path: '/api/public/private-access',
+const DemoRoute = DemoRouteImport.update({
+  id: '/demo',
+  path: '/demo',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ApiPublicPrivateFileRoute = ApiPublicPrivateFileRouteImport.update({
-  id: '/api/public/private-file',
-  path: '/api/public/private-file',
+const HowItWorksRoute = HowItWorksRouteImport.update({
+  id: '/how-it-works',
+  path: '/how-it-works',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PartnersRoute = PartnersRouteImport.update({
+  id: '/partners',
+  path: '/partners',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PricingRoute = PricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SecurityRoute = SecurityRouteImport.update({
+  id: '/security',
+  path: '/security',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlatformIndexRoute = PlatformIndexRouteImport.update({
+  id: '/platform/',
+  path: '/platform/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlatformComplianceRoute = PlatformComplianceRouteImport.update({
+  id: '/platform/compliance',
+  path: '/platform/compliance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlatformCustomerExperienceRoute =
+  PlatformCustomerExperienceRouteImport.update({
+    id: '/platform/customer-experience',
+    path: '/platform/customer-experience',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const PlatformOperationsRoute = PlatformOperationsRouteImport.update({
+  id: '/platform/operations',
+  path: '/platform/operations',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlatformReportingRoute = PlatformReportingRouteImport.update({
+  id: '/platform/reporting',
+  path: '/platform/reporting',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LovableEmailAuthPreviewRoute = LovableEmailAuthPreviewRouteImport.update({
@@ -62,20 +123,40 @@ const LovableEmailTransactionalPreviewRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/$': typeof SplatRoute
-  '/private': typeof PrivateRoute
-  '/api/public/private-access': typeof ApiPublicPrivateAccessRoute
-  '/api/public/private-file': typeof ApiPublicPrivateFileRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/demo': typeof DemoRoute
+  '/how-it-works': typeof HowItWorksRoute
+  '/partners': typeof PartnersRoute
+  '/pricing': typeof PricingRoute
+  '/privacy': typeof PrivacyRoute
+  '/security': typeof SecurityRoute
+  '/terms': typeof TermsRoute
+  '/platform/compliance': typeof PlatformComplianceRoute
+  '/platform/customer-experience': typeof PlatformCustomerExperienceRoute
+  '/platform/operations': typeof PlatformOperationsRoute
+  '/platform/reporting': typeof PlatformReportingRoute
+  '/platform/': typeof PlatformIndexRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
   '/lovable/email/auth/webhook': typeof LovableEmailAuthWebhookRoute
   '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/$': typeof SplatRoute
-  '/private': typeof PrivateRoute
-  '/api/public/private-access': typeof ApiPublicPrivateAccessRoute
-  '/api/public/private-file': typeof ApiPublicPrivateFileRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/demo': typeof DemoRoute
+  '/how-it-works': typeof HowItWorksRoute
+  '/partners': typeof PartnersRoute
+  '/pricing': typeof PricingRoute
+  '/privacy': typeof PrivacyRoute
+  '/security': typeof SecurityRoute
+  '/terms': typeof TermsRoute
+  '/platform/compliance': typeof PlatformComplianceRoute
+  '/platform/customer-experience': typeof PlatformCustomerExperienceRoute
+  '/platform/operations': typeof PlatformOperationsRoute
+  '/platform/reporting': typeof PlatformReportingRoute
+  '/platform': typeof PlatformIndexRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
   '/lovable/email/auth/webhook': typeof LovableEmailAuthWebhookRoute
   '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
@@ -83,10 +164,20 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/$': typeof SplatRoute
-  '/private': typeof PrivateRoute
-  '/api/public/private-access': typeof ApiPublicPrivateAccessRoute
-  '/api/public/private-file': typeof ApiPublicPrivateFileRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/demo': typeof DemoRoute
+  '/how-it-works': typeof HowItWorksRoute
+  '/partners': typeof PartnersRoute
+  '/pricing': typeof PricingRoute
+  '/privacy': typeof PrivacyRoute
+  '/security': typeof SecurityRoute
+  '/terms': typeof TermsRoute
+  '/platform/compliance': typeof PlatformComplianceRoute
+  '/platform/customer-experience': typeof PlatformCustomerExperienceRoute
+  '/platform/operations': typeof PlatformOperationsRoute
+  '/platform/reporting': typeof PlatformReportingRoute
+  '/platform/': typeof PlatformIndexRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
   '/lovable/email/auth/webhook': typeof LovableEmailAuthWebhookRoute
   '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
@@ -95,30 +186,60 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/$'
-    | '/private'
-    | '/api/public/private-access'
-    | '/api/public/private-file'
+    | '/about'
+    | '/contact'
+    | '/demo'
+    | '/how-it-works'
+    | '/partners'
+    | '/pricing'
+    | '/privacy'
+    | '/security'
+    | '/terms'
+    | '/platform/compliance'
+    | '/platform/customer-experience'
+    | '/platform/operations'
+    | '/platform/reporting'
+    | '/platform/'
     | '/lovable/email/auth/preview'
     | '/lovable/email/auth/webhook'
     | '/lovable/email/transactional/preview'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/$'
-    | '/private'
-    | '/api/public/private-access'
-    | '/api/public/private-file'
+    | '/about'
+    | '/contact'
+    | '/demo'
+    | '/how-it-works'
+    | '/partners'
+    | '/pricing'
+    | '/privacy'
+    | '/security'
+    | '/terms'
+    | '/platform/compliance'
+    | '/platform/customer-experience'
+    | '/platform/operations'
+    | '/platform/reporting'
+    | '/platform'
     | '/lovable/email/auth/preview'
     | '/lovable/email/auth/webhook'
     | '/lovable/email/transactional/preview'
   id:
     | '__root__'
     | '/'
-    | '/$'
-    | '/private'
-    | '/api/public/private-access'
-    | '/api/public/private-file'
+    | '/about'
+    | '/contact'
+    | '/demo'
+    | '/how-it-works'
+    | '/partners'
+    | '/pricing'
+    | '/privacy'
+    | '/security'
+    | '/terms'
+    | '/platform/compliance'
+    | '/platform/customer-experience'
+    | '/platform/operations'
+    | '/platform/reporting'
+    | '/platform/'
     | '/lovable/email/auth/preview'
     | '/lovable/email/auth/webhook'
     | '/lovable/email/transactional/preview'
@@ -126,10 +247,20 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  SplatRoute: typeof SplatRoute
-  PrivateRoute: typeof PrivateRoute
-  ApiPublicPrivateAccessRoute: typeof ApiPublicPrivateAccessRoute
-  ApiPublicPrivateFileRoute: typeof ApiPublicPrivateFileRoute
+  AboutRoute: typeof AboutRoute
+  ContactRoute: typeof ContactRoute
+  DemoRoute: typeof DemoRoute
+  HowItWorksRoute: typeof HowItWorksRoute
+  PartnersRoute: typeof PartnersRoute
+  PricingRoute: typeof PricingRoute
+  PrivacyRoute: typeof PrivacyRoute
+  SecurityRoute: typeof SecurityRoute
+  TermsRoute: typeof TermsRoute
+  PlatformComplianceRoute: typeof PlatformComplianceRoute
+  PlatformCustomerExperienceRoute: typeof PlatformCustomerExperienceRoute
+  PlatformOperationsRoute: typeof PlatformOperationsRoute
+  PlatformReportingRoute: typeof PlatformReportingRoute
+  PlatformIndexRoute: typeof PlatformIndexRoute
   LovableEmailAuthPreviewRoute: typeof LovableEmailAuthPreviewRoute
   LovableEmailAuthWebhookRoute: typeof LovableEmailAuthWebhookRoute
   LovableEmailTransactionalPreviewRoute: typeof LovableEmailTransactionalPreviewRoute
@@ -144,32 +275,102 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/$': {
-      id: '/$'
-      path: '/$'
-      fullPath: '/$'
-      preLoaderRoute: typeof SplatRouteImport
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/private': {
-      id: '/private'
-      path: '/private'
-      fullPath: '/private'
-      preLoaderRoute: typeof PrivateRouteImport
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/api/public/private-access': {
-      id: '/api/public/private-access'
-      path: '/api/public/private-access'
-      fullPath: '/api/public/private-access'
-      preLoaderRoute: typeof ApiPublicPrivateAccessRouteImport
+    '/demo': {
+      id: '/demo'
+      path: '/demo'
+      fullPath: '/demo'
+      preLoaderRoute: typeof DemoRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/api/public/private-file': {
-      id: '/api/public/private-file'
-      path: '/api/public/private-file'
-      fullPath: '/api/public/private-file'
-      preLoaderRoute: typeof ApiPublicPrivateFileRouteImport
+    '/how-it-works': {
+      id: '/how-it-works'
+      path: '/how-it-works'
+      fullPath: '/how-it-works'
+      preLoaderRoute: typeof HowItWorksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/partners': {
+      id: '/partners'
+      path: '/partners'
+      fullPath: '/partners'
+      preLoaderRoute: typeof PartnersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pricing': {
+      id: '/pricing'
+      path: '/pricing'
+      fullPath: '/pricing'
+      preLoaderRoute: typeof PricingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/security': {
+      id: '/security'
+      path: '/security'
+      fullPath: '/security'
+      preLoaderRoute: typeof SecurityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/platform/': {
+      id: '/platform/'
+      path: '/platform'
+      fullPath: '/platform/'
+      preLoaderRoute: typeof PlatformIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/platform/compliance': {
+      id: '/platform/compliance'
+      path: '/platform/compliance'
+      fullPath: '/platform/compliance'
+      preLoaderRoute: typeof PlatformComplianceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/platform/customer-experience': {
+      id: '/platform/customer-experience'
+      path: '/platform/customer-experience'
+      fullPath: '/platform/customer-experience'
+      preLoaderRoute: typeof PlatformCustomerExperienceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/platform/operations': {
+      id: '/platform/operations'
+      path: '/platform/operations'
+      fullPath: '/platform/operations'
+      preLoaderRoute: typeof PlatformOperationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/platform/reporting': {
+      id: '/platform/reporting'
+      path: '/platform/reporting'
+      fullPath: '/platform/reporting'
+      preLoaderRoute: typeof PlatformReportingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/lovable/email/auth/preview': {
@@ -198,10 +399,20 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  SplatRoute: SplatRoute,
-  PrivateRoute: PrivateRoute,
-  ApiPublicPrivateAccessRoute: ApiPublicPrivateAccessRoute,
-  ApiPublicPrivateFileRoute: ApiPublicPrivateFileRoute,
+  AboutRoute: AboutRoute,
+  ContactRoute: ContactRoute,
+  DemoRoute: DemoRoute,
+  HowItWorksRoute: HowItWorksRoute,
+  PartnersRoute: PartnersRoute,
+  PricingRoute: PricingRoute,
+  PrivacyRoute: PrivacyRoute,
+  SecurityRoute: SecurityRoute,
+  TermsRoute: TermsRoute,
+  PlatformComplianceRoute: PlatformComplianceRoute,
+  PlatformCustomerExperienceRoute: PlatformCustomerExperienceRoute,
+  PlatformOperationsRoute: PlatformOperationsRoute,
+  PlatformReportingRoute: PlatformReportingRoute,
+  PlatformIndexRoute: PlatformIndexRoute,
   LovableEmailAuthPreviewRoute: LovableEmailAuthPreviewRoute,
   LovableEmailAuthWebhookRoute: LovableEmailAuthWebhookRoute,
   LovableEmailTransactionalPreviewRoute: LovableEmailTransactionalPreviewRoute,

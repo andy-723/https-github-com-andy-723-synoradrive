@@ -1,9 +1,7 @@
 # Roadmap
 
-## Temporary IP protection
-- [x] Enable full-website viewing through /private and a shared password, without accounts/profiles. Separate private browser bundle/media served only by session-checked endpoints; password-bound four-hour encrypted cookies, lock action, noindex/no-store, submissions disabled. Verified real password, incorrect password, 15 pages, fictional deal dialog/Vehicle Prep tab, phone layout and lock revocation in preview. Published delivery remains unverified until deployment.
-- [x] Replace public website with a neutral holding page; archive marketing routes and route-linked navigation outside the active build; block submissions with 503 and request no indexing. Verified Home, Pricing, Demo, Contact, Platform, About and unknown links show only the holding page, mobile has no overflow, 33 active tests pass and build is clean. Previously downloaded/cached content cannot be withdrawn by this change.
-- [ ] Activate and verify protection on the live domain: requires Andrew requesting publication of the holding page and shared-password private view; check private HTML/JavaScript/media endpoints signed out after deployment.
+## Reopen public website
+- [x] Removed IP-hold lock, holding page and private viewing; restored all pages, robots and sitemap.
 
 ## Laptop product showcase
 - [x] Replay laptop opening/closing on scroll, gently float banners, simplify capability headings and rename reporting to Command Report; verified report/document navigation, shared settlement, 1075/768/390px layouts and reduced motion.
