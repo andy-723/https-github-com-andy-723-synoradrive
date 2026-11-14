@@ -4,6 +4,7 @@ import { ClosingCta } from "@/components/closing-cta";
 import { PageHero, SectionHead } from "@/components/marketing";
 import { pricingAddOns, pricingNote, pricingPlans } from "@/lib/dealership-pricing";
 import { estimateRoi, roiDefaults } from "@/lib/roi-estimator";
+import { RebateRiskCalculator } from "@/components/rebate-risk";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 
 import { SITE_URL } from "@/lib/site";
@@ -179,6 +180,13 @@ function PricingPage() {
             <SectionHead eyebrow="Estimate your rooftop" title="An illustrative time estimate for your rooftop." />
             <div className="mt-12">
               <RoiEstimator />
+            </div>
+          </div>
+
+          <div className="mt-24">
+            <SectionHead eyebrow="Missed OEM rebates" title="What delivery bottlenecks could cost your rooftop." />
+            <div className="mt-12">
+              <RebateRiskCalculator editable />
             </div>
           </div>
 
