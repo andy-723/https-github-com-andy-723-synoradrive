@@ -7,6 +7,15 @@ export interface DemoDeal {
   extra: string;
 }
 
+export const demoVehiclePrep = [
+  { item: "RWC", description: "Roadworthy certificate", owner: "Riley Sample · Workshop", status: "Complete" },
+  { item: "Reclean", description: "Final clean before handover", owner: "Taylor Sample · Detailing", status: "Pending" },
+  { item: "Detail", description: "Interior and exterior detailing", owner: "Taylor Sample · Detailing", status: "Complete" },
+  { item: "Tint", description: "Window tint installation", owner: "Casey Sample · Accessories", status: "In progress" },
+  { item: "Seal & Protect", description: "Paint and interior protection", owner: "Casey Sample · Accessories", status: "Booked" },
+  { item: "Towbar", description: "Towbar fitting and check", owner: "Riley Sample · Workshop", status: "Booked" },
+] as const;
+
 export function settlementBalance(price: number, allowance: number, payout: number, deposit: number) {
   return price - allowance + payout - deposit;
 }

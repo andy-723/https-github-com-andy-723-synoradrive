@@ -1,7 +1,10 @@
 import { describe, expect, it } from "vitest";
-import { demoRecord, settlementBalance } from "@/lib/demo-deal";
+import { demoRecord, demoVehiclePrep, settlementBalance } from "@/lib/demo-deal";
 
 describe("fictional deal settlement", () => {
+  it("keeps Vehicle Prep focused on certification, cleaning, protection and accessories", () => {
+    expect(demoVehiclePrep.map(task => task.item)).toEqual(["RWC", "Reclean", "Detail", "Tint", "Seal & Protect", "Towbar"]);
+  });
   it("subtracts trade allowance and deposit, and adds the outstanding payout", () => {
     expect(settlementBalance(102900, 18500, 4200, 2500)).toBe(86100);
   });
