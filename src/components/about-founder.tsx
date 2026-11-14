@@ -59,13 +59,13 @@ export function FounderShowcase() {
       <Reveal className="founder-portrait-wrap">
         <div className="founder-portrait-float">
           <div className="founder-portrait">
-            <img
-              src={founderPortrait.url}
-              alt="Andrew Phan, founder of SYNORA TECH"
-              width={1024}
-              height={1280}
-              loading="lazy"
-            />
+    <img
+  src={founderPortrait}
+  alt="Andrew Phan, founder of SYNORA TECH"
+  width={640}
+  height={640}
+  loading="lazy"
+/>
             <div className="founder-portrait-ring" aria-hidden="true" />
           </div>
           <div className="founder-nameplate">
