@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Activity, ArrowUpRight, CheckCircle2, FileCheck2, Gauge, LockKeyhole, Users, Wallet } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-export type DemoTab = "overview" | "documents" | "trade" | "workshop" | "activity" | "financials" | "audit";
+export type DemoTab = "overview" | "documents" | "trade" | "prep" | "workshop" | "activity" | "financials" | "audit";
 
 export function LaptopShowcase({ children, openDeal, showExecutive, settled, settle }: {
   children: ReactNode;

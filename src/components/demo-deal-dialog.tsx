@@ -3,13 +3,14 @@ import { Car, CheckCircle2, Clock3, FileText, ShieldCheck, User, Wallet, Wrench,
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
-import { demoRecord, settlementBalance, type DemoDeal } from "@/lib/demo-deal";
+import { demoRecord, demoVehiclePrep, settlementBalance, type DemoDeal } from "@/lib/demo-deal";
 import type { DemoTab } from "@/components/laptop-showcase";
 
 const money = (value: number) => new Intl.NumberFormat("en-AU", { style: "currency", currency: "AUD", maximumFractionDigits: 0 }).format(value);
 const tabs = [
   ["overview", "Overview", User], ["documents", "Document Vault", FileText],
-  ["workshop", "PDI & Workshop", Wrench], ["trade", "Vehicle Prep", Car],
+  ["workshop", "PDI & Workshop", Wrench], ["prep", "Vehicle Prep", Car],
+  ["trade", "Trade-in", Car],
   ["activity", "Activity Feed", Activity], ["financials", "Financials", Wallet],
   ["audit", "Audit Trail", ShieldCheck],
 ] as const;
@@ -82,7 +83,20 @@ function DealRecord({ deal, initialTab, sharedSettled, onSettle }: { deal: DemoD
         </TabsContent>
         <TabsContent value="trade" className="mt-0"><div className="grid gap-7 lg:grid-cols-[minmax(0,1fr)_300px]"><section><div className="mb-5 flex items-center gap-3"><div className="grid size-12 place-items-center rounded-xl bg-accent text-primary"><Car className="size-6" /></div><div><h3 className="text-base font-semibold">{record.trade.car}</h3><p className="mt-1 text-xs text-muted-foreground">Trade-in · fictional vehicle record</p></div></div><dl className="grid gap-3 sm:grid-cols-2"><Field label="Colour" value={record.trade.colour} /><Field label="Odometer" value={record.trade.kms} /><Field label="Registration · sample" value={record.trade.registration} /><Field label="VIN · sample" value={record.trade.vin} /><Field label="Trade-in allowance" value={money(record.allowance)} /><Field label="Finance payout owing" value={money(record.payout)} /><Field label="Net trade-in equity" value={money(record.allowance - record.payout)} /><Field label="Personalised plates" value="Retained by customer · sample instruction" /></dl><h4 className="mt-6 text-xs font-semibold uppercase text-muted-foreground">Trade-in checklist</h4><Checklist items={["Vehicle appraisal recorded · Morgan Sample", "PPSR certificate attached · sample document", "Finance payout statement checked · Avery Sample"]} /></section><aside>{settlement}</aside></div></TabsContent>
         <TabsContent value="documents" className="mt-0"><h3 className="text-base font-semibold">Document Vault</h3><Checklist items={["Contract of Sale · sample PDF", "Customer identity verification · sample record", "Trade-in appraisal · sample PDF", "PPSR certificate · sample PDF", "Finance payout statement · sample PDF"]} /><p className="text-xs text-muted-foreground">Sample records only · no customer files are stored in this preview.</p></TabsContent>
-        <TabsContent value="workshop" className="mt-0"><h3 className="text-base font-semibold">PDI & Workshop</h3><Checklist items={["Pre-delivery inspection complete · Riley Sample", "Accessories fitted · Riley Sample", "Detailing complete · Taylor Sample"]} /><div className="flex items-center gap-3 py-4 text-sm"><Clock3 className="size-4 text-warning" />Plate allocation pending · Registration</div></TabsContent>
+        <TabsContent value="prep" className="mt-0">
+          <h3 className="text-base font-semibold">Vehicle preparation</h3>
+          <p className="mt-2 text-xs text-muted-foreground">{deal.car} · Fictional preparation tasks</p>
+          <ul className="mt-4 divide-y divide-border">
+            {demoVehiclePrep.map(task => <li key={task.item} className="flex flex-wrap items-start justify-between gap-3 py-4">
+              <div className="flex min-w-0 gap-3">
+                {task.status === "Complete" ? <CheckCircle2 className="mt-1 size-4 shrink-0 text-success" /> : <Clock3 className="mt-1 size-4 shrink-0 text-warning" />}
+                <div><h4 className="text-sm font-semibold">{task.item}</h4><p className="mt-1 text-xs text-muted-foreground">{task.description}</p><p className="mt-2 text-xs">{task.owner}</p></div>
+              </div>
+              <span className={`rounded-lg px-3 py-1 text-xs font-semibold ${task.status === "Complete" ? "bg-success/10 text-success" : "bg-accent text-accent-foreground"}`}>{task.status}</span>
+            </li>)}
+          </ul>
+        </TabsContent>
+        <TabsContent value="workshop" className="mt-0"><h3 className="text-base font-semibold">PDI & Workshop</h3><Checklist items={["Pre-delivery inspection complete · Riley Sample", "Mechanical checks complete · Riley Sample"]} /><div className="flex items-center gap-3 py-4 text-sm"><Clock3 className="size-4 text-warning" />Plate allocation pending · Registration</div></TabsContent>
         <TabsContent value="activity" className="mt-0"><h3 className="text-base font-semibold">Activity Feed</h3><Checklist items={["09:10 · Morgan Sample added the signed order", "09:25 · Avery Sample prepared the document pack", "10:40 · Avery Sample recorded the trade-in payout", ...(settled ? ["Just now · Sample final settlement recorded (simulated)"] : [])]} /></TabsContent>
         <TabsContent value="financials" className="mt-0"><div className="mx-auto max-w-lg">{settlement}</div></TabsContent>
         <TabsContent value="audit" className="mt-0"><h3 className="text-base font-semibold">Audit Trail</h3><Checklist items={[`${deal.id} · Sample deal created by Morgan Sample`, "Trade-in allowance approved by Quinn Sample · Sales Manager", "Finance payout verified by Avery Sample · F&I"]} /><p className="text-xs text-muted-foreground">Fictional activity log · no live systems connected.</p></TabsContent>

@@ -14,6 +14,7 @@
 - Keep laptop showcase framing in a lightweight CSS/SVG presentation component and share view, dialog selection and per-deal simulated settlement state in ProductPreview; satellites and board must read the same state without bypassing other delivery gates.
 - Observe the laptop device separately from its banner group so the hinge can replay on scroll while revealed banners remain available on tall mobile layouts; pause floating motion during interaction and disable it for reduced motion.
 - Keep expanded demo deal records and trade-in settlement arithmetic in a browser-safe shared data module, rendered through an accessible dialog; reference screenshots guide layout only and never supply public customer data.
+- Keep preparation tasks in the shared demo data module and render them in a distinct prep tab; trade-in and settlement remain separate so physical readiness is not confused with financial clearance.
 - Keep pricing tier data and group-total calculation in a shared module with boundary tests; this prevents per-group and per-rooftop pricing from diverging.
 - Render navbar and footer branding through a shared inline-SVG logo with unique gradient IDs and global semantic palette tokens; this keeps duplicate emblems and light/dark wordmarks consistent.
 - Keep site-wide framed-section highlights in shared CSS with a delegated mouse-only listener gated by fine-pointer and reduced-motion preferences; use focus-visible for keyboard highlights and transient active feedback for touch to avoid sticky hover effects.
