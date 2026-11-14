@@ -1,5 +1,5 @@
 import { Reveal } from "@/components/reveal";
-import src={founderPortrait}
+import founderPortrait from "@/assets/founder-portrait.jpg";
 
 /**
  * Founder showcase: an arch-framed portrait that floats gently, with
