@@ -41,7 +41,7 @@ async function guardSubmission(table: "demo_requests" | "contact_submissions") {
 }
 
 export const submitDemoRequest = createServerFn({ method: "POST" })
-  .inputValidator((d: unknown) => demoSchema.parse(d))
+  .validator((d: unknown) => demoSchema.parse(d))
   .handler(async ({ data }) => {
     await guardSubmission("demo_requests");
     const email = data.workEmail.toLowerCase();
@@ -68,7 +68,7 @@ export const submitDemoRequest = createServerFn({ method: "POST" })
   });
 
 export const submitContact = createServerFn({ method: "POST" })
-  .inputValidator((d: unknown) => contactSchema.parse(d))
+  .validator((d: unknown) => contactSchema.parse(d))
   .handler(async ({ data }) => {
     await guardSubmission("contact_submissions");
     const email = data.workEmail.toLowerCase();
