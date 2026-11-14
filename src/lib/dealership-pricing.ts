@@ -53,7 +53,7 @@ export const pricingPlans = [
 export const pricingAddOns = [
   { n: "Insights & Forecasting Add-On", b: "Live month-book, forward delivery timelines, target tracking, custom rooftop benchmarking and executive reporting." },
   { n: "Prospect Board Add-On", b: "Connects the showroom prospect pipeline directly with the active delivery board to identify opportunities." },
-  { n: "Customer Experience & DocuSign Add-On", b: "Branded mobile portals for easy document upload and secure DocuSign integration (subject to customer licence)." },
+  { n: "Customer Experience & DocuSign Add-On", b: "Enhanced CX stage-triggered customer emails from In-Queue to Delivery, with Sales Consultant contact — on the roadmap, not available today. Branded mobile portals for document upload and DocuSign integration are configured during onboarding (subject to customer licence).", roadmap: true },
 ];
 
 export const pricingNote = "Pricing per rooftop per month (excl. GST), subject to rooftop onboarding scope and signed Order Form.";

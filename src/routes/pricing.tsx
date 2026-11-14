@@ -168,6 +168,7 @@ function PricingPage() {
               {pricingAddOns.map((a) => (
                 <div key={a.n} className="rounded-xl border bg-card p-7">
                   <h3 className="text-lg font-semibold">{a.n}</h3>
+                  {"roadmap" in a && a.roadmap && <p className="mt-3 text-xs font-semibold uppercase tracking-wider text-primary">Enhanced CX emails · On the roadmap</p>}
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{a.b}</p>
                 </div>
               ))}
