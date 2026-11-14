@@ -108,6 +108,8 @@ function Index() {
   return (
     <>
       <Hero />
+      <Differentiators />
+      <ProductView />
       <WorksWith />
       <Positioning />
       <DemoReel />
@@ -124,7 +126,6 @@ function Index() {
           <Link to="/pricing" className="mt-6 inline-flex min-h-11 items-center text-sm font-semibold text-primary hover:underline">Adjust the numbers for your rooftop →</Link>
         </div>
       </section>
-      <ProductView />
       <ProofBand />
       <RoiTeaser />
       <ClosingCta />
@@ -153,7 +154,7 @@ function Hero() {
         <div className="hero-copy max-w-2xl">
           <div className="mb-7 flex items-center gap-3 font-mono text-xs text-primary-glow"><span className="h-px w-8 bg-primary-glow" /> THE NEXT SHIFT IN AUTOMOTIVE OPERATIONS</div>
           <h1 className="text-5xl font-semibold leading-[1.08] sm:text-6xl lg:text-7xl"><span className="block text-4xl leading-[1.08] sm:text-5xl lg:text-6xl">Intelligence Behind Every Handover.</span></h1>
-          <p className="mt-6 max-w-lg text-base leading-relaxed text-muted-foreground sm:text-lg">Upload a signed Contract of Sale PDF from your DMS. SynoraDrive extracts deal data, populates your dealership's Showroom and Pre-Delivery document packs for staff verification, and coordinates Sales, F&I, Aftermarket, Workshop PDI, and Registration across a 5-stage Dealership Board.</p>
+          <p className="mt-6 max-w-lg text-base leading-relaxed text-muted-foreground sm:text-lg">Generic software fills forms. SynoraDrive orchestrates your entire delivery engine. From contract signing to the customer drive-away, one unified live board coordinates Sales, F&amp;I, Workshop PDI and Registration, locking down audit compliance and safeguarding your month-end OEM target rebates.</p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Button asChild variant="brand" size="lg" className="min-h-12 h-auto whitespace-normal"><Link to="/demo">Book a 30-Minute Rooftop Walkthrough <ArrowRight /></Link></Button>
             <Button asChild variant="link" size="lg" className="min-h-12 h-auto whitespace-normal px-2 text-foreground underline decoration-primary underline-offset-8 hover:text-brand-mint"><a href="#product-view-title">Explore Interactive Dealership Board <ArrowRight /></a></Button>
@@ -323,6 +324,40 @@ function RoiTeaser() {
             Estimate your rooftop <ArrowRight className="size-4" />
           </Link>
         </Reveal>
+      </div>
+    </section>
+  );
+}
+
+function Differentiators() {
+  const items = [
+    { n: "01", Icon: Workflow, t: "End-to-End Handover Orchestration", s: "One single point of truth: Sales → Workshop → Handover", b: "No more chat threads, lost folders or whiteboard drift. Sales, the Business Manager, Workshop PDI, detailers and the rego desk work from the same live status, with a clear owner at every gated stage." },
+    { n: "02", Icon: ShieldCheck, t: "Gated Compliance & Accurate Paperwork", s: "Audit-ready deal packs before keys touch hands", b: "Contract extraction paired with deal-type checklists (PPSR, trade payout verification, Victorian rego forms, ASIC company extracts, RWC tracking), so nothing is handed over with missing signatures or unverified payouts." },
+    { n: "03", Icon: Gauge, t: "OEM Rebate & Target Shield", s: "Protecting your rooftop's most fragile margin", b: "New-car margins are thin; profit lives in OEM volume targets and delivery incentives. SynoraDrive flags bottlenecks ahead of month-end so sold cars don't slip past cutoff and put bonuses at risk." },
+  ] as const;
+  return (
+    <section className="light-section mist-section border-t bg-background text-foreground" aria-labelledby="differentiators-title">
+      <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+        <Reveal className="max-w-3xl">
+          <p className="font-mono text-xs font-semibold uppercase tracking-wider text-logo-accent">The SynoraDrive differentiator</p>
+          <h2 id="differentiators-title" className="mt-3 text-3xl font-semibold leading-tight sm:text-4xl">Not another form filler. One engine for the whole delivery.</h2>
+        </Reveal>
+        <div className="mt-10 grid gap-6 md:grid-cols-3">
+          {items.map(({ n, Icon, t, s, b }, i) => (
+            <Reveal key={n} delay={i * 120}>
+              <div className="lift flex h-full flex-col rounded-xl border bg-card p-7 hover:border-primary/40 hover:shadow-elegant">
+                <div className="flex items-center justify-between">
+                  <div className="grid size-10 place-items-center rounded-lg bg-accent"><Icon className="size-5 text-accent-foreground" /></div>
+                  <span className="font-mono text-sm font-semibold text-primary">{n}</span>
+                </div>
+                <h3 className="mt-5 text-xl font-semibold">{t}</h3>
+                <p className="mt-1 text-sm font-semibold text-primary">{s}</p>
+                <p className="mt-3 flex-1 text-base leading-relaxed text-muted-foreground">{b}</p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+        <p className="mt-6 text-xs text-muted-foreground">Designed as an operational workflow aid; OEM programs and eligibility are set by each manufacturer.</p>
       </div>
     </section>
   );
