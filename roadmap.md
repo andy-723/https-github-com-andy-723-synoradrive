@@ -39,6 +39,9 @@
 - [x] Per-page search titles/descriptions + canonical links
 - [x] ROI estimator module + boundary tests; pricing module updated to v4 plans
 
+## Rebate risk fine print
+- [x] Add a "View assumptions" disclosure beside the illustrative-risk disclaimer listing every input and the exact formula behind each figure; verified on Home and Pricing desktop, phone touch, 49 tests pass, build clean.
+
 ## Open items (blocked on Andrew)
 - [ ] Restore receiving email at andrew@synoratech.ai with the mail provider so enquiry alerts arrive (submissions are stored in Cloud; inbox arrival unverified)
 - [ ] Lawyer review of Privacy Policy, Website Terms and Disclaimer
