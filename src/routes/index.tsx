@@ -4,6 +4,7 @@ import { DemoReel } from "@/components/demo-reel";
 import { SynoraCnsSection, DeliveryVisibilitySection } from "@/components/orchestration-sections";
 import { ClosingCta } from "@/components/closing-cta";
 import { Reveal } from "@/components/reveal";
+import { RebateRiskCalculator } from "@/components/rebate-risk";
 import { Button } from "@/components/ui/button";
 import heroVehicle from "@/assets/hero-vehicle-1600.webp.asset.json";
 import heroVehicleMobile from "@/assets/hero-vehicle-800.webp.asset.json";
@@ -114,6 +115,15 @@ function Index() {
       <Pillars />
       <WorkflowTeaser />
       <DeliveryVisibilitySection />
+      <section className="light-section bg-background py-24 text-foreground">
+        <div className="mx-auto max-w-6xl px-6">
+          <p className="font-mono text-xs font-semibold uppercase tracking-wider text-primary">Missed OEM rebates</p>
+          <h2 className="mt-3 max-w-3xl font-display text-4xl font-semibold tracking-tight md:text-5xl">One car short at midnight can cost a month's bonus.</h2>
+          <p className="mt-4 max-w-2xl text-muted-foreground">When a sold car waits on prep, finance or a trade-in payout, the dealership pays in lost campaign rebates, tier drops and floorplan interest. Pick your rooftop size.</p>
+          <div className="mt-10"><RebateRiskCalculator /></div>
+          <Link to="/pricing" className="mt-6 inline-flex min-h-11 items-center text-sm font-semibold text-primary hover:underline">Adjust the numbers for your rooftop →</Link>
+        </div>
+      </section>
       <ProductView />
       <ProofBand />
       <RoiTeaser />
