@@ -25,7 +25,7 @@ describe("rebate risk assumptions disclosure", () => {
     expect(screen.getByText("8.5% p.a.")).toBeInTheDocument();
     expect(screen.getByText("1% of rebate pool")).toBeInTheDocument();
     expect(screen.getByText("4 days")).toBeInTheDocument();
-    expect(screen.getByText("$1,800", { selector: "dd" })).toBeInTheDocument();
+    expect(screen.getAllByText("$1,800", { selector: "dd" })).toHaveLength(2);
   });
 
   it("prints the formula behind the small-rooftop A$16,767 holdback erosion", () => {
