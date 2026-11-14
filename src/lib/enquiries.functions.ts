@@ -27,9 +27,23 @@ async function tooMany(table: "demo_requests" | "contact_submissions", email: st
   return (count ?? 0) >= 3;
 }
 
+// Reject cross-site callers and cap total volume so scripted spam can't flood the inbox.
+async function guardSubmission(table: "demo_requests" | "contact_submissions") {
+  const { getRequest } = await import("@tanstack/react-start/server");
+  const req = getRequest();
+  const origin = req.headers.get("origin");
+  const host = req.headers.get("host");
+  if (!origin || !host || new URL(origin).host !== host) throw new Error("Submission rejected.");
+  const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+  const since = new Date(Date.now() - 60 * 60 * 1000).toISOString();
+  const { count } = await supabaseAdmin.from(table).select("id", { count: "exact", head: true }).gte("created_at", since);
+  if ((count ?? 0) >= 30) throw new Error("We're receiving a lot of enquiries right now. Please email us directly.");
+}
+
 export const submitDemoRequest = createServerFn({ method: "POST" })
   .inputValidator((d: unknown) => demoSchema.parse(d))
   .handler(async ({ data }) => {
+    await guardSubmission("demo_requests");
     const email = data.workEmail.toLowerCase();
     if (await tooMany("demo_requests", email)) throw new Error("Too many requests. Please try again shortly.");
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
@@ -56,6 +70,7 @@ export const submitDemoRequest = createServerFn({ method: "POST" })
 export const submitContact = createServerFn({ method: "POST" })
   .inputValidator((d: unknown) => contactSchema.parse(d))
   .handler(async ({ data }) => {
+    await guardSubmission("contact_submissions");
     const email = data.workEmail.toLowerCase();
     if (await tooMany("contact_submissions", email)) throw new Error("Too many messages. Please try again shortly.");
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
