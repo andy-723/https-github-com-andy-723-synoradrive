@@ -18,8 +18,16 @@ describe("Pricing plans", () => {
     expect(JSON.stringify([pricingPlans, pricingAddOns])).not.toMatch(/pentana|erapower/i);
   });
 
-  it("prices Core at $499, Full Pipeline at $1,490, Enterprise on request", () => {
-    expect(pricingPlans.map((p) => p.price)).toEqual(["$499", "$1,490", null]);
+  it("prices Core at $699", () => {
+    expect(pricingPlans.find((p) => p.n === "Document & Compliance Core")?.price).toBe("$699");
+  });
+
+  it("keeps Full Pipeline at $1,490", () => {
+    expect(pricingPlans.find((p) => p.n === "Full Pipeline & DealBoard")?.price).toBe("$1,490");
+  });
+
+  it("keeps Enterprise on request", () => {
+    expect(pricingPlans.find((p) => p.n === "Multi-Rooftop Enterprise Group")?.price).toBeNull();
   });
 
   it("offers the three recommended add-ons", () => {
