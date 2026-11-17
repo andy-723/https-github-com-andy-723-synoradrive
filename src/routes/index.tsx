@@ -18,7 +18,7 @@ import {
 const PAGE_DESCRIPTION =
   "SynoraDrive turns an Australian dealership's signed contract-of-sale PDF into a checked deal pack, then runs five gated stages through to handover.";
 
-const SOCIAL_IMAGE = `${SITE_URL}${heroVehicle.url}`;
+const SOCIAL_IMAGE = `${SITE_URL}${heroVehicle}`;
 
 const structuredData = JSON.stringify({
   "@context": "https://schema.org",
@@ -86,7 +86,7 @@ export const Route = createFileRoute("/")({
         rel: "preload",
         as: "image",
         type: "image/webp",
-        href: `${SITE_URL}${heroVehicle.url}`,
+        href: `${SITE_URL}${heroVehicle}`,
         media: "(min-width: 768px)",
         fetchPriority: "high",
       },
@@ -94,7 +94,7 @@ export const Route = createFileRoute("/")({
         rel: "preload",
         as: "image",
         type: "image/webp",
-        href: `${SITE_URL}${heroVehicleMobile.url}`,
+        href: `${SITE_URL}${heroVehicleMobile}`,
         media: "(max-width: 767px)",
         fetchPriority: "high",
       },
@@ -137,8 +137,8 @@ function Hero() {
   return (
     <section className="automotive-hero relative isolate overflow-hidden">
       <img
-        src={heroVehicle.url}
-        srcSet={`${heroVehicleMobile.url} 800w, ${heroVehicle.url} 1600w`}
+        src={heroVehicle}
+        srcSet={`${heroVehicleMobile} 800w, ${heroVehicle} 1600w`}
         sizes="100vw"
         alt="A vehicle outside a modern dealership at dusk"
         className="hero-vehicle absolute inset-0 -z-20 h-full w-full object-cover"
