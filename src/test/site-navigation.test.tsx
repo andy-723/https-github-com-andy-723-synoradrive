@@ -2,6 +2,7 @@ import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { SiteHeader } from "@/components/site-header";
 import { SiteHoverEffects } from "@/components/site-hover-effects";
+import { APP_LOGIN_URL } from "@/lib/site";
 
 vi.mock("@tanstack/react-router", () => ({
   Link: ({ to, activeProps: _activeProps, ...props }: { to: string; activeProps?: unknown }) => <a href={to} {...props} />,
@@ -25,6 +26,12 @@ describe("Navigation dismissal", () => {
     Object.defineProperty(window, "scrollY", { configurable: true, value: 501 });
     fireEvent.scroll(window);
     expect(screen.getByRole("link", { name: "Book a demo" })).toHaveAttribute("href", "/demo");
+  });
+  it("links Log in to the SynoraDrive app sign-in page on desktop and mobile", () => {
+    render(<SiteHeader />);
+    expect(screen.getByRole("link", { name: "Log in" })).toHaveAttribute("href", APP_LOGIN_URL);
+    fireEvent.click(screen.getByRole("button", { name: "Open menu" }));
+    expect(screen.getByRole("link", { name: "Log in to SynoraDrive" })).toHaveAttribute("href", APP_LOGIN_URL);
   });
   it("toggles a touch disclosure and dismisses outside it", () => {
     render(<SiteHeader />);

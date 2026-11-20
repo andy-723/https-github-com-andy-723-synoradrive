@@ -1,9 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "@tanstack/react-router";
-import { ChevronDown, Menu, X } from "lucide-react";
+import { ChevronDown, LogIn, Menu, X } from "lucide-react";
 import { SynoraDriveLogo } from "@/components/synoradrive-logo";
 import { ScrollProgressBar } from "@/components/gamified";
 import { Button } from "@/components/ui/button";
+import { APP_LOGIN_URL } from "@/lib/site";
 
 const platformLinks = [
   { to: "/platform", label: "Platform overview" },
@@ -106,6 +107,11 @@ export function SiteHeader() {
           <Dropdown label="Company" links={companyLinks} />
         </nav>
         <div className="flex items-center gap-3">
+          <Button asChild variant="outline" className="nav-login hidden min-h-11 rounded-lg px-4 font-semibold md:inline-flex">
+          <a href={APP_LOGIN_URL}>
+            <LogIn className="size-4" aria-hidden="true" /> Log in
+          </a>
+          </Button>
           {(pathname !== "/" || isScrolled) && <Button asChild variant="brand" className="nav-cta hidden min-h-11 rounded-lg px-4 font-semibold shadow-glow md:inline-flex">
           <Link to="/demo">
             Book a demo
@@ -134,6 +140,9 @@ export function SiteHeader() {
           <Link to="/demo" onClick={() => setOpen(false)} className="nav-menu-link flex min-h-11 items-center text-sm font-semibold text-primary">
             Book a demo
           </Link>
+          <a href={APP_LOGIN_URL} onClick={() => setOpen(false)} className="nav-menu-link flex min-h-11 items-center gap-2 text-sm font-semibold text-foreground">
+            <LogIn className="size-4" aria-hidden="true" /> Log in to SynoraDrive
+          </a>
         </nav>
       )}
     </header>
