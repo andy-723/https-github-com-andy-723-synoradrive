@@ -65,7 +65,7 @@ export function SiteFooter() {
           ))}
         </div>
         <div className="mt-12 border-t pt-6 text-sm text-muted-foreground">
-          SynoraDrive™ is a proprietary software platform of Andrew Phan trading as SYNORA TECH (ABN 42 234 662 138). Built to host its primary data in Microsoft Azure, Australia East. Enterprise Contact:{" "}
+          SynoraDrive™ is a proprietary software platform of Andrew Phan trading as SYNORA TECH (ABN 42 234 662 138). Primary data hosted on Amazon Web Services, Sydney (Australia). Enterprise Contact:{" "}
           <a href="mailto:andrew@synoratech.ai" className="inline-flex min-h-11 items-center transition-colors hover:text-foreground">
             andrew@synoratech.ai
           </a>

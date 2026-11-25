@@ -7,7 +7,7 @@ export function absoluteUrl(path: string): string {
 }
 
 /**
- * SynoraDrive app sign-in page for dealership staff (the Azure-hosted product).
+ * SynoraDrive app sign-in page for dealership staff (hosted on AWS Sydney).
  * Switch to https://app.synoradrive.com.au/login once that domain is live on the app.
  */
 export const APP_LOGIN_URL = "https://www.thedealflow.com.au/login";

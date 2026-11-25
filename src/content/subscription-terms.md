@@ -25,7 +25,7 @@ By signing an Order Form, accepting these Terms online, or using the Service, yo
 - **Rooftop** means a single dealership location or franchise point identified in the Order Form.
 - **Service** means the SynoraDrive software-as-a-service platform, including the customer portal, any related applications, documentation and support, as updated from time to time.
 - **Subscription Term** means the initial term in the Order Form and any renewal term.
-- **Third-Party Services** means products, services, data and systems not supplied by us, including dealer management systems (for example Pentana eraPower), DocuSign, PPSR, ASIC registers, VicRoads and other registration authorities, email delivery providers, Microsoft Azure, and OEM systems and portals.
+- **Third-Party Services** means products, services, data and systems not supplied by us, including dealer management systems (for example Pentana eraPower), DocuSign, PPSR, ASIC registers, VicRoads and other registration authorities, email delivery providers, Amazon Web Services, and OEM systems and portals.
 
 1.2 "Including" and similar words are not words of limitation. Headings are for convenience only. A reference to a law includes any amendment or replacement of it.
 
@@ -103,7 +103,7 @@ By signing an Order Form, accepting these Terms online, or using the Service, yo
 
 8.2 **Aggregated data.** We may create and use de-identified, aggregated data derived from use of the Service (for example processing times or volume trends) that does not identify you, any Rooftop, any individual or any end customer, including to improve the Service and produce benchmarks. **[LAWYER: confirm this is acceptable under the Privacy Act and the Customer's OEM agreements.]**
 
-8.3 **Hosting and security.** We host production Customer Data in Microsoft Azure's Australia East region and store backups in Australia **[CONFIRM backup region]**. We will implement reasonable technical and organisational security measures appropriate to the nature of the data, including encryption in transit and at rest and role-based access control. No system is completely secure and we do not warrant that the Service will be free from unauthorised access. Some Third-Party Services (such as DocuSign and email delivery) may process data outside Australia under their own terms.
+8.3 **Hosting and security.** We host production Customer Data in the Amazon Web Services Asia Pacific (Sydney) region and store backups in Australia. We will implement reasonable technical and organisational security measures appropriate to the nature of the data, including encryption in transit and at rest and role-based access control. No system is completely secure and we do not warrant that the Service will be free from unauthorised access. Some Third-Party Services (such as DocuSign and email delivery) may process data outside Australia under their own terms.
 
 8.4 **Retention.** To reduce privacy risk, the Service automatically deletes uploaded and generated documents after a limited retention period, currently [35 days, or the vehicle's expected delivery date if later] **[CONFIRM: code currently uses 35 days or ETA, the business plan says 30]**. We may change the retention period on [30] days' notice. Deleted documents cannot be recovered. We are not liable for any loss arising from deletion in accordance with this clause.
 
@@ -207,7 +207,7 @@ By signing an Order Form, accepting these Terms online, or using the Service, yo
 
 16.2 **Governing law.** These Terms are governed by the laws of Victoria, Australia. Each party submits to the non-exclusive jurisdiction of the courts of Victoria and courts that may hear appeals from them.
 
-16.3 **Force majeure.** Neither party is liable for delay or failure to perform (other than payment obligations) caused by events beyond its reasonable control, including outages of Microsoft Azure or other Third-Party Services, internet failures, cyber attacks not caused by its failure to take reasonable precautions, pandemic, natural disaster or government action.
+16.3 **Force majeure.** Neither party is liable for delay or failure to perform (other than payment obligations) caused by events beyond its reasonable control, including outages of Amazon Web Services or other Third-Party Services, internet failures, cyber attacks not caused by its failure to take reasonable precautions, pandemic, natural disaster or government action.
 
 16.4 **Assignment.** You may not assign or novate your rights without our written consent, not to be unreasonably withheld. We may assign or novate these Terms to a related body corporate or to a purchaser of all or substantially all of our business on notice to you.
 
