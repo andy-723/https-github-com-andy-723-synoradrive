@@ -24,7 +24,7 @@ We disclose personal information to our service providers (such as hosting and e
 
 ## 6. Overseas disclosure
 
-The SynoraDrive platform is built to host its primary data in Microsoft Azure, Australia East. Some service providers may store or access personal information outside Australia, including our website host, email delivery provider, website analytics and, once released, e-signature. The countries involved are being confirmed and will be listed here before launch. We take reasonable steps to make sure overseas recipients handle personal information consistently with the Australian Privacy Principles.
+The SynoraDrive platform hosts its primary data on Amazon Web Services in the Asia Pacific (Sydney) region. Some service providers may store or access personal information outside Australia, including our website host, email delivery provider, website analytics and, once released, e-signature. The countries involved are being confirmed and will be listed here before launch. We take reasonable steps to make sure overseas recipients handle personal information consistently with the Australian Privacy Principles.
 
 ## 7. Cookies and analytics
 
@@ -32,7 +32,7 @@ We use essential cookies to run this website and may use analytics to understand
 
 ## 8. Security and data breaches
 
-We take reasonable steps to protect personal information from misuse, interference, loss and unauthorised access, modification or disclosure. Our measures include primary platform data hosting in Microsoft Azure (Australia East), encryption in transit and at rest, role-based access and staff TOTP multi-factor sign-in. If we experience a data breach that is likely to cause serious harm, we will follow the Notifiable Data Breaches scheme in the Privacy Act 1988 (Cth).
+We take reasonable steps to protect personal information from misuse, interference, loss and unauthorised access, modification or disclosure. Our measures include primary platform data hosting on Amazon Web Services in Sydney, encryption in transit and at rest, a private network for the database and application servers, role-based access, staff authenticator-app (TOTP) multi-factor sign-in, and security audit logs of sign-ins and access changes. If we experience a data breach that is likely to cause serious harm, we will follow the Notifiable Data Breaches scheme in the Privacy Act 1988 (Cth).
 
 ## 9. How long we keep it
 
@@ -40,7 +40,7 @@ We keep enquiry details only for as long as we need them to deal with your enqui
 
 ## 10. Automated decisions
 
-SynoraDrive is powered by deterministic AcroForm rules, optical character recognition (OCR), and Azure AI Document Intelligence & Copilot workflows. Where Azure AI services are configured for a dealer group, they process data within Microsoft Azure to read contracts and flag exceptions for dealership staff to check. Decisions about a sale, finance, insurance or delivery are made by dealership staff, not by SynoraDrive. If we start using computer programs to make decisions that could significantly affect individuals, we will update this policy.
+SynoraDrive is powered by deterministic AcroForm rules, optical character recognition (OCR) and, where configured for a dealer group, AI-assisted extraction workflows. Where AI services are configured for a dealer group, they read contracts and flag exceptions for dealership staff to check, and we will name the provider and where it processes data in this policy before it is switched on. Decisions about a sale, finance, insurance or delivery are made by dealership staff, not by SynoraDrive. If we start using computer programs to make decisions that could significantly affect individuals, we will update this policy.
 
 ## 11. Dealership customers
 

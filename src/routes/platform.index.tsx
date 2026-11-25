@@ -29,7 +29,7 @@ const modules = [
   {
     Icon: FileText,
     t: "Digital Deal Pack and SyncZero",
-    b: "Upload a contract-of-sale PDF produced by your DMS. SynoraDrive reads it using deterministic AcroForm rules and OCR, with Azure AI Document Intelligence configured during onboarding, and prepares the deal pack for your staff to check before it goes anywhere. Staff preview each form, then download or print the pack. Email intake, DocuSign-ready packs and PPSR certificate reading.",
+    b: "Upload a contract-of-sale PDF produced by your DMS. SynoraDrive reads it using deterministic AcroForm rules and OCR, with AI-assisted extraction configured during onboarding, and prepares the deal pack for your staff to check before it goes anywhere. Staff preview each form, then download or print the pack. Email intake, DocuSign-ready packs and PPSR certificate reading.",
     to: "/platform/compliance",
     toLabel: "Compliance",
   },
@@ -89,7 +89,7 @@ function PlatformPage() {
         <div className="scan-sweep mx-auto max-w-7xl px-6 py-28 lg:px-8">
           <div className="hero-copy max-w-2xl">
             <h1 className="text-4xl font-semibold leading-tight sm:text-5xl">One platform from signed contract to keys.</h1>
-            <p className="mt-5 max-w-xl leading-relaxed text-muted-foreground">Six modules built around a single deal record. Core modules are built and configured per rooftop during pilot onboarding; Microsoft Graph mailbox intake, Azure AI exception auditing, Entra ID SSO and DocuSign are enterprise onboarding integrations configured per dealer group.</p>
+            <p className="mt-5 max-w-xl leading-relaxed text-muted-foreground">Six modules built around a single deal record. Core modules are built and configured per rooftop during pilot onboarding; Microsoft Graph mailbox intake, AI exception auditing, Entra ID SSO and DocuSign are enterprise onboarding integrations configured per dealer group.</p>
           </div>
         </div>
       </div>

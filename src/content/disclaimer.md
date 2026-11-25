@@ -31,7 +31,7 @@ Dashboards, the live month book, weighted pipeline values, KPIs, target tracking
 
 ## 6. Automated reading, pre-filled forms and data entry
 
-SynoraDrive reads contracts of sale using deterministic AcroForm rules and pattern matching, optical character recognition (OCR), and, where configured, Azure AI Document Intelligence & Copilot workflows. Automated extraction and compliance checklists are workflow aids: dealership staff must verify the output before any document is lodged or a vehicle is handed over. It uses that data to fill forms and build deal packs. Automated reading can make mistakes, particularly with poor scans, handwriting, unusual layouts or changes to source documents or forms.
+SynoraDrive reads contracts of sale using deterministic AcroForm rules and pattern matching, optical character recognition (OCR), and, where configured, AI-assisted extraction workflows. Automated extraction and compliance checklists are workflow aids: dealership staff must verify the output before any document is lodged or a vehicle is handed over. It uses that data to fill forms and build deal packs. Automated reading can make mistakes, particularly with poor scans, handwriting, unusual layouts or changes to source documents or forms.
 
 - Every pre-filled form, deal pack, registration document and other output must be checked by a competent person in your dealership against the source documents before it is issued, signed, lodged or relied on.
 - Highlighted fields and guided verification help with that check but do not replace it.

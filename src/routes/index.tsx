@@ -160,8 +160,8 @@ function Hero() {
             <Button asChild variant="link" size="lg" className="min-h-12 h-auto whitespace-normal px-2 text-foreground underline decoration-primary underline-offset-8 hover:text-brand-mint"><a href="#product-view-title">Explore Interactive Dealership Board <ArrowRight /></a></Button>
           </div>
           <div className="mt-10 flex flex-wrap gap-x-6 gap-y-3 text-xs text-muted-foreground">
-            <span className="flex items-center gap-2"><Cloud className="size-4 text-primary-glow" /> Architected on Microsoft Azure (Australia East)</span>
-            <span className="flex items-center gap-2"><KeyRound className="size-4 text-primary-glow" /> Role-Based Access &amp; Staff TOTP MFA Built-In</span>
+            <span className="flex items-center gap-2"><Cloud className="size-4 text-primary-glow" /> Hosted on AWS in Sydney, Data Stays in Australia</span>
+            <span className="flex items-center gap-2"><KeyRound className="size-4 text-primary-glow" /> Role-Based Access &amp; Staff MFA Built-In</span>
             <span className="flex items-center gap-2"><Building2 className="size-4 text-primary-glow" /> Configured for Australian Multi-Rooftop Dealer Groups</span>
           </div>
         </div>
@@ -303,7 +303,7 @@ function ProofBand() {
         <Reveal>
           <div className="font-mono text-xs uppercase tracking-[0.2em] text-primary-glow">Where we are</div>
           <h2 className="mt-4 max-w-2xl text-3xl font-semibold sm:text-4xl">Built. Tested. Ready for your rooftop.</h2>
-          <p className="mt-5 max-w-2xl leading-relaxed text-muted-foreground">SynoraDrive is built and engineered on Microsoft Azure (Australia East). Our Australian dealership pilot program opens 30 November 2026, with each rooftop configured to its own DMS contract layouts and compliance rules.</p>
+          <p className="mt-5 max-w-2xl leading-relaxed text-muted-foreground">SynoraDrive is built and hosted on Amazon Web Services in Sydney, with your data kept in Australia. Our Australian dealership pilot program opens 30 November 2026, with each rooftop configured to its own DMS contract layouts and compliance rules.</p>
         </Reveal>
       </div>
     </section>
