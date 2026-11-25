@@ -219,3 +219,30 @@ describe("Layout landmarks", () => {
     }
   });
 });
+
+describe("Favicon set", () => {
+  const PUBLIC = path.resolve(SRC, "..", "public");
+  const root = readFileSync(path.join(SRC, "routes", "__root.tsx"), "utf8");
+
+  it("links every icon from the root head and ships the file", () => {
+    const hrefs = [
+      ...root.matchAll(/rel: "(?:icon|apple-touch-icon|manifest)", href: "([^"]+)"/g),
+    ].map((m) => m[1]);
+    expect(hrefs).toEqual(
+      expect.arrayContaining([
+        "/favicon.ico",
+        "/favicon.svg",
+        "/apple-touch-icon.png",
+        "/site.webmanifest",
+      ]),
+    );
+    for (const href of hrefs) expect(statSync(path.join(PUBLIC, href)).size).toBeGreaterThan(0);
+  });
+
+  it("lists manifest icons that exist", () => {
+    const manifest = JSON.parse(readFileSync(path.join(PUBLIC, "site.webmanifest"), "utf8"));
+    expect(manifest.name).toBe("SynoraDrive");
+    for (const icon of manifest.icons)
+      expect(statSync(path.join(PUBLIC, icon.src)).size).toBeGreaterThan(0);
+  });
+});
