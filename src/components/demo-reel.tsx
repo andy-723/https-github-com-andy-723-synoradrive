@@ -1,14 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, Play } from "lucide-react";
+import { ArrowRight, Play, Volume2, VolumeX } from "lucide-react";
 
 import demoPoster from "@/assets/demo-reel-poster-1600.webp";
-const DEMO_REEL_WEBM = "/media/demo-reel.webm";
+// 77s website cut of the demo film. The 2:32 sales cut is linked as the full walkthrough.
 const DEMO_REEL_MP4 = "/media/demo-reel.mp4";
+const WALKTHROUGH_MP4 = "/media/synoradrive-walkthrough.mp4";
 // Keep heading + 16:9 frame + caption inside one viewport on short laptop screens.
 const FRAME_MAX_WIDTH = "min(64rem, calc((100vh - 17rem) * 16 / 9 + 4rem))";
 /**
- * Product screen recording (real app, fictional Demo Motors data) with a scroll-driven opening transition: the video
+ * Demo film (real app screens with on-screen notes, fictional Demo Motors data) with a scroll-driven opening transition: the video
  * starts as a small floating card and expands to full bleed as the visitor
  * scrolls through the tall sticky section. Respects prefers-reduced-motion
  * by rendering the video statically at full size.
@@ -18,6 +19,17 @@ export function DemoReel() {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [progress, setProgress] = useState(0);
   const [loadVideo, setLoadVideo] = useState(false);
+  const [muted, setMuted] = useState(true);
+
+  // Autoplay has to start muted; the visitor can turn the soundtrack on.
+  const toggleSound = () => {
+    const video = videoRef.current;
+    if (!video) return;
+    const next = !muted;
+    video.muted = next;
+    setMuted(next);
+    if (!next) video.play().catch(() => {});
+  };
 
   useEffect(() => {
     const track = trackRef.current;
@@ -135,15 +147,20 @@ export function DemoReel() {
               loop
               playsInline
               preload="none"
-              aria-label="Screen recording of the SynoraDrive app: dealership board, a deal file, team thread, delivery calendar and month book, using fictional Demo Motors data"
+              aria-label="SynoraDrive demo film: adding a deal, stage gates, the deal file, red flags, vehicle prep, aftermarket intro, plate assignment, handover calendar, customer emails and the month forecast, using fictional Demo Motors data"
             >
-              {loadVideo && (
-                <>
-                  <source src={DEMO_REEL_WEBM} type="video/webm" />
-                  <source src={DEMO_REEL_MP4} type="video/mp4" />
-                </>
-              )}
+              {loadVideo && <source src={DEMO_REEL_MP4} type="video/mp4" />}
             </video>
+            <button
+              type="button"
+              onClick={toggleSound}
+              aria-pressed={!muted}
+              aria-label={muted ? "Turn sound on" : "Turn sound off"}
+              className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 rounded-full bg-black/60 px-3 py-1.5 text-xs font-medium text-white backdrop-blur transition hover:bg-black/75"
+            >
+              {muted ? <VolumeX className="size-3.5" /> : <Volume2 className="size-3.5" />}
+              {muted ? "Sound on" : "Mute"}
+            </button>
           </div>
           <div className="mt-4 flex flex-wrap items-center justify-between gap-4">
             <div>
@@ -151,9 +168,18 @@ export function DemoReel() {
                 <Play className="size-3.5" /> Recorded in the real app
               </div>
               <p className="mt-1.5 max-w-xl text-sm text-muted-foreground">
-                Real SynoraDrive screens, sped up slightly. Demo Motors and every customer, vehicle
-                and deal shown are fictional.
+                Real SynoraDrive screens with on-screen notes, sped up in places. The opening car
+                shot is illustrative. Demo Motors and every customer, vehicle and deal shown are
+                fictional.
               </p>
+              <a
+                href={WALKTHROUGH_MP4}
+                target="_blank"
+                rel="noopener"
+                className="mt-2 inline-flex items-center gap-1.5 text-sm font-medium text-primary-glow hover:underline"
+              >
+                Watch the full 2.5-minute walkthrough <ArrowRight className="size-3.5" />
+              </a>
             </div>
             <Link
               to="/demo"
